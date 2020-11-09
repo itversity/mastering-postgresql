@@ -1,4 +1,4 @@
-exclude_patterns: [_build, README.md, , "**.ipynb_checkpoints"]
+exclude_patterns: [_build, README.md, "**.ipynb_checkpoints"]
 
 execute:
   execute_notebooks         : off
