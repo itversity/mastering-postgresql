@@ -1,0 +1,1124 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Creating Tables and Indexes &#8212; My Jupyter Book</title>
+    
+  <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Partitioning Tables and Indexes" href="05_partitioning_tables_and_indexes.html" />
+    <link rel="prev" title="Writing Basic SQL Queries" href="03_writing_basic_sql_queries.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">My Jupyter Book</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="mastering-postgresql.html">
+   Mastering Postgresql
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_getting_started.html">
+   Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_writing_basic_sql_queries.html">
+   Writing Basic SQL Queries
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Creating Tables and Indexes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05_partitioning_tables_and_indexes.html">
+   Partitioning Tables and Indexes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_predefined_functions.html">
+   Pre-Defined Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="07_writing_advanced_sql_queries.html">
+   Writing Advanced SQL Queries
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/04_creating_tables_and_indexes.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/04_creating_tables_and_indexes.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ddl-data-definition-language">
+   DDL – Data Definition Language
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview-of-data-types">
+   Overview of Data Types
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#adding-or-modifying-columns">
+   Adding or Modifying Columns
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#different-types-of-constraints">
+   Different Types of Constraints
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#managing-constraints">
+   Managing Constraints
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#indexes-on-tables">
+   Indexes on Tables
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise">
+     Exercise
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#indexes-for-constraints">
+   Indexes for Constraints
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#truncating-tables">
+   Truncating Tables
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dropping-tables">
+   Dropping Tables
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="creating-tables-and-indexes">
+<h1>Creating Tables and Indexes<a class="headerlink" href="#creating-tables-and-indexes" title="Permalink to this headline">¶</a></h1>
+<p>Let us go through the details related to creating tables and indexes. We will also talk about how columns, constraints etc while going through the details related to tables and indexes.</p>
+<ul class="simple">
+<li><p>DDL - Data Definition Language</p></li>
+<li><p>Overview of Data Types</p></li>
+<li><p>Adding or Modifying Columns</p></li>
+<li><p>Different Types of Constraints</p></li>
+<li><p>Managing Constraints</p></li>
+<li><p>Indexes on Tables</p></li>
+<li><p>Indexes for Constraints</p></li>
+<li><p>Truncating Tables</p></li>
+<li><p>Dropping Tables</p></li>
+</ul>
+<div class="section" id="ddl-data-definition-language">
+<h2>DDL – Data Definition Language<a class="headerlink" href="#ddl-data-definition-language" title="Permalink to this headline">¶</a></h2>
+<p>Let us get an overview of DDL Statements which are typically used to create database objects such as tables.</p>
+<ul class="simple">
+<li><p>DDL Stands for Data Definition Language.</p></li>
+<li><p>We execute DDL statements less frequently as part of the application development process.</p></li>
+<li><p>Typically DDL Scripts are maintained separately than the code.</p></li>
+<li><p>Following are the common DDL tasks.</p>
+<ul>
+<li><p>Creating Tables - Independent Objects</p></li>
+<li><p>Creating Indexes for performance - Typically dependent on tables</p></li>
+<li><p>Adding constraints to existing tables</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">users</span> <span class="p">(</span>
+  <span class="n">user_id</span> <span class="nb">SERIAL</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
+  <span class="n">user_first_name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="n">user_last_name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="n">user_email_id</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="n">user_email_validated</span> <span class="nb">BOOLEAN</span> <span class="k">DEFAULT</span> <span class="k">FALSE</span><span class="p">,</span>
+  <span class="n">user_password</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">200</span><span class="p">),</span>
+  <span class="n">user_role</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;U&#39;</span><span class="p">,</span> <span class="c1">--U and A</span>
+  <span class="n">is_active</span> <span class="nb">BOOLEAN</span> <span class="k">DEFAULT</span> <span class="k">FALSE</span><span class="p">,</span>
+  <span class="n">created_dt</span> <span class="nb">DATE</span> <span class="k">DEFAULT</span> <span class="k">CURRENT_DATE</span><span class="p">,</span>
+  <span class="n">last_updated_ts</span> <span class="k">TIMESTAMP</span> <span class="k">DEFAULT</span> <span class="k">CURRENT_TIMESTAMP</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Following are less common DDL tasks which can be taken care using <code class="docutils literal notranslate"><span class="pre">ALTER</span></code> command.</p>
+<ul>
+<li><p>Adding columns to existing tables.</p></li>
+<li><p>Dropping columns from existing tables.</p></li>
+<li><p>Changing data types of existing columns.</p></li>
+</ul>
+</li>
+<li><p>We can also define comments both at column level as well as table level. However we can only add comments after table is created.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5433/itversity_retail_db
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> DROP TABLE IF EXISTS users
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+CREATE TABLE users (
+  user_id SERIAL PRIMARY KEY,
+  user_first_name VARCHAR(30) NOT NULL,
+  user_last_name VARCHAR(30) NOT NULL,
+  user_email_id VARCHAR(50) NOT NULL,
+  user_email_validated BOOLEAN DEFAULT FALSE,
+  user_password VARCHAR(200),
+  user_role VARCHAR(1) NOT NULL DEFAULT &#39;U&#39;, --U and A
+  is_active BOOLEAN DEFAULT FALSE,
+  created_dt DATE DEFAULT CURRENT_DATE,
+  last_updated_ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> COMMENT ON COLUMN users.user_id IS &#39;Surrogate Key&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> COMMENT ON COLUMN users.user_first_name IS &#39;User First Name&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> COMMENT ON COLUMN users.user_role IS &#39;U for user A for admin&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT * FROM information_schema.COLUMNS WHERE table_name = &#39;users&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="overview-of-data-types">
+<h2>Overview of Data Types<a class="headerlink" href="#overview-of-data-types" title="Permalink to this headline">¶</a></h2>
+<p>Let us get an overview of supported datatypes in Postgres.</p>
+<ul class="simple">
+<li><p>While creating tables in RDBMS databases, we should specify data types for the columns.</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">SERIAL</span></code> is nothing but integer which is populated by a special database object called as sequence. It is typically used for surrogate primary key.</p></li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">SERIAL</span></code> is specified, an index with table_name_serial_column_seq naming convention will be created. In our case it is <code class="docutils literal notranslate"><span class="pre">users_user_id_seq</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INT</span></code> or <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code> is used to define columns with integer values. Most of the ids are defined as integer.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code> or <code class="docutils literal notranslate"><span class="pre">DOUBLE</span></code> can be used to define columns used to store price, salary etc.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">VARCHAR</span></code> with length is used to define columns such as name, email id etc.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CHAR</span></code> can be used to defined fixed length string columns - single character fields such as gender which store M or F, three character days or months etc.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code> is used to store <strong>true</strong> and <strong>false</strong> values.</p></li>
+<li><p>We can also use <code class="docutils literal notranslate"><span class="pre">DATE</span></code> or <code class="docutils literal notranslate"><span class="pre">TIMESTAMP</span></code> to store date or time respectively.</p></li>
+</ul>
+</li>
+<li><p>We can add columns, drop columns, modify columns by changing data types as well as specify default values using <code class="docutils literal notranslate"><span class="pre">ALTER</span> <span class="pre">TABLE</span></code> command.</p></li>
+<li><p>Let us perform these tasks to understand about Data Types. Drop and recreate tables with the following details.</p>
+<ul>
+<li><p>user_id - integer</p></li>
+<li><p>user_first_name - not null and alpha numeric or string up to 30 characters</p></li>
+<li><p>user_last_name - not null and alpha numeric or string up to 30 characters</p></li>
+<li><p>user_email_id - not null and alpha numeric or string up to 50 characters</p></li>
+<li><p>user_email_validated - true or false (boolean)</p></li>
+<li><p>user_password - alpha numeric up to 200 characters</p></li>
+<li><p>user_role - single character with U or A (use VARCHAR(1))</p></li>
+<li><p>is_active - true or false (boolean)</p></li>
+<li><p>created_dt - not null and date with out timestamp. It should be defaulted to system date.</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5433/itversity_retail_db
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> DROP TABLE IF EXISTS users
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+CREATE TABLE users (
+  user_id INT,
+  user_first_name VARCHAR(30) NOT NULL,
+  user_last_name VARCHAR(30) NOT NULL,
+  user_email_id VARCHAR(50) NOT NULL,
+  user_email_validated BOOLEAN,
+  user_password VARCHAR(200),
+  user_role VARCHAR(1),
+  is_active BOOLEAN,
+  created_dt DATE DEFAULT CURRENT_DATE
+)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT * FROM information_schema.COLUMNS WHERE table_name = &#39;users&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="adding-or-modifying-columns">
+<h2>Adding or Modifying Columns<a class="headerlink" href="#adding-or-modifying-columns" title="Permalink to this headline">¶</a></h2>
+<p>Let us understand details about adding or modifying columns using <code class="docutils literal notranslate"><span class="pre">ALTER</span> <span class="pre">TABLE</span></code> command.</p>
+<ul class="simple">
+<li><p>New columns can be added to the existing table. However, if you want to add a column which cannot have null value then you need to follow these steps.</p>
+<ul>
+<li><p>Add column to the table.</p></li>
+<li><p>Update data in the column with some value.</p></li>
+<li><p>Alter table by defining it as not null.</p></li>
+</ul>
+</li>
+<li><p>Existing columns can be dropped from the table, but it is not advisable to do so. If at all we have to drop the column, then there should be extra caution as some or the other application functionality can be broken.</p></li>
+<li><p>We can modify the existing columns for defining it as not null or to change the data type.</p></li>
+<li><p>Once the application is in production, all the operations related to modifying or dropping columns should be avoided. We can consider adding columns.</p></li>
+<li><p>Let us perform these tasks to understand more about adding or modifying or dropping table columns.</p>
+<ul>
+<li><p>Change the data type of user_id as SERIAL (we have to first create the sequence and then set the sequence generated value as default).</p></li>
+<li><p>Define default value for user_email_validated and is_active to FALSE.</p></li>
+<li><p>Change the data type of user_role to CHAR(1), set default value to ‘U’.</p></li>
+<li><p>Add new column last_updated_ts with data type timestamp and also set default value to current timestamp.</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5433/itversity_retail_db
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> CREATE SEQUENCE users_user_id_seq
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> ALTER TABLE users ALTER COLUMN user_id SET DEFAULT nextval(&#39;users_user_id_seq&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT * FROM information_schema.COLUMNS WHERE table_name = &#39;users&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+ALTER TABLE users
+    ALTER COLUMN user_email_validated SET DEFAULT FALSE,
+    ALTER COLUMN is_active SET DEFAULT FALSE
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+ALTER TABLE users
+    ALTER COLUMN user_role SET DATA TYPE CHAR(1),
+    ALTER COLUMN user_role SET DEFAULT &#39;U&#39;
+    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+ALTER TABLE users
+    ADD COLUMN last_updated_ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT * FROM information_schema.COLUMNS WHERE table_name = &#39;users&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="different-types-of-constraints">
+<h2>Different Types of Constraints<a class="headerlink" href="#different-types-of-constraints" title="Permalink to this headline">¶</a></h2>
+<p>Let us understand details about different types of constraints used in RDBMS databases.</p>
+<ul class="simple">
+<li><p>Supported constraints:</p>
+<ul>
+<li><p>NOT NULL constraint</p></li>
+<li><p>CHECK constraint</p></li>
+<li><p>UNIQUE constraint</p></li>
+<li><p>PRIMARY KEY constraint</p></li>
+<li><p>FOREIGN KEY constraint</p></li>
+</ul>
+</li>
+<li><p>All constraints can be added while creating the table or on pre-created tables using <code class="docutils literal notranslate"><span class="pre">ALTER</span></code>.</p></li>
+<li><p>Typically we define <code class="docutils literal notranslate"><span class="pre">NOT</span> <span class="pre">NULL</span></code>, <code class="docutils literal notranslate"><span class="pre">CHECK</span></code> constraints while creating the tables. However, we can also specify <strong>not null constraints</strong> as well as <strong>check constraints</strong> to the columns while creating table or adding columns using <code class="docutils literal notranslate"><span class="pre">ALTER</span> <span class="pre">TABLE</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FOREIGN</span> <span class="pre">KEY</span></code> constraints are created after the tables are created. It is primarily used to define relationship between 2 tables - example: users is parent table and user_login_details is child table with one to many relationship between them.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PRIMARY</span> <span class="pre">KEY</span></code> and <code class="docutils literal notranslate"><span class="pre">UNIQUE</span></code> constraints might be added as part of CREATE table statements or ALTER table statements. Both are commonly used practices.</p></li>
+<li><p>Let us compare and contrast <code class="docutils literal notranslate"><span class="pre">PRIMARY</span> <span class="pre">KEY</span></code> and <code class="docutils literal notranslate"><span class="pre">UNIQUE</span></code> constraints.</p>
+<ul>
+<li><p>There can be only one <code class="docutils literal notranslate"><span class="pre">PRIMARY</span> <span class="pre">KEY</span></code> in a table where as there can be any number of <code class="docutils literal notranslate"><span class="pre">UNIQUE</span></code> constraints.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">UNIQUE</span></code> columns can have null values unless <code class="docutils literal notranslate"><span class="pre">NOT</span> <span class="pre">NULL</span></code> is also enforced. In case of <code class="docutils literal notranslate"><span class="pre">PRIMARY</span> <span class="pre">KEY</span></code>, both uniqueness as well as not null are strictly enforced. A primary key column cannot be null where as unique column can be null.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FOREIGN</span> <span class="pre">KEY</span></code> from a child table can be defined against <code class="docutils literal notranslate"><span class="pre">PRIMARY</span> <span class="pre">KEY</span></code> column or <code class="docutils literal notranslate"><span class="pre">UNIQUE</span></code> column.</p></li>
+<li><p>Typically <code class="docutils literal notranslate"><span class="pre">PRIMARY</span> <span class="pre">KEY</span></code> columns are surrogate keys which are supported by sequence.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="managing-constraints">
+<h2>Managing Constraints<a class="headerlink" href="#managing-constraints" title="Permalink to this headline">¶</a></h2>
+<p>Let us understand how we can manage constraints.</p>
+<ul class="simple">
+<li><p>We can add constraints while creating the tables.</p></li>
+<li><p>Constraints such as NOT NULL, CHECK, FOREIGN KEY are automatically dropped when we drop the table.</p></li>
+<li><p>Even PRIMARY KEY and UNIQUE constraints are dropped if they are not used to enforce constraints. When PRIMARY KEY or UNIQUE constraint is referred by child table then there can be errors.</p></li>
+<li><p>We can add constraints to existing table using <code class="docutils literal notranslate"><span class="pre">ALTER</span> <span class="pre">TABLE</span></code> with <code class="docutils literal notranslate"><span class="pre">ADD</span></code>. We can specify the name using <code class="docutils literal notranslate"><span class="pre">CONSTRAINT</span></code> keyword.</p></li>
+<li><p>Constraints from the table can be dropped using <code class="docutils literal notranslate"><span class="pre">ALTER</span> <span class="pre">TABLE</span></code> with <code class="docutils literal notranslate"><span class="pre">DROP</span></code>.</p></li>
+<li><p>Let us perform tasks to understand how we can use <code class="docutils literal notranslate"><span class="pre">ALTER</span> <span class="pre">TABLE</span></code> command to add or drop the constraints.</p>
+<ul>
+<li><p>Use the prior users table with out any constraints.</p></li>
+<li><p>Add primary key constraint on user_id.</p></li>
+<li><p>Add unique constraint on user_email_id.</p></li>
+<li><p>Add not null constraints user_email_validated, user_role, created_dt, last_updated_ts</p></li>
+<li><p>Add check constraint to user_role with ‘U’ and ‘A’ as accepted values.</p></li>
+<li><p>Add new table user_logins with below columns and establish foreign key relationship with users.</p>
+<ul>
+<li><p>user_login_id - <code class="docutils literal notranslate"><span class="pre">SERIAL</span></code> and <code class="docutils literal notranslate"><span class="pre">PRIMARY</span> <span class="pre">KEY</span></code></p></li>
+<li><p>user_id - <code class="docutils literal notranslate"><span class="pre">INT</span></code></p></li>
+<li><p>user_login_time - <code class="docutils literal notranslate"><span class="pre">TIMESTAMP</span></code> defaulted to <code class="docutils literal notranslate"><span class="pre">CURRENT_TIMESTAMP</span></code></p></li>
+<li><p>user_logins is child table to users with many to one relationship. Hence, create foreign key between user_logins.user_id to users.user_id.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5433/itversity_retail_db
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> DROP TABLE IF EXISTS users
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> DROP SEQUENCE IF EXISTS users_user_id_seq
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+CREATE TABLE users (
+  user_id INT,
+  user_first_name VARCHAR(30) NOT NULL,
+  user_last_name VARCHAR(30) NOT NULL,
+  user_email_id VARCHAR(50) NOT NULL,
+  user_email_validated BOOLEAN,
+  user_password VARCHAR(200),
+  user_role VARCHAR(1),
+  is_active BOOLEAN,
+  created_dt DATE DEFAULT CURRENT_DATE
+)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> CREATE SEQUENCE users_user_id_seq
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> ALTER TABLE users ALTER COLUMN user_id SET DEFAULT nextval(&#39;users_user_id_seq&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+ALTER TABLE users
+    ALTER COLUMN user_email_validated SET DEFAULT FALSE,
+    ALTER COLUMN is_active SET DEFAULT FALSE
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+ALTER TABLE users
+    ALTER COLUMN user_role SET DATA TYPE CHAR(1),
+    ALTER COLUMN user_role SET DEFAULT &#39;U&#39;
+    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+ALTER TABLE users
+    ADD COLUMN last_updated_ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT * FROM information_schema.table_constraints WHERE table_name = &#39;users&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> ALTER TABLE users ADD PRIMARY KEY (user_id)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT * FROM information_schema.table_constraints WHERE table_name = &#39;users&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> ALTER TABLE users DROP CONSTRAINT users_pkey
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT * FROM information_schema.table_constraints WHERE table_name = &#39;users&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> ALTER TABLE users ADD CONSTRAINT users_pk PRIMARY KEY (user_id)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT * FROM information_schema.table_constraints WHERE table_name = &#39;users&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> ALTER TABLE users ADD UNIQUE (user_email_id)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT * FROM information_schema.table_constraints WHERE table_name = &#39;users&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+ALTER TABLE users
+    ALTER COLUMN user_email_validated SET NOT NULL, 
+    ALTER COLUMN user_role SET NOT NULL, 
+    ALTER COLUMN created_dt SET NOT NULL, 
+    ALTER COLUMN last_updated_ts SET NOT NULL
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+ALTER TABLE users
+    ADD CHECK (user_role IN (&#39;U&#39;, &#39;A&#39;) )
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT * FROM information_schema.table_constraints WHERE table_name = &#39;users&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="indexes-on-tables">
+<h2>Indexes on Tables<a class="headerlink" href="#indexes-on-tables" title="Permalink to this headline">¶</a></h2>
+<p>Let us go through the details related to indexes supported in RDBMS such as Postgres.</p>
+<ul class="simple">
+<li><p>Unique Index</p></li>
+<li><p>Non Unique Index</p></li>
+<li><p>Unless specified all indexes are of type B Tree.</p></li>
+<li><p>For sparsely populated columns, we tend to create B Tree indexes.</p></li>
+<li><p>For densely populated columns such as gender, month etc with very few distinct values we can leverage bit map indices.</p></li>
+<li><p>Write operations will become relatively slow as data have to be managed in index as well as table.</p></li>
+<li><p>We need to be careful while creating indexes on the tables.</p></li>
+<li><p>Here are some of the criteria for creating indexes.</p>
+<ul>
+<li><p>Create unique indexes when you want to enforce uniqueness.</p></li>
+<li><p>If we are performing joins between 2 tables based on a value, then the foreign key column in the child table should be indexed.</p></li>
+</ul>
+</li>
+<li><p>Let us perform tasks related to indexes.</p>
+<ul>
+<li><p>Drop and recreate retail db tables.</p></li>
+<li><p>Load data into retail db tables.</p></li>
+<li><p>Compute statistics</p></li>
+<li><p>Use code to randomly fetch 1000 orders and join with order_items - compute time.</p></li>
+<li><p>Create index for order_items.order_item_order_id and compute statistics</p></li>
+<li><p>Use code to randomly fetch 1000 orders and join with order_items - compute time.</p></li>
+</ul>
+</li>
+<li><p>Script to create tables and load data in case there are no tables in retail database.</p></li>
+</ul>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>psql -U itversity_retail_user <span class="se">\</span>
+  -h localhost <span class="se">\</span>
+  -p <span class="m">5433</span> <span class="se">\</span>
+  -d itversity_retail_db <span class="se">\</span>
+  -W
+
+<span class="se">\i</span> retail_db/create_db_tables_pg.sql
+<span class="se">\i</span> retail_db/load_db_tables_pg.sql
+</pre></div>
+</div>
+<div class="section" id="exercise">
+<h3>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h3>
+<p>You can also perform this exercise about creating index on order_date.</p>
+<ul class="simple">
+<li><p>Use code to randomly fetch 50 dates and get count of PENDING orders - compute time.</p></li>
+<li><p>Create index for orders.order_date and compute statistics</p></li>
+<li><p>Use code to randomly fetch 50 dates and get count of PENDING orders - compute time.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install psycopg2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">psycopg2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">connection</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
+    <span class="n">host</span><span class="o">=</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
+    <span class="n">port</span><span class="o">=</span><span class="s1">&#39;5433&#39;</span><span class="p">,</span>
+    <span class="n">database</span><span class="o">=</span><span class="s1">&#39;itversity_retail_db&#39;</span><span class="p">,</span>
+    <span class="n">user</span><span class="o">=</span><span class="s1">&#39;itversity_retail_user&#39;</span><span class="p">,</span>
+    <span class="n">password</span><span class="o">=</span><span class="s1">&#39;retail_password&#39;</span>
+<span class="p">)</span>
+<span class="n">cursor</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+<span class="n">query</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;SELECT count(1) </span>
+<span class="s1">FROM orders o JOIN order_items oi </span>
+<span class="s1">    ON o.order_id = oi.order_item_order_id</span>
+<span class="s1">WHERE o.order_id = </span><span class="si">%s</span><span class="s1"></span>
+<span class="s1">&#39;&#39;&#39;</span>
+<span class="n">ctr</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">ctr</span> <span class="o">==</span> <span class="mi">1000</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,))</span>
+    <span class="n">ctr</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="n">cursor</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">connection</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="indexes-for-constraints">
+<h2>Indexes for Constraints<a class="headerlink" href="#indexes-for-constraints" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="truncating-tables">
+<h2>Truncating Tables<a class="headerlink" href="#truncating-tables" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="dropping-tables">
+<h2>Dropping Tables<a class="headerlink" href="#dropping-tables" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5433/itversity_retail_db
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> DROP TABLE departments
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> DROP TABLE categories
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> DROP TABLE products
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> DROP TABLE orders
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> DROP TABLE order_items
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> DROP TABLE customers
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+CREATE TABLE departments (
+  department_id SERIAL NOT NULL,
+  department_name VARCHAR(45) NOT NULL,
+  PRIMARY KEY (department_id)
+)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT * FROM information_schema.columns WHERE table_name = &#39;departments&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+CREATE TABLE categories (
+  category_id SERIAL PRIMARY KEY,
+  category_department_id INT NOT NULL,
+  category_name VARCHAR(45) NOT NULL
+)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT * FROM information_schema.columns WHERE table_name = &#39;categories&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+CREATE TABLE products (
+  product_id SERIAL PRIMARY KEY,
+  product_category_id INT NOT NULL,
+  product_name VARCHAR(45) NOT NULL,
+  product_description VARCHAR(255) NOT NULL,
+  product_price FLOAT NOT NULL,
+  product_image VARCHAR(255) NOT NULL
+)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT * FROM information_schema.columns WHERE table_name = &#39;products&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+CREATE TABLE customers (
+  customer_id SERIAL PRIMARY KEY,
+  customer_fname VARCHAR(45) NOT NULL,
+  customer_lname VARCHAR(45) NOT NULL,
+  customer_email VARCHAR(45) NOT NULL,
+  customer_password VARCHAR(45) NOT NULL,
+  customer_street VARCHAR(255) NOT NULL,
+  customer_city VARCHAR(45) NOT NULL,
+  customer_state VARCHAR(45) NOT NULL,
+  customer_zipcode VARCHAR(45) NOT NULL
+)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT * FROM information_schema.columns WHERE table_name = &#39;customers&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="03_writing_basic_sql_queries.html" title="previous page">Writing Basic SQL Queries</a>
+    <a class='right-next' id="next-link" href="05_partitioning_tables_and_indexes.html" title="next page">Partitioning Tables and Indexes</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

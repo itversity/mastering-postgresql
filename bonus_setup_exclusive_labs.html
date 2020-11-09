@@ -1,0 +1,607 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bonus - Setup Exclusive Labs &#8212; My Jupyter Book</title>
+    
+  <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">My Jupyter Book</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="mastering-postgresql.html">
+   Mastering Postgresql
+  </a>
+ </li>
+</ul>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_getting_started.html">
+   Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_writing_basic_sql_queries.html">
+   Writing Basic SQL Queries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04_creating_tables_and_indexes.html">
+   Creating Tables and Indexes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05_partitioning_tables_and_indexes.html">
+   Partitioning Tables and Indexes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_predefined_functions.html">
+   Pre-Defined Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="07_writing_advanced_sql_queries.html">
+   Writing Advanced SQL Queries
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/bonus_setup_exclusive_labs.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/bonus_setup_exclusive_labs.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview-of-gcp">
+   Overview of GCP
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#provisioning-virtual-machine">
+   Provisioning Virtual Machine
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup-docker-and-key-concepts">
+   Setup Docker and Key Concepts
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-docker-cli">
+   Using Docker CLI
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup-jupyter-lab-environment">
+   Setup Jupyter Lab Environment
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup-postgresql-database">
+   Setup Postgresql Database
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview-of-psql-cli">
+   Overview of psql CLI
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sql-integration-jupyter-lab">
+   SQL Integration - Jupyter Lab
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusion">
+   Conclusion
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="bonus-setup-exclusive-labs">
+<h1>Bonus - Setup Exclusive Labs<a class="headerlink" href="#bonus-setup-exclusive-labs" title="Permalink to this headline">¶</a></h1>
+<p>As part of this section, we are going to see the details related to setting up exclusive labs on GCP leveraging $300 credit.</p>
+<ul class="simple">
+<li><p>Overview of GCP</p></li>
+<li><p>Provisioning Virtual Machine</p></li>
+<li><p>Setup Docker and Key Concepts</p></li>
+<li><p>Using Docker CLI</p></li>
+<li><p>Setup Jupyter Lab Environment</p></li>
+<li><p>Setup Postgresql Database</p></li>
+<li><p>Overview of psql CLI</p></li>
+<li><p>SQL Integration - Jupyter Lab</p></li>
+<li><p>Conclusion</p></li>
+</ul>
+<div class="section" id="overview-of-gcp">
+<h2>Overview of GCP<a class="headerlink" href="#overview-of-gcp" title="Permalink to this headline">¶</a></h2>
+<p>Let us get an overview of GCP and the credit provided by Google.</p>
+<ul class="simple">
+<li><p>Sign up to GCP (you need to have credit card to use it).</p></li>
+<li><p>Overview of GCP Web Console</p></li>
+<li><p>Understanding GCP Pricing</p>
+<ul>
+<li><p>Virtual Machine (Variable cost)</p></li>
+<li><p>Storage (Fixed cost)</p></li>
+<li><p>Static IP (Fixed cost)</p></li>
+</ul>
+</li>
+<li><p>You also need to understand how to get the billing details.</p></li>
+<li><p>Keep in mind that you do not open up ports unnecessarily as the server can be hijacked by malware and can dry out your credits.</p></li>
+</ul>
+</div>
+<div class="section" id="provisioning-virtual-machine">
+<h2>Provisioning Virtual Machine<a class="headerlink" href="#provisioning-virtual-machine" title="Permalink to this headline">¶</a></h2>
+<p>Let us understand how to provision a virtual machine from GCP.</p>
+<ul class="simple">
+<li><p>We need to go to Virtual Machines</p></li>
+<li><p>Overview of different operating systems</p></li>
+<li><p>Choose the server configuration</p></li>
+<li><p>Choose OS - Ubuntu 18.04</p></li>
+<li><p>Choose the size of hard drive (32 GB should suffice)</p></li>
+<li><p>Once the virtual machine is created you need to spend some time understand how to manage it.</p>
+<ul>
+<li><p>Stopping the virtual machine</p></li>
+<li><p>Starting the virtual machine</p></li>
+<li><p>Restarting the virtual machine</p></li>
+<li><p>Deleting the virtual machine</p></li>
+<li><p>Connecting to running server</p></li>
+<li><p>Configuring Firewall Rules (it will be covered in later topics a bit in detail)</p></li>
+</ul>
+</li>
+<li><p>Make sure the virtual machine is stopped when you are not using it, otherwise you will run out of credits fast.</p></li>
+</ul>
+</div>
+<div class="section" id="setup-docker-and-key-concepts">
+<h2>Setup Docker and Key Concepts<a class="headerlink" href="#setup-docker-and-key-concepts" title="Permalink to this headline">¶</a></h2>
+<p>As our VM is up and running, let us make sure to setup docker and validate. Also we will get into some of the key concepts related to docker.</p>
+<ul class="simple">
+<li><p>Follow any standard article to setup Docker on Ubuntu 18.04. These are the commands that are used to setup Docker.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">update</span>
+<span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">apt</span><span class="o">-</span><span class="n">transport</span><span class="o">-</span><span class="n">https</span> <span class="n">ca</span><span class="o">-</span><span class="n">certificates</span> <span class="n">curl</span> <span class="n">software</span><span class="o">-</span><span class="n">properties</span><span class="o">-</span><span class="n">common</span> <span class="o">-</span><span class="n">y</span>
+<span class="n">curl</span> <span class="o">-</span><span class="n">fsSL</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">download</span><span class="o">.</span><span class="n">docker</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">linux</span><span class="o">/</span><span class="n">ubuntu</span><span class="o">/</span><span class="n">gpg</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">key</span> <span class="n">add</span> <span class="o">-</span>
+<span class="n">sudo</span> <span class="n">add</span><span class="o">-</span><span class="n">apt</span><span class="o">-</span><span class="n">repository</span> <span class="s2">&quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable&quot;</span>
+<span class="n">sudo</span> <span class="n">apt</span> <span class="n">update</span>
+<span class="n">apt</span><span class="o">-</span><span class="n">cache</span> <span class="n">policy</span> <span class="n">docker</span><span class="o">-</span><span class="n">ce</span>
+<span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">docker</span><span class="o">-</span><span class="n">ce</span>
+<span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">status</span> <span class="n">docker</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Make sure to add the user you logged in to a group called as <strong>docker</strong>. It is primarily to not to use sudo to manage docker containers. Run <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">usermod</span> <span class="pre">-aG</span> <span class="pre">docker</span> <span class="pre">${USER}</span></code></p></li>
+<li><p>Once the user is added to the group, you might have to reconnect to the session.</p></li>
+</ul>
+<p><strong>Docker Key Concepts</strong>
+Here are some of the key concepts related to docker.</p>
+<ul class="simple">
+<li><p>Ephemeral - if no service is running in the container, it will be in stopped state.</p></li>
+<li><p>Image - a file which will have light weight OS kernel in hibernate or paused state.</p></li>
+<li><p>Container - a process which is created using an image or images and might be in one of running, stopped, exit (error) status.</p></li>
+<li><p>Here are the steps to have a container for process such as nginx.</p>
+<ul>
+<li><p>Download nginx image</p></li>
+<li><p>Start the container with entry point</p></li>
+<li><p>Once the container is started, you can stop at any point in time.</p></li>
+<li><p>For containers like hello world where there is no active application associated with, they will go to stopped state after performing the designated tasks.</p></li>
+</ul>
+</li>
+<li><p>Here are some of the usage scenarios for docker containers.</p>
+<ul>
+<li><p>Maintain databases for development activities. It is not recommended to use docker to maintain production databases.</p></li>
+<li><p>Maintain web or application servers for development activities. We can even run production applications as part of docker containers.</p></li>
+<li><p>Run ad hoc batch data processing applications or data pipelines in development or production.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="using-docker-cli">
+<h2>Using Docker CLI<a class="headerlink" href="#using-docker-cli" title="Permalink to this headline">¶</a></h2>
+<p>Let us get an overview about Docker CLI to manage docker components such as images, containers etc.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">images</span></code> is the main command to manage images.</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">image</span> <span class="pre">pull</span></code> or <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">pull</span></code></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">container</span></code> is the main command to manage containers.</p></li>
+<li><p>We can use <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span></code> command to quickly start the container.</p>
+<ul>
+<li><p>It will pull the image from docker hub, if the image is not already available.</p></li>
+<li><p>Creates the container, if the container is not already created.</p></li>
+<li><p>Starts the container, if the container is not started.</p></li>
+<li><p>If there is no server running the container, it will just come out of the container.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">--name</span> <span class="pre">hw</span> <span class="pre">hello-world</span></code> will pull the <strong>hello-world</strong> image, creates the container with name <strong>hw</strong>, starts the container and stops it after printing Hello message as there is no service associated with it. You can run below commands using Linux Terminal.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sh</span>
+
+docker ps -a
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sh</span>
+
+docker images -a
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sh</span>
+
+docker run --name hw hello-world
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the &quot;hello-world&quot; image from the Docker Hub.
+    (amd64)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Unable to find image &#39;hello-world:latest&#39; locally
+latest: Pulling from library/hello-world
+0e03bdcc26d7: Pulling fs layer
+0e03bdcc26d7: Verifying Checksum
+0e03bdcc26d7: Download complete
+0e03bdcc26d7: Pull complete
+Digest: sha256:8c5aeeb6a5f3ba4883347d3747a7249f491766ca1caa47e5da5dfcf6b9b717c0
+Status: Downloaded newer image for hello-world:latest
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sh</span>
+
+docker images -a
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+hello-world         latest              bf756fb1ae65        10 months ago       13.3kB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sh</span>
+
+docker ps -a
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                      PORTS               NAMES
+3874ed91f0d2        hello-world         &quot;/hello&quot;            14 minutes ago      Exited (0) 14 minutes ago                       hw
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="setup-jupyter-lab-environment">
+<h2>Setup Jupyter Lab Environment<a class="headerlink" href="#setup-jupyter-lab-environment" title="Permalink to this headline">¶</a></h2>
+<p>To get similar experience as demonstrated in the course content, we would recommend to setup Jupyter Lab Environment.</p>
+<ul class="simple">
+<li><p>Connect to the Virtual Machines provisioned from GCP.</p></li>
+<li><p>Make sure Python 3 is installed in the Virtual Machine. Use <code class="docutils literal notranslate"><span class="pre">python3</span></code> to validate</p></li>
+<li><p>Make sure pip is installed in the Virtual Machine.</p></li>
+<li><p>Install Jupyter Lab using pip <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">-m</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">jupyterlab</span></code>.</p></li>
+<li><p>You can launch Jupyter Lab using <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">lab</span> <span class="pre">--ip</span> <span class="pre">0.0.0.0</span></code> and it will start with default port number <strong>8888</strong>.</p></li>
+<li><p>We need to open the port number by going to Network and then Firewall for the Virtual Machine.</p></li>
+<li><p>Make sure you can access Jupyter Lab using the browser on your laptop.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">python3</span><span class="o">-</span><span class="n">pip</span> <span class="o">-</span><span class="n">y</span>
+<span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">jupyter</span> <span class="n">lab</span>
+<span class="n">jupyter</span> <span class="n">lab</span> <span class="o">--</span><span class="n">ip</span> <span class="mf">0.0</span><span class="o">.</span><span class="mf">0.0</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="setup-postgresql-database">
+<h2>Setup Postgresql Database<a class="headerlink" href="#setup-postgresql-database" title="Permalink to this headline">¶</a></h2>
+<p>Let us setup Postgresql Database using Docker.</p>
+<ul class="simple">
+<li><p>Pull the image</p></li>
+<li><p>Start the container</p></li>
+<li><p>You need to understand all the key arguments used for creating the container.</p></li>
+</ul>
+</div>
+<div class="section" id="overview-of-psql-cli">
+<h2>Overview of psql CLI<a class="headerlink" href="#overview-of-psql-cli" title="Permalink to this headline">¶</a></h2>
+<p>As the container is ready let us make sure that we can connect to the container using psql CLI.</p>
+<ul class="simple">
+<li><p>We can use <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">exec</span></code> command to connect to running container or run a single command.</p></li>
+<li><p>First, we need to ensure that container is up and running. We can use <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">ps</span></code>.</p></li>
+<li><p>Fetch the container name.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">exec</span> <span class="pre">-it</span> <span class="pre">pg_db</span> <span class="pre">bash</span></code> to connect to the container’s console.</p></li>
+<li><p>We can also run indiviual commands - example: <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">exec</span> <span class="pre">-it</span> <span class="pre">pg_db</span> <span class="pre">ls</span> <span class="pre">-ltr</span></code>.</p></li>
+<li><p>To connect to psql CLI either we can use bash and then psql or we can directly run psql command - <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">exec</span> <span class="pre">-it</span> <span class="pre">pg_db</span> <span class="pre">psql</span> <span class="pre">-U</span> <span class="pre">postgres</span></code></p></li>
+<li><p>Here are the some of the commands you can run to get comfortable with <code class="docutils literal notranslate"><span class="pre">psql</span></code> CLI via docker.</p>
+<ul>
+<li><p>List databases - <code class="docutils literal notranslate"><span class="pre">\l</span></code></p></li>
+<li><p>List tables - <code class="docutils literal notranslate"><span class="pre">\d</span></code></p></li>
+<li><p>Check the current database - <code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">current_database()</span></code></p></li>
+<li><p>Create new database - <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">DATABASE</span> <span class="pre">test_db;</span></code></p></li>
+<li><p>Change to database - <code class="docutils literal notranslate"><span class="pre">\c</span> <span class="pre">test_db</span></code></p></li>
+<li><p>Create table - <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">TABLE</span> <span class="pre">t</span> <span class="pre">(i</span> <span class="pre">INT)</span></code></p></li>
+<li><p>Describe table - <code class="docutils literal notranslate"><span class="pre">\d</span> <span class="pre">t</span></code></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="sql-integration-jupyter-lab">
+<h2>SQL Integration - Jupyter Lab<a class="headerlink" href="#sql-integration-jupyter-lab" title="Permalink to this headline">¶</a></h2>
+<p>It might not be comfortable to use psql to learn more about SQL using Postgresql. We can either use SQL Alchemy or Jupyter Lab to accelerate our learning process.</p>
+<p>Let us understand how we can integrate Jupyter Lab with Postgresql.</p>
+<ul class="simple">
+<li><p>Install <strong>ipython-sql</strong> - <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">ipython-sql</span></code></p></li>
+<li><p>Install <strong>SQLAlchemy</strong> - <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">sqlalchemy</span></code></p></li>
+<li><p>Load the magic command as extension to Python 3 kernel.</p></li>
+<li><p>Validate by connecting to database and then running some queries.</p></li>
+</ul>
+</div>
+<div class="section" id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>
