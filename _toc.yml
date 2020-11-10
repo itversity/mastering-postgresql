@@ -1,4 +1,4 @@
-- file: content
+- file: mastering-postgresql
   sections:
     - file: 01_getting_started
     - file: 02_performing_crud_operations
