@@ -366,6 +366,11 @@
 <div class="section" id="database-operations-overview">
 <h2>Database Operations - Overview<a class="headerlink" href="#database-operations-overview" title="Permalink to this headline">¶</a></h2>
 <p>Let us get an overview of Database Operations we typically perform on regular basis. They are broadly categorized into the following:</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/l91PFVnmSnI?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+</div></div>
+</div>
 <ul class="simple">
 <li><p>DDL - Data Definition Language</p>
 <ul>
@@ -395,6 +400,11 @@
 <div class="section" id="crud-operations">
 <h2>CRUD Operations<a class="headerlink" href="#crud-operations" title="Permalink to this headline">¶</a></h2>
 <p>Let us get an overview of CRUD Operations. They are nothing but DML and queries to read the data while performing database operations.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/6XKfmClzBeQ?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+</div></div>
+</div>
 <ul class="simple">
 <li><p>CRUD is widely used from application development perspective.</p></li>
 <li><p>C - CREATE (INSERT)</p></li>
@@ -407,6 +417,11 @@
 <div class="section" id="creating-table">
 <h2>Creating Table<a class="headerlink" href="#creating-table" title="Permalink to this headline">¶</a></h2>
 <p>Before getting into action with respect to basic DML and queries or CRUD operations, we need to prepare tables.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/O1IHKcF1bxw?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+</div></div>
+</div>
 <p>At this time we have not covered DDL yet. All database operations related to managing tables come under DDL.</p>
 <p>For now, let’s just create the table by copy pasting below <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">TABLE</span></code> statement. We will get into concepts as part of the subsequent sections.</p>
 <ul class="simple">
@@ -463,17 +478,17 @@ LIMIT 10
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
 CREATE TABLE users (
-  user_id SERIAL PRIMARY KEY,
-  user_first_name VARCHAR(30) NOT NULL,
-  user_last_name VARCHAR(30) NOT NULL,
-  user_email_id VARCHAR(50) NOT NULL,
-  user_email_validated BOOLEAN DEFAULT FALSE,
-  user_password VARCHAR(200),
-  user_role VARCHAR(1) NOT NULL DEFAULT &#39;U&#39;, --U and A
-  is_active BOOLEAN DEFAULT FALSE,
-  create_ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  last_updated_ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
+    user_id SERIAL PRIMARY KEY,
+    user_first_name VARCHAR(30) NOT NULL,
+    user_last_name VARCHAR(30) NOT NULL,
+    user_email_id VARCHAR(50) NOT NULL,
+    user_email_validated BOOLEAN DEFAULT FALSE,
+    user_password VARCHAR(200),
+    user_role VARCHAR(1) NOT NULL DEFAULT &#39;U&#39;, --U and A
+    is_active BOOLEAN DEFAULT FALSE,
+    create_ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    last_updated_ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)
 </pre></div>
 </div>
 </div>
@@ -514,6 +529,11 @@ LIMIT 10
 <div class="section" id="inserting-data">
 <h2>Inserting Data<a class="headerlink" href="#inserting-data" title="Permalink to this headline">¶</a></h2>
 <p>Let us see how to insert the data into the table.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/Pk51SIqKeIU?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+</div></div>
+</div>
 <ul class="simple">
 <li><p>We need to use INSERT clause to insert the data. Here is the sample syntax.</p></li>
 </ul>
@@ -624,6 +644,11 @@ VALUES
 <div class="section" id="updating-data">
 <h2>Updating Data<a class="headerlink" href="#updating-data" title="Permalink to this headline">¶</a></h2>
 <p>Let us see how we can update data in the table.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/vGrx2HMHEJ0?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+</div></div>
+</div>
 <ul class="simple">
 <li><p>Typical syntax</p></li>
 </ul>
@@ -734,15 +759,6 @@ ALTER TABLE users ADD COLUMN user_full_name VARCHAR(50)
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
-Done.
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -750,55 +766,6 @@ Done.
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
-6 rows affected.
-</pre></div>
-</div>
-<div class="output text_html"><table>
-    <tr>
-        <th>user_id</th>
-        <th>user_first_name</th>
-        <th>user_last_name</th>
-        <th>user_full_name</th>
-    </tr>
-    <tr>
-        <td>2</td>
-        <td>Donald</td>
-        <td>Duck</td>
-        <td>None</td>
-    </tr>
-    <tr>
-        <td>3</td>
-        <td>Mickey</td>
-        <td>Mouse</td>
-        <td>None</td>
-    </tr>
-    <tr>
-        <td>4</td>
-        <td>Gordan</td>
-        <td>Bradock</td>
-        <td>None</td>
-    </tr>
-    <tr>
-        <td>5</td>
-        <td>Tobe</td>
-        <td>Lyness</td>
-        <td>None</td>
-    </tr>
-    <tr>
-        <td>6</td>
-        <td>Addie</td>
-        <td>Mesias</td>
-        <td>None</td>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>Scott</td>
-        <td>Tiger</td>
-        <td>None</td>
-    </tr>
-</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -806,34 +773,6 @@ Done.
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
-6 rows affected.
-</pre></div>
-</div>
-<div class="output text_html"><table>
-    <tr>
-        <th>concat</th>
-    </tr>
-    <tr>
-        <td>Donald Duck</td>
-    </tr>
-    <tr>
-        <td>Mickey Mouse</td>
-    </tr>
-    <tr>
-        <td>Gordan Bradock</td>
-    </tr>
-    <tr>
-        <td>Tobe Lyness</td>
-    </tr>
-    <tr>
-        <td>Addie Mesias</td>
-    </tr>
-    <tr>
-        <td>Scott Tiger</td>
-    </tr>
-</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -844,15 +783,6 @@ UPDATE users
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
-6 rows affected.
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -860,55 +790,6 @@ UPDATE users
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
-6 rows affected.
-</pre></div>
-</div>
-<div class="output text_html"><table>
-    <tr>
-        <th>user_id</th>
-        <th>user_first_name</th>
-        <th>user_last_name</th>
-        <th>user_full_name</th>
-    </tr>
-    <tr>
-        <td>2</td>
-        <td>Donald</td>
-        <td>Duck</td>
-        <td>DONALD DUCK</td>
-    </tr>
-    <tr>
-        <td>3</td>
-        <td>Mickey</td>
-        <td>Mouse</td>
-        <td>MICKEY MOUSE</td>
-    </tr>
-    <tr>
-        <td>4</td>
-        <td>Gordan</td>
-        <td>Bradock</td>
-        <td>GORDAN BRADOCK</td>
-    </tr>
-    <tr>
-        <td>5</td>
-        <td>Tobe</td>
-        <td>Lyness</td>
-        <td>TOBE LYNESS</td>
-    </tr>
-    <tr>
-        <td>6</td>
-        <td>Addie</td>
-        <td>Mesias</td>
-        <td>ADDIE MESIAS</td>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>Scott</td>
-        <td>Tiger</td>
-        <td>SCOTT TIGER</td>
-    </tr>
-</table></div></div>
 </div>
 </div>
 <div class="section" id="deleting-data">
@@ -927,54 +808,10 @@ UPDATE users
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
-6 rows affected.
-</pre></div>
-</div>
-<div class="output text_html"><table>
-    <tr>
-        <th>user_id</th>
-        <th>user_password</th>
-    </tr>
-    <tr>
-        <td>2</td>
-        <td>None</td>
-    </tr>
-    <tr>
-        <td>3</td>
-        <td>None</td>
-    </tr>
-    <tr>
-        <td>4</td>
-        <td>h9LAz7p7ub</td>
-    </tr>
-    <tr>
-        <td>5</td>
-        <td>oEofndp</td>
-    </tr>
-    <tr>
-        <td>6</td>
-        <td>ih7Y69u56</td>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>None</td>
-    </tr>
-</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> DELETE FROM users WHERE user_password IS NULL
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
-3 rows affected.
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
 </pre></div>
 </div>
 </div>
@@ -985,29 +822,6 @@ UPDATE users
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
-3 rows affected.
-</pre></div>
-</div>
-<div class="output text_html"><table>
-    <tr>
-        <th>user_id</th>
-        <th>user_password</th>
-    </tr>
-    <tr>
-        <td>4</td>
-        <td>h9LAz7p7ub</td>
-    </tr>
-    <tr>
-        <td>5</td>
-        <td>oEofndp</td>
-    </tr>
-    <tr>
-        <td>6</td>
-        <td>ih7Y69u56</td>
-    </tr>
-</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1015,19 +829,6 @@ UPDATE users
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
-1 rows affected.
-</pre></div>
-</div>
-<div class="output text_html"><table>
-    <tr>
-        <th>count</th>
-    </tr>
-    <tr>
-        <td>3</td>
-    </tr>
-</table></div></div>
 </div>
 </div>
 <div class="section" id="overview-of-transactions">
