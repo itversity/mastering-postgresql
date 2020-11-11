@@ -548,21 +548,10 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The sql extension is already loaded. To reload it, use:
-  %reload_ext sql
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env: DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
 </pre></div>
 </div>
 </div>
@@ -573,79 +562,6 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-10 rows affected.
-</pre></div>
-</div>
-<div class="output text_html"><table>
-    <tr>
-        <th>order_id</th>
-        <th>order_date</th>
-        <th>order_customer_id</th>
-        <th>order_status</th>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>2013-07-25 00:00:00</td>
-        <td>11599</td>
-        <td>CLOSED</td>
-    </tr>
-    <tr>
-        <td>2</td>
-        <td>2013-07-25 00:00:00</td>
-        <td>256</td>
-        <td>PENDING_PAYMENT</td>
-    </tr>
-    <tr>
-        <td>3</td>
-        <td>2013-07-25 00:00:00</td>
-        <td>12111</td>
-        <td>COMPLETE</td>
-    </tr>
-    <tr>
-        <td>4</td>
-        <td>2013-07-25 00:00:00</td>
-        <td>8827</td>
-        <td>CLOSED</td>
-    </tr>
-    <tr>
-        <td>5</td>
-        <td>2013-07-25 00:00:00</td>
-        <td>11318</td>
-        <td>COMPLETE</td>
-    </tr>
-    <tr>
-        <td>6</td>
-        <td>2013-07-25 00:00:00</td>
-        <td>7130</td>
-        <td>COMPLETE</td>
-    </tr>
-    <tr>
-        <td>7</td>
-        <td>2013-07-25 00:00:00</td>
-        <td>4530</td>
-        <td>COMPLETE</td>
-    </tr>
-    <tr>
-        <td>8</td>
-        <td>2013-07-25 00:00:00</td>
-        <td>2911</td>
-        <td>PROCESSING</td>
-    </tr>
-    <tr>
-        <td>9</td>
-        <td>2013-07-25 00:00:00</td>
-        <td>5657</td>
-        <td>PENDING_PAYMENT</td>
-    </tr>
-    <tr>
-        <td>10</td>
-        <td>2013-07-25 00:00:00</td>
-        <td>5648</td>
-        <td>PENDING_PAYMENT</td>
-    </tr>
-</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -657,243 +573,6 @@ WHERE table_catalog = &#39;itversity_retail_db&#39;
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-4 rows affected.
-</pre></div>
-</div>
-<div class="output text_html"><table>
-    <tr>
-        <th>table_catalog</th>
-        <th>table_schema</th>
-        <th>table_name</th>
-        <th>column_name</th>
-        <th>ordinal_position</th>
-        <th>column_default</th>
-        <th>is_nullable</th>
-        <th>data_type</th>
-        <th>character_maximum_length</th>
-        <th>character_octet_length</th>
-        <th>numeric_precision</th>
-        <th>numeric_precision_radix</th>
-        <th>numeric_scale</th>
-        <th>datetime_precision</th>
-        <th>interval_type</th>
-        <th>interval_precision</th>
-        <th>character_set_catalog</th>
-        <th>character_set_schema</th>
-        <th>character_set_name</th>
-        <th>collation_catalog</th>
-        <th>collation_schema</th>
-        <th>collation_name</th>
-        <th>domain_catalog</th>
-        <th>domain_schema</th>
-        <th>domain_name</th>
-        <th>udt_catalog</th>
-        <th>udt_schema</th>
-        <th>udt_name</th>
-        <th>scope_catalog</th>
-        <th>scope_schema</th>
-        <th>scope_name</th>
-        <th>maximum_cardinality</th>
-        <th>dtd_identifier</th>
-        <th>is_self_referencing</th>
-        <th>is_identity</th>
-        <th>identity_generation</th>
-        <th>identity_start</th>
-        <th>identity_increment</th>
-        <th>identity_maximum</th>
-        <th>identity_minimum</th>
-        <th>identity_cycle</th>
-        <th>is_generated</th>
-        <th>generation_expression</th>
-        <th>is_updatable</th>
-    </tr>
-    <tr>
-        <td>itversity_retail_db</td>
-        <td>public</td>
-        <td>orders</td>
-        <td>order_id</td>
-        <td>1</td>
-        <td>None</td>
-        <td>NO</td>
-        <td>integer</td>
-        <td>None</td>
-        <td>None</td>
-        <td>32</td>
-        <td>2</td>
-        <td>0</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>itversity_retail_db</td>
-        <td>pg_catalog</td>
-        <td>int4</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>1</td>
-        <td>NO</td>
-        <td>NO</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>NO</td>
-        <td>NEVER</td>
-        <td>None</td>
-        <td>YES</td>
-    </tr>
-    <tr>
-        <td>itversity_retail_db</td>
-        <td>public</td>
-        <td>orders</td>
-        <td>order_date</td>
-        <td>2</td>
-        <td>None</td>
-        <td>NO</td>
-        <td>timestamp without time zone</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>6</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>itversity_retail_db</td>
-        <td>pg_catalog</td>
-        <td>timestamp</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>2</td>
-        <td>NO</td>
-        <td>NO</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>NO</td>
-        <td>NEVER</td>
-        <td>None</td>
-        <td>YES</td>
-    </tr>
-    <tr>
-        <td>itversity_retail_db</td>
-        <td>public</td>
-        <td>orders</td>
-        <td>order_customer_id</td>
-        <td>3</td>
-        <td>None</td>
-        <td>NO</td>
-        <td>integer</td>
-        <td>None</td>
-        <td>None</td>
-        <td>32</td>
-        <td>2</td>
-        <td>0</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>itversity_retail_db</td>
-        <td>pg_catalog</td>
-        <td>int4</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>3</td>
-        <td>NO</td>
-        <td>NO</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>NO</td>
-        <td>NEVER</td>
-        <td>None</td>
-        <td>YES</td>
-    </tr>
-    <tr>
-        <td>itversity_retail_db</td>
-        <td>public</td>
-        <td>orders</td>
-        <td>order_status</td>
-        <td>4</td>
-        <td>None</td>
-        <td>NO</td>
-        <td>character varying</td>
-        <td>45</td>
-        <td>180</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>itversity_retail_db</td>
-        <td>pg_catalog</td>
-        <td>varchar</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>4</td>
-        <td>NO</td>
-        <td>NO</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>None</td>
-        <td>NO</td>
-        <td>NEVER</td>
-        <td>None</td>
-        <td>YES</td>
-    </tr>
-</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -905,68 +584,6 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-10 rows affected.
-</pre></div>
-</div>
-<div class="output text_html"><table>
-    <tr>
-        <th>order_customer_id</th>
-        <th>order_date</th>
-        <th>order_status</th>
-    </tr>
-    <tr>
-        <td>11599</td>
-        <td>2013-07-25 00:00:00</td>
-        <td>CLOSED</td>
-    </tr>
-    <tr>
-        <td>256</td>
-        <td>2013-07-25 00:00:00</td>
-        <td>PENDING_PAYMENT</td>
-    </tr>
-    <tr>
-        <td>12111</td>
-        <td>2013-07-25 00:00:00</td>
-        <td>COMPLETE</td>
-    </tr>
-    <tr>
-        <td>8827</td>
-        <td>2013-07-25 00:00:00</td>
-        <td>CLOSED</td>
-    </tr>
-    <tr>
-        <td>11318</td>
-        <td>2013-07-25 00:00:00</td>
-        <td>COMPLETE</td>
-    </tr>
-    <tr>
-        <td>7130</td>
-        <td>2013-07-25 00:00:00</td>
-        <td>COMPLETE</td>
-    </tr>
-    <tr>
-        <td>4530</td>
-        <td>2013-07-25 00:00:00</td>
-        <td>COMPLETE</td>
-    </tr>
-    <tr>
-        <td>2911</td>
-        <td>2013-07-25 00:00:00</td>
-        <td>PROCESSING</td>
-    </tr>
-    <tr>
-        <td>5657</td>
-        <td>2013-07-25 00:00:00</td>
-        <td>PENDING_PAYMENT</td>
-    </tr>
-    <tr>
-        <td>5648</td>
-        <td>2013-07-25 00:00:00</td>
-        <td>PENDING_PAYMENT</td>
-    </tr>
-</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -980,68 +597,6 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-10 rows affected.
-</pre></div>
-</div>
-<div class="output text_html"><table>
-    <tr>
-        <th>order_customer_id</th>
-        <th>to_char</th>
-        <th>order_status</th>
-    </tr>
-    <tr>
-        <td>11599</td>
-        <td>2013-07</td>
-        <td>CLOSED</td>
-    </tr>
-    <tr>
-        <td>256</td>
-        <td>2013-07</td>
-        <td>PENDING_PAYMENT</td>
-    </tr>
-    <tr>
-        <td>12111</td>
-        <td>2013-07</td>
-        <td>COMPLETE</td>
-    </tr>
-    <tr>
-        <td>8827</td>
-        <td>2013-07</td>
-        <td>CLOSED</td>
-    </tr>
-    <tr>
-        <td>11318</td>
-        <td>2013-07</td>
-        <td>COMPLETE</td>
-    </tr>
-    <tr>
-        <td>7130</td>
-        <td>2013-07</td>
-        <td>COMPLETE</td>
-    </tr>
-    <tr>
-        <td>4530</td>
-        <td>2013-07</td>
-        <td>COMPLETE</td>
-    </tr>
-    <tr>
-        <td>2911</td>
-        <td>2013-07</td>
-        <td>PROCESSING</td>
-    </tr>
-    <tr>
-        <td>5657</td>
-        <td>2013-07</td>
-        <td>PENDING_PAYMENT</td>
-    </tr>
-    <tr>
-        <td>5648</td>
-        <td>2013-07</td>
-        <td>PENDING_PAYMENT</td>
-    </tr>
-</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1055,68 +610,6 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-10 rows affected.
-</pre></div>
-</div>
-<div class="output text_html"><table>
-    <tr>
-        <th>order_customer_id</th>
-        <th>order_month</th>
-        <th>order_status</th>
-    </tr>
-    <tr>
-        <td>11599</td>
-        <td>2013-07</td>
-        <td>CLOSED</td>
-    </tr>
-    <tr>
-        <td>256</td>
-        <td>2013-07</td>
-        <td>PENDING_PAYMENT</td>
-    </tr>
-    <tr>
-        <td>12111</td>
-        <td>2013-07</td>
-        <td>COMPLETE</td>
-    </tr>
-    <tr>
-        <td>8827</td>
-        <td>2013-07</td>
-        <td>CLOSED</td>
-    </tr>
-    <tr>
-        <td>11318</td>
-        <td>2013-07</td>
-        <td>COMPLETE</td>
-    </tr>
-    <tr>
-        <td>7130</td>
-        <td>2013-07</td>
-        <td>COMPLETE</td>
-    </tr>
-    <tr>
-        <td>4530</td>
-        <td>2013-07</td>
-        <td>COMPLETE</td>
-    </tr>
-    <tr>
-        <td>2911</td>
-        <td>2013-07</td>
-        <td>PROCESSING</td>
-    </tr>
-    <tr>
-        <td>5657</td>
-        <td>2013-07</td>
-        <td>PENDING_PAYMENT</td>
-    </tr>
-    <tr>
-        <td>5648</td>
-        <td>2013-07</td>
-        <td>PENDING_PAYMENT</td>
-    </tr>
-</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1127,55 +620,6 @@ FROM orders
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-13 rows affected.
-</pre></div>
-</div>
-<div class="output text_html"><table>
-    <tr>
-        <th>order_month</th>
-    </tr>
-    <tr>
-        <td>2014-01</td>
-    </tr>
-    <tr>
-        <td>2014-05</td>
-    </tr>
-    <tr>
-        <td>2013-12</td>
-    </tr>
-    <tr>
-        <td>2013-11</td>
-    </tr>
-    <tr>
-        <td>2014-04</td>
-    </tr>
-    <tr>
-        <td>2014-07</td>
-    </tr>
-    <tr>
-        <td>2014-03</td>
-    </tr>
-    <tr>
-        <td>2013-08</td>
-    </tr>
-    <tr>
-        <td>2013-10</td>
-    </tr>
-    <tr>
-        <td>2013-07</td>
-    </tr>
-    <tr>
-        <td>2014-02</td>
-    </tr>
-    <tr>
-        <td>2013-09</td>
-    </tr>
-    <tr>
-        <td>2014-06</td>
-    </tr>
-</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1183,19 +627,6 @@ FROM orders
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-1 rows affected.
-</pre></div>
-</div>
-<div class="output text_html"><table>
-    <tr>
-        <th>count</th>
-    </tr>
-    <tr>
-        <td>68883</td>
-    </tr>
-</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1206,19 +637,6 @@ FROM orders
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-1 rows affected.
-</pre></div>
-</div>
-<div class="output text_html"><table>
-    <tr>
-        <th>distinct_month_count</th>
-    </tr>
-    <tr>
-        <td>13</td>
-    </tr>
-</table></div></div>
 </div>
 </div>
 <div class="section" id="filtering-data">
@@ -1226,14 +644,15 @@ FROM orders
 <p>Let us understand how we can filter the data as part of our queries.</p>
 <ul class="simple">
 <li><p>We use <code class="docutils literal notranslate"><span class="pre">WHERE</span></code> clause to filter the data.</p></li>
-<li><p>All comparison operators such as <code class="docutils literal notranslate"><span class="pre">=</span></code>, <code class="docutils literal notranslate"><span class="pre">!=</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;</span></code>, etc can be used to compare a column or expression or literal with another column or expression or literal.</p></li>
-<li><p>We can use operators such as <code class="docutils literal notranslate"><span class="pre">LIKE</span></code> with % and <code class="docutils literal notranslate"><span class="pre">regexp_matches</span></code> for pattern matching.</p></li>
-<li><p>Boolan <code class="docutils literal notranslate"><span class="pre">OR</span></code> and <code class="docutils literal notranslate"><span class="pre">AND</span></code> can be performed when we want to apply multiple conditions.</p>
+<li><p>All comparison operators such as <code class="docutils literal notranslate"><span class="pre">=</span></code>, <code class="docutils literal notranslate"><span class="pre">!=</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code> etc can be used to compare a column or expression or literal with another column or expression or literal.</p></li>
+<li><p>We can use operators such as <code class="docutils literal notranslate"><span class="pre">LIKE</span></code> with <code class="docutils literal notranslate"><span class="pre">%</span></code> or <code class="docutils literal notranslate"><span class="pre">~</span></code> with regular expressions for pattern matching.</p></li>
+<li><p>Boolean <code class="docutils literal notranslate"><span class="pre">OR</span></code> and <code class="docutils literal notranslate"><span class="pre">AND</span></code> can be performed when we want to apply multiple conditions.</p>
 <ul>
 <li><p>Get all orders with order_status equals to COMPLETE or CLOSED. We can also use IN operator.</p></li>
 <li><p>Get all orders from month 2014 January with order_status equals to COMPLETE or CLOSED</p></li>
 </ul>
 </li>
+<li><p>We can also use <code class="docutils literal notranslate"><span class="pre">BETWEEN</span></code> along with <code class="docutils literal notranslate"><span class="pre">AND</span></code> to compare a column or expression against range of values.</p></li>
 <li><p>We need to use <code class="docutils literal notranslate"><span class="pre">IS</span> <span class="pre">NULL</span></code> and <code class="docutils literal notranslate"><span class="pre">IS</span> <span class="pre">NOT</span> <span class="pre">NULL</span></code> to compare against null values.</p></li>
 </ul>
 <div class="cell docutils container">
@@ -1283,6 +702,27 @@ WHERE order_status = &#39;COMPLETE&#39;
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span> 
 
+SELECT DISTINCT order_status
+FROM orders
+WHERE order_status = &#39;COMPLETE&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT DISTINCT order_status
+FROM orders
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span> 
+
 SELECT * FROM orders 
 WHERE order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;) 
 LIMIT 10
@@ -1314,10 +754,47 @@ WHERE order_status = &#39;COMPLETE&#39; OR order_status = &#39;CLOSED&#39;
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
+SELECT * FROM orders
+WHERE order_date = &#39;2014-01-01&#39;
+LIMIT 3
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This query will not work as LIKE cannot be used to compare against columns with date data type</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT * FROM orders
+WHERE order_date LIKE &#39;2014-01%&#39;
+LIMIT 3
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
 SELECT * FROM orders 
 WHERE order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)
     AND to_char(order_date, &#39;yyyy-MM-dd&#39;) LIKE &#39;2014-01%&#39;
 LIMIT 10
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT count(1) FROM orders 
+WHERE order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)
+    AND to_char(order_date, &#39;yyyy-MM-dd&#39;) LIKE &#39;2014-01%&#39;
 </pre></div>
 </div>
 </div>
@@ -1340,7 +817,7 @@ LIMIT 10
 
 SELECT count(1) FROM orders 
 WHERE order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)
-    AND to_char(order_date, &#39;yyyy-MM-dd&#39;) LIKE &#39;2014-01%&#39;
+    AND to_char(order_date, &#39;yyyy-MM&#39;) = &#39;2014-01&#39;
 </pre></div>
 </div>
 </div>
@@ -1351,7 +828,138 @@ WHERE order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)
 
 SELECT count(1) FROM orders 
 WHERE order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)
-    AND to_char(order_date, &#39;yyyy-MM&#39;) = &#39;2014-01&#39;
+    AND to_char(order_date, &#39;yyyy-MM-dd&#39;) ~ &#39;2014-01&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT count(1), min(order_date), max(order_date), count(DISTINCT order_date) 
+FROM orders 
+WHERE order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)
+    AND order_date BETWEEN &#39;2014-01-01&#39; AND &#39;2014-03-31&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT DISTINCT order_date
+FROM orders
+WHERE to_char(order_date, &#39;yyyy-MM&#39;) LIKE &#39;2014-03%&#39;
+ORDER BY order_date
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+DROP TABLE IF EXISTS users
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+CREATE TABLE users (
+    user_id SERIAL PRIMARY KEY,
+    user_first_name VARCHAR(30) NOT NULL,
+    user_last_name VARCHAR(30) NOT NULL,
+    user_email_id VARCHAR(50) NOT NULL,
+    user_email_validated BOOLEAN DEFAULT FALSE,
+    user_password VARCHAR(200),
+    user_role VARCHAR(1) NOT NULL DEFAULT &#39;U&#39;, --U and A
+    is_active BOOLEAN DEFAULT FALSE,
+    create_ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    last_updated_ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+INSERT INTO users (user_first_name, user_last_name, user_email_id)
+VALUES (&#39;Donald&#39;, &#39;Duck&#39;, &#39;donald@duck.com&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+INSERT INTO users (user_first_name, user_last_name, user_email_id, user_role, is_active)
+VALUES (&#39;Mickey&#39;, &#39;Mouse&#39;, &#39;mickey@mouse.com&#39;, &#39;U&#39;, true)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+INSERT INTO users 
+    (user_first_name, user_last_name, user_email_id, user_password, user_role, is_active) 
+VALUES 
+    (&#39;Gordan&#39;, &#39;Bradock&#39;, &#39;gbradock0@barnesandnoble.com&#39;, &#39;h9LAz7p7ub&#39;, &#39;U&#39;, true),
+    (&#39;Tobe&#39;, &#39;Lyness&#39;, &#39;tlyness1@paginegialle.it&#39;, &#39;oEofndp&#39;, &#39;U&#39;, true),
+    (&#39;Addie&#39;, &#39;Mesias&#39;, &#39;amesias2@twitpic.com&#39;, &#39;ih7Y69u56&#39;, &#39;U&#39;, true)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT * FROM users
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This will not return any thing and not the correct way to compare against NULL.
+NULL is specially treated by databases and it is not same as empty string.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT * FROM users
+WHERE user_password = NULL
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT * FROM users
+WHERE user_password IS NULL
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT * FROM users
+WHERE user_password IS NOT NULL
 </pre></div>
 </div>
 </div>
@@ -1529,7 +1137,7 @@ LIMIT 10
 <li><p>When we perform the outer join (lets say left outer join), we will see this.</p>
 <ul>
 <li><p>Get all the values from both the tables when join condition satisfies.</p></li>
-<li><p>If there are rows on left side tables for which there are no corresponding values in right side table, all the projected column values for right side table will be null.</p></li>
+<li><p>If there are rows on left side table for which there are no corresponding values in right side table, all the projected column values for right side table will be null.</p></li>
 </ul>
 </li>
 <li><p>Here are some of the examples for outer join.</p>
@@ -1564,6 +1172,7 @@ SELECT o.order_id,
     oi.order_item_subtotal
 FROM orders o LEFT OUTER JOIN order_items oi
     ON o.order_id = oi.order_item_order_id
+ORDER BY o.order_id
 LIMIT 10
 </pre></div>
 </div>
@@ -1584,6 +1193,17 @@ FROM orders o LEFT OUTER JOIN order_items oi
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
+SELECT count(1)
+FROM orders o JOIN order_items oi
+    ON o.order_id = oi.order_item_order_id
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
 SELECT o.order_id,
     o.order_date,
     o.order_status,
@@ -1592,6 +1212,7 @@ SELECT o.order_id,
 FROM orders o LEFT OUTER JOIN order_items oi
     ON o.order_id = oi.order_item_order_id
 WHERE oi.order_item_order_id IS NULL
+ORDER BY o.order_id
 LIMIT 10
 </pre></div>
 </div>
@@ -1783,6 +1404,19 @@ LIMIT 10
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
 SELECT order_item_order_id,
+    sum(order_item_subtotal) AS order_revenue
+FROM order_items
+GROUP BY order_item_order_id 
+LIMIT 10
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT order_item_order_id,
     round(sum(order_item_subtotal), 2) AS order_revenue
 FROM order_items
 GROUP BY order_item_order_id 
@@ -1808,6 +1442,10 @@ LIMIT 10
 </div>
 </div>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We cannot use the aliases in select clause in <code class="docutils literal notranslate"><span class="pre">WHERE</span></code>. In this case <strong>revenue</strong> cannot be used in <code class="docutils literal notranslate"><span class="pre">WHERE</span></code> clause.</p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
@@ -1819,6 +1457,28 @@ FROM orders o JOIN order_items oi
     ON o.order_id = oi.order_item_order_id
 WHERE o.order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)
     AND revenue &gt;= 500
+GROUP BY o.order_date,
+    oi.order_item_product_id
+LIMIT 10
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We cannot use aggregate functions in <code class="docutils literal notranslate"><span class="pre">WHERE</span></code> clause.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT o.order_date,
+    oi.order_item_product_id,
+    round(sum(oi.order_item_subtotal::numeric), 2) AS revenue
+FROM orders o JOIN order_items oi
+    ON o.order_id = oi.order_item_order_id
+WHERE o.order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)
+    AND round(sum(oi.order_item_subtotal::numeric), 2) &gt;= 500
 GROUP BY o.order_date,
     oi.order_item_product_id
 LIMIT 10
