@@ -361,16 +361,16 @@
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
 CREATE TABLE users (
-  user_id SERIAL PRIMARY KEY,
-  user_first_name VARCHAR(30) NOT NULL,
-  user_last_name VARCHAR(30) NOT NULL,
-  user_email_id VARCHAR(50) NOT NULL,
-  user_email_validated BOOLEAN DEFAULT FALSE,
-  user_password VARCHAR(200),
-  user_role VARCHAR(1) NOT NULL DEFAULT &#39;U&#39;, --U and A
-  is_active BOOLEAN DEFAULT FALSE,
-  created_dt DATE DEFAULT CURRENT_DATE,
-  last_updated_ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    user_id SERIAL PRIMARY KEY,
+    user_first_name VARCHAR(30) NOT NULL,
+    user_last_name VARCHAR(30) NOT NULL,
+    user_email_id VARCHAR(50) NOT NULL,
+    user_email_validated BOOLEAN DEFAULT FALSE,
+    user_password VARCHAR(200),
+    user_role VARCHAR(1) NOT NULL DEFAULT &#39;U&#39;, --U and A
+    is_active BOOLEAN DEFAULT FALSE,
+    created_dt DATE DEFAULT CURRENT_DATE,
+    last_updated_ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )
 </pre></div>
 </div>
@@ -670,15 +670,15 @@ ALTER TABLE users
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
 CREATE TABLE users (
-  user_id INT,
-  user_first_name VARCHAR(30) NOT NULL,
-  user_last_name VARCHAR(30) NOT NULL,
-  user_email_id VARCHAR(50) NOT NULL,
-  user_email_validated BOOLEAN,
-  user_password VARCHAR(200),
-  user_role VARCHAR(1),
-  is_active BOOLEAN,
-  created_dt DATE DEFAULT CURRENT_DATE
+    user_id INT,
+    user_first_name VARCHAR(30) NOT NULL,
+    user_last_name VARCHAR(30) NOT NULL,
+    user_email_id VARCHAR(50) NOT NULL,
+    user_email_validated BOOLEAN,
+    user_password VARCHAR(200),
+    user_role VARCHAR(1),
+    is_active BOOLEAN,
+    created_dt DATE DEFAULT CURRENT_DATE
 )
 </pre></div>
 </div>
@@ -829,17 +829,23 @@ ALTER TABLE users
 <h2>Indexes on Tables<a class="headerlink" href="#indexes-on-tables" title="Permalink to this headline">¶</a></h2>
 <p>Let us go through the details related to indexes supported in RDBMS such as Postgres.</p>
 <ul class="simple">
-<li><p>Unique Index</p></li>
-<li><p>Non Unique Index</p></li>
+<li><p>Unique Index - Data will be sorted in ascending order and unique.</p></li>
+<li><p>Non Unique Index - Data will be sorted in ascending order.</p></li>
 <li><p>Unless specified all indexes are of type B Tree.</p></li>
 <li><p>For sparsely populated columns, we tend to create B Tree indexes.</p></li>
-<li><p>For densely populated columns such as gender, month etc with very few distinct values we can leverage bit map indices.</p></li>
+<li><p>For densely populated columns such as gender, month etc with very few distinct values we can leverage bit map index.</p></li>
 <li><p>Write operations will become relatively slow as data have to be managed in index as well as table.</p></li>
-<li><p>We need to be careful while creating indexes on the tables.</p></li>
+<li><p>We need to be careful while creating indexes on the tables as write operations can become slow as more indexes are added to the table.</p></li>
 <li><p>Here are some of the criteria for creating indexes.</p>
 <ul>
-<li><p>Create unique indexes when you want to enforce uniqueness.</p></li>
-<li><p>If we are performing joins between 2 tables based on a value, then the foreign key column in the child table should be indexed.</p></li>
+<li><p>Create unique indexes when you want to enforce uniqueness. If you define unique constraint, it will create unique index internally.</p></li>
+<li><p>If we are performing joins between 2 tables based on a value, then the foreign key column in the child table should be indexed.</p>
+<ul>
+<li><p>Typically as part of order management system, we tend to get all the order details for a given order using order id.</p></li>
+<li><p>In our case we will be able to improve the query performance by adding index on <strong>order_items.order_item_order_id</strong>.</p></li>
+<li><p>However, write operation will become a bit slow. But it is acceptable and required to create index on <strong>order_items.order_item_order_id</strong> as we write once and read many times over the life of the order.</p></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><p>Let us perform tasks related to indexes.</p>
@@ -847,34 +853,39 @@ ALTER TABLE users
 <li><p>Drop and recreate retail db tables.</p></li>
 <li><p>Load data into retail db tables.</p></li>
 <li><p>Compute statistics</p></li>
-<li><p>Use code to randomly fetch 1000 orders and join with order_items - compute time.</p></li>
+<li><p>Use code to randomly fetch 2000 orders and join with order_items - compute time.</p></li>
 <li><p>Create index for order_items.order_item_order_id and compute statistics</p></li>
-<li><p>Use code to randomly fetch 1000 orders and join with order_items - compute time.</p></li>
+<li><p>Use code to randomly fetch 2000 orders and join with order_items - compute time.</p></li>
 </ul>
 </li>
 <li><p>Script to create tables and load data in case there are no tables in retail database.</p></li>
 </ul>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>psql -U itversity_retail_user <span class="se">\</span>
-  -h localhost <span class="se">\</span>
-  -p <span class="m">5433</span> <span class="se">\</span>
-  -d itversity_retail_db <span class="se">\</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span>psql -U itversity_retail_user \
+  -h localhost \
+  -p 5432 \
+  -d itversity_retail_db \
   -W
 
-<span class="se">\i</span> retail_db/create_db_tables_pg.sql
-<span class="se">\i</span> retail_db/load_db_tables_pg.sql
+DROP TABLE order_items;
+DROP TABLE orders;
+DROP TABLE products;
+DROP TABLE categories;
+DROP TABLE departments;
+DROP TABLE customers;
+
+\i /data/retail_db/create_db_tables_pg.sql
+\i /data/retail_db/load_db_tables_pg.sql
 </pre></div>
 </div>
-<div class="section" id="exercise">
-<h3>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h3>
-<p>You can also perform this exercise about creating index on order_date.</p>
-<ul class="simple">
-<li><p>Use code to randomly fetch 50 dates and get count of PENDING orders - compute time.</p></li>
-<li><p>Create index for orders.order_date and compute statistics</p></li>
-<li><p>Use code to randomly fetch 50 dates and get count of PENDING orders - compute time.</p></li>
-</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install psycopg2
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: psycopg2 in /opt/anaconda3/envs/beakerx/lib/python3.6/site-packages (2.8.6)
 </pre></div>
 </div>
 </div>
@@ -891,7 +902,7 @@ ALTER TABLE users
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
 <span class="n">connection</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
     <span class="n">host</span><span class="o">=</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
-    <span class="n">port</span><span class="o">=</span><span class="s1">&#39;5433&#39;</span><span class="p">,</span>
+    <span class="n">port</span><span class="o">=</span><span class="s1">&#39;5432&#39;</span><span class="p">,</span>
     <span class="n">database</span><span class="o">=</span><span class="s1">&#39;itversity_retail_db&#39;</span><span class="p">,</span>
     <span class="n">user</span><span class="o">=</span><span class="s1">&#39;itversity_retail_user&#39;</span><span class="p">,</span>
     <span class="n">password</span><span class="o">=</span><span class="s1">&#39;retail_password&#39;</span>
@@ -904,7 +915,117 @@ ALTER TABLE users
 <span class="s1">&#39;&#39;&#39;</span>
 <span class="n">ctr</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">ctr</span> <span class="o">==</span> <span class="mi">1000</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">ctr</span> <span class="o">==</span> <span class="mi">2000</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,))</span>
+    <span class="n">ctr</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="n">cursor</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">connection</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 165 ms, sys: 98.5 ms, total: 263 ms
+Wall time: 21.1 s
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env: DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+CREATE INDEX order_items_oid_idx
+ON order_items(order_item_order_id)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">connection</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
+    <span class="n">host</span><span class="o">=</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
+    <span class="n">port</span><span class="o">=</span><span class="s1">&#39;5432&#39;</span><span class="p">,</span>
+    <span class="n">database</span><span class="o">=</span><span class="s1">&#39;itversity_retail_db&#39;</span><span class="p">,</span>
+    <span class="n">user</span><span class="o">=</span><span class="s1">&#39;itversity_retail_user&#39;</span><span class="p">,</span>
+    <span class="n">password</span><span class="o">=</span><span class="s1">&#39;retail_password&#39;</span>
+<span class="p">)</span>
+<span class="n">cursor</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+<span class="n">query</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;SELECT count(1) </span>
+<span class="s1">FROM orders o JOIN order_items oi </span>
+<span class="s1">    ON o.order_id = oi.order_item_order_id</span>
+<span class="s1">WHERE o.order_id = </span><span class="si">%s</span><span class="s1"></span>
+<span class="s1">&#39;&#39;&#39;</span>
+<span class="n">ctr</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">ctr</span> <span class="o">==</span> <span class="mi">2000</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,))</span>
+    <span class="n">ctr</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="n">cursor</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">connection</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 57.9 ms, sys: 78.5 ms, total: 136 ms
+Wall time: 386 ms
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise">
+<h3>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h3>
+<p>You can also perform this exercise about creating index on order_date.</p>
+<ul class="simple">
+<li><p>Use code to randomly fetch 500 dates and get count of PENDING orders - compute time.</p></li>
+<li><p>Create index for orders.order_date and compute statistics</p></li>
+<li><p>Use code to randomly fetch 500 dates and get count of PENDING orders - compute time.</p></li>
+<li><p>Here is the code for your reference. Make sure to replace the query to get count of pending orders for a given date.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">time</span>
+<span class="n">connection</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
+    <span class="n">host</span><span class="o">=</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
+    <span class="n">port</span><span class="o">=</span><span class="s1">&#39;5432&#39;</span><span class="p">,</span>
+    <span class="n">database</span><span class="o">=</span><span class="s1">&#39;itversity_retail_db&#39;</span><span class="p">,</span>
+    <span class="n">user</span><span class="o">=</span><span class="s1">&#39;itversity_retail_user&#39;</span><span class="p">,</span>
+    <span class="n">password</span><span class="o">=</span><span class="s1">&#39;retail_password&#39;</span>
+<span class="p">)</span>
+<span class="n">cursor</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+<span class="c1"># Update below string to get number of pending orders for given date</span>
+<span class="n">query</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">&#39;&#39;&#39;</span>
+<span class="n">ctr</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">ctr</span> <span class="o">==</span> <span class="mi">500</span><span class="p">:</span>
         <span class="k">break</span>
     <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,))</span>
     <span class="n">ctr</span> <span class="o">+=</span> <span class="mi">1</span>
@@ -914,10 +1035,592 @@ ALTER TABLE users
 </div>
 </div>
 </div>
-</div>
-</div>
 <div class="section" id="indexes-for-constraints">
 <h2>Indexes for Constraints<a class="headerlink" href="#indexes-for-constraints" title="Permalink to this headline">¶</a></h2>
+<p>Let us understand details related to indexes for constraints.</p>
+<ul class="simple">
+<li><p>Constraints such as primary key and unique key are supported by constraints.</p></li>
+<li><p><strong>Primary Key</strong> - Sorted, Unique and Not Null.</p></li>
+<li><p><strong>Unique Key</strong> - Sorted and Unique.</p></li>
+<li><p>Unless data is not sorted, we need to perform full table scan to enforce uniqueness. Almost all the databases will create indexes implicitly for Primary Keys as well as Unique Keys.</p></li>
+<li><p>We cannot define Primary Key or Unique Key with out associated index.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env: DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> DROP TABLE IF EXISTS users
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> DROP SEQUENCE IF EXISTS users_user_id_seq
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+CREATE TABLE users (
+    user_id INT,
+    user_first_name VARCHAR(30) NOT NULL,
+    user_last_name VARCHAR(30) NOT NULL,
+    user_email_id VARCHAR(50) NOT NULL,
+    user_email_validated BOOLEAN,
+    user_password VARCHAR(200),
+    user_role VARCHAR(1),
+    is_active BOOLEAN,
+    created_dt DATE DEFAULT CURRENT_DATE
+)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT table_catalog,
+    table_name,
+    constraint_type,
+    constraint_name
+FROM information_schema.table_constraints
+WHERE table_name = &#39;users&#39;
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+3 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>table_catalog</th>
+        <th>table_name</th>
+        <th>constraint_type</th>
+        <th>constraint_name</th>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>users</td>
+        <td>CHECK</td>
+        <td>2200_25713_2_not_null</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>users</td>
+        <td>CHECK</td>
+        <td>2200_25713_3_not_null</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>users</td>
+        <td>CHECK</td>
+        <td>2200_25713_4_not_null</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT * FROM pg_catalog.pg_indexes
+WHERE schemaname = &#39;public&#39;
+    AND tablename = &#39;users&#39;
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+0 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>schemaname</th>
+        <th>tablename</th>
+        <th>indexname</th>
+        <th>tablespace</th>
+        <th>indexdef</th>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> CREATE SEQUENCE users_user_id_seq
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+ALTER TABLE users 
+    ALTER COLUMN user_id SET DEFAULT nextval(&#39;users_user_id_seq&#39;),
+    ADD PRIMARY KEY (user_id)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT table_catalog,
+    table_name,
+    constraint_type,
+    constraint_name
+FROM information_schema.table_constraints
+WHERE table_name = &#39;users&#39;
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+5 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>table_catalog</th>
+        <th>table_name</th>
+        <th>constraint_type</th>
+        <th>constraint_name</th>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>users</td>
+        <td>PRIMARY KEY</td>
+        <td>users_pkey</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>users</td>
+        <td>CHECK</td>
+        <td>2200_25713_1_not_null</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>users</td>
+        <td>CHECK</td>
+        <td>2200_25713_2_not_null</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>users</td>
+        <td>CHECK</td>
+        <td>2200_25713_3_not_null</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>users</td>
+        <td>CHECK</td>
+        <td>2200_25713_4_not_null</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT * FROM pg_catalog.pg_indexes
+WHERE schemaname = &#39;public&#39;
+    AND tablename = &#39;users&#39;
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+2 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>schemaname</th>
+        <th>tablename</th>
+        <th>indexname</th>
+        <th>tablespace</th>
+        <th>indexdef</th>
+    </tr>
+    <tr>
+        <td>public</td>
+        <td>users</td>
+        <td>users_pkey</td>
+        <td>None</td>
+        <td>CREATE UNIQUE INDEX users_pkey ON public.users USING btree (user_id)</td>
+    </tr>
+    <tr>
+        <td>public</td>
+        <td>users</td>
+        <td>users_user_email_id_key</td>
+        <td>None</td>
+        <td>CREATE UNIQUE INDEX users_user_email_id_key ON public.users USING btree (user_email_id)</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT tc.table_catalog,
+    tc.table_name, 
+    tc.constraint_name,
+    pi.indexname
+FROM information_schema.table_constraints tc JOIN pg_catalog.pg_indexes pi
+    ON tc.constraint_name = pi.indexname
+WHERE tc.table_schema = &#39;public&#39;
+    AND tc.table_name = &#39;users&#39;
+    AND tc.constraint_type = &#39;PRIMARY KEY&#39;
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>table_catalog</th>
+        <th>table_name</th>
+        <th>constraint_name</th>
+        <th>indexname</th>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>users</td>
+        <td>users_pkey</td>
+        <td>users_pkey</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+ALTER TABLE users
+    ADD UNIQUE (user_email_id)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT table_catalog,
+    table_name,
+    constraint_type,
+    constraint_name
+FROM information_schema.table_constraints
+WHERE table_name = &#39;users&#39;
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+6 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>table_catalog</th>
+        <th>table_name</th>
+        <th>constraint_type</th>
+        <th>constraint_name</th>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>users</td>
+        <td>PRIMARY KEY</td>
+        <td>users_pkey</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>users</td>
+        <td>UNIQUE</td>
+        <td>users_user_email_id_key</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>users</td>
+        <td>CHECK</td>
+        <td>2200_25713_1_not_null</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>users</td>
+        <td>CHECK</td>
+        <td>2200_25713_2_not_null</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>users</td>
+        <td>CHECK</td>
+        <td>2200_25713_3_not_null</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>users</td>
+        <td>CHECK</td>
+        <td>2200_25713_4_not_null</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT * FROM pg_catalog.pg_indexes
+WHERE schemaname = &#39;public&#39;
+    AND tablename = &#39;users&#39;
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+2 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>schemaname</th>
+        <th>tablename</th>
+        <th>indexname</th>
+        <th>tablespace</th>
+        <th>indexdef</th>
+    </tr>
+    <tr>
+        <td>public</td>
+        <td>users</td>
+        <td>users_pkey</td>
+        <td>None</td>
+        <td>CREATE UNIQUE INDEX users_pkey ON public.users USING btree (user_id)</td>
+    </tr>
+    <tr>
+        <td>public</td>
+        <td>users</td>
+        <td>users_user_email_id_key</td>
+        <td>None</td>
+        <td>CREATE UNIQUE INDEX users_user_email_id_key ON public.users USING btree (user_email_id)</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT tc.table_catalog,
+    tc.table_name, 
+    tc.constraint_name,
+    pi.indexname
+FROM information_schema.table_constraints tc JOIN pg_catalog.pg_indexes pi
+    ON tc.constraint_name = pi.indexname
+WHERE tc.table_schema = &#39;public&#39;
+    AND tc.table_name = &#39;users&#39;
+    AND tc.constraint_type = &#39;UNIQUE&#39;
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>table_catalog</th>
+        <th>table_name</th>
+        <th>constraint_name</th>
+        <th>indexname</th>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>users</td>
+        <td>users_user_email_id_key</td>
+        <td>users_user_email_id_key</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Query to get all the primary key and unique constraints along with indexes.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT tc.table_catalog,
+    tc.table_name, 
+    tc.constraint_type,
+    tc.constraint_name,
+    pi.indexname
+FROM information_schema.table_constraints tc JOIN pg_catalog.pg_indexes pi
+    ON tc.constraint_name = pi.indexname
+WHERE tc.table_catalog = &#39;itversity_retail_db&#39;
+    AND tc.constraint_type IN (&#39;PRIMARY KEY&#39;, &#39;UNIQUE&#39;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+8 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>table_catalog</th>
+        <th>table_name</th>
+        <th>constraint_type</th>
+        <th>constraint_name</th>
+        <th>indexname</th>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>departments</td>
+        <td>PRIMARY KEY</td>
+        <td>departments_pkey</td>
+        <td>departments_pkey</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>categories</td>
+        <td>PRIMARY KEY</td>
+        <td>categories_pkey</td>
+        <td>categories_pkey</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>products</td>
+        <td>PRIMARY KEY</td>
+        <td>products_pkey</td>
+        <td>products_pkey</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>customers</td>
+        <td>PRIMARY KEY</td>
+        <td>customers_pkey</td>
+        <td>customers_pkey</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>orders</td>
+        <td>PRIMARY KEY</td>
+        <td>orders_pkey</td>
+        <td>orders_pkey</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>order_items</td>
+        <td>PRIMARY KEY</td>
+        <td>order_items_pkey</td>
+        <td>order_items_pkey</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>users</td>
+        <td>PRIMARY KEY</td>
+        <td>users_pkey</td>
+        <td>users_pkey</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>users</td>
+        <td>UNIQUE</td>
+        <td>users_user_email_id_key</td>
+        <td>users_user_email_id_key</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="admonition error">
+<p class="admonition-title">Error</p>
+<p>It is not possible to drop the indexes that are automatically created to enforce primary key or unique constraints.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> DROP INDEX users_user_email_id_key
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 <div class="section" id="truncating-tables">
 <h2>Truncating Tables<a class="headerlink" href="#truncating-tables" title="Permalink to this headline">¶</a></h2>
