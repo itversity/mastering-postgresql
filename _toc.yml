@@ -1,7 +1,7 @@
 - file: mastering-postgresql
   sections:
     - file: 01_getting_started
-    - file: 02_performing_crud_operations
+    - file: 02_rdbms_concepts_and_database_operations
     - file: 03_writing_basic_sql_queries
     - file: 04_creating_tables_and_indexes
     - file: 05_partitioning_tables_and_indexes
