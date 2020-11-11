@@ -101,7 +101,7 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="02_rdbms_concepts_and_database_operations.html">
+  <a class="reference internal" href="02_dml_or_crud_operations.html">
    RDBMS Concepts and Database Operations
   </a>
  </li>
@@ -128,6 +128,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="07_writing_advanced_sql_queries.html">
    Writing Advanced SQL Queries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="08_query_performance_tuning.html">
+   Query Performance Tuning
   </a>
  </li>
 </ul>
@@ -262,6 +267,11 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview-of-sequences">
+   Overview of Sequences
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#truncating-tables">
    Truncating Tables
   </a>
@@ -269,6 +279,11 @@
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#dropping-tables">
    Dropping Tables
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-managing-database-objects">
+   Exercise - Managing Database Objects
   </a>
  </li>
 </ul>
@@ -293,8 +308,10 @@
 <li><p>Managing Constraints</p></li>
 <li><p>Indexes on Tables</p></li>
 <li><p>Indexes for Constraints</p></li>
+<li><p>Overview of Sequences</p></li>
 <li><p>Truncating Tables</p></li>
 <li><p>Dropping Tables</p></li>
+<li><p>Exercise - Managing Database Objects</p></li>
 </ul>
 <div class="section" id="ddl-data-definition-language">
 <h2>DDL – Data Definition Language<a class="headerlink" href="#ddl-data-definition-language" title="Permalink to this headline">¶</a></h2>
@@ -312,16 +329,16 @@
 </li>
 </ul>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">users</span> <span class="p">(</span>
-  <span class="n">user_id</span> <span class="nb">SERIAL</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
-  <span class="n">user_first_name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
-  <span class="n">user_last_name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
-  <span class="n">user_email_id</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
-  <span class="n">user_email_validated</span> <span class="nb">BOOLEAN</span> <span class="k">DEFAULT</span> <span class="k">FALSE</span><span class="p">,</span>
-  <span class="n">user_password</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">200</span><span class="p">),</span>
-  <span class="n">user_role</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;U&#39;</span><span class="p">,</span> <span class="c1">--U and A</span>
-  <span class="n">is_active</span> <span class="nb">BOOLEAN</span> <span class="k">DEFAULT</span> <span class="k">FALSE</span><span class="p">,</span>
-  <span class="n">created_dt</span> <span class="nb">DATE</span> <span class="k">DEFAULT</span> <span class="k">CURRENT_DATE</span><span class="p">,</span>
-  <span class="n">last_updated_ts</span> <span class="k">TIMESTAMP</span> <span class="k">DEFAULT</span> <span class="k">CURRENT_TIMESTAMP</span>
+    <span class="n">user_id</span> <span class="nb">SERIAL</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
+    <span class="n">user_first_name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">user_last_name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">user_email_id</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">user_email_validated</span> <span class="nb">BOOLEAN</span> <span class="k">DEFAULT</span> <span class="k">FALSE</span><span class="p">,</span>
+    <span class="n">user_password</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">200</span><span class="p">),</span>
+    <span class="n">user_role</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;U&#39;</span><span class="p">,</span> <span class="c1">--U and A</span>
+    <span class="n">is_active</span> <span class="nb">BOOLEAN</span> <span class="k">DEFAULT</span> <span class="k">FALSE</span><span class="p">,</span>
+    <span class="n">created_dt</span> <span class="nb">DATE</span> <span class="k">DEFAULT</span> <span class="k">CURRENT_DATE</span><span class="p">,</span>
+    <span class="n">last_updated_ts</span> <span class="k">TIMESTAMP</span> <span class="k">DEFAULT</span> <span class="k">CURRENT_TIMESTAMP</span>
 <span class="p">);</span>
 </pre></div>
 </div>
@@ -631,7 +648,7 @@ ALTER TABLE users
 <li><p>user_login_id - <code class="docutils literal notranslate"><span class="pre">SERIAL</span></code> and <code class="docutils literal notranslate"><span class="pre">PRIMARY</span> <span class="pre">KEY</span></code></p></li>
 <li><p>user_id - <code class="docutils literal notranslate"><span class="pre">INT</span></code></p></li>
 <li><p>user_login_time - <code class="docutils literal notranslate"><span class="pre">TIMESTAMP</span></code> defaulted to <code class="docutils literal notranslate"><span class="pre">CURRENT_TIMESTAMP</span></code></p></li>
-<li><p>user_logins is child table to users with many to one relationship. Hence, create foreign key between user_logins.user_id to users.user_id.</p></li>
+<li><p><strong>user_logins</strong> is child table to <strong>users</strong> with many to one relationship. Hence, create <strong>foreign key</strong> between <strong>user_logins.user_id</strong> to <strong>users.user_id</strong>.</p></li>
 </ul>
 </li>
 </ul>
@@ -646,7 +663,7 @@ ALTER TABLE users
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5433/itversity_retail_db
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
 </pre></div>
 </div>
 </div>
@@ -733,7 +750,14 @@ ALTER TABLE users
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT * FROM information_schema.table_constraints WHERE table_name = &#39;users&#39;
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span> 
+
+SELECT table_catalog,
+    table_name,
+    constraint_type,
+    constraint_name 
+FROM information_schema.table_constraints 
+WHERE table_name = &#39;users&#39;
 </pre></div>
 </div>
 </div>
@@ -747,7 +771,14 @@ ALTER TABLE users
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT * FROM information_schema.table_constraints WHERE table_name = &#39;users&#39;
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span> 
+
+SELECT table_catalog,
+    table_name,
+    constraint_type,
+    constraint_name 
+FROM information_schema.table_constraints 
+WHERE table_name = &#39;users&#39;
 </pre></div>
 </div>
 </div>
@@ -761,7 +792,14 @@ ALTER TABLE users
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT * FROM information_schema.table_constraints WHERE table_name = &#39;users&#39;
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span> 
+
+SELECT table_catalog,
+    table_name,
+    constraint_type,
+    constraint_name 
+FROM information_schema.table_constraints 
+WHERE table_name = &#39;users&#39;
 </pre></div>
 </div>
 </div>
@@ -775,7 +813,14 @@ ALTER TABLE users
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT * FROM information_schema.table_constraints WHERE table_name = &#39;users&#39;
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span> 
+
+SELECT table_catalog,
+    table_name,
+    constraint_type,
+    constraint_name 
+FROM information_schema.table_constraints 
+WHERE table_name = &#39;users&#39;
 </pre></div>
 </div>
 </div>
@@ -789,7 +834,14 @@ ALTER TABLE users
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT * FROM information_schema.table_constraints WHERE table_name = &#39;users&#39;
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span> 
+
+SELECT table_catalog,
+    table_name,
+    constraint_type,
+    constraint_name 
+FROM information_schema.table_constraints 
+WHERE table_name = &#39;users&#39;
 </pre></div>
 </div>
 </div>
@@ -819,7 +871,114 @@ ALTER TABLE users
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT * FROM information_schema.table_constraints WHERE table_name = &#39;users&#39;
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span> 
+
+SELECT table_catalog,
+    table_name,
+    constraint_type,
+    constraint_name 
+FROM information_schema.table_constraints 
+WHERE table_name = &#39;users&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+CREATE TABLE user_logins (
+    user_login_id SERIAL PRIMARY KEY,
+    user_id INT,
+    user_login_ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    user_ip_addr VARCHAR(20)
+)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span> 
+
+SELECT table_catalog,
+    table_name,
+    constraint_type,
+    constraint_name 
+FROM information_schema.table_constraints 
+WHERE table_name = &#39;user_logins&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+ALTER TABLE user_logins
+    ADD FOREIGN KEY (user_id)
+    REFERENCES users(user_id)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span> 
+
+SELECT table_catalog,
+    table_name,
+    constraint_type,
+    constraint_name 
+FROM information_schema.table_constraints 
+WHERE table_name = &#39;user_logins&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition error">
+<p class="admonition-title">Error</p>
+<p>This will fail as there is a child table user_logins for users table.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+DROP TABLE users
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can use <code class="docutils literal notranslate"><span class="pre">CASCADE</span></code> to drop foreign key constraints from child tables before dropping the table users.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+DROP TABLE users CASCADE
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span> 
+
+SELECT table_catalog,
+    table_name,
+    constraint_type,
+    constraint_name 
+FROM information_schema.table_constraints 
+WHERE table_name = &#39;user_logins&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> DROP TABLE IF EXISTS user_logins
 </pre></div>
 </div>
 </div>
@@ -883,12 +1042,6 @@ DROP TABLE customers;
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Defaulting to user installation because normal site-packages is not writeable
-Requirement already satisfied: psycopg2 in /opt/anaconda3/envs/beakerx/lib/python3.6/site-packages (2.8.6)
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -924,12 +1077,6 @@ Requirement already satisfied: psycopg2 in /opt/anaconda3/envs/beakerx/lib/pytho
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 165 ms, sys: 98.5 ms, total: 263 ms
-Wall time: 21.1 s
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -944,11 +1091,6 @@ Wall time: 21.1 s
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env: DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -956,14 +1098,6 @@ Wall time: 21.1 s
 
 CREATE INDEX order_items_oid_idx
 ON order_items(order_item_order_id)
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Done.
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
 </pre></div>
 </div>
 </div>
@@ -992,12 +1126,6 @@ ON order_items(order_item_order_id)
     <span class="n">ctr</span> <span class="o">+=</span> <span class="mi">1</span>
 <span class="n">cursor</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 <span class="n">connection</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 57.9 ms, sys: 78.5 ms, total: 136 ms
-Wall time: 386 ms
 </pre></div>
 </div>
 </div>
@@ -1058,11 +1186,6 @@ Wall time: 386 ms
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env: DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1070,28 +1193,10 @@ Wall time: 386 ms
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-Done.
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> DROP SEQUENCE IF EXISTS users_user_id_seq
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-Done.
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
 </pre></div>
 </div>
 </div>
@@ -1114,15 +1219,6 @@ CREATE TABLE users (
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-Done.
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1137,37 +1233,6 @@ WHERE table_name = &#39;users&#39;
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-3 rows affected.
-</pre></div>
-</div>
-<div class="output text_html"><table>
-    <tr>
-        <th>table_catalog</th>
-        <th>table_name</th>
-        <th>constraint_type</th>
-        <th>constraint_name</th>
-    </tr>
-    <tr>
-        <td>itversity_retail_db</td>
-        <td>users</td>
-        <td>CHECK</td>
-        <td>2200_25713_2_not_null</td>
-    </tr>
-    <tr>
-        <td>itversity_retail_db</td>
-        <td>users</td>
-        <td>CHECK</td>
-        <td>2200_25713_3_not_null</td>
-    </tr>
-    <tr>
-        <td>itversity_retail_db</td>
-        <td>users</td>
-        <td>CHECK</td>
-        <td>2200_25713_4_not_null</td>
-    </tr>
-</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1179,33 +1244,10 @@ WHERE schemaname = &#39;public&#39;
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-0 rows affected.
-</pre></div>
-</div>
-<div class="output text_html"><table>
-    <tr>
-        <th>schemaname</th>
-        <th>tablename</th>
-        <th>indexname</th>
-        <th>tablespace</th>
-        <th>indexdef</th>
-    </tr>
-</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> CREATE SEQUENCE users_user_id_seq
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-Done.
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
 </pre></div>
 </div>
 </div>
@@ -1220,15 +1262,6 @@ ALTER TABLE users
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-Done.
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1243,49 +1276,6 @@ WHERE table_name = &#39;users&#39;
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-5 rows affected.
-</pre></div>
-</div>
-<div class="output text_html"><table>
-    <tr>
-        <th>table_catalog</th>
-        <th>table_name</th>
-        <th>constraint_type</th>
-        <th>constraint_name</th>
-    </tr>
-    <tr>
-        <td>itversity_retail_db</td>
-        <td>users</td>
-        <td>PRIMARY KEY</td>
-        <td>users_pkey</td>
-    </tr>
-    <tr>
-        <td>itversity_retail_db</td>
-        <td>users</td>
-        <td>CHECK</td>
-        <td>2200_25713_1_not_null</td>
-    </tr>
-    <tr>
-        <td>itversity_retail_db</td>
-        <td>users</td>
-        <td>CHECK</td>
-        <td>2200_25713_2_not_null</td>
-    </tr>
-    <tr>
-        <td>itversity_retail_db</td>
-        <td>users</td>
-        <td>CHECK</td>
-        <td>2200_25713_3_not_null</td>
-    </tr>
-    <tr>
-        <td>itversity_retail_db</td>
-        <td>users</td>
-        <td>CHECK</td>
-        <td>2200_25713_4_not_null</td>
-    </tr>
-</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1297,34 +1287,6 @@ WHERE schemaname = &#39;public&#39;
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-2 rows affected.
-</pre></div>
-</div>
-<div class="output text_html"><table>
-    <tr>
-        <th>schemaname</th>
-        <th>tablename</th>
-        <th>indexname</th>
-        <th>tablespace</th>
-        <th>indexdef</th>
-    </tr>
-    <tr>
-        <td>public</td>
-        <td>users</td>
-        <td>users_pkey</td>
-        <td>None</td>
-        <td>CREATE UNIQUE INDEX users_pkey ON public.users USING btree (user_id)</td>
-    </tr>
-    <tr>
-        <td>public</td>
-        <td>users</td>
-        <td>users_user_email_id_key</td>
-        <td>None</td>
-        <td>CREATE UNIQUE INDEX users_user_email_id_key ON public.users USING btree (user_email_id)</td>
-    </tr>
-</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1342,25 +1304,6 @@ WHERE tc.table_schema = &#39;public&#39;
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-1 rows affected.
-</pre></div>
-</div>
-<div class="output text_html"><table>
-    <tr>
-        <th>table_catalog</th>
-        <th>table_name</th>
-        <th>constraint_name</th>
-        <th>indexname</th>
-    </tr>
-    <tr>
-        <td>itversity_retail_db</td>
-        <td>users</td>
-        <td>users_pkey</td>
-        <td>users_pkey</td>
-    </tr>
-</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1368,15 +1311,6 @@ WHERE tc.table_schema = &#39;public&#39;
 
 ALTER TABLE users
     ADD UNIQUE (user_email_id)
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-Done.
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
 </pre></div>
 </div>
 </div>
@@ -1394,55 +1328,6 @@ WHERE table_name = &#39;users&#39;
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-6 rows affected.
-</pre></div>
-</div>
-<div class="output text_html"><table>
-    <tr>
-        <th>table_catalog</th>
-        <th>table_name</th>
-        <th>constraint_type</th>
-        <th>constraint_name</th>
-    </tr>
-    <tr>
-        <td>itversity_retail_db</td>
-        <td>users</td>
-        <td>PRIMARY KEY</td>
-        <td>users_pkey</td>
-    </tr>
-    <tr>
-        <td>itversity_retail_db</td>
-        <td>users</td>
-        <td>UNIQUE</td>
-        <td>users_user_email_id_key</td>
-    </tr>
-    <tr>
-        <td>itversity_retail_db</td>
-        <td>users</td>
-        <td>CHECK</td>
-        <td>2200_25713_1_not_null</td>
-    </tr>
-    <tr>
-        <td>itversity_retail_db</td>
-        <td>users</td>
-        <td>CHECK</td>
-        <td>2200_25713_2_not_null</td>
-    </tr>
-    <tr>
-        <td>itversity_retail_db</td>
-        <td>users</td>
-        <td>CHECK</td>
-        <td>2200_25713_3_not_null</td>
-    </tr>
-    <tr>
-        <td>itversity_retail_db</td>
-        <td>users</td>
-        <td>CHECK</td>
-        <td>2200_25713_4_not_null</td>
-    </tr>
-</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1454,34 +1339,6 @@ WHERE schemaname = &#39;public&#39;
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-2 rows affected.
-</pre></div>
-</div>
-<div class="output text_html"><table>
-    <tr>
-        <th>schemaname</th>
-        <th>tablename</th>
-        <th>indexname</th>
-        <th>tablespace</th>
-        <th>indexdef</th>
-    </tr>
-    <tr>
-        <td>public</td>
-        <td>users</td>
-        <td>users_pkey</td>
-        <td>None</td>
-        <td>CREATE UNIQUE INDEX users_pkey ON public.users USING btree (user_id)</td>
-    </tr>
-    <tr>
-        <td>public</td>
-        <td>users</td>
-        <td>users_user_email_id_key</td>
-        <td>None</td>
-        <td>CREATE UNIQUE INDEX users_user_email_id_key ON public.users USING btree (user_email_id)</td>
-    </tr>
-</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1499,25 +1356,6 @@ WHERE tc.table_schema = &#39;public&#39;
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-1 rows affected.
-</pre></div>
-</div>
-<div class="output text_html"><table>
-    <tr>
-        <th>table_catalog</th>
-        <th>table_name</th>
-        <th>constraint_name</th>
-        <th>indexname</th>
-    </tr>
-    <tr>
-        <td>itversity_retail_db</td>
-        <td>users</td>
-        <td>users_user_email_id_key</td>
-        <td>users_user_email_id_key</td>
-    </tr>
-</table></div></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1539,76 +1377,6 @@ WHERE tc.table_catalog = &#39;itversity_retail_db&#39;
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-8 rows affected.
-</pre></div>
-</div>
-<div class="output text_html"><table>
-    <tr>
-        <th>table_catalog</th>
-        <th>table_name</th>
-        <th>constraint_type</th>
-        <th>constraint_name</th>
-        <th>indexname</th>
-    </tr>
-    <tr>
-        <td>itversity_retail_db</td>
-        <td>departments</td>
-        <td>PRIMARY KEY</td>
-        <td>departments_pkey</td>
-        <td>departments_pkey</td>
-    </tr>
-    <tr>
-        <td>itversity_retail_db</td>
-        <td>categories</td>
-        <td>PRIMARY KEY</td>
-        <td>categories_pkey</td>
-        <td>categories_pkey</td>
-    </tr>
-    <tr>
-        <td>itversity_retail_db</td>
-        <td>products</td>
-        <td>PRIMARY KEY</td>
-        <td>products_pkey</td>
-        <td>products_pkey</td>
-    </tr>
-    <tr>
-        <td>itversity_retail_db</td>
-        <td>customers</td>
-        <td>PRIMARY KEY</td>
-        <td>customers_pkey</td>
-        <td>customers_pkey</td>
-    </tr>
-    <tr>
-        <td>itversity_retail_db</td>
-        <td>orders</td>
-        <td>PRIMARY KEY</td>
-        <td>orders_pkey</td>
-        <td>orders_pkey</td>
-    </tr>
-    <tr>
-        <td>itversity_retail_db</td>
-        <td>order_items</td>
-        <td>PRIMARY KEY</td>
-        <td>order_items_pkey</td>
-        <td>order_items_pkey</td>
-    </tr>
-    <tr>
-        <td>itversity_retail_db</td>
-        <td>users</td>
-        <td>PRIMARY KEY</td>
-        <td>users_pkey</td>
-        <td>users_pkey</td>
-    </tr>
-    <tr>
-        <td>itversity_retail_db</td>
-        <td>users</td>
-        <td>UNIQUE</td>
-        <td>users_user_email_id_key</td>
-        <td>users_user_email_id_key</td>
-    </tr>
-</table></div></div>
 </div>
 <div class="admonition error">
 <p class="admonition-title">Error</p>
@@ -1622,11 +1390,28 @@ WHERE tc.table_catalog = &#39;itversity_retail_db&#39;
 </div>
 </div>
 </div>
-<div class="section" id="truncating-tables">
-<h2>Truncating Tables<a class="headerlink" href="#truncating-tables" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="dropping-tables">
-<h2>Dropping Tables<a class="headerlink" href="#dropping-tables" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="overview-of-sequences">
+<h2>Overview of Sequences<a class="headerlink" href="#overview-of-sequences" title="Permalink to this headline">¶</a></h2>
+<p>Let us go through some of the important details related to sequences.</p>
+<ul class="simple">
+<li><p>For almost all the tables in relational databases have primary key.</p></li>
+<li><p>Primary key is nothing but unique constraint with not null and there can be only one primary key in any given table.</p></li>
+<li><p>Many times, we might not have appropriate column in the table which can be used as primary key. In those scenarios we will define a column which does not have any business relevant values. This is called as <strong>surrogate key</strong>.</p></li>
+<li><p>Relational Database technologies provide sequences to support these <strong>surrogate primary keys</strong>.</p></li>
+<li><p>In postgres we can define <strong>surrogate primary key</strong> for a given table as <code class="docutils literal notranslate"><span class="pre">SERIAL</span></code>. Internally it will create a sequence.</p></li>
+<li><p>Even if we do not specify the column and value as part of the insert statement, a sequence generated number will be populated in that column.</p></li>
+<li><p>Typically, the sequence generated number will be incremented by 1.</p></li>
+<li><p>Here are some of the properties that can be set for a sequence. Most of them are self explanatory.</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">START</span> <span class="pre">WITH</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RESTART</span> <span class="pre">WITH</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MINVALUE</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MAXVALUE</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CACHE</span></code></p></li>
+</ul>
+</li>
+<li><p>We might have to use <code class="docutils literal notranslate"><span class="pre">RESTART</span> <span class="pre">WITH</span></code> to reset the sequences after the underlying tables are populated with values in surrogate key.</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
@@ -1636,49 +1421,44 @@ WHERE tc.table_catalog = &#39;itversity_retail_db&#39;
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5433/itversity_retail_db
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> DROP TABLE departments
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> DROP TABLE IF EXISTS users
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> DROP TABLE categories
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> DROP SEQUENCE IF EXISTS users_user_id_seq
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> DROP TABLE products
-</pre></div>
-</div>
-</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">SERIAL</span></code> will make sure user_id is populated using sequence and <code class="docutils literal notranslate"><span class="pre">PRIMARY</span> <span class="pre">KEY</span></code> will enforce not null and unique constraints.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> DROP TABLE orders
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> DROP TABLE order_items
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> DROP TABLE customers
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+CREATE TABLE users (
+    user_id SERIAL PRIMARY KEY,
+    user_first_name VARCHAR(30) NOT NULL,
+    user_last_name VARCHAR(30) NOT NULL,
+    user_email_id VARCHAR(50) NOT NULL,
+    user_email_validated BOOLEAN,
+    user_password VARCHAR(200),
+    user_role VARCHAR(1),
+    is_active BOOLEAN,
+    created_dt DATE DEFAULT CURRENT_DATE
+)
 </pre></div>
 </div>
 </div>
@@ -1687,38 +1467,21 @@ WHERE tc.table_catalog = &#39;itversity_retail_db&#39;
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
-CREATE TABLE departments (
-  department_id SERIAL NOT NULL,
-  department_name VARCHAR(45) NOT NULL,
-  PRIMARY KEY (department_id)
-)
+SELECT * FROM information_schema.sequences
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT * FROM information_schema.columns WHERE table_name = &#39;departments&#39;
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT nextval(&#39;users_user_id_seq&#39;)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
-
-CREATE TABLE categories (
-  category_id SERIAL PRIMARY KEY,
-  category_department_id INT NOT NULL,
-  category_name VARCHAR(45) NOT NULL
-)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT * FROM information_schema.columns WHERE table_name = &#39;categories&#39;
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT currval(&#39;users_user_id_seq&#39;)
 </pre></div>
 </div>
 </div>
@@ -1727,21 +1490,8 @@ CREATE TABLE categories (
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
-CREATE TABLE products (
-  product_id SERIAL PRIMARY KEY,
-  product_category_id INT NOT NULL,
-  product_name VARCHAR(45) NOT NULL,
-  product_description VARCHAR(255) NOT NULL,
-  product_price FLOAT NOT NULL,
-  product_image VARCHAR(255) NOT NULL
-)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT * FROM information_schema.columns WHERE table_name = &#39;products&#39;
+INSERT INTO users (user_first_name, user_last_name, user_email_id)
+VALUES (&#39;Donald&#39;, &#39;Duck&#39;, &#39;donald@duck.com&#39;)
 </pre></div>
 </div>
 </div>
@@ -1750,16 +1500,97 @@ CREATE TABLE products (
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
-CREATE TABLE customers (
-  customer_id SERIAL PRIMARY KEY,
-  customer_fname VARCHAR(45) NOT NULL,
-  customer_lname VARCHAR(45) NOT NULL,
-  customer_email VARCHAR(45) NOT NULL,
-  customer_password VARCHAR(45) NOT NULL,
-  customer_street VARCHAR(255) NOT NULL,
-  customer_city VARCHAR(45) NOT NULL,
-  customer_state VARCHAR(45) NOT NULL,
-  customer_zipcode VARCHAR(45) NOT NULL
+INSERT INTO users (user_first_name, user_last_name, user_email_id, user_role, is_active)
+VALUES (&#39;Mickey&#39;, &#39;Mouse&#39;, &#39;mickey@mouse.com&#39;, &#39;U&#39;, true)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+INSERT INTO users 
+    (user_first_name, user_last_name, user_email_id, user_password, user_role, is_active) 
+VALUES 
+    (&#39;Gordan&#39;, &#39;Bradock&#39;, &#39;gbradock0@barnesandnoble.com&#39;, &#39;h9LAz7p7ub&#39;, &#39;U&#39;, true),
+    (&#39;Tobe&#39;, &#39;Lyness&#39;, &#39;tlyness1@paginegialle.it&#39;, &#39;oEofndp&#39;, &#39;U&#39;, true),
+    (&#39;Addie&#39;, &#39;Mesias&#39;, &#39;amesias2@twitpic.com&#39;, &#39;ih7Y69u56&#39;, &#39;U&#39;, true)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT currval(&#39;users_user_id_seq&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT * FROM users
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>It is not a good idea to populate surrogate key fields by passing the values. Either we should specify sequence generated number or let database take care of populating the field.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+INSERT INTO users (user_id, user_first_name, user_last_name, user_email_id)
+VALUES (7, &#39;Scott&#39;, &#39;Tiger&#39;, &#39;scott@tiger.com&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT currval(&#39;users_user_id_seq&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When data is loaded with surrogate key values, it is recommended to create index with maximum + 1 value or create the index with <code class="docutils literal notranslate"><span class="pre">STARTVALUE</span></code></p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> DROP TABLE IF EXISTS users
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> DROP SEQUENCE IF EXISTS users_user_id_seq
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">SERIAL</span></code> will make sure user_id is populated using sequence and <code class="docutils literal notranslate"><span class="pre">PRIMARY</span> <span class="pre">KEY</span></code> will enforce not null and unique constraints.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+CREATE TABLE users (
+    user_id SERIAL PRIMARY KEY,
+    user_first_name VARCHAR(30) NOT NULL,
+    user_last_name VARCHAR(30) NOT NULL,
+    user_email_id VARCHAR(50) NOT NULL,
+    user_email_validated BOOLEAN,
+    user_password VARCHAR(200),
+    user_role VARCHAR(1),
+    is_active BOOLEAN,
+    created_dt DATE DEFAULT CURRENT_DATE
 )
 </pre></div>
 </div>
@@ -1767,11 +1598,632 @@ CREATE TABLE customers (
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT * FROM information_schema.columns WHERE table_name = &#39;customers&#39;
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+INSERT INTO users (user_id, user_first_name, user_last_name, user_email_id)
+VALUES (1, &#39;Donald&#39;, &#39;Duck&#39;, &#39;donald@duck.com&#39;)
 </pre></div>
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+INSERT INTO users (user_id, user_first_name, user_last_name, user_email_id, user_role, is_active)
+VALUES (2, &#39;Mickey&#39;, &#39;Mouse&#39;, &#39;mickey@mouse.com&#39;, &#39;U&#39;, true)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+INSERT INTO users 
+    (user_id, user_first_name, user_last_name, user_email_id, user_password, user_role, is_active) 
+VALUES 
+    (3, &#39;Gordan&#39;, &#39;Bradock&#39;, &#39;gbradock0@barnesandnoble.com&#39;, &#39;h9LAz7p7ub&#39;, &#39;U&#39;, true),
+    (4, &#39;Tobe&#39;, &#39;Lyness&#39;, &#39;tlyness1@paginegialle.it&#39;, &#39;oEofndp&#39;, &#39;U&#39;, true),
+    (5, &#39;Addie&#39;, &#39;Mesias&#39;, &#39;amesias2@twitpic.com&#39;, &#39;ih7Y69u56&#39;, &#39;U&#39;, true)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT nextval(&#39;users_user_id_seq&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT currval(&#39;users_user_id_seq&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> ALTER SEQUENCE users_user_id_seq RESTART WITH 5
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT currval(&#39;users_user_id_seq&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT nextval(&#39;users_user_id_seq&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT currval(&#39;users_user_id_seq&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+INSERT INTO users (user_first_name, user_last_name, user_email_id)
+VALUES (&#39;Scott&#39;, &#39;Tiger&#39;, &#39;scott@tiger.com&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT currval(&#39;users_user_id_seq&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT * FROM users
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> DROP SEQUENCE users_user_id_seq CASCADE
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT * FROM users
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+CREATE SEQUENCE users_user_id_seq 
+    START WITH 7
+    MINVALUE 1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+ALTER SEQUENCE users_user_id_seq
+    OWNED BY users.user_id
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span> 
+
+ALTER TABLE users 
+    ALTER COLUMN user_id 
+    SET DEFAULT nextval(&#39;users_user_id_seq&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+INSERT INTO users (user_first_name, user_last_name, user_email_id)
+VALUES (&#39;Matt&#39;, &#39;Clarke&#39;, &#39;matt@clarke.com&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT * FROM users
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="truncating-tables">
+<h2>Truncating Tables<a class="headerlink" href="#truncating-tables" title="Permalink to this headline">¶</a></h2>
+<p>Let us understand details related truncating tables.</p>
+<ul class="simple">
+<li><p>If you want to delete the data from a table entirely, then <code class="docutils literal notranslate"><span class="pre">TRUNCATE</span></code> is the fastest way to do so.</p></li>
+<li><p>Irrespective of size of the table, data can be cleaned up with in no time.</p></li>
+<li><p>Truncate operations cannot be rolled back.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TRUNCATE</span></code> is a DDL statement and all DDL statements result in auto commit.</p></li>
+<li><p>One cannot <strong>truncate</strong> the table with only DML permissions.</p></li>
+<li><p>As part of the web or mobile applications, we typically will not have <code class="docutils literal notranslate"><span class="pre">TRUNCATE</span></code> as part of the core logic.</p></li>
+<li><p>In Data Engineering or ETL applications, it is used more commonly to truncate intermediate or stage tables.</p></li>
+<li><p>If we have to truncate multiple related tables at the same time, then typically we truncate child tables first and then parent tables.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> DROP TABLE IF EXISTS user_logins
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> DROP TABLE IF EXISTS users
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> DROP SEQUENCE IF EXISTS users_user_id_seq
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+CREATE TABLE users (
+    user_id SERIAL PRIMARY KEY,
+    user_first_name VARCHAR(30) NOT NULL,
+    user_last_name VARCHAR(30) NOT NULL,
+    user_email_id VARCHAR(50) NOT NULL,
+    user_email_validated BOOLEAN,
+    user_password VARCHAR(200),
+    user_role VARCHAR(1),
+    is_active BOOLEAN,
+    created_dt DATE DEFAULT CURRENT_DATE
+)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+CREATE TABLE user_logins (
+    user_login_id SERIAL PRIMARY KEY,
+    user_id INT,
+    user_login_ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    user_ip_addr VARCHAR(20)
+)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+ALTER TABLE user_logins
+    ADD FOREIGN KEY (user_id)
+    REFERENCES users(user_id)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>You will not be able to truncate parent table with out cascade (even when tables are empty)</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> TRUNCATE TABLE users
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+INSERT INTO users (user_first_name, user_last_name, user_email_id)
+VALUES (&#39;Donald&#39;, &#39;Duck&#39;, &#39;donald@duck.com&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+INSERT INTO users (user_first_name, user_last_name, user_email_id, user_role, is_active)
+VALUES (&#39;Mickey&#39;, &#39;Mouse&#39;, &#39;mickey@mouse.com&#39;, &#39;U&#39;, true)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+INSERT INTO users 
+    (user_first_name, user_last_name, user_email_id, user_password, user_role, is_active) 
+VALUES 
+    (&#39;Gordan&#39;, &#39;Bradock&#39;, &#39;gbradock0@barnesandnoble.com&#39;, &#39;h9LAz7p7ub&#39;, &#39;U&#39;, true),
+    (&#39;Tobe&#39;, &#39;Lyness&#39;, &#39;tlyness1@paginegialle.it&#39;, &#39;oEofndp&#39;, &#39;U&#39;, true),
+    (&#39;Addie&#39;, &#39;Mesias&#39;, &#39;amesias2@twitpic.com&#39;, &#39;ih7Y69u56&#39;, &#39;U&#39;, true)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+INSERT INTO user_logins 
+    (user_id)
+VALUES
+    (1),
+    (2),
+    (3),
+    (1),
+    (1),
+    (4)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT * FROM users
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT * FROM user_logins
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">TRUNCATE</span></code> with <code class="docutils literal notranslate"><span class="pre">CASCADE</span></code> will truncate data from child table as well.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> TRUNCATE TABLE users CASCADE
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT * FROM users
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT * FROM user_logins
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="dropping-tables">
+<h2>Dropping Tables<a class="headerlink" href="#dropping-tables" title="Permalink to this headline">¶</a></h2>
+<p>Let us go through the details related to dropping tables.</p>
+<ul class="simple">
+<li><p>We can drop table using <code class="docutils literal notranslate"><span class="pre">DROP</span> <span class="pre">TABLE</span></code>.</p></li>
+<li><p>All the direct dependent objects such as indexes, primary key constraints, unique constraints, not null constraints will automatically be dropped.</p></li>
+<li><p>Sequences will be dropped only if the sequence is owned by the column.</p></li>
+<li><p>If there are child tables for the table being dropped, then we need to specify <code class="docutils literal notranslate"><span class="pre">CASCADE</span></code>.</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">CASCADE</span></code> will drop the constraints from the child table, but not the child tables themselves.</p></li>
+<li><p>We can also drop the foreign key constraints before dropping the parent table instead of using <code class="docutils literal notranslate"><span class="pre">CASCADE</span></code>.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> DROP TABLE IF EXISTS user_logins
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> DROP TABLE IF EXISTS users
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> DROP SEQUENCE IF EXISTS users_user_id_seq
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+CREATE TABLE users (
+    user_id SERIAL PRIMARY KEY,
+    user_first_name VARCHAR(30) NOT NULL,
+    user_last_name VARCHAR(30) NOT NULL,
+    user_email_id VARCHAR(50) NOT NULL,
+    user_email_validated BOOLEAN,
+    user_password VARCHAR(200),
+    user_role VARCHAR(1),
+    is_active BOOLEAN,
+    created_dt DATE DEFAULT CURRENT_DATE
+)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+CREATE TABLE user_logins (
+    user_login_id SERIAL PRIMARY KEY,
+    user_id INT,
+    user_login_ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    user_ip_addr VARCHAR(20)
+)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+ALTER TABLE user_logins
+    ADD FOREIGN KEY (user_id)
+    REFERENCES users(user_id)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT * FROM information_schema.tables
+WHERE table_name IN (&#39;users&#39;, &#39;user_logins&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT * FROM information_schema.sequences
+WHERE sequence_name = &#39;users_user_id_seq&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition error">
+<p class="admonition-title">Error</p>
+<p>We will not be able to drop the parent tables with out dropping the child tables or specifying <code class="docutils literal notranslate"><span class="pre">CASCADE</span></code>. Using <code class="docutils literal notranslate"><span class="pre">CASCADE</span></code> will not drop child tables, it only drops the foreign key constraints.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> DROP TABLE users
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+INSERT INTO users (user_first_name, user_last_name, user_email_id)
+VALUES (&#39;Donald&#39;, &#39;Duck&#39;, &#39;donald@duck.com&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+INSERT INTO users (user_first_name, user_last_name, user_email_id, user_role, is_active)
+VALUES (&#39;Mickey&#39;, &#39;Mouse&#39;, &#39;mickey@mouse.com&#39;, &#39;U&#39;, true)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+INSERT INTO users 
+    (user_first_name, user_last_name, user_email_id, user_password, user_role, is_active) 
+VALUES 
+    (&#39;Gordan&#39;, &#39;Bradock&#39;, &#39;gbradock0@barnesandnoble.com&#39;, &#39;h9LAz7p7ub&#39;, &#39;U&#39;, true),
+    (&#39;Tobe&#39;, &#39;Lyness&#39;, &#39;tlyness1@paginegialle.it&#39;, &#39;oEofndp&#39;, &#39;U&#39;, true),
+    (&#39;Addie&#39;, &#39;Mesias&#39;, &#39;amesias2@twitpic.com&#39;, &#39;ih7Y69u56&#39;, &#39;U&#39;, true)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+INSERT INTO user_logins 
+    (user_id)
+VALUES
+    (1),
+    (2),
+    (3),
+    (1),
+    (1),
+    (4)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> DROP TABLE users CASCADE
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT * FROM information_schema.tables
+WHERE table_name IN (&#39;users&#39;, &#39;user_logins&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT * FROM information_schema.sequences
+WHERE sequence_name = &#39;users_user_id_seq&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT * FROM user_logins
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise-managing-database-objects">
+<h2>Exercise - Managing Database Objects<a class="headerlink" href="#exercise-managing-database-objects" title="Permalink to this headline">¶</a></h2>
+<p>This exercise is primarily to assess your capabilities related to put all important DDL concepts in practice by coming up with solution for a typical data migration problem.</p>
+<ul class="simple">
+<li><p>We have scripts and data set available in our GitHub repository. If you are using our environment the repository is already cloned under <strong>/data/retail_db</strong>.</p></li>
+<li><p>It have scripts to create tables with primary keys. Those scripts are generated from MySQL tables.</p>
+<ul>
+<li><p>Script to create tables: <strong>create_db_tables_pg.sql</strong></p></li>
+<li><p>Load data into tables: <strong>load_db_tables_pg.sql</strong></p></li>
+</ul>
+</li>
+<li><p>Here are the steps you need to perform to take care of this exercise.</p>
+<ul>
+<li><p>Create tables</p></li>
+<li><p>Load data</p></li>
+<li><p>All the tables have surrogate primary keys. Here are the details.</p>
+<ul>
+<li><p>orders.order_id</p></li>
+<li><p>order_items.order_item_id</p></li>
+<li><p>customers.customer_id</p></li>
+<li><p>products.product_id</p></li>
+<li><p>categories.category_id</p></li>
+<li><p>departments.department_id</p></li>
+</ul>
+</li>
+<li><p>Get the maximum value from all surrogate primary key fields.</p></li>
+<li><p>Create sequences for all surrogate primary key fields using maximum value.</p></li>
+<li><p>Create foreign key constraints based up on this information.</p>
+<ul>
+<li><p>orders.order_customer_id to customers.customer_id</p></li>
+<li><p>order_items.order_item_order_id to orders.order_id</p></li>
+<li><p>order_items.order_item_product_id to products.product_id</p></li>
+<li><p>products.product_category_id to categories.category_id</p></li>
+<li><p>categories.category_department_id to departments.department_id</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Here are the commands to launch <code class="docutils literal notranslate"><span class="pre">psql</span></code> and run scripts to create tables as well as load data into tables.</p></li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span>psql -U itversity_retail_user \
+  -h localhost \
+  -p 5432 \
+  -d itversity_retail_db \
+  -W
+
+\i /data/retail_db/create_db_tables_pg.sql
+
+\i /data/retail_db/load_db_tables_pg.sql
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>We use this approach of creating tables, loading data and then adding constraints as well as resetting sequences for large volume data migrations from one database to another database.</p></li>
+<li><p>Here are the commands or queries you need to come up with to solve this problem.</p>
+<ul>
+<li><p>Queries to get maximum values from surrogate primary keys.</p></li>
+<li><p>Commands to add sequences with <code class="docutils literal notranslate"><span class="pre">START</span> <span class="pre">WITH</span></code> pointing to the maximum value for the corresponding surrogate primary key fields. Make sure to use meaningful names to sequences <strong>TABLENAME_SURROGATEFIELD_seq</strong> (example: users_user_id_seq for users.user_id)</p></li>
+<li><p>Commands to alter sequences to bind them to corresponding surrogate primary key fields.</p></li>
+<li><p>Commands to add foreing key constraints.</p></li>
+<li><p>Queries to validate whether constraints are created or not.</p></li>
+</ul>
+</li>
+</ul>
 </div>
 </div>
 
