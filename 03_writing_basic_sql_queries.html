@@ -342,9 +342,6 @@
 <h2>Standard Transformations<a class="headerlink" href="#standard-transformations" title="Permalink to this headline">¶</a></h2>
 <p>Here are some of the transformations we typically perform on regular basis.</p>
 <div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/sA6Gq8Ulzng?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
-</div></div>
 </div>
 <ul class="simple">
 <li><p>Projection of data</p></li>
@@ -359,9 +356,6 @@
 <h2>Overview of Data Model<a class="headerlink" href="#overview-of-data-model" title="Permalink to this headline">¶</a></h2>
 <p>We will be using retail data model for this section. It contains 6 tables.</p>
 <div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/fcac19Ih2fc?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
-</div></div>
 </div>
 <ul class="simple">
 <li><p>Table list</p>
@@ -388,9 +382,6 @@
 <h2>Define Problem Statement – Daily Product Revenue<a class="headerlink" href="#define-problem-statement-daily-product-revenue" title="Permalink to this headline">¶</a></h2>
 <p>Let us try to get daily product revenue using retail tables.</p>
 <div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/EmmoTaaUciU?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
-</div></div>
 </div>
 <ul class="simple">
 <li><p>daily is derived from orders.order_date.</p></li>
@@ -446,7 +437,7 @@
 <h2>Preparing Tables<a class="headerlink" href="#preparing-tables" title="Permalink to this headline">¶</a></h2>
 <p>Let us prepare retail tables to come up with the solution for the problem statement.</p>
 <ul class="simple">
-<li><p>Ensure that we have required database and user for retail data. We might provide the database as part of our labs.</p></li>
+<li><p>Ensure that we have required database and user for retail data. We might provide the database as part of our labs. Here are the instructions to use <code class="docutils literal notranslate"><span class="pre">psql</span></code> for setting up the required tables.</p></li>
 </ul>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>psql -U postgres -h localhost -p <span class="m">5432</span> -W
 </pre></div>
@@ -1336,7 +1327,7 @@ LIMIT 10
 <ul>
 <li><p>We can have the columns which are specified as part of <code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span></code> in <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> clause.</p></li>
 <li><p>On top of those, we can have derived columns using aggregate functions.</p></li>
-<li><p>We cannot have any other columns that are not used as part of <code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span></code> on derived column using non aggregate functions.</p></li>
+<li><p>We cannot have any other columns that are not used as part of <code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span></code> or derived column using non aggregate functions.</p></li>
 <li><p>We will not be able to use aggregate functions or aliases used in the select clause as part of the where clause.</p></li>
 <li><p>If we want to filter based on aggregated results, then we can leverage <code class="docutils literal notranslate"><span class="pre">HAVING</span></code> on top of <code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span></code> (specifying <code class="docutils literal notranslate"><span class="pre">WHERE</span></code> is not an option)</p></li>
 </ul>
@@ -1375,6 +1366,17 @@ LIMIT 10
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
+SELECT *
+FROM order_items 
+WHERE order_item_order_id = 2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
 SELECT round(sum(order_item_subtotal::numeric), 2) AS order_revenue
 FROM order_items 
 WHERE order_item_order_id = 2
@@ -1401,6 +1403,7 @@ SELECT order_date,
     count(1)
 FROM orders
 GROUP BY order_date
+ORDER BY order_date
 LIMIT 10
 </pre></div>
 </div>
@@ -1414,6 +1417,7 @@ SELECT order_status,
     count(1) AS status_count
 FROM orders
 GROUP BY order_status
+ORDER BY order_status
 LIMIT 10
 </pre></div>
 </div>
@@ -1432,12 +1436,29 @@ LIMIT 10
 </div>
 </div>
 </div>
+<div class="admonition error">
+<p class="admonition-title">Error</p>
+<p>This query using <code class="docutils literal notranslate"><span class="pre">round</span></code> will fail as <code class="docutils literal notranslate"><span class="pre">sum(order_item_subtotal)</span></code> will not return the data accepted by <code class="docutils literal notranslate"><span class="pre">round</span></code>. We have to convert the data type of <code class="docutils literal notranslate"><span class="pre">sum(order_item_subtotal)</span></code> to <code class="docutils literal notranslate"><span class="pre">numeric</span></code>.</p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
 SELECT order_item_order_id,
     round(sum(order_item_subtotal), 2) AS order_revenue
+FROM order_items
+GROUP BY order_item_order_id 
+LIMIT 10
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT order_item_order_id,
+    round(sum(order_item_subtotal)::numeric, 2) AS order_revenue
 FROM order_items
 GROUP BY order_item_order_id 
 LIMIT 10
@@ -1516,10 +1537,48 @@ SELECT o.order_date,
 FROM orders o JOIN order_items oi
     ON o.order_id = oi.order_item_order_id
 WHERE o.order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)
-GROUP BY o.order_date,
+GROUP BY o.order_date, 
     oi.order_item_product_id
 HAVING round(sum(oi.order_item_subtotal::numeric), 2) &gt;= 500
-LIMIT 10
+ORDER BY o.order_date, revenue DESC
+LIMIT 25
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT count(1) FROM (
+    SELECT o.order_date,
+        oi.order_item_product_id,
+        round(sum(oi.order_item_subtotal::numeric), 2) AS revenue
+    FROM orders o JOIN order_items oi
+        ON o.order_id = oi.order_item_order_id
+    WHERE o.order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)
+    GROUP BY o.order_date, 
+        oi.order_item_product_id
+) q
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT count(1) FROM (
+    SELECT o.order_date,
+        oi.order_item_product_id,
+        round(sum(oi.order_item_subtotal::numeric), 2) AS revenue
+    FROM orders o JOIN order_items oi
+        ON o.order_id = oi.order_item_order_id
+    WHERE o.order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)
+    GROUP BY o.order_date, 
+        oi.order_item_product_id
+    HAVING round(sum(oi.order_item_subtotal::numeric), 2) &gt;= 500
+) q
 </pre></div>
 </div>
 </div>
@@ -1530,10 +1589,28 @@ LIMIT 10
 <p>Let us understand how to sort the data using <strong>SQL</strong>.</p>
 <ul class="simple">
 <li><p>We typically perform sorting as final step.</p></li>
-<li><p>Sorting can be done either by using one field or multiple fields.</p></li>
+<li><p>Sorting can be done either by using one field or multiple fields. Sorting by multiple fields is also known as composite sorting.</p></li>
 <li><p>We can sort the data either in ascending order or descending order by using column or expression.</p></li>
-<li><p>By default, the sorting order is ascendig and we can change it to descending by using <code class="docutils literal notranslate"><span class="pre">DESC</span></code>.</p></li>
+<li><p>By default, the sorting order is ascending and we can change it to descending by using <code class="docutils literal notranslate"><span class="pre">DESC</span></code>.</p></li>
+<li><p>As part of composite sorting, we can sort the data in ascending order on some fields and descending order on other fields.</p></li>
+<li><p>Typical query execution order</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">FROM</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WHERE</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span></code> and <code class="docutils literal notranslate"><span class="pre">HAVING</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ORDER</span> <span class="pre">BY</span></code></p></li>
+</ol>
+</li>
 </ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">order_date</span><span class="p">,</span> <span class="k">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="k">AS</span> <span class="n">order_count</span>
+<span class="k">FROM</span> <span class="n">orders</span>
+<span class="k">WHERE</span> <span class="n">order_status</span> <span class="k">IN</span> <span class="p">(</span><span class="s1">&#39;COMPLETE&#39;</span><span class="p">,</span> <span class="s1">&#39;CLOSED&#39;</span><span class="p">)</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="n">order_date</span>
+<span class="k">HAVING</span> <span class="k">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">50</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">order_count</span> <span class="k">DESC</span>
+</pre></div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
@@ -1552,8 +1629,28 @@ LIMIT 10
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
+SELECT * FROM orders LIMIT 10
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
 SELECT * FROM orders
 ORDER BY order_customer_id
+LIMIT 10
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT * FROM orders
+ORDER BY order_customer_id ASC
 LIMIT 10
 </pre></div>
 </div>
@@ -1597,7 +1694,119 @@ GROUP BY o.order_date,
     oi.order_item_product_id
 ORDER BY o.order_date,
     revenue DESC
+LIMIT 25
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT o.order_date,
+    oi.order_item_product_id,
+    round(sum(oi.order_item_subtotal::numeric), 2) AS revenue
+FROM orders o JOIN order_items oi
+    ON o.order_id = oi.order_item_order_id
+WHERE o.order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)
+GROUP BY o.order_date,
+    oi.order_item_product_id
+HAVING round(sum(oi.order_item_subtotal::numeric), 2) &gt;= 1000
+ORDER BY o.order_date,
+    revenue DESC
 LIMIT 10
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+DROP TABLE IF EXISTS users
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+CREATE TABLE users (
+    user_id SERIAL PRIMARY KEY,
+    user_first_name VARCHAR(30) NOT NULL,
+    user_last_name VARCHAR(30) NOT NULL,
+    user_email_id VARCHAR(50) NOT NULL,
+    user_email_validated BOOLEAN DEFAULT FALSE,
+    user_password VARCHAR(200),
+    user_role VARCHAR(1) NOT NULL DEFAULT &#39;U&#39;, --U and A
+    user_country VARCHAR(2),
+    is_active BOOLEAN DEFAULT FALSE,
+    create_ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    last_updated_ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+INSERT INTO users (user_first_name, user_last_name, user_email_id, user_country)
+VALUES (&#39;Donald&#39;, &#39;Duck&#39;, &#39;donald@duck.com&#39;, &#39;IN&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+INSERT INTO users (user_first_name, user_last_name, user_email_id, user_role, is_active, user_country)
+VALUES (&#39;Mickey&#39;, &#39;Mouse&#39;, &#39;mickey@mouse.com&#39;, &#39;U&#39;, true, &#39;US&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+INSERT INTO users 
+    (user_first_name, user_last_name, user_email_id, user_password, user_role, is_active, user_country) 
+VALUES 
+    (&#39;Gordan&#39;, &#39;Bradock&#39;, &#39;gbradock0@barnesandnoble.com&#39;, &#39;h9LAz7p7ub&#39;, &#39;U&#39;, true, &#39;CA&#39;),
+    (&#39;Tobe&#39;, &#39;Lyness&#39;, &#39;tlyness1@paginegialle.it&#39;, &#39;oEofndp&#39;, &#39;U&#39;, true, &#39;FR&#39;),
+    (&#39;Addie&#39;, &#39;Mesias&#39;, &#39;amesias2@twitpic.com&#39;, &#39;ih7Y69u56&#39;, &#39;U&#39;, true, &#39;AU&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT * FROM users
+ORDER BY user_country
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT user_id,
+    user_first_name,
+    user_last_name,
+    user_email_id,
+    user_country
+FROM users
+ORDER BY 
+    CASE WHEN user_country = &#39;US&#39; THEN 0
+        ELSE 1
+    END, user_country
 </pre></div>
 </div>
 </div>
@@ -1613,10 +1822,11 @@ LIMIT 10
 <li><p>Load the data into tables</p></li>
 </ul>
 </li>
-<li><p>We need to project the fields which we are interested in.</p>
+<li><p>We need to project the fields which we are interested in. We need to have <strong>product_id</strong> as well as <strong>product_name</strong> as there can be products with same name and can result in incorrect output.</p>
 <ul>
 <li><p>order_date</p></li>
 <li><p>order_item_product_id</p></li>
+<li><p>product_name</p></li>
 <li><p>product_revenue</p></li>
 </ul>
 </li>
@@ -1643,16 +1853,94 @@ LIMIT 10
 
 SELECT o.order_date,
     oi.order_item_product_id,
+    p.product_name,
     round(sum(oi.order_item_subtotal::numeric), 2) AS product_revenue
-FROM orders o JOIN order_items oi
-    ON o.order_id = oi.order_item_order_id
+FROM orders o 
+    JOIN order_items oi
+        ON o.order_id = oi.order_item_order_id
+    JOIN products p
+        ON p.product_id = oi.order_item_product_id
 WHERE o.order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)
 GROUP BY o.order_date,
-    oi.order_item_product_id
+    oi.order_item_product_id,
+    p.product_name
 LIMIT 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_date</th>
+        <th>order_item_product_id</th>
+        <th>product_name</th>
+        <th>product_revenue</th>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>24</td>
+        <td>Elevation Training Mask 2.0</td>
+        <td>319.96</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>93</td>
+        <td>Under Armour Men&#x27;s Tech II T-Shirt</td>
+        <td>74.97</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>134</td>
+        <td>Nike Women&#x27;s Legend V-Neck T-Shirt</td>
+        <td>100.00</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>191</td>
+        <td>Nike Men&#x27;s Free 5.0+ Running Shoe</td>
+        <td>5099.49</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>226</td>
+        <td>Bowflex SelectTech 1090 Dumbbells</td>
+        <td>599.99</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>365</td>
+        <td>Perfect Fitness Perfect Rip Deck</td>
+        <td>3359.44</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>403</td>
+        <td>Nike Men&#x27;s CJ Elite 2 TD Football Cleat</td>
+        <td>1949.85</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>502</td>
+        <td>Nike Men&#x27;s Dri-FIT Victory Golf Polo</td>
+        <td>1650.00</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>572</td>
+        <td>TYR Boys&#x27; Team Digi Jammer</td>
+        <td>119.97</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>625</td>
+        <td>Nike Men&#x27;s Kobe IX Elite Low Basketball Shoe</td>
+        <td>199.99</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1660,18 +1948,132 @@ LIMIT 10
 
 SELECT o.order_date,
     oi.order_item_product_id,
+    p.product_name,
     round(sum(oi.order_item_subtotal::numeric), 2) AS product_revenue
-FROM orders o JOIN order_items oi
-    ON o.order_id = oi.order_item_order_id
+FROM orders o 
+    JOIN order_items oi
+        ON o.order_id = oi.order_item_order_id
+    JOIN products p
+        ON p.product_id = oi.order_item_product_id
 WHERE o.order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)
 GROUP BY o.order_date,
-    oi.order_item_product_id
+    oi.order_item_product_id,
+    p.product_name
 ORDER BY o.order_date,
     product_revenue DESC
 LIMIT 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_date</th>
+        <th>order_item_product_id</th>
+        <th>product_name</th>
+        <th>product_revenue</th>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>1004</td>
+        <td>Field &amp; Stream Sportsman 16 Gun Fire Safe</td>
+        <td>5599.72</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>191</td>
+        <td>Nike Men&#x27;s Free 5.0+ Running Shoe</td>
+        <td>5099.49</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>957</td>
+        <td>Diamondback Women&#x27;s Serene Classic Comfort Bi</td>
+        <td>4499.70</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>365</td>
+        <td>Perfect Fitness Perfect Rip Deck</td>
+        <td>3359.44</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>1073</td>
+        <td>Pelican Sunstream 100 Kayak</td>
+        <td>2999.85</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>1014</td>
+        <td>O&#x27;Brien Men&#x27;s Neoprene Life Vest</td>
+        <td>2798.88</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>403</td>
+        <td>Nike Men&#x27;s CJ Elite 2 TD Football Cleat</td>
+        <td>1949.85</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>502</td>
+        <td>Nike Men&#x27;s Dri-FIT Victory Golf Polo</td>
+        <td>1650.00</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>627</td>
+        <td>Under Armour Girls&#x27; Toddler Spine Surge Runni</td>
+        <td>1079.73</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>226</td>
+        <td>Bowflex SelectTech 1090 Dumbbells</td>
+        <td>599.99</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT count(1) FROM (
+    SELECT o.order_date,
+        oi.order_item_product_id,
+        p.product_name,
+        round(sum(oi.order_item_subtotal::numeric), 2) AS product_revenue
+    FROM orders o 
+        JOIN order_items oi
+            ON o.order_id = oi.order_item_order_id
+        JOIN products p
+            ON p.product_id = oi.order_item_product_id
+    WHERE o.order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)
+    GROUP BY o.order_date,
+        oi.order_item_product_id,
+        p.product_name
+) q
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>count</th>
+    </tr>
+    <tr>
+        <td>9120</td>
+    </tr>
+</table></div></div>
 </div>
 </div>
 <div class="section" id="exercises-basic-sql-queries">
@@ -1708,7 +2110,7 @@ LIMIT 10
 </div>
 <div class="section" id="exercise-4-revenue-per-category">
 <h3>Exercise 4 - Revenue Per Category<a class="headerlink" href="#exercise-4-revenue-per-category" title="Permalink to this headline">¶</a></h3>
-<p>Get the revenue generated for each customer for the month of 2014 January</p>
+<p>Get the revenue generated for each category for the month of 2014 January</p>
 <ul class="simple">
 <li><p>Tables - orders, order_items, products and categories</p></li>
 <li><p>Data should be sorted in ascending order by category_id.</p></li>

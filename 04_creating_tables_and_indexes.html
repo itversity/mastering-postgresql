@@ -324,7 +324,7 @@
 <ul>
 <li><p>Creating Tables - Independent Objects</p></li>
 <li><p>Creating Indexes for performance - Typically dependent on tables</p></li>
-<li><p>Adding constraints to existing tables</p></li>
+<li><p>Adding constraints to existing tables (<code class="docutils literal notranslate"><span class="pre">NOT</span> <span class="pre">NULL</span></code>, <code class="docutils literal notranslate"><span class="pre">CHECK</span></code>, <code class="docutils literal notranslate"><span class="pre">PRIMARY</span> <span class="pre">KEY</span></code>, <code class="docutils literal notranslate"><span class="pre">UNIQUE</span></code> etc)</p></li>
 </ul>
 </li>
 </ul>
@@ -350,7 +350,7 @@
 <li><p>Changing data types of existing columns.</p></li>
 </ul>
 </li>
-<li><p>We can also define comments both at column level as well as table level. However we can only add comments after table is created.</p></li>
+<li><p>We can also define comments both at column level as well as table level. However in <strong>postgres</strong>, we can only add comments after table is created.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -361,7 +361,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5433/itversity_retail_db
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
 </pre></div>
 </div>
 </div>
@@ -395,6 +395,13 @@ CREATE TABLE users (
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> COMMENT ON TABLE users IS &#39;Stores all user details&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> COMMENT ON COLUMN users.user_id IS &#39;Surrogate Key&#39;
 </pre></div>
 </div>
@@ -416,7 +423,21 @@ CREATE TABLE users (
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT * FROM information_schema.COLUMNS WHERE table_name = &#39;users&#39;
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT * FROM information_schema.tables 
+WHERE table_name = &#39;users&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span> 
+
+SELECT * FROM information_schema.columns 
+WHERE table_name = &#39;users&#39;
+ORDER BY ordinal_position
 </pre></div>
 </div>
 </div>
@@ -426,20 +447,37 @@ CREATE TABLE users (
 <h2>Overview of Data Types<a class="headerlink" href="#overview-of-data-types" title="Permalink to this headline">¶</a></h2>
 <p>Let us get an overview of supported datatypes in Postgres.</p>
 <ul class="simple">
+<li><p>Here is the sample <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">TABLE</span></code> command for the review.</p></li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">users</span> <span class="p">(</span>
+    <span class="n">user_id</span> <span class="nb">SERIAL</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
+    <span class="n">user_first_name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">user_last_name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">user_email_id</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">user_email_validated</span> <span class="nb">BOOLEAN</span> <span class="k">DEFAULT</span> <span class="k">FALSE</span><span class="p">,</span>
+    <span class="n">user_password</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">200</span><span class="p">),</span>
+    <span class="n">user_role</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;U&#39;</span><span class="p">,</span> <span class="c1">--U and A</span>
+    <span class="n">is_active</span> <span class="nb">BOOLEAN</span> <span class="k">DEFAULT</span> <span class="k">FALSE</span><span class="p">,</span>
+    <span class="n">created_dt</span> <span class="nb">DATE</span> <span class="k">DEFAULT</span> <span class="k">CURRENT_DATE</span><span class="p">,</span>
+    <span class="n">last_updated_ts</span> <span class="k">TIMESTAMP</span> <span class="k">DEFAULT</span> <span class="k">CURRENT_TIMESTAMP</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
 <li><p>While creating tables in RDBMS databases, we should specify data types for the columns.</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">SERIAL</span></code> is nothing but integer which is populated by a special database object called as sequence. It is typically used for surrogate primary key.</p></li>
-<li><p>When <code class="docutils literal notranslate"><span class="pre">SERIAL</span></code> is specified, an index with table_name_serial_column_seq naming convention will be created. In our case it is <code class="docutils literal notranslate"><span class="pre">users_user_id_seq</span></code>.</p></li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">SERIAL</span></code> is specified, a sequence with <strong>table_name_serial_column_seq</strong> naming convention will be created. In our case it is <code class="docutils literal notranslate"><span class="pre">users_user_id_seq</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">INT</span></code> or <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code> is used to define columns with integer values. Most of the ids are defined as integer.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code> or <code class="docutils literal notranslate"><span class="pre">DOUBLE</span></code> can be used to define columns used to store price, salary etc.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">VARCHAR</span></code> with length is used to define columns such as name, email id etc.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">CHAR</span></code> can be used to defined fixed length string columns - single character fields such as gender which store M or F, three character days or months etc.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">VARCHAR</span></code> with length is used to define variable length columns such as name, email id etc.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CHAR</span></code> can be used to define fixed length string columns - single character fields such as gender which store M or F, three character days or months etc.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code> is used to store <strong>true</strong> and <strong>false</strong> values.</p></li>
 <li><p>We can also use <code class="docutils literal notranslate"><span class="pre">DATE</span></code> or <code class="docutils literal notranslate"><span class="pre">TIMESTAMP</span></code> to store date or time respectively.</p></li>
 </ul>
 </li>
 <li><p>We can add columns, drop columns, modify columns by changing data types as well as specify default values using <code class="docutils literal notranslate"><span class="pre">ALTER</span> <span class="pre">TABLE</span></code> command.</p></li>
-<li><p>Let us perform these tasks to understand about Data Types. Drop and recreate tables with the following details.</p>
+<li><p>Let us perform these tasks to understand about Data Types. Drop and recreate users table with the following details.</p>
 <ul>
 <li><p>user_id - integer</p></li>
 <li><p>user_first_name - not null and alpha numeric or string up to 30 characters</p></li>
@@ -447,7 +485,7 @@ CREATE TABLE users (
 <li><p>user_email_id - not null and alpha numeric or string up to 50 characters</p></li>
 <li><p>user_email_validated - true or false (boolean)</p></li>
 <li><p>user_password - alpha numeric up to 200 characters</p></li>
-<li><p>user_role - single character with U or A (use VARCHAR(1))</p></li>
+<li><p>user_role - single character with U or A (use CHAR(1))</p></li>
 <li><p>is_active - true or false (boolean)</p></li>
 <li><p>created_dt - not null and date with out timestamp. It should be defaulted to system date.</p></li>
 </ul>
@@ -462,7 +500,12 @@ CREATE TABLE users (
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5433/itversity_retail_db
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env: DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
 </pre></div>
 </div>
 </div>
@@ -470,6 +513,14 @@ CREATE TABLE users (
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> DROP TABLE IF EXISTS users
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
 </pre></div>
 </div>
 </div>
@@ -485,20 +536,500 @@ CREATE TABLE users (
   user_email_id VARCHAR(50) NOT NULL,
   user_email_validated BOOLEAN,
   user_password VARCHAR(200),
-  user_role VARCHAR(1),
+  user_role CHAR(1),
   is_active BOOLEAN,
   created_dt DATE DEFAULT CURRENT_DATE
 )
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+Done.
+</pre></div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT * FROM information_schema.COLUMNS WHERE table_name = &#39;users&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
 </pre></div>
 </div>
 </div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span> 
+
+SELECT * FROM information_schema.columns 
+WHERE table_name = &#39;users&#39;
+ORDER BY ordinal_position
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+9 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>table_catalog</th>
+        <th>table_schema</th>
+        <th>table_name</th>
+        <th>column_name</th>
+        <th>ordinal_position</th>
+        <th>column_default</th>
+        <th>is_nullable</th>
+        <th>data_type</th>
+        <th>character_maximum_length</th>
+        <th>character_octet_length</th>
+        <th>numeric_precision</th>
+        <th>numeric_precision_radix</th>
+        <th>numeric_scale</th>
+        <th>datetime_precision</th>
+        <th>interval_type</th>
+        <th>interval_precision</th>
+        <th>character_set_catalog</th>
+        <th>character_set_schema</th>
+        <th>character_set_name</th>
+        <th>collation_catalog</th>
+        <th>collation_schema</th>
+        <th>collation_name</th>
+        <th>domain_catalog</th>
+        <th>domain_schema</th>
+        <th>domain_name</th>
+        <th>udt_catalog</th>
+        <th>udt_schema</th>
+        <th>udt_name</th>
+        <th>scope_catalog</th>
+        <th>scope_schema</th>
+        <th>scope_name</th>
+        <th>maximum_cardinality</th>
+        <th>dtd_identifier</th>
+        <th>is_self_referencing</th>
+        <th>is_identity</th>
+        <th>identity_generation</th>
+        <th>identity_start</th>
+        <th>identity_increment</th>
+        <th>identity_maximum</th>
+        <th>identity_minimum</th>
+        <th>identity_cycle</th>
+        <th>is_generated</th>
+        <th>generation_expression</th>
+        <th>is_updatable</th>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>public</td>
+        <td>users</td>
+        <td>user_id</td>
+        <td>1</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>integer</td>
+        <td>None</td>
+        <td>None</td>
+        <td>32</td>
+        <td>2</td>
+        <td>0</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>int4</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>1</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>NEVER</td>
+        <td>None</td>
+        <td>YES</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>public</td>
+        <td>users</td>
+        <td>user_first_name</td>
+        <td>2</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>character varying</td>
+        <td>30</td>
+        <td>120</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>varchar</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>2</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>NEVER</td>
+        <td>None</td>
+        <td>YES</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>public</td>
+        <td>users</td>
+        <td>user_last_name</td>
+        <td>3</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>character varying</td>
+        <td>30</td>
+        <td>120</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>varchar</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>3</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>NEVER</td>
+        <td>None</td>
+        <td>YES</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>public</td>
+        <td>users</td>
+        <td>user_email_id</td>
+        <td>4</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>character varying</td>
+        <td>50</td>
+        <td>200</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>varchar</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>4</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>NEVER</td>
+        <td>None</td>
+        <td>YES</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>public</td>
+        <td>users</td>
+        <td>user_email_validated</td>
+        <td>5</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>boolean</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>bool</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>5</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>NEVER</td>
+        <td>None</td>
+        <td>YES</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>public</td>
+        <td>users</td>
+        <td>user_password</td>
+        <td>6</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>character varying</td>
+        <td>200</td>
+        <td>800</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>varchar</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>6</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>NEVER</td>
+        <td>None</td>
+        <td>YES</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>public</td>
+        <td>users</td>
+        <td>user_role</td>
+        <td>7</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>character</td>
+        <td>1</td>
+        <td>4</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>bpchar</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>7</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>NEVER</td>
+        <td>None</td>
+        <td>YES</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>public</td>
+        <td>users</td>
+        <td>is_active</td>
+        <td>8</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>boolean</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>bool</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>8</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>NEVER</td>
+        <td>None</td>
+        <td>YES</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>public</td>
+        <td>users</td>
+        <td>created_dt</td>
+        <td>9</td>
+        <td>CURRENT_DATE</td>
+        <td>YES</td>
+        <td>date</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>0</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>date</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>9</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>NEVER</td>
+        <td>None</td>
+        <td>YES</td>
+    </tr>
+</table></div></div>
 </div>
 </div>
 <div class="section" id="adding-or-modifying-columns">
@@ -509,7 +1040,7 @@ CREATE TABLE users (
 <ul>
 <li><p>Add column to the table.</p></li>
 <li><p>Update data in the column with some value.</p></li>
-<li><p>Alter table by defining it as not null.</p></li>
+<li><p>Alter table to enforce not null constraint for the newly added column.</p></li>
 </ul>
 </li>
 <li><p>Existing columns can be dropped from the table, but it is not advisable to do so. If at all we have to drop the column, then there should be extra caution as some or the other application functionality can be broken.</p></li>
@@ -534,6 +1065,13 @@ CREATE TABLE users (
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5433/itversity_retail_db
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> DROP SEQUENCE IF EXISTS users_user_id_seq
 </pre></div>
 </div>
 </div>
@@ -594,7 +1132,20 @@ ALTER TABLE users
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT * FROM information_schema.COLUMNS WHERE table_name = &#39;users&#39;
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span> 
+
+SELECT * FROM information_schema.columns 
+WHERE table_name = &#39;users&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span> 
+
+SELECT * FROM information_schema.sequences 
+WHERE sequence_name ~ &#39;users&#39;
 </pre></div>
 </div>
 </div>
@@ -620,7 +1171,7 @@ ALTER TABLE users
 <li><p>Let us compare and contrast <code class="docutils literal notranslate"><span class="pre">PRIMARY</span> <span class="pre">KEY</span></code> and <code class="docutils literal notranslate"><span class="pre">UNIQUE</span></code> constraints.</p>
 <ul>
 <li><p>There can be only one <code class="docutils literal notranslate"><span class="pre">PRIMARY</span> <span class="pre">KEY</span></code> in a table where as there can be any number of <code class="docutils literal notranslate"><span class="pre">UNIQUE</span></code> constraints.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">UNIQUE</span></code> columns can have null values unless <code class="docutils literal notranslate"><span class="pre">NOT</span> <span class="pre">NULL</span></code> is also enforced. In case of <code class="docutils literal notranslate"><span class="pre">PRIMARY</span> <span class="pre">KEY</span></code>, both uniqueness as well as not null are strictly enforced. A primary key column cannot be null where as unique column can be null.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">UNIQUE</span></code> columns can have null values unless <code class="docutils literal notranslate"><span class="pre">NOT</span> <span class="pre">NULL</span></code> is also enforced. In case of <code class="docutils literal notranslate"><span class="pre">PRIMARY</span> <span class="pre">KEY</span></code>, both uniqueness as well as not null are strictly enforced. In other words a  primary key column cannot be null where as unique column can be null.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">FOREIGN</span> <span class="pre">KEY</span></code> from a child table can be defined against <code class="docutils literal notranslate"><span class="pre">PRIMARY</span> <span class="pre">KEY</span></code> column or <code class="docutils literal notranslate"><span class="pre">UNIQUE</span></code> column.</p></li>
 <li><p>Typically <code class="docutils literal notranslate"><span class="pre">PRIMARY</span> <span class="pre">KEY</span></code> columns are surrogate keys which are supported by sequence.</p></li>
 </ul>
