@@ -307,7 +307,8 @@
 <li><p>CRUD Operations</p></li>
 <li><p>Creating Table</p></li>
 <li><p>Inserting Data</p></li>
-<li><p>Updating and Deleting Data</p></li>
+<li><p>Updating Data</p></li>
+<li><p>Deleting Data</p></li>
 <li><p>Overview of Transactions</p></li>
 <li><p>Exercise - Database Operations</p></li>
 </ul>
@@ -453,6 +454,11 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env: DATABASE_URL=postgresql://itversity_sms_user:sms_password@localhost:5432/itversity_sms_db
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -464,6 +470,26 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>table_catalog</th>
+        <th>table_schema</th>
+        <th>table_name</th>
+        <th>table_type</th>
+        <th>self_referencing_column_name</th>
+        <th>reference_generation</th>
+        <th>user_defined_type_catalog</th>
+        <th>user_defined_type_schema</th>
+        <th>user_defined_type_name</th>
+        <th>is_insertable_into</th>
+        <th>is_typed</th>
+        <th>commit_action</th>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -473,6 +499,15 @@ DROP TABLE IF EXISTS users;
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -484,6 +519,27 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+0 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>table_catalog</th>
+        <th>table_schema</th>
+        <th>table_name</th>
+        <th>table_type</th>
+        <th>self_referencing_column_name</th>
+        <th>reference_generation</th>
+        <th>user_defined_type_catalog</th>
+        <th>user_defined_type_schema</th>
+        <th>user_defined_type_name</th>
+        <th>is_insertable_into</th>
+        <th>is_typed</th>
+        <th>commit_action</th>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -504,6 +560,15 @@ CREATE TABLE users (
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
 </div>
 <ul class="simple">
 <li><p>Let us validate the objects that are created in the underlying database. We can either run query against <strong>information_schema</strong> or use Database Explorer in <strong>SQL Workbench</strong> or even <code class="docutils literal notranslate"><span class="pre">psql</span></code>.</p></li>
@@ -518,6 +583,41 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>table_catalog</th>
+        <th>table_schema</th>
+        <th>table_name</th>
+        <th>table_type</th>
+        <th>self_referencing_column_name</th>
+        <th>reference_generation</th>
+        <th>user_defined_type_catalog</th>
+        <th>user_defined_type_schema</th>
+        <th>user_defined_type_name</th>
+        <th>is_insertable_into</th>
+        <th>is_typed</th>
+        <th>commit_action</th>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users</td>
+        <td>BASE TABLE</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>NO</td>
+        <td>None</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -529,6 +629,519 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>table_catalog</th>
+        <th>table_schema</th>
+        <th>table_name</th>
+        <th>column_name</th>
+        <th>ordinal_position</th>
+        <th>column_default</th>
+        <th>is_nullable</th>
+        <th>data_type</th>
+        <th>character_maximum_length</th>
+        <th>character_octet_length</th>
+        <th>numeric_precision</th>
+        <th>numeric_precision_radix</th>
+        <th>numeric_scale</th>
+        <th>datetime_precision</th>
+        <th>interval_type</th>
+        <th>interval_precision</th>
+        <th>character_set_catalog</th>
+        <th>character_set_schema</th>
+        <th>character_set_name</th>
+        <th>collation_catalog</th>
+        <th>collation_schema</th>
+        <th>collation_name</th>
+        <th>domain_catalog</th>
+        <th>domain_schema</th>
+        <th>domain_name</th>
+        <th>udt_catalog</th>
+        <th>udt_schema</th>
+        <th>udt_name</th>
+        <th>scope_catalog</th>
+        <th>scope_schema</th>
+        <th>scope_name</th>
+        <th>maximum_cardinality</th>
+        <th>dtd_identifier</th>
+        <th>is_self_referencing</th>
+        <th>is_identity</th>
+        <th>identity_generation</th>
+        <th>identity_start</th>
+        <th>identity_increment</th>
+        <th>identity_maximum</th>
+        <th>identity_minimum</th>
+        <th>identity_cycle</th>
+        <th>is_generated</th>
+        <th>generation_expression</th>
+        <th>is_updatable</th>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users</td>
+        <td>user_id</td>
+        <td>1</td>
+        <td>nextval(&#x27;users_user_id_seq&#x27;::regclass)</td>
+        <td>NO</td>
+        <td>integer</td>
+        <td>None</td>
+        <td>None</td>
+        <td>32</td>
+        <td>2</td>
+        <td>0</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_sms_db</td>
+        <td>pg_catalog</td>
+        <td>int4</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>1</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>NEVER</td>
+        <td>None</td>
+        <td>YES</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users</td>
+        <td>user_first_name</td>
+        <td>2</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>character varying</td>
+        <td>30</td>
+        <td>120</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_sms_db</td>
+        <td>pg_catalog</td>
+        <td>varchar</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>2</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>NEVER</td>
+        <td>None</td>
+        <td>YES</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users</td>
+        <td>user_last_name</td>
+        <td>3</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>character varying</td>
+        <td>30</td>
+        <td>120</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_sms_db</td>
+        <td>pg_catalog</td>
+        <td>varchar</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>3</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>NEVER</td>
+        <td>None</td>
+        <td>YES</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users</td>
+        <td>user_email_id</td>
+        <td>4</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>character varying</td>
+        <td>50</td>
+        <td>200</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_sms_db</td>
+        <td>pg_catalog</td>
+        <td>varchar</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>4</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>NEVER</td>
+        <td>None</td>
+        <td>YES</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users</td>
+        <td>user_email_validated</td>
+        <td>5</td>
+        <td>false</td>
+        <td>YES</td>
+        <td>boolean</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_sms_db</td>
+        <td>pg_catalog</td>
+        <td>bool</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>5</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>NEVER</td>
+        <td>None</td>
+        <td>YES</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users</td>
+        <td>user_password</td>
+        <td>6</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>character varying</td>
+        <td>200</td>
+        <td>800</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_sms_db</td>
+        <td>pg_catalog</td>
+        <td>varchar</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>6</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>NEVER</td>
+        <td>None</td>
+        <td>YES</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users</td>
+        <td>user_role</td>
+        <td>7</td>
+        <td>&#x27;U&#x27;::character varying</td>
+        <td>NO</td>
+        <td>character varying</td>
+        <td>1</td>
+        <td>4</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_sms_db</td>
+        <td>pg_catalog</td>
+        <td>varchar</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>7</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>NEVER</td>
+        <td>None</td>
+        <td>YES</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users</td>
+        <td>is_active</td>
+        <td>8</td>
+        <td>false</td>
+        <td>YES</td>
+        <td>boolean</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_sms_db</td>
+        <td>pg_catalog</td>
+        <td>bool</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>8</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>NEVER</td>
+        <td>None</td>
+        <td>YES</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users</td>
+        <td>create_ts</td>
+        <td>9</td>
+        <td>CURRENT_TIMESTAMP</td>
+        <td>YES</td>
+        <td>timestamp without time zone</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>6</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_sms_db</td>
+        <td>pg_catalog</td>
+        <td>timestamp</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>9</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>NEVER</td>
+        <td>None</td>
+        <td>YES</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users</td>
+        <td>last_updated_ts</td>
+        <td>10</td>
+        <td>CURRENT_TIMESTAMP</td>
+        <td>YES</td>
+        <td>timestamp without time zone</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>6</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_sms_db</td>
+        <td>pg_catalog</td>
+        <td>timestamp</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>10</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>NEVER</td>
+        <td>None</td>
+        <td>YES</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -536,6 +1149,25 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+0 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>user_id</th>
+        <th>user_first_name</th>
+        <th>user_last_name</th>
+        <th>user_email_id</th>
+        <th>user_email_validated</th>
+        <th>user_password</th>
+        <th>user_role</th>
+        <th>is_active</th>
+        <th>create_ts</th>
+        <th>last_updated_ts</th>
+    </tr>
+</table></div></div>
 </div>
 </div>
 <div class="section" id="inserting-data">
@@ -565,6 +1197,12 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The sql extension is already loaded. To reload it, use:
+  %reload_ext sql
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -572,10 +1210,24 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env: DATABASE_URL=postgresql://itversity_sms_user:sms_password@localhost:5432/itversity_sms_db
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> TRUNCATE TABLE users
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
 </pre></div>
 </div>
 </div>
@@ -589,6 +1241,15 @@ VALUES (&#39;Scott&#39;, &#39;Tiger&#39;, &#39;scott@tiger.com&#39;)
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -596,6 +1257,37 @@ VALUES (&#39;Scott&#39;, &#39;Tiger&#39;, &#39;scott@tiger.com&#39;)
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>user_id</th>
+        <th>user_first_name</th>
+        <th>user_last_name</th>
+        <th>user_email_id</th>
+        <th>user_email_validated</th>
+        <th>user_password</th>
+        <th>user_role</th>
+        <th>is_active</th>
+        <th>create_ts</th>
+        <th>last_updated_ts</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>Scott</td>
+        <td>Tiger</td>
+        <td>scott@tiger.com</td>
+        <td>False</td>
+        <td>None</td>
+        <td>U</td>
+        <td>False</td>
+        <td>2020-11-14 15:35:11.813351</td>
+        <td>2020-11-14 15:35:11.813351</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -606,6 +1298,15 @@ VALUES (&#39;Donald&#39;, &#39;Duck&#39;, &#39;donald@duck.com&#39;)
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -613,6 +1314,49 @@ VALUES (&#39;Donald&#39;, &#39;Duck&#39;, &#39;donald@duck.com&#39;)
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+2 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>user_id</th>
+        <th>user_first_name</th>
+        <th>user_last_name</th>
+        <th>user_email_id</th>
+        <th>user_email_validated</th>
+        <th>user_password</th>
+        <th>user_role</th>
+        <th>is_active</th>
+        <th>create_ts</th>
+        <th>last_updated_ts</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>Scott</td>
+        <td>Tiger</td>
+        <td>scott@tiger.com</td>
+        <td>False</td>
+        <td>None</td>
+        <td>U</td>
+        <td>False</td>
+        <td>2020-11-14 15:35:11.813351</td>
+        <td>2020-11-14 15:35:11.813351</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Donald</td>
+        <td>Duck</td>
+        <td>donald@duck.com</td>
+        <td>False</td>
+        <td>None</td>
+        <td>U</td>
+        <td>False</td>
+        <td>2020-11-14 15:35:14.495991</td>
+        <td>2020-11-14 15:35:14.495991</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -623,6 +1367,15 @@ VALUES (&#39;Mickey&#39;, &#39;Mouse&#39;, &#39;mickey@mouse.com&#39;, &#39;U&#3
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -630,6 +1383,61 @@ VALUES (&#39;Mickey&#39;, &#39;Mouse&#39;, &#39;mickey@mouse.com&#39;, &#39;U&#3
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+3 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>user_id</th>
+        <th>user_first_name</th>
+        <th>user_last_name</th>
+        <th>user_email_id</th>
+        <th>user_email_validated</th>
+        <th>user_password</th>
+        <th>user_role</th>
+        <th>is_active</th>
+        <th>create_ts</th>
+        <th>last_updated_ts</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>Scott</td>
+        <td>Tiger</td>
+        <td>scott@tiger.com</td>
+        <td>False</td>
+        <td>None</td>
+        <td>U</td>
+        <td>False</td>
+        <td>2020-11-14 15:35:11.813351</td>
+        <td>2020-11-14 15:35:11.813351</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Donald</td>
+        <td>Duck</td>
+        <td>donald@duck.com</td>
+        <td>False</td>
+        <td>None</td>
+        <td>U</td>
+        <td>False</td>
+        <td>2020-11-14 15:35:14.495991</td>
+        <td>2020-11-14 15:35:14.495991</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>Mickey</td>
+        <td>Mouse</td>
+        <td>mickey@mouse.com</td>
+        <td>False</td>
+        <td>None</td>
+        <td>U</td>
+        <td>True</td>
+        <td>2020-11-14 15:35:15.881686</td>
+        <td>2020-11-14 15:35:15.881686</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -644,6 +1452,15 @@ VALUES
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+3 rows affected.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -651,6 +1468,97 @@ VALUES
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+6 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>user_id</th>
+        <th>user_first_name</th>
+        <th>user_last_name</th>
+        <th>user_email_id</th>
+        <th>user_email_validated</th>
+        <th>user_password</th>
+        <th>user_role</th>
+        <th>is_active</th>
+        <th>create_ts</th>
+        <th>last_updated_ts</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>Scott</td>
+        <td>Tiger</td>
+        <td>scott@tiger.com</td>
+        <td>False</td>
+        <td>None</td>
+        <td>U</td>
+        <td>False</td>
+        <td>2020-11-14 15:35:11.813351</td>
+        <td>2020-11-14 15:35:11.813351</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Donald</td>
+        <td>Duck</td>
+        <td>donald@duck.com</td>
+        <td>False</td>
+        <td>None</td>
+        <td>U</td>
+        <td>False</td>
+        <td>2020-11-14 15:35:14.495991</td>
+        <td>2020-11-14 15:35:14.495991</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>Mickey</td>
+        <td>Mouse</td>
+        <td>mickey@mouse.com</td>
+        <td>False</td>
+        <td>None</td>
+        <td>U</td>
+        <td>True</td>
+        <td>2020-11-14 15:35:15.881686</td>
+        <td>2020-11-14 15:35:15.881686</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>Gordan</td>
+        <td>Bradock</td>
+        <td>gbradock0@barnesandnoble.com</td>
+        <td>False</td>
+        <td>h9LAz7p7ub</td>
+        <td>U</td>
+        <td>True</td>
+        <td>2020-11-14 15:35:20.938583</td>
+        <td>2020-11-14 15:35:20.938583</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>Tobe</td>
+        <td>Lyness</td>
+        <td>tlyness1@paginegialle.it</td>
+        <td>False</td>
+        <td>oEofndp</td>
+        <td>U</td>
+        <td>True</td>
+        <td>2020-11-14 15:35:20.938583</td>
+        <td>2020-11-14 15:35:20.938583</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>Addie</td>
+        <td>Mesias</td>
+        <td>amesias2@twitpic.com</td>
+        <td>False</td>
+        <td>ih7Y69u56</td>
+        <td>U</td>
+        <td>True</td>
+        <td>2020-11-14 15:35:20.938583</td>
+        <td>2020-11-14 15:35:20.938583</td>
+    </tr>
+</table></div></div>
 </div>
 </div>
 <div class="section" id="updating-data">
@@ -684,6 +1592,97 @@ VALUES
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+6 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>user_id</th>
+        <th>user_first_name</th>
+        <th>user_last_name</th>
+        <th>user_email_id</th>
+        <th>user_email_validated</th>
+        <th>user_password</th>
+        <th>user_role</th>
+        <th>is_active</th>
+        <th>create_ts</th>
+        <th>last_updated_ts</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>Scott</td>
+        <td>Tiger</td>
+        <td>scott@tiger.com</td>
+        <td>False</td>
+        <td>None</td>
+        <td>U</td>
+        <td>False</td>
+        <td>2020-11-14 15:35:11.813351</td>
+        <td>2020-11-14 15:35:11.813351</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Donald</td>
+        <td>Duck</td>
+        <td>donald@duck.com</td>
+        <td>False</td>
+        <td>None</td>
+        <td>U</td>
+        <td>False</td>
+        <td>2020-11-14 15:35:14.495991</td>
+        <td>2020-11-14 15:35:14.495991</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>Mickey</td>
+        <td>Mouse</td>
+        <td>mickey@mouse.com</td>
+        <td>False</td>
+        <td>None</td>
+        <td>U</td>
+        <td>True</td>
+        <td>2020-11-14 15:35:15.881686</td>
+        <td>2020-11-14 15:35:15.881686</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>Gordan</td>
+        <td>Bradock</td>
+        <td>gbradock0@barnesandnoble.com</td>
+        <td>False</td>
+        <td>h9LAz7p7ub</td>
+        <td>U</td>
+        <td>True</td>
+        <td>2020-11-14 15:35:20.938583</td>
+        <td>2020-11-14 15:35:20.938583</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>Tobe</td>
+        <td>Lyness</td>
+        <td>tlyness1@paginegialle.it</td>
+        <td>False</td>
+        <td>oEofndp</td>
+        <td>U</td>
+        <td>True</td>
+        <td>2020-11-14 15:35:20.938583</td>
+        <td>2020-11-14 15:35:20.938583</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>Addie</td>
+        <td>Mesias</td>
+        <td>amesias2@twitpic.com</td>
+        <td>False</td>
+        <td>ih7Y69u56</td>
+        <td>U</td>
+        <td>True</td>
+        <td>2020-11-14 15:35:20.938583</td>
+        <td>2020-11-14 15:35:20.938583</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -695,6 +1694,15 @@ WHERE user_id = 1
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -702,6 +1710,97 @@ WHERE user_id = 1
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+6 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>user_id</th>
+        <th>user_first_name</th>
+        <th>user_last_name</th>
+        <th>user_email_id</th>
+        <th>user_email_validated</th>
+        <th>user_password</th>
+        <th>user_role</th>
+        <th>is_active</th>
+        <th>create_ts</th>
+        <th>last_updated_ts</th>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Donald</td>
+        <td>Duck</td>
+        <td>donald@duck.com</td>
+        <td>False</td>
+        <td>None</td>
+        <td>U</td>
+        <td>False</td>
+        <td>2020-11-14 15:35:14.495991</td>
+        <td>2020-11-14 15:35:14.495991</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>Mickey</td>
+        <td>Mouse</td>
+        <td>mickey@mouse.com</td>
+        <td>False</td>
+        <td>None</td>
+        <td>U</td>
+        <td>True</td>
+        <td>2020-11-14 15:35:15.881686</td>
+        <td>2020-11-14 15:35:15.881686</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>Gordan</td>
+        <td>Bradock</td>
+        <td>gbradock0@barnesandnoble.com</td>
+        <td>False</td>
+        <td>h9LAz7p7ub</td>
+        <td>U</td>
+        <td>True</td>
+        <td>2020-11-14 15:35:20.938583</td>
+        <td>2020-11-14 15:35:20.938583</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>Tobe</td>
+        <td>Lyness</td>
+        <td>tlyness1@paginegialle.it</td>
+        <td>False</td>
+        <td>oEofndp</td>
+        <td>U</td>
+        <td>True</td>
+        <td>2020-11-14 15:35:20.938583</td>
+        <td>2020-11-14 15:35:20.938583</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>Addie</td>
+        <td>Mesias</td>
+        <td>amesias2@twitpic.com</td>
+        <td>False</td>
+        <td>ih7Y69u56</td>
+        <td>U</td>
+        <td>True</td>
+        <td>2020-11-14 15:35:20.938583</td>
+        <td>2020-11-14 15:35:20.938583</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>Scott</td>
+        <td>Tiger</td>
+        <td>scott@tiger.com</td>
+        <td>False</td>
+        <td>None</td>
+        <td>A</td>
+        <td>False</td>
+        <td>2020-11-14 15:35:11.813351</td>
+        <td>2020-11-14 15:35:11.813351</td>
+    </tr>
+</table></div></div>
 </div>
 <ul class="simple">
 <li><p>Set user_email_validated as well as is_active to true for all users</p></li>
@@ -712,6 +1811,48 @@ WHERE user_id = 1
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+6 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>user_id</th>
+        <th>user_email_validated</th>
+        <th>is_active</th>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>False</td>
+        <td>False</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>False</td>
+        <td>True</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>False</td>
+        <td>True</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>False</td>
+        <td>True</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>False</td>
+        <td>True</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>False</td>
+        <td>False</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -724,6 +1865,15 @@ SET
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+6 rows affected.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -731,6 +1881,48 @@ SET
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+6 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>user_id</th>
+        <th>user_email_validated</th>
+        <th>is_active</th>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>True</td>
+        <td>True</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>True</td>
+        <td>True</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>True</td>
+        <td>True</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>True</td>
+        <td>True</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>True</td>
+        <td>True</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>True</td>
+        <td>True</td>
+    </tr>
+</table></div></div>
 </div>
 <ul class="simple">
 <li><p>Convert case of user_email_id to upper for all the records</p></li>
@@ -741,6 +1933,41 @@ SET
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+6 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>user_id</th>
+        <th>user_email_id</th>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>donald@duck.com</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>mickey@mouse.com</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>gbradock0@barnesandnoble.com</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>tlyness1@paginegialle.it</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>amesias2@twitpic.com</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>scott@tiger.com</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -752,6 +1979,15 @@ SET
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+6 rows affected.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -759,6 +1995,41 @@ SET
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+6 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>user_id</th>
+        <th>user_email_id</th>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>DONALD@DUCK.COM</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>MICKEY@MOUSE.COM</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>GBRADOCK0@BARNESANDNOBLE.COM</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>TLYNESS1@PAGINEGIALLE.IT</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>AMESIAS2@TWITPIC.COM</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>SCOTT@TIGER.COM</td>
+    </tr>
+</table></div></div>
 </div>
 <ul class="simple">
 <li><p>Add new column by name <strong>user_full_name</strong> and update it by concatenating <strong>user_first_name</strong> and <strong>user_last_name</strong>.</p></li>
@@ -771,6 +2042,15 @@ ALTER TABLE users ADD COLUMN user_full_name VARCHAR(50)
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -778,6 +2058,55 @@ ALTER TABLE users ADD COLUMN user_full_name VARCHAR(50)
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+6 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>user_id</th>
+        <th>user_first_name</th>
+        <th>user_last_name</th>
+        <th>user_full_name</th>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Donald</td>
+        <td>Duck</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>Mickey</td>
+        <td>Mouse</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>Gordan</td>
+        <td>Bradock</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>Tobe</td>
+        <td>Lyness</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>Addie</td>
+        <td>Mesias</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>Scott</td>
+        <td>Tiger</td>
+        <td>None</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -785,6 +2114,34 @@ ALTER TABLE users ADD COLUMN user_full_name VARCHAR(50)
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+6 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>concat</th>
+    </tr>
+    <tr>
+        <td>Donald Duck</td>
+    </tr>
+    <tr>
+        <td>Mickey Mouse</td>
+    </tr>
+    <tr>
+        <td>Gordan Bradock</td>
+    </tr>
+    <tr>
+        <td>Tobe Lyness</td>
+    </tr>
+    <tr>
+        <td>Addie Mesias</td>
+    </tr>
+    <tr>
+        <td>Scott Tiger</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -795,6 +2152,15 @@ UPDATE users
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+6 rows affected.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -802,6 +2168,55 @@ UPDATE users
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+6 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>user_id</th>
+        <th>user_first_name</th>
+        <th>user_last_name</th>
+        <th>user_full_name</th>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Donald</td>
+        <td>Duck</td>
+        <td>DONALD DUCK</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>Mickey</td>
+        <td>Mouse</td>
+        <td>MICKEY MOUSE</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>Gordan</td>
+        <td>Bradock</td>
+        <td>GORDAN BRADOCK</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>Tobe</td>
+        <td>Lyness</td>
+        <td>TOBE LYNESS</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>Addie</td>
+        <td>Mesias</td>
+        <td>ADDIE MESIAS</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>Scott</td>
+        <td>Tiger</td>
+        <td>SCOTT TIGER</td>
+    </tr>
+</table></div></div>
 </div>
 </div>
 <div class="section" id="deleting-data">
@@ -825,10 +2240,54 @@ UPDATE users
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+6 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>user_id</th>
+        <th>user_password</th>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>h9LAz7p7ub</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>oEofndp</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>ih7Y69u56</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>None</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> DELETE FROM users WHERE user_password IS NULL
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+3 rows affected.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
 </pre></div>
 </div>
 </div>
@@ -839,6 +2298,29 @@ UPDATE users
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+3 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>user_id</th>
+        <th>user_password</th>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>h9LAz7p7ub</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>oEofndp</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>ih7Y69u56</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -846,6 +2328,19 @@ UPDATE users
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>count</th>
+    </tr>
+    <tr>
+        <td>3</td>
+    </tr>
+</table></div></div>
 </div>
 </div>
 <div class="section" id="overview-of-transactions">

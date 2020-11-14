@@ -342,6 +342,9 @@
 <h2>Standard Transformations<a class="headerlink" href="#standard-transformations" title="Permalink to this headline">¶</a></h2>
 <p>Here are some of the transformations we typically perform on regular basis.</p>
 <div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/sA6Gq8Ulzng?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+</div></div>
 </div>
 <ul class="simple">
 <li><p>Projection of data</p></li>
@@ -356,6 +359,9 @@
 <h2>Overview of Data Model<a class="headerlink" href="#overview-of-data-model" title="Permalink to this headline">¶</a></h2>
 <p>We will be using retail data model for this section. It contains 6 tables.</p>
 <div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/fcac19Ih2fc?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+</div></div>
 </div>
 <ul class="simple">
 <li><p>Table list</p>
@@ -382,6 +388,9 @@
 <h2>Define Problem Statement – Daily Product Revenue<a class="headerlink" href="#define-problem-statement-daily-product-revenue" title="Permalink to this headline">¶</a></h2>
 <p>Let us try to get daily product revenue using retail tables.</p>
 <div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/EmmoTaaUciU?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+</div></div>
 </div>
 <ul class="simple">
 <li><p>daily is derived from orders.order_date.</p></li>
@@ -470,14 +479,19 @@
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env: DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
 </pre></div>
 </div>
 </div>
@@ -488,6 +502,18 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>current_database</th>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -500,6 +526,111 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+6 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>table_catalog</th>
+        <th>table_schema</th>
+        <th>table_name</th>
+        <th>table_type</th>
+        <th>self_referencing_column_name</th>
+        <th>reference_generation</th>
+        <th>user_defined_type_catalog</th>
+        <th>user_defined_type_schema</th>
+        <th>user_defined_type_name</th>
+        <th>is_insertable_into</th>
+        <th>is_typed</th>
+        <th>commit_action</th>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>public</td>
+        <td>categories</td>
+        <td>BASE TABLE</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>NO</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>public</td>
+        <td>departments</td>
+        <td>BASE TABLE</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>NO</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>public</td>
+        <td>products</td>
+        <td>BASE TABLE</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>NO</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>public</td>
+        <td>customers</td>
+        <td>BASE TABLE</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>NO</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>public</td>
+        <td>orders</td>
+        <td>BASE TABLE</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>NO</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>public</td>
+        <td>order_items</td>
+        <td>BASE TABLE</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>NO</td>
+        <td>None</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -507,6 +638,79 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_id</th>
+        <th>order_date</th>
+        <th>order_customer_id</th>
+        <th>order_status</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>11599</td>
+        <td>CLOSED</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>256</td>
+        <td>PENDING_PAYMENT</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>12111</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>8827</td>
+        <td>CLOSED</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>11318</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>7130</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>4530</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>8</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>2911</td>
+        <td>PROCESSING</td>
+    </tr>
+    <tr>
+        <td>9</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>5657</td>
+        <td>PENDING_PAYMENT</td>
+    </tr>
+    <tr>
+        <td>10</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>5648</td>
+        <td>PENDING_PAYMENT</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -514,6 +718,101 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_item_id</th>
+        <th>order_item_order_id</th>
+        <th>order_item_product_id</th>
+        <th>order_item_quantity</th>
+        <th>order_item_subtotal</th>
+        <th>order_item_product_price</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>1</td>
+        <td>957</td>
+        <td>1</td>
+        <td>299.98</td>
+        <td>299.98</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>2</td>
+        <td>1073</td>
+        <td>1</td>
+        <td>199.99</td>
+        <td>199.99</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>2</td>
+        <td>502</td>
+        <td>5</td>
+        <td>250.0</td>
+        <td>50.0</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>2</td>
+        <td>403</td>
+        <td>1</td>
+        <td>129.99</td>
+        <td>129.99</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>4</td>
+        <td>897</td>
+        <td>2</td>
+        <td>49.98</td>
+        <td>24.99</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>4</td>
+        <td>365</td>
+        <td>5</td>
+        <td>299.95</td>
+        <td>59.99</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>4</td>
+        <td>502</td>
+        <td>3</td>
+        <td>150.0</td>
+        <td>50.0</td>
+    </tr>
+    <tr>
+        <td>8</td>
+        <td>4</td>
+        <td>1014</td>
+        <td>4</td>
+        <td>199.92</td>
+        <td>49.98</td>
+    </tr>
+    <tr>
+        <td>9</td>
+        <td>5</td>
+        <td>957</td>
+        <td>1</td>
+        <td>299.98</td>
+        <td>299.98</td>
+    </tr>
+    <tr>
+        <td>10</td>
+        <td>5</td>
+        <td>365</td>
+        <td>5</td>
+        <td>299.95</td>
+        <td>59.99</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -521,6 +820,101 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>product_id</th>
+        <th>product_category_id</th>
+        <th>product_name</th>
+        <th>product_description</th>
+        <th>product_price</th>
+        <th>product_image</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>2</td>
+        <td>Quest Q64 10 FT. x 10 FT. Slant Leg Instant U</td>
+        <td></td>
+        <td>59.98</td>
+        <td>http://images.acmesports.sports/Quest+Q64+10+FT.+x+10+FT.+Slant+Leg+Instant+Up+Canopy</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>2</td>
+        <td>Under Armour Men&#x27;s Highlight MC Football Clea</td>
+        <td></td>
+        <td>129.99</td>
+        <td>http://images.acmesports.sports/Under+Armour+Men%27s+Highlight+MC+Football+Cleat</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>2</td>
+        <td>Under Armour Men&#x27;s Renegade D Mid Football Cl</td>
+        <td></td>
+        <td>89.99</td>
+        <td>http://images.acmesports.sports/Under+Armour+Men%27s+Renegade+D+Mid+Football+Cleat</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>2</td>
+        <td>Under Armour Men&#x27;s Renegade D Mid Football Cl</td>
+        <td></td>
+        <td>89.99</td>
+        <td>http://images.acmesports.sports/Under+Armour+Men%27s+Renegade+D+Mid+Football+Cleat</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>2</td>
+        <td>Riddell Youth Revolution Speed Custom Footbal</td>
+        <td></td>
+        <td>199.99</td>
+        <td>http://images.acmesports.sports/Riddell+Youth+Revolution+Speed+Custom+Football+Helmet</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>2</td>
+        <td>Jordan Men&#x27;s VI Retro TD Football Cleat</td>
+        <td></td>
+        <td>134.99</td>
+        <td>http://images.acmesports.sports/Jordan+Men%27s+VI+Retro+TD+Football+Cleat</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>2</td>
+        <td>Schutt Youth Recruit Hybrid Custom Football H</td>
+        <td></td>
+        <td>99.99</td>
+        <td>http://images.acmesports.sports/Schutt+Youth+Recruit+Hybrid+Custom+Football+Helmet+2014</td>
+    </tr>
+    <tr>
+        <td>8</td>
+        <td>2</td>
+        <td>Nike Men&#x27;s Vapor Carbon Elite TD Football Cle</td>
+        <td></td>
+        <td>129.99</td>
+        <td>http://images.acmesports.sports/Nike+Men%27s+Vapor+Carbon+Elite+TD+Football+Cleat</td>
+    </tr>
+    <tr>
+        <td>9</td>
+        <td>2</td>
+        <td>Nike Adult Vapor Jet 3.0 Receiver Gloves</td>
+        <td></td>
+        <td>50.0</td>
+        <td>http://images.acmesports.sports/Nike+Adult+Vapor+Jet+3.0+Receiver+Gloves</td>
+    </tr>
+    <tr>
+        <td>10</td>
+        <td>2</td>
+        <td>Under Armour Men&#x27;s Highlight MC Football Clea</td>
+        <td></td>
+        <td>129.99</td>
+        <td>http://images.acmesports.sports/Under+Armour+Men%27s+Highlight+MC+Football+Cleat</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -528,6 +922,19 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>count</th>
+    </tr>
+    <tr>
+        <td>68883</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -535,6 +942,19 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>count</th>
+    </tr>
+    <tr>
+        <td>172198</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -542,6 +962,19 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>count</th>
+    </tr>
+    <tr>
+        <td>1345</td>
+    </tr>
+</table></div></div>
 </div>
 </div>
 <div class="section" id="selecting-or-projecting-data">
@@ -559,10 +992,21 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The sql extension is already loaded. To reload it, use:
+  %reload_ext sql
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env: DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
 </pre></div>
 </div>
 </div>
@@ -573,6 +1017,79 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_id</th>
+        <th>order_date</th>
+        <th>order_customer_id</th>
+        <th>order_status</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>11599</td>
+        <td>CLOSED</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>256</td>
+        <td>PENDING_PAYMENT</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>12111</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>8827</td>
+        <td>CLOSED</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>11318</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>7130</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>4530</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>8</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>2911</td>
+        <td>PROCESSING</td>
+    </tr>
+    <tr>
+        <td>9</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>5657</td>
+        <td>PENDING_PAYMENT</td>
+    </tr>
+    <tr>
+        <td>10</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>5648</td>
+        <td>PENDING_PAYMENT</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -584,6 +1101,243 @@ WHERE table_catalog = &#39;itversity_retail_db&#39;
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+4 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>table_catalog</th>
+        <th>table_schema</th>
+        <th>table_name</th>
+        <th>column_name</th>
+        <th>ordinal_position</th>
+        <th>column_default</th>
+        <th>is_nullable</th>
+        <th>data_type</th>
+        <th>character_maximum_length</th>
+        <th>character_octet_length</th>
+        <th>numeric_precision</th>
+        <th>numeric_precision_radix</th>
+        <th>numeric_scale</th>
+        <th>datetime_precision</th>
+        <th>interval_type</th>
+        <th>interval_precision</th>
+        <th>character_set_catalog</th>
+        <th>character_set_schema</th>
+        <th>character_set_name</th>
+        <th>collation_catalog</th>
+        <th>collation_schema</th>
+        <th>collation_name</th>
+        <th>domain_catalog</th>
+        <th>domain_schema</th>
+        <th>domain_name</th>
+        <th>udt_catalog</th>
+        <th>udt_schema</th>
+        <th>udt_name</th>
+        <th>scope_catalog</th>
+        <th>scope_schema</th>
+        <th>scope_name</th>
+        <th>maximum_cardinality</th>
+        <th>dtd_identifier</th>
+        <th>is_self_referencing</th>
+        <th>is_identity</th>
+        <th>identity_generation</th>
+        <th>identity_start</th>
+        <th>identity_increment</th>
+        <th>identity_maximum</th>
+        <th>identity_minimum</th>
+        <th>identity_cycle</th>
+        <th>is_generated</th>
+        <th>generation_expression</th>
+        <th>is_updatable</th>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>public</td>
+        <td>orders</td>
+        <td>order_id</td>
+        <td>1</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>integer</td>
+        <td>None</td>
+        <td>None</td>
+        <td>32</td>
+        <td>2</td>
+        <td>0</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>int4</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>1</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>NEVER</td>
+        <td>None</td>
+        <td>YES</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>public</td>
+        <td>orders</td>
+        <td>order_date</td>
+        <td>2</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>timestamp without time zone</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>6</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>timestamp</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>2</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>NEVER</td>
+        <td>None</td>
+        <td>YES</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>public</td>
+        <td>orders</td>
+        <td>order_customer_id</td>
+        <td>3</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>integer</td>
+        <td>None</td>
+        <td>None</td>
+        <td>32</td>
+        <td>2</td>
+        <td>0</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>int4</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>3</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>NEVER</td>
+        <td>None</td>
+        <td>YES</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>public</td>
+        <td>orders</td>
+        <td>order_status</td>
+        <td>4</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>character varying</td>
+        <td>45</td>
+        <td>180</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>varchar</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>4</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>NEVER</td>
+        <td>None</td>
+        <td>YES</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -595,6 +1349,68 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_customer_id</th>
+        <th>order_date</th>
+        <th>order_status</th>
+    </tr>
+    <tr>
+        <td>11599</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>CLOSED</td>
+    </tr>
+    <tr>
+        <td>256</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>PENDING_PAYMENT</td>
+    </tr>
+    <tr>
+        <td>12111</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>8827</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>CLOSED</td>
+    </tr>
+    <tr>
+        <td>11318</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>7130</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>4530</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>2911</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>PROCESSING</td>
+    </tr>
+    <tr>
+        <td>5657</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>PENDING_PAYMENT</td>
+    </tr>
+    <tr>
+        <td>5648</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>PENDING_PAYMENT</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -608,6 +1424,68 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_customer_id</th>
+        <th>to_char</th>
+        <th>order_status</th>
+    </tr>
+    <tr>
+        <td>11599</td>
+        <td>2013-07</td>
+        <td>CLOSED</td>
+    </tr>
+    <tr>
+        <td>256</td>
+        <td>2013-07</td>
+        <td>PENDING_PAYMENT</td>
+    </tr>
+    <tr>
+        <td>12111</td>
+        <td>2013-07</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>8827</td>
+        <td>2013-07</td>
+        <td>CLOSED</td>
+    </tr>
+    <tr>
+        <td>11318</td>
+        <td>2013-07</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>7130</td>
+        <td>2013-07</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>4530</td>
+        <td>2013-07</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>2911</td>
+        <td>2013-07</td>
+        <td>PROCESSING</td>
+    </tr>
+    <tr>
+        <td>5657</td>
+        <td>2013-07</td>
+        <td>PENDING_PAYMENT</td>
+    </tr>
+    <tr>
+        <td>5648</td>
+        <td>2013-07</td>
+        <td>PENDING_PAYMENT</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -621,6 +1499,68 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_customer_id</th>
+        <th>order_month</th>
+        <th>order_status</th>
+    </tr>
+    <tr>
+        <td>11599</td>
+        <td>2013-07</td>
+        <td>CLOSED</td>
+    </tr>
+    <tr>
+        <td>256</td>
+        <td>2013-07</td>
+        <td>PENDING_PAYMENT</td>
+    </tr>
+    <tr>
+        <td>12111</td>
+        <td>2013-07</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>8827</td>
+        <td>2013-07</td>
+        <td>CLOSED</td>
+    </tr>
+    <tr>
+        <td>11318</td>
+        <td>2013-07</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>7130</td>
+        <td>2013-07</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>4530</td>
+        <td>2013-07</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>2911</td>
+        <td>2013-07</td>
+        <td>PROCESSING</td>
+    </tr>
+    <tr>
+        <td>5657</td>
+        <td>2013-07</td>
+        <td>PENDING_PAYMENT</td>
+    </tr>
+    <tr>
+        <td>5648</td>
+        <td>2013-07</td>
+        <td>PENDING_PAYMENT</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -631,6 +1571,55 @@ FROM orders
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+13 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_month</th>
+    </tr>
+    <tr>
+        <td>2014-01</td>
+    </tr>
+    <tr>
+        <td>2014-05</td>
+    </tr>
+    <tr>
+        <td>2013-12</td>
+    </tr>
+    <tr>
+        <td>2013-11</td>
+    </tr>
+    <tr>
+        <td>2014-04</td>
+    </tr>
+    <tr>
+        <td>2014-07</td>
+    </tr>
+    <tr>
+        <td>2014-03</td>
+    </tr>
+    <tr>
+        <td>2013-08</td>
+    </tr>
+    <tr>
+        <td>2013-10</td>
+    </tr>
+    <tr>
+        <td>2013-07</td>
+    </tr>
+    <tr>
+        <td>2014-02</td>
+    </tr>
+    <tr>
+        <td>2013-09</td>
+    </tr>
+    <tr>
+        <td>2014-06</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -638,6 +1627,19 @@ FROM orders
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>count</th>
+    </tr>
+    <tr>
+        <td>68883</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -648,6 +1650,19 @@ FROM orders
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>distinct_month_count</th>
+    </tr>
+    <tr>
+        <td>13</td>
+    </tr>
+</table></div></div>
 </div>
 </div>
 <div class="section" id="filtering-data">
@@ -672,10 +1687,21 @@ FROM orders
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The sql extension is already loaded. To reload it, use:
+  %reload_ext sql
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env: DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
 </pre></div>
 </div>
 </div>
@@ -690,6 +1716,79 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_id</th>
+        <th>order_date</th>
+        <th>order_customer_id</th>
+        <th>order_status</th>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>12111</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>11318</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>7130</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>4530</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>15</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>2568</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>17</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>2667</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>22</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>333</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>26</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>7562</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>28</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>656</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>32</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>3960</td>
+        <td>COMPLETE</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -697,6 +1796,19 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>count</th>
+    </tr>
+    <tr>
+        <td>68883</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -708,6 +1820,19 @@ WHERE order_status = &#39;COMPLETE&#39;
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>count</th>
+    </tr>
+    <tr>
+        <td>22899</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -719,6 +1844,19 @@ WHERE order_status = &#39;COMPLETE&#39;
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_status</th>
+    </tr>
+    <tr>
+        <td>COMPLETE</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -729,6 +1867,43 @@ FROM orders
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+9 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_status</th>
+    </tr>
+    <tr>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>ON_HOLD</td>
+    </tr>
+    <tr>
+        <td>PENDING_PAYMENT</td>
+    </tr>
+    <tr>
+        <td>PENDING</td>
+    </tr>
+    <tr>
+        <td>CLOSED</td>
+    </tr>
+    <tr>
+        <td>CANCELED</td>
+    </tr>
+    <tr>
+        <td>PROCESSING</td>
+    </tr>
+    <tr>
+        <td>PAYMENT_REVIEW</td>
+    </tr>
+    <tr>
+        <td>SUSPECTED_FRAUD</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -740,6 +1915,79 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_id</th>
+        <th>order_date</th>
+        <th>order_customer_id</th>
+        <th>order_status</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>11599</td>
+        <td>CLOSED</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>12111</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>8827</td>
+        <td>CLOSED</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>11318</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>7130</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>4530</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>12</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>1837</td>
+        <td>CLOSED</td>
+    </tr>
+    <tr>
+        <td>15</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>2568</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>17</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>2667</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>18</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>1205</td>
+        <td>CLOSED</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -750,6 +1998,19 @@ WHERE order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>count</th>
+    </tr>
+    <tr>
+        <td>30455</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -760,6 +2021,19 @@ WHERE order_status = &#39;COMPLETE&#39; OR order_status = &#39;CLOSED&#39;
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>count</th>
+    </tr>
+    <tr>
+        <td>30455</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -771,6 +2045,37 @@ LIMIT 3
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+3 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_id</th>
+        <th>order_date</th>
+        <th>order_customer_id</th>
+        <th>order_status</th>
+    </tr>
+    <tr>
+        <td>25876</td>
+        <td>2014-01-01 00:00:00</td>
+        <td>3414</td>
+        <td>PENDING_PAYMENT</td>
+    </tr>
+    <tr>
+        <td>25877</td>
+        <td>2014-01-01 00:00:00</td>
+        <td>5549</td>
+        <td>PENDING_PAYMENT</td>
+    </tr>
+    <tr>
+        <td>25878</td>
+        <td>2014-01-01 00:00:00</td>
+        <td>9084</td>
+        <td>PENDING</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -786,6 +2091,20 @@ LIMIT 3
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+(psycopg2.errors.UndefinedFunction) operator does not exist: timestamp without time zone ~~ unknown
+LINE 2: WHERE order_date LIKE &#39;2014-01%&#39;
+                         ^
+HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
+
+[SQL: SELECT * FROM orders
+WHERE order_date LIKE &#39;2014-01%%&#39;
+LIMIT 3]
+(Background on this error at: http://sqlalche.me/e/13/f405)
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -798,6 +2117,79 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_id</th>
+        <th>order_date</th>
+        <th>order_customer_id</th>
+        <th>order_status</th>
+    </tr>
+    <tr>
+        <td>25882</td>
+        <td>2014-01-01 00:00:00</td>
+        <td>4598</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>25888</td>
+        <td>2014-01-01 00:00:00</td>
+        <td>6735</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>25889</td>
+        <td>2014-01-01 00:00:00</td>
+        <td>10045</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>25891</td>
+        <td>2014-01-01 00:00:00</td>
+        <td>3037</td>
+        <td>CLOSED</td>
+    </tr>
+    <tr>
+        <td>25895</td>
+        <td>2014-01-01 00:00:00</td>
+        <td>1044</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>25897</td>
+        <td>2014-01-01 00:00:00</td>
+        <td>6405</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>25898</td>
+        <td>2014-01-01 00:00:00</td>
+        <td>3950</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>25899</td>
+        <td>2014-01-01 00:00:00</td>
+        <td>8068</td>
+        <td>CLOSED</td>
+    </tr>
+    <tr>
+        <td>25900</td>
+        <td>2014-01-01 00:00:00</td>
+        <td>2382</td>
+        <td>CLOSED</td>
+    </tr>
+    <tr>
+        <td>25901</td>
+        <td>2014-01-01 00:00:00</td>
+        <td>3099</td>
+        <td>COMPLETE</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -809,6 +2201,19 @@ WHERE order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>count</th>
+    </tr>
+    <tr>
+        <td>2544</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -821,6 +2226,79 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_id</th>
+        <th>order_date</th>
+        <th>order_customer_id</th>
+        <th>order_status</th>
+    </tr>
+    <tr>
+        <td>25882</td>
+        <td>2014-01-01 00:00:00</td>
+        <td>4598</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>25888</td>
+        <td>2014-01-01 00:00:00</td>
+        <td>6735</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>25889</td>
+        <td>2014-01-01 00:00:00</td>
+        <td>10045</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>25891</td>
+        <td>2014-01-01 00:00:00</td>
+        <td>3037</td>
+        <td>CLOSED</td>
+    </tr>
+    <tr>
+        <td>25895</td>
+        <td>2014-01-01 00:00:00</td>
+        <td>1044</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>25897</td>
+        <td>2014-01-01 00:00:00</td>
+        <td>6405</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>25898</td>
+        <td>2014-01-01 00:00:00</td>
+        <td>3950</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>25899</td>
+        <td>2014-01-01 00:00:00</td>
+        <td>8068</td>
+        <td>CLOSED</td>
+    </tr>
+    <tr>
+        <td>25900</td>
+        <td>2014-01-01 00:00:00</td>
+        <td>2382</td>
+        <td>CLOSED</td>
+    </tr>
+    <tr>
+        <td>25901</td>
+        <td>2014-01-01 00:00:00</td>
+        <td>3099</td>
+        <td>COMPLETE</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -832,6 +2310,19 @@ WHERE order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>count</th>
+    </tr>
+    <tr>
+        <td>2544</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -843,6 +2334,19 @@ WHERE order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>count</th>
+    </tr>
+    <tr>
+        <td>2544</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -855,6 +2359,25 @@ WHERE order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>count</th>
+        <th>min</th>
+        <th>max</th>
+        <th>count_1</th>
+    </tr>
+    <tr>
+        <td>7594</td>
+        <td>2014-01-01 00:00:00</td>
+        <td>2014-03-31 00:00:00</td>
+        <td>89</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -867,12 +2390,121 @@ ORDER BY order_date
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+30 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_date</th>
+    </tr>
+    <tr>
+        <td>2014-03-01 00:00:00</td>
+    </tr>
+    <tr>
+        <td>2014-03-02 00:00:00</td>
+    </tr>
+    <tr>
+        <td>2014-03-03 00:00:00</td>
+    </tr>
+    <tr>
+        <td>2014-03-04 00:00:00</td>
+    </tr>
+    <tr>
+        <td>2014-03-05 00:00:00</td>
+    </tr>
+    <tr>
+        <td>2014-03-06 00:00:00</td>
+    </tr>
+    <tr>
+        <td>2014-03-07 00:00:00</td>
+    </tr>
+    <tr>
+        <td>2014-03-08 00:00:00</td>
+    </tr>
+    <tr>
+        <td>2014-03-10 00:00:00</td>
+    </tr>
+    <tr>
+        <td>2014-03-11 00:00:00</td>
+    </tr>
+    <tr>
+        <td>2014-03-12 00:00:00</td>
+    </tr>
+    <tr>
+        <td>2014-03-13 00:00:00</td>
+    </tr>
+    <tr>
+        <td>2014-03-14 00:00:00</td>
+    </tr>
+    <tr>
+        <td>2014-03-15 00:00:00</td>
+    </tr>
+    <tr>
+        <td>2014-03-16 00:00:00</td>
+    </tr>
+    <tr>
+        <td>2014-03-17 00:00:00</td>
+    </tr>
+    <tr>
+        <td>2014-03-18 00:00:00</td>
+    </tr>
+    <tr>
+        <td>2014-03-19 00:00:00</td>
+    </tr>
+    <tr>
+        <td>2014-03-20 00:00:00</td>
+    </tr>
+    <tr>
+        <td>2014-03-21 00:00:00</td>
+    </tr>
+    <tr>
+        <td>2014-03-22 00:00:00</td>
+    </tr>
+    <tr>
+        <td>2014-03-23 00:00:00</td>
+    </tr>
+    <tr>
+        <td>2014-03-24 00:00:00</td>
+    </tr>
+    <tr>
+        <td>2014-03-25 00:00:00</td>
+    </tr>
+    <tr>
+        <td>2014-03-26 00:00:00</td>
+    </tr>
+    <tr>
+        <td>2014-03-27 00:00:00</td>
+    </tr>
+    <tr>
+        <td>2014-03-28 00:00:00</td>
+    </tr>
+    <tr>
+        <td>2014-03-29 00:00:00</td>
+    </tr>
+    <tr>
+        <td>2014-03-30 00:00:00</td>
+    </tr>
+    <tr>
+        <td>2014-03-31 00:00:00</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
 DROP TABLE IF EXISTS users
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
 </pre></div>
 </div>
 </div>
@@ -896,6 +2528,15 @@ CREATE TABLE users (
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -906,6 +2547,15 @@ VALUES (&#39;Donald&#39;, &#39;Duck&#39;, &#39;donald@duck.com&#39;)
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -913,6 +2563,15 @@ VALUES (&#39;Donald&#39;, &#39;Duck&#39;, &#39;donald@duck.com&#39;)
 
 INSERT INTO users (user_first_name, user_last_name, user_email_id, user_role, is_active)
 VALUES (&#39;Mickey&#39;, &#39;Mouse&#39;, &#39;mickey@mouse.com&#39;, &#39;U&#39;, true)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
 </pre></div>
 </div>
 </div>
@@ -930,6 +2589,15 @@ VALUES
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+3 rows affected.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -939,6 +2607,85 @@ SELECT * FROM users
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+5 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>user_id</th>
+        <th>user_first_name</th>
+        <th>user_last_name</th>
+        <th>user_email_id</th>
+        <th>user_email_validated</th>
+        <th>user_password</th>
+        <th>user_role</th>
+        <th>is_active</th>
+        <th>create_ts</th>
+        <th>last_updated_ts</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>Donald</td>
+        <td>Duck</td>
+        <td>donald@duck.com</td>
+        <td>False</td>
+        <td>None</td>
+        <td>U</td>
+        <td>False</td>
+        <td>2020-11-14 15:38:53.352984</td>
+        <td>2020-11-14 15:38:53.352984</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Mickey</td>
+        <td>Mouse</td>
+        <td>mickey@mouse.com</td>
+        <td>False</td>
+        <td>None</td>
+        <td>U</td>
+        <td>True</td>
+        <td>2020-11-14 15:38:54.369402</td>
+        <td>2020-11-14 15:38:54.369402</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>Gordan</td>
+        <td>Bradock</td>
+        <td>gbradock0@barnesandnoble.com</td>
+        <td>False</td>
+        <td>h9LAz7p7ub</td>
+        <td>U</td>
+        <td>True</td>
+        <td>2020-11-14 15:38:55.260250</td>
+        <td>2020-11-14 15:38:55.260250</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>Tobe</td>
+        <td>Lyness</td>
+        <td>tlyness1@paginegialle.it</td>
+        <td>False</td>
+        <td>oEofndp</td>
+        <td>U</td>
+        <td>True</td>
+        <td>2020-11-14 15:38:55.260250</td>
+        <td>2020-11-14 15:38:55.260250</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>Addie</td>
+        <td>Mesias</td>
+        <td>amesias2@twitpic.com</td>
+        <td>False</td>
+        <td>ih7Y69u56</td>
+        <td>U</td>
+        <td>True</td>
+        <td>2020-11-14 15:38:55.260250</td>
+        <td>2020-11-14 15:38:55.260250</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -954,6 +2701,25 @@ WHERE user_password = NULL
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+0 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>user_id</th>
+        <th>user_first_name</th>
+        <th>user_last_name</th>
+        <th>user_email_id</th>
+        <th>user_email_validated</th>
+        <th>user_password</th>
+        <th>user_role</th>
+        <th>is_active</th>
+        <th>create_ts</th>
+        <th>last_updated_ts</th>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -964,6 +2730,49 @@ WHERE user_password IS NULL
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+2 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>user_id</th>
+        <th>user_first_name</th>
+        <th>user_last_name</th>
+        <th>user_email_id</th>
+        <th>user_email_validated</th>
+        <th>user_password</th>
+        <th>user_role</th>
+        <th>is_active</th>
+        <th>create_ts</th>
+        <th>last_updated_ts</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>Donald</td>
+        <td>Duck</td>
+        <td>donald@duck.com</td>
+        <td>False</td>
+        <td>None</td>
+        <td>U</td>
+        <td>False</td>
+        <td>2020-11-14 15:38:53.352984</td>
+        <td>2020-11-14 15:38:53.352984</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Mickey</td>
+        <td>Mouse</td>
+        <td>mickey@mouse.com</td>
+        <td>False</td>
+        <td>None</td>
+        <td>U</td>
+        <td>True</td>
+        <td>2020-11-14 15:38:54.369402</td>
+        <td>2020-11-14 15:38:54.369402</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -974,6 +2783,61 @@ WHERE user_password IS NOT NULL
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+3 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>user_id</th>
+        <th>user_first_name</th>
+        <th>user_last_name</th>
+        <th>user_email_id</th>
+        <th>user_email_validated</th>
+        <th>user_password</th>
+        <th>user_role</th>
+        <th>is_active</th>
+        <th>create_ts</th>
+        <th>last_updated_ts</th>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>Gordan</td>
+        <td>Bradock</td>
+        <td>gbradock0@barnesandnoble.com</td>
+        <td>False</td>
+        <td>h9LAz7p7ub</td>
+        <td>U</td>
+        <td>True</td>
+        <td>2020-11-14 15:38:55.260250</td>
+        <td>2020-11-14 15:38:55.260250</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>Tobe</td>
+        <td>Lyness</td>
+        <td>tlyness1@paginegialle.it</td>
+        <td>False</td>
+        <td>oEofndp</td>
+        <td>U</td>
+        <td>True</td>
+        <td>2020-11-14 15:38:55.260250</td>
+        <td>2020-11-14 15:38:55.260250</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>Addie</td>
+        <td>Mesias</td>
+        <td>amesias2@twitpic.com</td>
+        <td>False</td>
+        <td>ih7Y69u56</td>
+        <td>U</td>
+        <td>True</td>
+        <td>2020-11-14 15:38:55.260250</td>
+        <td>2020-11-14 15:38:55.260250</td>
+    </tr>
+</table></div></div>
 </div>
 </div>
 <div class="section" id="joining-tables-inner">
@@ -1029,6 +2893,12 @@ WHERE user_password IS NOT NULL
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The sql extension is already loaded. To reload it, use:
+  %reload_ext sql
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1036,6 +2906,11 @@ WHERE user_password IS NOT NULL
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env: DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1051,6 +2926,79 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_id</th>
+        <th>order_date</th>
+        <th>order_status</th>
+        <th>order_item_subtotal</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>CLOSED</td>
+        <td>299.98</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>PENDING_PAYMENT</td>
+        <td>199.99</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>PENDING_PAYMENT</td>
+        <td>250.0</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>PENDING_PAYMENT</td>
+        <td>129.99</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>CLOSED</td>
+        <td>49.98</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>CLOSED</td>
+        <td>299.95</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>CLOSED</td>
+        <td>150.0</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>CLOSED</td>
+        <td>199.92</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>COMPLETE</td>
+        <td>299.98</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>COMPLETE</td>
+        <td>299.95</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1058,6 +3006,19 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>count</th>
+    </tr>
+    <tr>
+        <td>68883</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1065,6 +3026,19 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>count</th>
+    </tr>
+    <tr>
+        <td>172198</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1076,6 +3050,19 @@ FROM orders o JOIN order_items oi
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>count</th>
+    </tr>
+    <tr>
+        <td>172198</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1092,6 +3079,79 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_id</th>
+        <th>order_date</th>
+        <th>order_status</th>
+        <th>order_item_subtotal</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>CLOSED</td>
+        <td>299.98</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>CLOSED</td>
+        <td>49.98</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>CLOSED</td>
+        <td>299.95</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>CLOSED</td>
+        <td>150.0</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>CLOSED</td>
+        <td>199.92</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>COMPLETE</td>
+        <td>299.98</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>COMPLETE</td>
+        <td>299.95</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>COMPLETE</td>
+        <td>99.96</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>COMPLETE</td>
+        <td>299.98</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>COMPLETE</td>
+        <td>129.99</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1105,6 +3165,19 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>count</th>
+    </tr>
+    <tr>
+        <td>75408</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1122,6 +3195,79 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_id</th>
+        <th>order_date</th>
+        <th>order_status</th>
+        <th>order_item_subtotal</th>
+    </tr>
+    <tr>
+        <td>25882</td>
+        <td>2014-01-01 00:00:00</td>
+        <td>COMPLETE</td>
+        <td>299.97</td>
+    </tr>
+    <tr>
+        <td>25882</td>
+        <td>2014-01-01 00:00:00</td>
+        <td>COMPLETE</td>
+        <td>100.0</td>
+    </tr>
+    <tr>
+        <td>25882</td>
+        <td>2014-01-01 00:00:00</td>
+        <td>COMPLETE</td>
+        <td>79.98</td>
+    </tr>
+    <tr>
+        <td>25882</td>
+        <td>2014-01-01 00:00:00</td>
+        <td>COMPLETE</td>
+        <td>399.98</td>
+    </tr>
+    <tr>
+        <td>25888</td>
+        <td>2014-01-01 00:00:00</td>
+        <td>COMPLETE</td>
+        <td>299.98</td>
+    </tr>
+    <tr>
+        <td>25889</td>
+        <td>2014-01-01 00:00:00</td>
+        <td>COMPLETE</td>
+        <td>99.96</td>
+    </tr>
+    <tr>
+        <td>25889</td>
+        <td>2014-01-01 00:00:00</td>
+        <td>COMPLETE</td>
+        <td>19.99</td>
+    </tr>
+    <tr>
+        <td>25891</td>
+        <td>2014-01-01 00:00:00</td>
+        <td>CLOSED</td>
+        <td>150.0</td>
+    </tr>
+    <tr>
+        <td>25891</td>
+        <td>2014-01-01 00:00:00</td>
+        <td>CLOSED</td>
+        <td>50.0</td>
+    </tr>
+    <tr>
+        <td>25891</td>
+        <td>2014-01-01 00:00:00</td>
+        <td>CLOSED</td>
+        <td>119.97</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1136,6 +3282,19 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>count</th>
+    </tr>
+    <tr>
+        <td>6198</td>
+    </tr>
+</table></div></div>
 </div>
 </div>
 <div class="section" id="joining-tables-outer">
@@ -1164,10 +3323,21 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The sql extension is already loaded. To reload it, use:
+  %reload_ext sql
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env: DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
 </pre></div>
 </div>
 </div>
@@ -1188,6 +3358,90 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_id</th>
+        <th>order_date</th>
+        <th>order_status</th>
+        <th>order_item_order_id</th>
+        <th>order_item_subtotal</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>CLOSED</td>
+        <td>1</td>
+        <td>299.98</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>PENDING_PAYMENT</td>
+        <td>2</td>
+        <td>129.99</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>PENDING_PAYMENT</td>
+        <td>2</td>
+        <td>250.0</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>PENDING_PAYMENT</td>
+        <td>2</td>
+        <td>199.99</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>COMPLETE</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>CLOSED</td>
+        <td>4</td>
+        <td>199.92</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>CLOSED</td>
+        <td>4</td>
+        <td>150.0</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>CLOSED</td>
+        <td>4</td>
+        <td>299.95</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>CLOSED</td>
+        <td>4</td>
+        <td>49.98</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>COMPLETE</td>
+        <td>5</td>
+        <td>299.98</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1199,6 +3453,19 @@ FROM orders o LEFT OUTER JOIN order_items oi
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>count</th>
+    </tr>
+    <tr>
+        <td>183650</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1210,6 +3477,19 @@ FROM orders o JOIN order_items oi
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>count</th>
+    </tr>
+    <tr>
+        <td>172198</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1228,6 +3508,90 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_id</th>
+        <th>order_date</th>
+        <th>order_status</th>
+        <th>order_item_order_id</th>
+        <th>order_item_subtotal</th>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>COMPLETE</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>COMPLETE</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>22</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>COMPLETE</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>26</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>COMPLETE</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>32</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>COMPLETE</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>40</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>PENDING_PAYMENT</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>47</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>PENDING_PAYMENT</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>53</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>PROCESSING</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>54</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>PENDING_PAYMENT</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>55</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>PENDING</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1240,6 +3604,19 @@ WHERE oi.order_item_order_id IS NULL
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>count</th>
+    </tr>
+    <tr>
+        <td>11452</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1253,6 +3630,19 @@ WHERE oi.order_item_order_id IS NULL
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>count</th>
+    </tr>
+    <tr>
+        <td>5189</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1269,6 +3659,90 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_id</th>
+        <th>order_date</th>
+        <th>order_status</th>
+        <th>order_item_order_id</th>
+        <th>order_item_subtotal</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>CLOSED</td>
+        <td>1</td>
+        <td>299.98</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>PENDING_PAYMENT</td>
+        <td>2</td>
+        <td>199.99</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>PENDING_PAYMENT</td>
+        <td>2</td>
+        <td>250.0</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>PENDING_PAYMENT</td>
+        <td>2</td>
+        <td>129.99</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>CLOSED</td>
+        <td>4</td>
+        <td>49.98</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>CLOSED</td>
+        <td>4</td>
+        <td>299.95</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>CLOSED</td>
+        <td>4</td>
+        <td>150.0</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>CLOSED</td>
+        <td>4</td>
+        <td>199.92</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>COMPLETE</td>
+        <td>5</td>
+        <td>299.98</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>COMPLETE</td>
+        <td>5</td>
+        <td>299.95</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1280,6 +3754,19 @@ FROM orders o RIGHT OUTER JOIN order_items oi
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>count</th>
+    </tr>
+    <tr>
+        <td>172198</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1297,6 +3784,20 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+0 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_id</th>
+        <th>order_date</th>
+        <th>order_status</th>
+        <th>order_item_order_id</th>
+        <th>order_item_subtotal</th>
+    </tr>
+</table></div></div>
 </div>
 </div>
 <div class="section" id="performing-aggregations">
@@ -1340,10 +3841,21 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The sql extension is already loaded. To reload it, use:
+  %reload_ext sql
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env: DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
 </pre></div>
 </div>
 </div>
@@ -1354,6 +3866,19 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>count</th>
+    </tr>
+    <tr>
+        <td>68883</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1361,6 +3886,19 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>count</th>
+    </tr>
+    <tr>
+        <td>364</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1372,6 +3910,45 @@ WHERE order_item_order_id = 2
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+3 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_item_id</th>
+        <th>order_item_order_id</th>
+        <th>order_item_product_id</th>
+        <th>order_item_quantity</th>
+        <th>order_item_subtotal</th>
+        <th>order_item_product_price</th>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>2</td>
+        <td>1073</td>
+        <td>1</td>
+        <td>199.99</td>
+        <td>199.99</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>2</td>
+        <td>502</td>
+        <td>5</td>
+        <td>250.0</td>
+        <td>50.0</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>2</td>
+        <td>403</td>
+        <td>1</td>
+        <td>129.99</td>
+        <td>129.99</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1383,6 +3960,19 @@ WHERE order_item_order_id = 2
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_revenue</th>
+    </tr>
+    <tr>
+        <td>579.98</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1394,6 +3984,19 @@ WHERE order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>count</th>
+    </tr>
+    <tr>
+        <td>30455</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1408,6 +4011,57 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_date</th>
+        <th>count</th>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>143</td>
+    </tr>
+    <tr>
+        <td>2013-07-26 00:00:00</td>
+        <td>269</td>
+    </tr>
+    <tr>
+        <td>2013-07-27 00:00:00</td>
+        <td>202</td>
+    </tr>
+    <tr>
+        <td>2013-07-28 00:00:00</td>
+        <td>187</td>
+    </tr>
+    <tr>
+        <td>2013-07-29 00:00:00</td>
+        <td>253</td>
+    </tr>
+    <tr>
+        <td>2013-07-30 00:00:00</td>
+        <td>227</td>
+    </tr>
+    <tr>
+        <td>2013-07-31 00:00:00</td>
+        <td>252</td>
+    </tr>
+    <tr>
+        <td>2013-08-01 00:00:00</td>
+        <td>246</td>
+    </tr>
+    <tr>
+        <td>2013-08-02 00:00:00</td>
+        <td>224</td>
+    </tr>
+    <tr>
+        <td>2013-08-03 00:00:00</td>
+        <td>183</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1422,6 +4076,53 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+9 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_status</th>
+        <th>status_count</th>
+    </tr>
+    <tr>
+        <td>CANCELED</td>
+        <td>1428</td>
+    </tr>
+    <tr>
+        <td>CLOSED</td>
+        <td>7556</td>
+    </tr>
+    <tr>
+        <td>COMPLETE</td>
+        <td>22899</td>
+    </tr>
+    <tr>
+        <td>ON_HOLD</td>
+        <td>3798</td>
+    </tr>
+    <tr>
+        <td>PAYMENT_REVIEW</td>
+        <td>729</td>
+    </tr>
+    <tr>
+        <td>PENDING</td>
+        <td>7610</td>
+    </tr>
+    <tr>
+        <td>PENDING_PAYMENT</td>
+        <td>15030</td>
+    </tr>
+    <tr>
+        <td>PROCESSING</td>
+        <td>8275</td>
+    </tr>
+    <tr>
+        <td>SUSPECTED_FRAUD</td>
+        <td>1558</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1435,6 +4136,57 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_item_order_id</th>
+        <th>order_revenue</th>
+    </tr>
+    <tr>
+        <td>44127</td>
+        <td>179.97</td>
+    </tr>
+    <tr>
+        <td>26264</td>
+        <td>334.96000000000004</td>
+    </tr>
+    <tr>
+        <td>37876</td>
+        <td>699.97</td>
+    </tr>
+    <tr>
+        <td>55864</td>
+        <td>600.94</td>
+    </tr>
+    <tr>
+        <td>31789</td>
+        <td>129.99</td>
+    </tr>
+    <tr>
+        <td>56903</td>
+        <td>479.97</td>
+    </tr>
+    <tr>
+        <td>40694</td>
+        <td>1129.75</td>
+    </tr>
+    <tr>
+        <td>48663</td>
+        <td>969.9200000000001</td>
+    </tr>
+    <tr>
+        <td>47216</td>
+        <td>1219.89</td>
+    </tr>
+    <tr>
+        <td>37922</td>
+        <td>1029.9</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="admonition error">
 <p class="admonition-title">Error</p>
@@ -1452,6 +4204,21 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+(psycopg2.errors.UndefinedFunction) function round(double precision, integer) does not exist
+LINE 1: SELECT order_item_order_id, round(sum(order_item_subtotal), ...
+                                    ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+
+[SQL: SELECT order_item_order_id, round(sum(order_item_subtotal), 2) AS order_revenue
+FROM order_items
+GROUP BY order_item_order_id 
+LIMIT 10]
+(Background on this error at: http://sqlalche.me/e/13/f405)
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1465,6 +4232,57 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_item_order_id</th>
+        <th>order_revenue</th>
+    </tr>
+    <tr>
+        <td>44127</td>
+        <td>179.97</td>
+    </tr>
+    <tr>
+        <td>26264</td>
+        <td>334.96</td>
+    </tr>
+    <tr>
+        <td>37876</td>
+        <td>699.97</td>
+    </tr>
+    <tr>
+        <td>55864</td>
+        <td>600.94</td>
+    </tr>
+    <tr>
+        <td>31789</td>
+        <td>129.99</td>
+    </tr>
+    <tr>
+        <td>56903</td>
+        <td>479.97</td>
+    </tr>
+    <tr>
+        <td>40694</td>
+        <td>1129.75</td>
+    </tr>
+    <tr>
+        <td>48663</td>
+        <td>969.92</td>
+    </tr>
+    <tr>
+        <td>47216</td>
+        <td>1219.89</td>
+    </tr>
+    <tr>
+        <td>37922</td>
+        <td>1029.90</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1482,6 +4300,68 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_date</th>
+        <th>order_item_product_id</th>
+        <th>revenue</th>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>24</td>
+        <td>319.96</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>93</td>
+        <td>74.97</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>134</td>
+        <td>100.00</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>191</td>
+        <td>5099.49</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>226</td>
+        <td>599.99</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>365</td>
+        <td>3359.44</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>403</td>
+        <td>1949.85</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>502</td>
+        <td>1650.00</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>572</td>
+        <td>119.97</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>625</td>
+        <td>199.99</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1501,6 +4381,24 @@ WHERE o.order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)
 GROUP BY o.order_date,
     oi.order_item_product_id
 LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+(psycopg2.errors.UndefinedColumn) column &quot;revenue&quot; does not exist
+LINE 5:     AND revenue &gt;= 500
+                ^
+
+[SQL: SELECT o.order_date, oi.order_item_product_id, round(sum(oi.order_item_subtotal::numeric), 2) AS revenue
+FROM orders o JOIN order_items oi
+    ON o.order_id = oi.order_item_order_id
+WHERE o.order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)
+    AND revenue &gt;= 500
+GROUP BY o.order_date,
+    oi.order_item_product_id
+LIMIT 10]
+(Background on this error at: http://sqlalche.me/e/13/f405)
 </pre></div>
 </div>
 </div>
@@ -1526,6 +4424,24 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+(psycopg2.errors.GroupingError) aggregate functions are not allowed in WHERE
+LINE 5:     AND round(sum(oi.order_item_subtotal::numeric), 2) &gt;= 50...
+                      ^
+
+[SQL: SELECT o.order_date, oi.order_item_product_id, round(sum(oi.order_item_subtotal::numeric), 2) AS revenue
+FROM orders o JOIN order_items oi
+    ON o.order_id = oi.order_item_order_id
+WHERE o.order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)
+    AND round(sum(oi.order_item_subtotal::numeric), 2) &gt;= 500
+GROUP BY o.order_date,
+    oi.order_item_product_id
+LIMIT 10]
+(Background on this error at: http://sqlalche.me/e/13/f405)
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1545,6 +4461,143 @@ LIMIT 25
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+25 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_date</th>
+        <th>order_item_product_id</th>
+        <th>revenue</th>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>1004</td>
+        <td>5599.72</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>191</td>
+        <td>5099.49</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>957</td>
+        <td>4499.70</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>365</td>
+        <td>3359.44</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>1073</td>
+        <td>2999.85</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>1014</td>
+        <td>2798.88</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>403</td>
+        <td>1949.85</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>502</td>
+        <td>1650.00</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>627</td>
+        <td>1079.73</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>226</td>
+        <td>599.99</td>
+    </tr>
+    <tr>
+        <td>2013-07-26 00:00:00</td>
+        <td>1004</td>
+        <td>10799.46</td>
+    </tr>
+    <tr>
+        <td>2013-07-26 00:00:00</td>
+        <td>365</td>
+        <td>7978.67</td>
+    </tr>
+    <tr>
+        <td>2013-07-26 00:00:00</td>
+        <td>957</td>
+        <td>6899.54</td>
+    </tr>
+    <tr>
+        <td>2013-07-26 00:00:00</td>
+        <td>191</td>
+        <td>6799.32</td>
+    </tr>
+    <tr>
+        <td>2013-07-26 00:00:00</td>
+        <td>1014</td>
+        <td>4798.08</td>
+    </tr>
+    <tr>
+        <td>2013-07-26 00:00:00</td>
+        <td>502</td>
+        <td>4250.00</td>
+    </tr>
+    <tr>
+        <td>2013-07-26 00:00:00</td>
+        <td>1073</td>
+        <td>3999.80</td>
+    </tr>
+    <tr>
+        <td>2013-07-26 00:00:00</td>
+        <td>403</td>
+        <td>3249.75</td>
+    </tr>
+    <tr>
+        <td>2013-07-26 00:00:00</td>
+        <td>627</td>
+        <td>3039.24</td>
+    </tr>
+    <tr>
+        <td>2013-07-27 00:00:00</td>
+        <td>1004</td>
+        <td>9599.52</td>
+    </tr>
+    <tr>
+        <td>2013-07-27 00:00:00</td>
+        <td>191</td>
+        <td>5999.40</td>
+    </tr>
+    <tr>
+        <td>2013-07-27 00:00:00</td>
+        <td>957</td>
+        <td>5699.62</td>
+    </tr>
+    <tr>
+        <td>2013-07-27 00:00:00</td>
+        <td>1073</td>
+        <td>5399.73</td>
+    </tr>
+    <tr>
+        <td>2013-07-27 00:00:00</td>
+        <td>365</td>
+        <td>5099.15</td>
+    </tr>
+    <tr>
+        <td>2013-07-27 00:00:00</td>
+        <td>502</td>
+        <td>5050.00</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1563,6 +4616,19 @@ SELECT count(1) FROM (
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>count</th>
+    </tr>
+    <tr>
+        <td>9120</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1582,6 +4648,19 @@ SELECT count(1) FROM (
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>count</th>
+    </tr>
+    <tr>
+        <td>3339</td>
+    </tr>
+</table></div></div>
 </div>
 </div>
 <div class="section" id="sorting-data">
@@ -1617,10 +4696,21 @@ SELECT count(1) FROM (
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The sql extension is already loaded. To reload it, use:
+  %reload_ext sql
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env: DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
 </pre></div>
 </div>
 </div>
@@ -1633,6 +4723,79 @@ SELECT * FROM orders LIMIT 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_id</th>
+        <th>order_date</th>
+        <th>order_customer_id</th>
+        <th>order_status</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>11599</td>
+        <td>CLOSED</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>256</td>
+        <td>PENDING_PAYMENT</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>12111</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>8827</td>
+        <td>CLOSED</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>11318</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>7130</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>4530</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>8</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>2911</td>
+        <td>PROCESSING</td>
+    </tr>
+    <tr>
+        <td>9</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>5657</td>
+        <td>PENDING_PAYMENT</td>
+    </tr>
+    <tr>
+        <td>10</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>5648</td>
+        <td>PENDING_PAYMENT</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1644,6 +4807,79 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_id</th>
+        <th>order_date</th>
+        <th>order_customer_id</th>
+        <th>order_status</th>
+    </tr>
+    <tr>
+        <td>22945</td>
+        <td>2013-12-13 00:00:00</td>
+        <td>1</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>33865</td>
+        <td>2014-02-18 00:00:00</td>
+        <td>2</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>67863</td>
+        <td>2013-11-30 00:00:00</td>
+        <td>2</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>15192</td>
+        <td>2013-10-29 00:00:00</td>
+        <td>2</td>
+        <td>PENDING_PAYMENT</td>
+    </tr>
+    <tr>
+        <td>57963</td>
+        <td>2013-08-02 00:00:00</td>
+        <td>2</td>
+        <td>ON_HOLD</td>
+    </tr>
+    <tr>
+        <td>56178</td>
+        <td>2014-07-15 00:00:00</td>
+        <td>3</td>
+        <td>PENDING</td>
+    </tr>
+    <tr>
+        <td>57617</td>
+        <td>2014-07-24 00:00:00</td>
+        <td>3</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>23662</td>
+        <td>2013-12-19 00:00:00</td>
+        <td>3</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>22646</td>
+        <td>2013-12-11 00:00:00</td>
+        <td>3</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>35158</td>
+        <td>2014-02-26 00:00:00</td>
+        <td>3</td>
+        <td>COMPLETE</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1655,6 +4891,79 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_id</th>
+        <th>order_date</th>
+        <th>order_customer_id</th>
+        <th>order_status</th>
+    </tr>
+    <tr>
+        <td>22945</td>
+        <td>2013-12-13 00:00:00</td>
+        <td>1</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>33865</td>
+        <td>2014-02-18 00:00:00</td>
+        <td>2</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>67863</td>
+        <td>2013-11-30 00:00:00</td>
+        <td>2</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>15192</td>
+        <td>2013-10-29 00:00:00</td>
+        <td>2</td>
+        <td>PENDING_PAYMENT</td>
+    </tr>
+    <tr>
+        <td>57963</td>
+        <td>2013-08-02 00:00:00</td>
+        <td>2</td>
+        <td>ON_HOLD</td>
+    </tr>
+    <tr>
+        <td>56178</td>
+        <td>2014-07-15 00:00:00</td>
+        <td>3</td>
+        <td>PENDING</td>
+    </tr>
+    <tr>
+        <td>57617</td>
+        <td>2014-07-24 00:00:00</td>
+        <td>3</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>23662</td>
+        <td>2013-12-19 00:00:00</td>
+        <td>3</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>22646</td>
+        <td>2013-12-11 00:00:00</td>
+        <td>3</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>35158</td>
+        <td>2014-02-26 00:00:00</td>
+        <td>3</td>
+        <td>COMPLETE</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1667,6 +4976,79 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_id</th>
+        <th>order_date</th>
+        <th>order_customer_id</th>
+        <th>order_status</th>
+    </tr>
+    <tr>
+        <td>22945</td>
+        <td>2013-12-13 00:00:00</td>
+        <td>1</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>57963</td>
+        <td>2013-08-02 00:00:00</td>
+        <td>2</td>
+        <td>ON_HOLD</td>
+    </tr>
+    <tr>
+        <td>15192</td>
+        <td>2013-10-29 00:00:00</td>
+        <td>2</td>
+        <td>PENDING_PAYMENT</td>
+    </tr>
+    <tr>
+        <td>67863</td>
+        <td>2013-11-30 00:00:00</td>
+        <td>2</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>33865</td>
+        <td>2014-02-18 00:00:00</td>
+        <td>2</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>22646</td>
+        <td>2013-12-11 00:00:00</td>
+        <td>3</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>61453</td>
+        <td>2013-12-14 00:00:00</td>
+        <td>3</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>23662</td>
+        <td>2013-12-19 00:00:00</td>
+        <td>3</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>35158</td>
+        <td>2014-02-26 00:00:00</td>
+        <td>3</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>46399</td>
+        <td>2014-05-09 00:00:00</td>
+        <td>3</td>
+        <td>PROCESSING</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1679,6 +5061,79 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_id</th>
+        <th>order_date</th>
+        <th>order_customer_id</th>
+        <th>order_status</th>
+    </tr>
+    <tr>
+        <td>22945</td>
+        <td>2013-12-13 00:00:00</td>
+        <td>1</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>33865</td>
+        <td>2014-02-18 00:00:00</td>
+        <td>2</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>67863</td>
+        <td>2013-11-30 00:00:00</td>
+        <td>2</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>15192</td>
+        <td>2013-10-29 00:00:00</td>
+        <td>2</td>
+        <td>PENDING_PAYMENT</td>
+    </tr>
+    <tr>
+        <td>57963</td>
+        <td>2013-08-02 00:00:00</td>
+        <td>2</td>
+        <td>ON_HOLD</td>
+    </tr>
+    <tr>
+        <td>57617</td>
+        <td>2014-07-24 00:00:00</td>
+        <td>3</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>56178</td>
+        <td>2014-07-15 00:00:00</td>
+        <td>3</td>
+        <td>PENDING</td>
+    </tr>
+    <tr>
+        <td>46399</td>
+        <td>2014-05-09 00:00:00</td>
+        <td>3</td>
+        <td>PROCESSING</td>
+    </tr>
+    <tr>
+        <td>35158</td>
+        <td>2014-02-26 00:00:00</td>
+        <td>3</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>23662</td>
+        <td>2013-12-19 00:00:00</td>
+        <td>3</td>
+        <td>COMPLETE</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1698,6 +5153,143 @@ LIMIT 25
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+25 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_date</th>
+        <th>order_item_product_id</th>
+        <th>revenue</th>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>1004</td>
+        <td>5599.72</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>191</td>
+        <td>5099.49</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>957</td>
+        <td>4499.70</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>365</td>
+        <td>3359.44</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>1073</td>
+        <td>2999.85</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>1014</td>
+        <td>2798.88</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>403</td>
+        <td>1949.85</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>502</td>
+        <td>1650.00</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>627</td>
+        <td>1079.73</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>226</td>
+        <td>599.99</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>24</td>
+        <td>319.96</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>821</td>
+        <td>207.96</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>625</td>
+        <td>199.99</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>705</td>
+        <td>119.99</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>572</td>
+        <td>119.97</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>666</td>
+        <td>109.99</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>725</td>
+        <td>108.00</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>134</td>
+        <td>100.00</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>906</td>
+        <td>99.96</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>828</td>
+        <td>95.97</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>810</td>
+        <td>79.96</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>926</td>
+        <td>79.95</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>924</td>
+        <td>79.95</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>93</td>
+        <td>74.97</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>835</td>
+        <td>63.98</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1718,12 +5310,83 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_date</th>
+        <th>order_item_product_id</th>
+        <th>revenue</th>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>1004</td>
+        <td>5599.72</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>191</td>
+        <td>5099.49</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>957</td>
+        <td>4499.70</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>365</td>
+        <td>3359.44</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>1073</td>
+        <td>2999.85</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>1014</td>
+        <td>2798.88</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>403</td>
+        <td>1949.85</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>502</td>
+        <td>1650.00</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>627</td>
+        <td>1079.73</td>
+    </tr>
+    <tr>
+        <td>2013-07-26 00:00:00</td>
+        <td>1004</td>
+        <td>10799.46</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
 DROP TABLE IF EXISTS users
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
 </pre></div>
 </div>
 </div>
@@ -1748,6 +5411,15 @@ CREATE TABLE users (
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1758,6 +5430,15 @@ VALUES (&#39;Donald&#39;, &#39;Duck&#39;, &#39;donald@duck.com&#39;, &#39;IN&#39
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1765,6 +5446,15 @@ VALUES (&#39;Donald&#39;, &#39;Duck&#39;, &#39;donald@duck.com&#39;, &#39;IN&#39
 
 INSERT INTO users (user_first_name, user_last_name, user_email_id, user_role, is_active, user_country)
 VALUES (&#39;Mickey&#39;, &#39;Mouse&#39;, &#39;mickey@mouse.com&#39;, &#39;U&#39;, true, &#39;US&#39;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
 </pre></div>
 </div>
 </div>
@@ -1782,6 +5472,15 @@ VALUES
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+3 rows affected.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1792,6 +5491,91 @@ ORDER BY user_country
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+5 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>user_id</th>
+        <th>user_first_name</th>
+        <th>user_last_name</th>
+        <th>user_email_id</th>
+        <th>user_email_validated</th>
+        <th>user_password</th>
+        <th>user_role</th>
+        <th>user_country</th>
+        <th>is_active</th>
+        <th>create_ts</th>
+        <th>last_updated_ts</th>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>Addie</td>
+        <td>Mesias</td>
+        <td>amesias2@twitpic.com</td>
+        <td>False</td>
+        <td>ih7Y69u56</td>
+        <td>U</td>
+        <td>AU</td>
+        <td>True</td>
+        <td>2020-11-14 15:40:12.414932</td>
+        <td>2020-11-14 15:40:12.414932</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>Gordan</td>
+        <td>Bradock</td>
+        <td>gbradock0@barnesandnoble.com</td>
+        <td>False</td>
+        <td>h9LAz7p7ub</td>
+        <td>U</td>
+        <td>CA</td>
+        <td>True</td>
+        <td>2020-11-14 15:40:12.414932</td>
+        <td>2020-11-14 15:40:12.414932</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>Tobe</td>
+        <td>Lyness</td>
+        <td>tlyness1@paginegialle.it</td>
+        <td>False</td>
+        <td>oEofndp</td>
+        <td>U</td>
+        <td>FR</td>
+        <td>True</td>
+        <td>2020-11-14 15:40:12.414932</td>
+        <td>2020-11-14 15:40:12.414932</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>Donald</td>
+        <td>Duck</td>
+        <td>donald@duck.com</td>
+        <td>False</td>
+        <td>None</td>
+        <td>U</td>
+        <td>IN</td>
+        <td>False</td>
+        <td>2020-11-14 15:40:10.878908</td>
+        <td>2020-11-14 15:40:10.878908</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Mickey</td>
+        <td>Mouse</td>
+        <td>mickey@mouse.com</td>
+        <td>False</td>
+        <td>None</td>
+        <td>U</td>
+        <td>US</td>
+        <td>True</td>
+        <td>2020-11-14 15:40:11.683887</td>
+        <td>2020-11-14 15:40:11.683887</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1810,6 +5594,55 @@ ORDER BY
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+5 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>user_id</th>
+        <th>user_first_name</th>
+        <th>user_last_name</th>
+        <th>user_email_id</th>
+        <th>user_country</th>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Mickey</td>
+        <td>Mouse</td>
+        <td>mickey@mouse.com</td>
+        <td>US</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>Addie</td>
+        <td>Mesias</td>
+        <td>amesias2@twitpic.com</td>
+        <td>AU</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>Gordan</td>
+        <td>Bradock</td>
+        <td>gbradock0@barnesandnoble.com</td>
+        <td>CA</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>Tobe</td>
+        <td>Lyness</td>
+        <td>tlyness1@paginegialle.it</td>
+        <td>FR</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>Donald</td>
+        <td>Duck</td>
+        <td>donald@duck.com</td>
+        <td>IN</td>
+    </tr>
+</table></div></div>
 </div>
 </div>
 <div class="section" id="solution-daily-product-revenue">
@@ -1839,10 +5672,21 @@ ORDER BY
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The sql extension is already loaded. To reload it, use:
+  %reload_ext sql
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env: DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
 </pre></div>
 </div>
 </div>

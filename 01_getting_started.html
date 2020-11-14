@@ -283,6 +283,11 @@
    Loading Data - Docker
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-loading-data">
+   Exercise - Loading Data
+  </a>
+ </li>
 </ul>
 
         </nav>
@@ -306,6 +311,7 @@
 <li><p>SQL Workbench Features</p></li>
 <li><p>Data Loading Utilities</p></li>
 <li><p>Loading Data - Docker</p></li>
+<li><p>Exercise - Loading Data</p></li>
 </ul>
 <div class="section" id="connecting-to-database">
 <h2>Connecting to Database<a class="headerlink" href="#connecting-to-database" title="Permalink to this headline">¶</a></h2>
@@ -747,6 +753,71 @@ CSV HEADER<span class="p">;</span>
 <li><p>Validate by running queries</p></li>
 </ul>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">users</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="exercise-loading-data">
+<h2>Exercise - Loading Data<a class="headerlink" href="#exercise-loading-data" title="Permalink to this headline">¶</a></h2>
+<p>As part of this exercise, you need to take care of loading data using <code class="docutils literal notranslate"><span class="pre">COPY</span></code> Command.</p>
+<ul class="simple">
+<li><p>You can connect to the database using following details in the environment provided by us.</p>
+<ul>
+<li><p>Host: localhost</p></li>
+<li><p>Port: 5342</p></li>
+<li><p>Database Name: YOUR_OS_USER_hr_db</p></li>
+<li><p>User Name: YOUR_OS_USER_hr_user</p></li>
+<li><p>Password: YOUR_OS_USER_PASSWORD (provided by us).</p></li>
+</ul>
+</li>
+<li><p>If you are using your own environment, make sure to create database for storing HR Data.</p>
+<ul>
+<li><p>Database Name: hr_db</p></li>
+<li><p>User Name: hr_user</p></li>
+<li><p>You can create user with password of your choice.</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">DATABASE</span> <span class="n">hr_db</span><span class="p">;</span>
+<span class="k">CREATE</span> <span class="k">USER</span> <span class="n">hr_user</span> <span class="k">WITH</span> <span class="n">PASSWORD</span> <span class="s1">&#39;hr_password&#39;</span><span class="p">;</span>
+<span class="k">GRANT</span> <span class="k">ALL</span> <span class="k">ON</span> <span class="k">DATABASE</span> <span class="n">hr_db</span> <span class="k">TO</span> <span class="n">hr_user</span><span class="p">;</span>
+<span class="k">GRANT</span> <span class="n">pg_read_server_files</span> <span class="k">TO</span> <span class="n">hr_user</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Create table using this script.</p></li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">employees</span>
+   <span class="p">(</span> <span class="n">employee_id</span> <span class="nb">INTEGER</span>
+   <span class="p">,</span> <span class="n">first_name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+   <span class="p">,</span> <span class="n">last_name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span>
+   <span class="p">,</span> <span class="n">email</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span>
+   <span class="p">,</span> <span class="n">phone_number</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+   <span class="p">,</span> <span class="n">hire_date</span> <span class="nb">DATE</span>
+   <span class="p">,</span> <span class="n">job_id</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+   <span class="p">,</span> <span class="n">salary</span> <span class="nb">NUMERIC</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+   <span class="p">,</span> <span class="n">commission_pct</span> <span class="nb">NUMERIC</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+   <span class="p">,</span> <span class="n">manager_id</span> <span class="nb">INTEGER</span>
+   <span class="p">,</span> <span class="n">department_id</span> <span class="nb">INTEGER</span>
+   <span class="p">)</span> <span class="p">;</span>
+<span class="k">CREATE</span> <span class="k">UNIQUE</span> <span class="k">INDEX</span> <span class="n">emp_emp_id_pk</span>
+         <span class="k">ON</span> <span class="n">employees</span> <span class="p">(</span><span class="n">employee_id</span><span class="p">)</span> <span class="p">;</span>
+<span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">employees</span> <span class="k">ADD</span>
+   <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">employee_id</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Understand data.</p>
+<ul>
+<li><p>Check for delimiters (record as well as field).</p></li>
+<li><p>Check whether header exists or not.</p></li>
+<li><p>Ensure number of fields for the table and data being loaded are same or not.</p></li>
+</ul>
+</li>
+<li><p>Load data into the table using <code class="docutils literal notranslate"><span class="pre">COPY</span></code> Command.</p></li>
+<li><p>Validate by running these queries. You can also use SQL Workbench to run the queries to validate whether data is loaded successfully or not.</p></li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">employees</span> <span class="k">LIMIT</span> <span class="mi">10</span><span class="p">;</span>
+<span class="k">SELECT</span> <span class="k">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">employees</span><span class="p">;</span>
 </pre></div>
 </div>
 </div>
