@@ -233,40 +233,88 @@
   <a class="reference internal nav-link" href="#list-partitioning">
    List Partitioning
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#create-partitioned-table">
+     Create Partitioned Table
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#adding-partitions">
-   Adding Partitions
+  <a class="reference internal nav-link" href="#managing-partitions-list">
+   Managing Partitions - List
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#inserting-data">
-   Inserting Data
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dropping-partitions">
-   Dropping Partitions
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#managing-indexes">
-   Managing Indexes
+  <a class="reference internal nav-link" href="#manipulating-data">
+   Manipulating Data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#range-partitioning">
    Range Partitioning
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Create Partitioned Table
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#managing-partitions-range">
+   Managing Partitions - Range
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#repartitioning-range">
+   Repartitioning - Range
+  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#hash-partitioning">
    Hash Partitioning
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Create Partitioned Table
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#managing-partitions-hash">
+   Managing Partitions - Hash
+  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#usage-scenarios">
    Usage Scenarios
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sub-partitioning">
+   Sub Partitioning
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#list-list-partitioning">
+     List - List Partitioning
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#list-range-partitioning">
+     List - Range Partitioning
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-partitioning-tables">
+   Exercise - Partitioning Tables
   </a>
  </li>
 </ul>
@@ -286,13 +334,16 @@
 <ul class="simple">
 <li><p>Overview of Partitioning</p></li>
 <li><p>List Partitioning</p></li>
-<li><p>Adding Partitions</p></li>
-<li><p>Inserting Data</p></li>
-<li><p>Dropping Partitions</p></li>
-<li><p>Managing Indexes</p></li>
+<li><p>Managing Partitions - List</p></li>
+<li><p>Manipulating Data</p></li>
 <li><p>Range Partitioning</p></li>
+<li><p>Managing Partitions - Range</p></li>
+<li><p>Repartitioning - Range</p></li>
 <li><p>Hash Partitioning</p></li>
+<li><p>Managing Partitions - Hash</p></li>
 <li><p>Usage Scenarios</p></li>
+<li><p>Sub Partitioning</p></li>
+<li><p>Exercise - Paritioning Tables</p></li>
 </ul>
 <div class="section" id="overview-of-partitioning">
 <h2>Overview of Partitioning<a class="headerlink" href="#overview-of-partitioning" title="Permalink to this headline">¶</a></h2>
@@ -303,7 +354,8 @@
 <li><p>Hash Partitioning</p></li>
 <li><p>List and Range are more widely used compared to Hash Partitioning.</p></li>
 <li><p>We can also mix and match these to have multi level partitioning. It is known as sub partitioning.</p></li>
-<li><p>We can only partition a table with primary key when partition column is prime attribute (one of the primary key columns).</p></li>
+<li><p>We can either partition a table with out primary key or partition a table with primary key when partition column is prime attribute (one of the primary key columns).</p></li>
+<li><p>Indexes can be added to the partitioned table. If we create on the main table, it is global index and if we create index on each partition then it is partitioned index.</p></li>
 </ul>
 </div>
 <div class="section" id="list-partitioning">
@@ -311,6 +363,21 @@
 <p>Let us understand how we can take care of list partitioning of tables.</p>
 <ul class="simple">
 <li><p>It is primarily used to create partitions based up on the values.</p></li>
+<li><p>Here are the steps involved in creating table using list partitioning strategy.</p>
+<ul>
+<li><p>Create table using <code class="docutils literal notranslate"><span class="pre">PARTITION</span> <span class="pre">BY</span> <span class="pre">LIST</span></code></p></li>
+<li><p>Add default and value specific partitions</p></li>
+<li><p>Validate by inserting data into the table</p></li>
+</ul>
+</li>
+<li><p>We can detach as well as drop the partitions from the table.</p></li>
+</ul>
+<div class="section" id="create-partitioned-table">
+<h3>Create Partitioned Table<a class="headerlink" href="#create-partitioned-table" title="Permalink to this headline">¶</a></h3>
+<p>Let us create partitioned table with name <code class="docutils literal notranslate"><span class="pre">users_part</span></code>.</p>
+<ul class="simple">
+<li><p>It contains same columns as <code class="docutils literal notranslate"><span class="pre">users</span></code>.</p></li>
+<li><p>We will partition based up on <code class="docutils literal notranslate"><span class="pre">user_role</span></code> field.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -381,163 +448,29 @@ CREATE TABLE users_part (
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> DROP TABLE IF EXISTS users_mthly_part
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
-Done.
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
-</pre></div>
-</div>
-</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Additional indexes on the users_part table.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
-CREATE TABLE users_mthly_part (
-    user_id SERIAL,
-    user_first_name VARCHAR(30) NOT NULL,
-    user_last_name VARCHAR(30) NOT NULL,
-    user_email_id VARCHAR(50) NOT NULL,
-    user_email_validated BOOLEAN DEFAULT FALSE,
-    user_password VARCHAR(200),
-    user_role VARCHAR(1) NOT NULL DEFAULT &#39;U&#39;, --U and A
-    is_active BOOLEAN DEFAULT FALSE,
-    created_dt DATE DEFAULT CURRENT_DATE,
-    created_mnth INT,
-    last_updated_ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-) PARTITION BY LIST(created_mnth)
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
-Done.
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+CREATE INDEX users_part_email_id_idx 
+    ON users_part(user_email_id)
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> ALTER TABLE users_mthly_part ADD PRIMARY KEY (created_mnth, user_id)
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
-Done.
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
-</pre></div>
-</div>
-</div>
+<div class="admonition error">
+<p class="admonition-title">Error</p>
+<p>Below <code class="docutils literal notranslate"><span class="pre">INSERT</span></code> statement will fail as we have not added any partitions to the table <code class="docutils literal notranslate"><span class="pre">users_part</span></code> even though it is created as partitioned table.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
-SELECT table_name, column_name, ordinal_position, is_nullable 
-FROM information_schema.columns
-WHERE table_name = &#39;users_mthly_part&#39;
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
-11 rows affected.
-</pre></div>
-</div>
-<div class="output text_html"><table>
-    <tr>
-        <th>table_name</th>
-        <th>column_name</th>
-        <th>ordinal_position</th>
-        <th>is_nullable</th>
-    </tr>
-    <tr>
-        <td>users_mthly_part</td>
-        <td>user_id</td>
-        <td>1</td>
-        <td>NO</td>
-    </tr>
-    <tr>
-        <td>users_mthly_part</td>
-        <td>user_first_name</td>
-        <td>2</td>
-        <td>NO</td>
-    </tr>
-    <tr>
-        <td>users_mthly_part</td>
-        <td>user_last_name</td>
-        <td>3</td>
-        <td>NO</td>
-    </tr>
-    <tr>
-        <td>users_mthly_part</td>
-        <td>user_email_id</td>
-        <td>4</td>
-        <td>NO</td>
-    </tr>
-    <tr>
-        <td>users_mthly_part</td>
-        <td>user_email_validated</td>
-        <td>5</td>
-        <td>YES</td>
-    </tr>
-    <tr>
-        <td>users_mthly_part</td>
-        <td>user_password</td>
-        <td>6</td>
-        <td>YES</td>
-    </tr>
-    <tr>
-        <td>users_mthly_part</td>
-        <td>user_role</td>
-        <td>7</td>
-        <td>NO</td>
-    </tr>
-    <tr>
-        <td>users_mthly_part</td>
-        <td>is_active</td>
-        <td>8</td>
-        <td>YES</td>
-    </tr>
-    <tr>
-        <td>users_mthly_part</td>
-        <td>created_dt</td>
-        <td>9</td>
-        <td>YES</td>
-    </tr>
-    <tr>
-        <td>users_mthly_part</td>
-        <td>created_mnth</td>
-        <td>10</td>
-        <td>NO</td>
-    </tr>
-    <tr>
-        <td>users_mthly_part</td>
-        <td>last_updated_ts</td>
-        <td>11</td>
-        <td>YES</td>
-    </tr>
-</table></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
-
-INSERT INTO users_mthly_part (user_first_name, user_last_name, user_email_id)
+INSERT INTO users_part (user_first_name, user_last_name, user_email_id)
 VALUES 
     (&#39;Scott&#39;, &#39;Tiger&#39;, &#39;scott@tiger.com&#39;),
     (&#39;Donald&#39;, &#39;Duck&#39;, &#39;donald@duck.com&#39;),
@@ -545,332 +478,34 @@ VALUES
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
-</pre></div>
-</div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">CheckViolation</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="nn">/opt/anaconda3/envs/beakerx/lib/python3.6/site-packages/sqlalchemy/engine/base.py</span> in <span class="ni">_execute_context</span><span class="nt">(self, dialect, constructor, statement, parameters, *args)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1276</span>                     <span class="bp">self</span><span class="o">.</span><span class="n">dialect</span><span class="o">.</span><span class="n">do_execute</span><span class="p">(</span>
-<span class="ne">-&gt; </span><span class="mi">1277</span>                         <span class="n">cursor</span><span class="p">,</span> <span class="n">statement</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">context</span>
-<span class="g g-Whitespace">   </span><span class="mi">1278</span>                     <span class="p">)</span>
-
-<span class="nn">/opt/anaconda3/envs/beakerx/lib/python3.6/site-packages/sqlalchemy/engine/default.py</span> in <span class="ni">do_execute</span><span class="nt">(self, cursor, statement, parameters, context)</span>
-<span class="g g-Whitespace">    </span><span class="mi">592</span>     <span class="k">def</span> <span class="nf">do_execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cursor</span><span class="p">,</span> <span class="n">statement</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">593</span>         <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">statement</span><span class="p">,</span> <span class="n">parameters</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">594</span> 
-
-<span class="ne">CheckViolation</span>: no partition of relation &quot;users_mthly_part&quot; found for row
-<span class="ne">DETAIL</span>:  Partition key of the failing row contains (created_mnth) = (null).
-
-
-<span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
-
-<span class="ne">IntegrityError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">115</span><span class="o">-</span><span class="mi">0</span><span class="n">d0826ad07a6</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">run_cell_magic</span><span class="p">(</span><span class="s1">&#39;sql&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">INSERT INTO users_mthly_part (user_first_name, user_last_name, user_email_id)</span><span class="se">\n</span><span class="s2">VALUES </span><span class="se">\n</span><span class="s2">    (&#39;Scott&#39;, &#39;Tiger&#39;, &#39;scott@tiger.com&#39;),</span><span class="se">\n</span><span class="s2">    (&#39;Donald&#39;, &#39;Duck&#39;, &#39;donald@duck.com&#39;),</span><span class="se">\n</span><span class="s2">    (&#39;Mickey&#39;, &#39;Mouse&#39;, &#39;mickey@mouse.com&#39;)</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="nn">/opt/anaconda3/envs/beakerx/lib/python3.6/site-packages/IPython/core/interactiveshell.py</span> in <span class="ni">run_cell_magic</span><span class="nt">(self, magic_name, line, cell)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2369</span>             <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">builtin_trap</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">2370</span>                 <span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="n">magic_arg_s</span><span class="p">,</span> <span class="n">cell</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">2371</span>                 <span class="n">result</span> <span class="o">=</span> <span class="n">fn</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2372</span>             <span class="k">return</span> <span class="n">result</span>
-<span class="g g-Whitespace">   </span><span class="mi">2373</span> 
-
-<span class="nn">&lt;decorator-gen-135&gt;</span> in <span class="ni">execute</span><span class="nt">(self, line, cell, local_ns)</span>
-
-<span class="nn">/opt/anaconda3/envs/beakerx/lib/python3.6/site-packages/IPython/core/magic.py</span> in <span class="ni">&lt;lambda&gt;</span><span class="nt">(f, *a, **k)</span>
-<span class="g g-Whitespace">    </span><span class="mi">185</span>     <span class="c1"># but it&#39;s overkill for just that one bit of state.</span>
-<span class="g g-Whitespace">    </span><span class="mi">186</span>     <span class="k">def</span> <span class="nf">magic_deco</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">187</span>         <span class="n">call</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">f</span><span class="p">,</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">**</span><span class="n">k</span><span class="p">:</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">**</span><span class="n">k</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">188</span> 
-<span class="g g-Whitespace">    </span><span class="mi">189</span>         <span class="k">if</span> <span class="n">callable</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
-
-<span class="nn">&lt;decorator-gen-134&gt;</span> in <span class="ni">execute</span><span class="nt">(self, line, cell, local_ns)</span>
-
-<span class="nn">/opt/anaconda3/envs/beakerx/lib/python3.6/site-packages/IPython/core/magic.py</span> in <span class="ni">&lt;lambda&gt;</span><span class="nt">(f, *a, **k)</span>
-<span class="g g-Whitespace">    </span><span class="mi">185</span>     <span class="c1"># but it&#39;s overkill for just that one bit of state.</span>
-<span class="g g-Whitespace">    </span><span class="mi">186</span>     <span class="k">def</span> <span class="nf">magic_deco</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">187</span>         <span class="n">call</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">f</span><span class="p">,</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">**</span><span class="n">k</span><span class="p">:</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">**</span><span class="n">k</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">188</span> 
-<span class="g g-Whitespace">    </span><span class="mi">189</span>         <span class="k">if</span> <span class="n">callable</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
-
-<span class="nn">/opt/anaconda3/envs/beakerx/lib/python3.6/site-packages/sql/magic.py</span> in <span class="ni">execute</span><span class="nt">(self, line, cell, local_ns)</span>
-<span class="g g-Whitespace">    </span><span class="mi">215</span> 
-<span class="g g-Whitespace">    </span><span class="mi">216</span>         <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">217</span>             <span class="n">result</span> <span class="o">=</span> <span class="n">sql</span><span class="o">.</span><span class="n">run</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span> <span class="n">parsed</span><span class="p">[</span><span class="s2">&quot;sql&quot;</span><span class="p">],</span> <span class="bp">self</span><span class="p">,</span> <span class="n">user_ns</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">218</span> 
-<span class="g g-Whitespace">    </span><span class="mi">219</span>             <span class="k">if</span> <span class="p">(</span>
-
-<span class="nn">/opt/anaconda3/envs/beakerx/lib/python3.6/site-packages/sql/run.py</span> in <span class="ni">run</span><span class="nt">(conn, sql, config, user_namespace)</span>
-<span class="g g-Whitespace">    </span><span class="mi">365</span>             <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">366</span>                 <span class="n">txt</span> <span class="o">=</span> <span class="n">sqlalchemy</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">statement</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">367</span>                 <span class="n">result</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">txt</span><span class="p">,</span> <span class="n">user_namespace</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">368</span>             <span class="n">_commit</span><span class="p">(</span><span class="n">conn</span><span class="o">=</span><span class="n">conn</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">369</span>             <span class="k">if</span> <span class="n">result</span> <span class="ow">and</span> <span class="n">config</span><span class="o">.</span><span class="n">feedback</span><span class="p">:</span>
-
-<span class="nn">/opt/anaconda3/envs/beakerx/lib/python3.6/site-packages/sqlalchemy/engine/base.py</span> in <span class="ni">execute</span><span class="nt">(self, object_, *multiparams, **params)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1009</span>             <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1010</span>         <span class="k">else</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1011</span>             <span class="k">return</span> <span class="n">meth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">multiparams</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1012</span> 
-<span class="g g-Whitespace">   </span><span class="mi">1013</span>     <span class="k">def</span> <span class="nf">_execute_function</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">multiparams</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
-
-<span class="nn">/opt/anaconda3/envs/beakerx/lib/python3.6/site-packages/sqlalchemy/sql/elements.py</span> in <span class="ni">_execute_on_connection</span><span class="nt">(self, connection, multiparams, params)</span>
-<span class="g g-Whitespace">    </span><span class="mi">296</span>     <span class="k">def</span> <span class="nf">_execute_on_connection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connection</span><span class="p">,</span> <span class="n">multiparams</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">297</span>         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">supports_execution</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">298</span>             <span class="k">return</span> <span class="n">connection</span><span class="o">.</span><span class="n">_execute_clauseelement</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">multiparams</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">299</span>         <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">300</span>             <span class="k">raise</span> <span class="n">exc</span><span class="o">.</span><span class="n">ObjectNotExecutableError</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-
-<span class="nn">/opt/anaconda3/envs/beakerx/lib/python3.6/site-packages/sqlalchemy/engine/base.py</span> in <span class="ni">_execute_clauseelement</span><span class="nt">(self, elem, multiparams, params)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1128</span>             <span class="n">distilled_params</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1129</span>             <span class="n">compiled_sql</span><span class="p">,</span>
-<span class="ne">-&gt; </span><span class="mi">1130</span>             <span class="n">distilled_params</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1131</span>         <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1132</span>         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_has_events</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="o">.</span><span class="n">_has_events</span><span class="p">:</span>
-
-<span class="nn">/opt/anaconda3/envs/beakerx/lib/python3.6/site-packages/sqlalchemy/engine/base.py</span> in <span class="ni">_execute_context</span><span class="nt">(self, dialect, constructor, statement, parameters, *args)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1315</span>         <span class="k">except</span> <span class="ne">BaseException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1316</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_handle_dbapi_exception</span><span class="p">(</span>
-<span class="ne">-&gt; </span><span class="mi">1317</span>                 <span class="n">e</span><span class="p">,</span> <span class="n">statement</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">cursor</span><span class="p">,</span> <span class="n">context</span>
-<span class="g g-Whitespace">   </span><span class="mi">1318</span>             <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1319</span> 
-
-<span class="nn">/opt/anaconda3/envs/beakerx/lib/python3.6/site-packages/sqlalchemy/engine/base.py</span> in <span class="ni">_handle_dbapi_exception</span><span class="nt">(self, e, statement, parameters, cursor, context)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1509</span>             <span class="k">elif</span> <span class="n">should_wrap</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1510</span>                 <span class="n">util</span><span class="o">.</span><span class="n">raise_</span><span class="p">(</span>
-<span class="ne">-&gt; </span><span class="mi">1511</span>                     <span class="n">sqlalchemy_exception</span><span class="p">,</span> <span class="n">with_traceback</span><span class="o">=</span><span class="n">exc_info</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">from_</span><span class="o">=</span><span class="n">e</span>
-<span class="g g-Whitespace">   </span><span class="mi">1512</span>                 <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1513</span>             <span class="k">else</span><span class="p">:</span>
-
-<span class="nn">/opt/anaconda3/envs/beakerx/lib/python3.6/site-packages/sqlalchemy/util/compat.py</span> in <span class="ni">raise_</span><span class="nt">(***failed resolving arguments***)</span>
-<span class="g g-Whitespace">    </span><span class="mi">180</span> 
-<span class="g g-Whitespace">    </span><span class="mi">181</span>         <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">182</span>             <span class="k">raise</span> <span class="n">exception</span>
-<span class="g g-Whitespace">    </span><span class="mi">183</span>         <span class="k">finally</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">184</span>             <span class="c1"># credit to</span>
-
-<span class="nn">/opt/anaconda3/envs/beakerx/lib/python3.6/site-packages/sqlalchemy/engine/base.py</span> in <span class="ni">_execute_context</span><span class="nt">(self, dialect, constructor, statement, parameters, *args)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1275</span>                 <span class="k">if</span> <span class="ow">not</span> <span class="n">evt_handled</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1276</span>                     <span class="bp">self</span><span class="o">.</span><span class="n">dialect</span><span class="o">.</span><span class="n">do_execute</span><span class="p">(</span>
-<span class="ne">-&gt; </span><span class="mi">1277</span>                         <span class="n">cursor</span><span class="p">,</span> <span class="n">statement</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">context</span>
-<span class="g g-Whitespace">   </span><span class="mi">1278</span>                     <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1279</span> 
-
-<span class="nn">/opt/anaconda3/envs/beakerx/lib/python3.6/site-packages/sqlalchemy/engine/default.py</span> in <span class="ni">do_execute</span><span class="nt">(self, cursor, statement, parameters, context)</span>
-<span class="g g-Whitespace">    </span><span class="mi">591</span> 
-<span class="g g-Whitespace">    </span><span class="mi">592</span>     <span class="k">def</span> <span class="nf">do_execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cursor</span><span class="p">,</span> <span class="n">statement</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">593</span>         <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">statement</span><span class="p">,</span> <span class="n">parameters</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">594</span> 
-<span class="g g-Whitespace">    </span><span class="mi">595</span>     <span class="k">def</span> <span class="nf">do_execute_no_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cursor</span><span class="p">,</span> <span class="n">statement</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-
-<span class="ne">IntegrityError</span>: (psycopg2.errors.CheckViolation) no partition of relation &quot;users_mthly_part&quot; found for row
-<span class="ne">DETAIL</span>:  Partition key of the failing row contains (created_mnth) = (null).
-
-<span class="p">[</span><span class="n">SQL</span><span class="p">:</span> <span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">users_mthly_part</span> <span class="p">(</span><span class="n">user_first_name</span><span class="p">,</span> <span class="n">user_last_name</span><span class="p">,</span> <span class="n">user_email_id</span><span class="p">)</span>
-<span class="n">VALUES</span> 
-    <span class="p">(</span><span class="s1">&#39;Scott&#39;</span><span class="p">,</span> <span class="s1">&#39;Tiger&#39;</span><span class="p">,</span> <span class="s1">&#39;scott@tiger.com&#39;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">&#39;Donald&#39;</span><span class="p">,</span> <span class="s1">&#39;Duck&#39;</span><span class="p">,</span> <span class="s1">&#39;donald@duck.com&#39;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">&#39;Mickey&#39;</span><span class="p">,</span> <span class="s1">&#39;Mouse&#39;</span><span class="p">,</span> <span class="s1">&#39;mickey@mouse.com&#39;</span><span class="p">)]</span>
-<span class="p">(</span><span class="n">Background</span> <span class="n">on</span> <span class="n">this</span> <span class="n">error</span> <span class="n">at</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">sqlalche</span><span class="o">.</span><span class="n">me</span><span class="o">/</span><span class="n">e</span><span class="o">/</span><span class="mi">13</span><span class="o">/</span><span class="n">gkpj</span><span class="p">)</span>
-</pre></div>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
-
-INSERT INTO users_mthly_part 
-    (user_first_name, user_last_name, user_email_id, created_dt, created_mnth)
-VALUES 
-    (&#39;Scott&#39;, &#39;Tiger&#39;, &#39;scott@tiger.com&#39;, &#39;2018-10-01&#39;, 201801),
-    (&#39;Donald&#39;, &#39;Duck&#39;, &#39;donald@duck.com&#39;, &#39;2019-02-10&#39;, 201902),
-    (&#39;Mickey&#39;, &#39;Mouse&#39;, &#39;mickey@mouse.com&#39;, &#39;2017-06-22&#39;, 201706)
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
-</pre></div>
-</div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">CheckViolation</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="nn">/opt/anaconda3/envs/beakerx/lib/python3.6/site-packages/sqlalchemy/engine/base.py</span> in <span class="ni">_execute_context</span><span class="nt">(self, dialect, constructor, statement, parameters, *args)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1276</span>                     <span class="bp">self</span><span class="o">.</span><span class="n">dialect</span><span class="o">.</span><span class="n">do_execute</span><span class="p">(</span>
-<span class="ne">-&gt; </span><span class="mi">1277</span>                         <span class="n">cursor</span><span class="p">,</span> <span class="n">statement</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">context</span>
-<span class="g g-Whitespace">   </span><span class="mi">1278</span>                     <span class="p">)</span>
-
-<span class="nn">/opt/anaconda3/envs/beakerx/lib/python3.6/site-packages/sqlalchemy/engine/default.py</span> in <span class="ni">do_execute</span><span class="nt">(self, cursor, statement, parameters, context)</span>
-<span class="g g-Whitespace">    </span><span class="mi">592</span>     <span class="k">def</span> <span class="nf">do_execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cursor</span><span class="p">,</span> <span class="n">statement</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">593</span>         <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">statement</span><span class="p">,</span> <span class="n">parameters</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">594</span> 
-
-<span class="ne">CheckViolation</span>: no partition of relation &quot;users_mthly_part&quot; found for row
-<span class="ne">DETAIL</span>:  Partition key of the failing row contains (created_mnth) = (201801).
-
-
-<span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
-
-<span class="ne">IntegrityError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">116</span><span class="o">-</span><span class="mi">0</span><span class="n">abf83731ae7</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">run_cell_magic</span><span class="p">(</span><span class="s1">&#39;sql&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">INSERT INTO users_mthly_part </span><span class="se">\n</span><span class="s2">    (user_first_name, user_last_name, user_email_id, created_dt, created_mnth)</span><span class="se">\n</span><span class="s2">VALUES </span><span class="se">\n</span><span class="s2">    (&#39;Scott&#39;, &#39;Tiger&#39;, &#39;scott@tiger.com&#39;, &#39;2018-10-01&#39;, 201801),</span><span class="se">\n</span><span class="s2">    (&#39;Donald&#39;, &#39;Duck&#39;, &#39;donald@duck.com&#39;, &#39;2019-02-10&#39;, 201902),</span><span class="se">\n</span><span class="s2">    (&#39;Mickey&#39;, &#39;Mouse&#39;, &#39;mickey@mouse.com&#39;, &#39;2017-06-22&#39;, 201706)</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="nn">/opt/anaconda3/envs/beakerx/lib/python3.6/site-packages/IPython/core/interactiveshell.py</span> in <span class="ni">run_cell_magic</span><span class="nt">(self, magic_name, line, cell)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2369</span>             <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">builtin_trap</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">2370</span>                 <span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="n">magic_arg_s</span><span class="p">,</span> <span class="n">cell</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">2371</span>                 <span class="n">result</span> <span class="o">=</span> <span class="n">fn</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2372</span>             <span class="k">return</span> <span class="n">result</span>
-<span class="g g-Whitespace">   </span><span class="mi">2373</span> 
-
-<span class="nn">&lt;decorator-gen-135&gt;</span> in <span class="ni">execute</span><span class="nt">(self, line, cell, local_ns)</span>
-
-<span class="nn">/opt/anaconda3/envs/beakerx/lib/python3.6/site-packages/IPython/core/magic.py</span> in <span class="ni">&lt;lambda&gt;</span><span class="nt">(f, *a, **k)</span>
-<span class="g g-Whitespace">    </span><span class="mi">185</span>     <span class="c1"># but it&#39;s overkill for just that one bit of state.</span>
-<span class="g g-Whitespace">    </span><span class="mi">186</span>     <span class="k">def</span> <span class="nf">magic_deco</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">187</span>         <span class="n">call</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">f</span><span class="p">,</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">**</span><span class="n">k</span><span class="p">:</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">**</span><span class="n">k</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">188</span> 
-<span class="g g-Whitespace">    </span><span class="mi">189</span>         <span class="k">if</span> <span class="n">callable</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
-
-<span class="nn">&lt;decorator-gen-134&gt;</span> in <span class="ni">execute</span><span class="nt">(self, line, cell, local_ns)</span>
-
-<span class="nn">/opt/anaconda3/envs/beakerx/lib/python3.6/site-packages/IPython/core/magic.py</span> in <span class="ni">&lt;lambda&gt;</span><span class="nt">(f, *a, **k)</span>
-<span class="g g-Whitespace">    </span><span class="mi">185</span>     <span class="c1"># but it&#39;s overkill for just that one bit of state.</span>
-<span class="g g-Whitespace">    </span><span class="mi">186</span>     <span class="k">def</span> <span class="nf">magic_deco</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">187</span>         <span class="n">call</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">f</span><span class="p">,</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">**</span><span class="n">k</span><span class="p">:</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">**</span><span class="n">k</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">188</span> 
-<span class="g g-Whitespace">    </span><span class="mi">189</span>         <span class="k">if</span> <span class="n">callable</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
-
-<span class="nn">/opt/anaconda3/envs/beakerx/lib/python3.6/site-packages/sql/magic.py</span> in <span class="ni">execute</span><span class="nt">(self, line, cell, local_ns)</span>
-<span class="g g-Whitespace">    </span><span class="mi">215</span> 
-<span class="g g-Whitespace">    </span><span class="mi">216</span>         <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">217</span>             <span class="n">result</span> <span class="o">=</span> <span class="n">sql</span><span class="o">.</span><span class="n">run</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span> <span class="n">parsed</span><span class="p">[</span><span class="s2">&quot;sql&quot;</span><span class="p">],</span> <span class="bp">self</span><span class="p">,</span> <span class="n">user_ns</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">218</span> 
-<span class="g g-Whitespace">    </span><span class="mi">219</span>             <span class="k">if</span> <span class="p">(</span>
-
-<span class="nn">/opt/anaconda3/envs/beakerx/lib/python3.6/site-packages/sql/run.py</span> in <span class="ni">run</span><span class="nt">(conn, sql, config, user_namespace)</span>
-<span class="g g-Whitespace">    </span><span class="mi">365</span>             <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">366</span>                 <span class="n">txt</span> <span class="o">=</span> <span class="n">sqlalchemy</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">statement</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">367</span>                 <span class="n">result</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">txt</span><span class="p">,</span> <span class="n">user_namespace</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">368</span>             <span class="n">_commit</span><span class="p">(</span><span class="n">conn</span><span class="o">=</span><span class="n">conn</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">369</span>             <span class="k">if</span> <span class="n">result</span> <span class="ow">and</span> <span class="n">config</span><span class="o">.</span><span class="n">feedback</span><span class="p">:</span>
-
-<span class="nn">/opt/anaconda3/envs/beakerx/lib/python3.6/site-packages/sqlalchemy/engine/base.py</span> in <span class="ni">execute</span><span class="nt">(self, object_, *multiparams, **params)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1009</span>             <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1010</span>         <span class="k">else</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1011</span>             <span class="k">return</span> <span class="n">meth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">multiparams</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1012</span> 
-<span class="g g-Whitespace">   </span><span class="mi">1013</span>     <span class="k">def</span> <span class="nf">_execute_function</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">multiparams</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
-
-<span class="nn">/opt/anaconda3/envs/beakerx/lib/python3.6/site-packages/sqlalchemy/sql/elements.py</span> in <span class="ni">_execute_on_connection</span><span class="nt">(self, connection, multiparams, params)</span>
-<span class="g g-Whitespace">    </span><span class="mi">296</span>     <span class="k">def</span> <span class="nf">_execute_on_connection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connection</span><span class="p">,</span> <span class="n">multiparams</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">297</span>         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">supports_execution</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">298</span>             <span class="k">return</span> <span class="n">connection</span><span class="o">.</span><span class="n">_execute_clauseelement</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">multiparams</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">299</span>         <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">300</span>             <span class="k">raise</span> <span class="n">exc</span><span class="o">.</span><span class="n">ObjectNotExecutableError</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-
-<span class="nn">/opt/anaconda3/envs/beakerx/lib/python3.6/site-packages/sqlalchemy/engine/base.py</span> in <span class="ni">_execute_clauseelement</span><span class="nt">(self, elem, multiparams, params)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1128</span>             <span class="n">distilled_params</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1129</span>             <span class="n">compiled_sql</span><span class="p">,</span>
-<span class="ne">-&gt; </span><span class="mi">1130</span>             <span class="n">distilled_params</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1131</span>         <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1132</span>         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_has_events</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="o">.</span><span class="n">_has_events</span><span class="p">:</span>
-
-<span class="nn">/opt/anaconda3/envs/beakerx/lib/python3.6/site-packages/sqlalchemy/engine/base.py</span> in <span class="ni">_execute_context</span><span class="nt">(self, dialect, constructor, statement, parameters, *args)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1315</span>         <span class="k">except</span> <span class="ne">BaseException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1316</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_handle_dbapi_exception</span><span class="p">(</span>
-<span class="ne">-&gt; </span><span class="mi">1317</span>                 <span class="n">e</span><span class="p">,</span> <span class="n">statement</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">cursor</span><span class="p">,</span> <span class="n">context</span>
-<span class="g g-Whitespace">   </span><span class="mi">1318</span>             <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1319</span> 
-
-<span class="nn">/opt/anaconda3/envs/beakerx/lib/python3.6/site-packages/sqlalchemy/engine/base.py</span> in <span class="ni">_handle_dbapi_exception</span><span class="nt">(self, e, statement, parameters, cursor, context)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1509</span>             <span class="k">elif</span> <span class="n">should_wrap</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1510</span>                 <span class="n">util</span><span class="o">.</span><span class="n">raise_</span><span class="p">(</span>
-<span class="ne">-&gt; </span><span class="mi">1511</span>                     <span class="n">sqlalchemy_exception</span><span class="p">,</span> <span class="n">with_traceback</span><span class="o">=</span><span class="n">exc_info</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">from_</span><span class="o">=</span><span class="n">e</span>
-<span class="g g-Whitespace">   </span><span class="mi">1512</span>                 <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1513</span>             <span class="k">else</span><span class="p">:</span>
-
-<span class="nn">/opt/anaconda3/envs/beakerx/lib/python3.6/site-packages/sqlalchemy/util/compat.py</span> in <span class="ni">raise_</span><span class="nt">(***failed resolving arguments***)</span>
-<span class="g g-Whitespace">    </span><span class="mi">180</span> 
-<span class="g g-Whitespace">    </span><span class="mi">181</span>         <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">182</span>             <span class="k">raise</span> <span class="n">exception</span>
-<span class="g g-Whitespace">    </span><span class="mi">183</span>         <span class="k">finally</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">184</span>             <span class="c1"># credit to</span>
-
-<span class="nn">/opt/anaconda3/envs/beakerx/lib/python3.6/site-packages/sqlalchemy/engine/base.py</span> in <span class="ni">_execute_context</span><span class="nt">(self, dialect, constructor, statement, parameters, *args)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1275</span>                 <span class="k">if</span> <span class="ow">not</span> <span class="n">evt_handled</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1276</span>                     <span class="bp">self</span><span class="o">.</span><span class="n">dialect</span><span class="o">.</span><span class="n">do_execute</span><span class="p">(</span>
-<span class="ne">-&gt; </span><span class="mi">1277</span>                         <span class="n">cursor</span><span class="p">,</span> <span class="n">statement</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">context</span>
-<span class="g g-Whitespace">   </span><span class="mi">1278</span>                     <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1279</span> 
-
-<span class="nn">/opt/anaconda3/envs/beakerx/lib/python3.6/site-packages/sqlalchemy/engine/default.py</span> in <span class="ni">do_execute</span><span class="nt">(self, cursor, statement, parameters, context)</span>
-<span class="g g-Whitespace">    </span><span class="mi">591</span> 
-<span class="g g-Whitespace">    </span><span class="mi">592</span>     <span class="k">def</span> <span class="nf">do_execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cursor</span><span class="p">,</span> <span class="n">statement</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">593</span>         <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">statement</span><span class="p">,</span> <span class="n">parameters</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">594</span> 
-<span class="g g-Whitespace">    </span><span class="mi">595</span>     <span class="k">def</span> <span class="nf">do_execute_no_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cursor</span><span class="p">,</span> <span class="n">statement</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-
-<span class="ne">IntegrityError</span>: (psycopg2.errors.CheckViolation) no partition of relation &quot;users_mthly_part&quot; found for row
-<span class="ne">DETAIL</span>:  Partition key of the failing row contains (created_mnth) = (201801).
-
-<span class="p">[</span><span class="n">SQL</span><span class="p">:</span> <span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">users_mthly_part</span> <span class="p">(</span><span class="n">user_first_name</span><span class="p">,</span> <span class="n">user_last_name</span><span class="p">,</span> <span class="n">user_email_id</span><span class="p">,</span> <span class="n">created_dt</span><span class="p">,</span> <span class="n">created_mnth</span><span class="p">)</span>
-<span class="n">VALUES</span> 
-    <span class="p">(</span><span class="s1">&#39;Scott&#39;</span><span class="p">,</span> <span class="s1">&#39;Tiger&#39;</span><span class="p">,</span> <span class="s1">&#39;scott@tiger.com&#39;</span><span class="p">,</span> <span class="s1">&#39;2018-10-01&#39;</span><span class="p">,</span> <span class="mi">201801</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">&#39;Donald&#39;</span><span class="p">,</span> <span class="s1">&#39;Duck&#39;</span><span class="p">,</span> <span class="s1">&#39;donald@duck.com&#39;</span><span class="p">,</span> <span class="s1">&#39;2019-02-10&#39;</span><span class="p">,</span> <span class="mi">201902</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">&#39;Mickey&#39;</span><span class="p">,</span> <span class="s1">&#39;Mouse&#39;</span><span class="p">,</span> <span class="s1">&#39;mickey@mouse.com&#39;</span><span class="p">,</span> <span class="s1">&#39;2017-06-22&#39;</span><span class="p">,</span> <span class="mi">201706</span><span class="p">)]</span>
-<span class="p">(</span><span class="n">Background</span> <span class="n">on</span> <span class="n">this</span> <span class="n">error</span> <span class="n">at</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">sqlalche</span><span class="o">.</span><span class="n">me</span><span class="o">/</span><span class="n">e</span><span class="o">/</span><span class="mi">13</span><span class="o">/</span><span class="n">gkpj</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="adding-partitions">
-<h2>Adding Partitions<a class="headerlink" href="#adding-partitions" title="Permalink to this headline">¶</a></h2>
-<p>Let us see how we can add partitions to existing table which is created using list partitioning strategy.</p>
+<div class="section" id="managing-partitions-list">
+<h2>Managing Partitions - List<a class="headerlink" href="#managing-partitions-list" title="Permalink to this headline">¶</a></h2>
+<p>Let us understand how to add partitions to the table <code class="docutils literal notranslate"><span class="pre">users_part</span></code>.</p>
 <ul class="simple">
-<li><p>We can create partition by using <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">TABLE</span> <span class="pre">&lt;partition_name&gt;</span> <span class="pre">PARTITION</span> <span class="pre">OF</span> <span class="pre">&lt;table_name&gt;</span></code> syntax.</p></li>
-<li><p>We can have a partition for default values so that all the data that does not satisfy the condition can be added to it.</p></li>
+<li><p>All users data with <code class="docutils literal notranslate"><span class="pre">user_role</span></code> as <strong>‘U’</strong> should go to one partition by name <code class="docutils literal notranslate"><span class="pre">users_part_u</span></code>.</p></li>
+<li><p>All users data with <code class="docutils literal notranslate"><span class="pre">user_role</span></code> as <strong>‘A’</strong> should to one partition by name <code class="docutils literal notranslate"><span class="pre">users_part_a</span></code>.</p></li>
+<li><p>We can add partition to existing partitioned table using <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">TABLE</span> <span class="pre">partition_name</span> <span class="pre">PARTITION</span> <span class="pre">OF</span> <span class="pre">table</span></code>.</p></li>
+<li><p>We can have a partition for default values so that all the data that does not satisfy the partition condition can be added to it.</p></li>
 <li><p>We can have a partition for each value or for a set of values.</p></li>
-<li><p>Once partitions are added, we can insert data into it.</p></li>
+<li><p>Once partitions are added, we can insert data into the partitioned table.</p></li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Here is how we can create partition for default values for a list partitioned table <strong>users_part</strong>.</p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
-
-CREATE TABLE users_mthly_part_default
-PARTITION OF users_mthly_part DEFAULT
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
-Done.
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
-
-CREATE TABLE users_mthly_part_201801 
-PARTITION OF users_mthly_part  
-FOR VALUES IN (201801)
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
-Done.
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_sms_user:sms_password@localhost:5432/itversity_sms_db
 </pre></div>
 </div>
 </div>
@@ -879,69 +514,25 @@ Done.
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
-CREATE TABLE users_mthly_part_201902
-PARTITION OF users_mthly_part  
-FOR VALUES IN (201902)
+CREATE TABLE users_part_default
+PARTITION OF users_part DEFAULT
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
-Done.
-</pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
-</pre></div>
-</div>
-</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All the 3 records will go to default partition as we have not defined any partition for user_role ‘U’.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
-CREATE TABLE users_mthly_part_201706
-PARTITION OF users_mthly_part  
-FOR VALUES IN (201706)
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
-Done.
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="inserting-data">
-<h2>Inserting Data<a class="headerlink" href="#inserting-data" title="Permalink to this headline">¶</a></h2>
-<p>Let us understand how we can insert data into a partitioned table.</p>
-<ul class="simple">
-<li><p>We need to ensure at least default partition is added.</p></li>
-<li><p>On top of default partition, make sure to have other desired partitions added.</p></li>
-<li><p>We can insert into the table or directly into the partition.</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
-
-INSERT INTO users_mthly_part 
-    (user_first_name, user_last_name, user_email_id, created_dt, created_mnth)
+INSERT INTO users_part (user_first_name, user_last_name, user_email_id, user_role)
 VALUES 
-    (&#39;Scott&#39;, &#39;Tiger&#39;, &#39;scott@tiger.com&#39;, &#39;2018-10-01&#39;, 201801),
-    (&#39;Donald&#39;, &#39;Duck&#39;, &#39;donald@duck.com&#39;, &#39;2019-02-10&#39;, 201902)
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
-2 rows affected.
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+    (&#39;Scott&#39;, &#39;Tiger&#39;, &#39;scott@tiger.com&#39;, &#39;U&#39;),
+    (&#39;Donald&#39;, &#39;Duck&#39;, &#39;donald@duck.com&#39;, &#39;U&#39;),
+    (&#39;Mickey&#39;, &#39;Mouse&#39;, &#39;mickey@mouse.com&#39;, &#39;U&#39;)
 </pre></div>
 </div>
 </div>
@@ -950,57 +541,9 @@ VALUES
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
-SELECT user_first_name, user_last_name, user_email_id, created_dt, created_mnth
-FROM users_mthly_part
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
-2 rows affected.
-</pre></div>
-</div>
-<div class="output text_html"><table>
-    <tr>
-        <th>user_first_name</th>
-        <th>user_last_name</th>
-        <th>user_email_id</th>
-        <th>created_dt</th>
-        <th>created_mnth</th>
-    </tr>
-    <tr>
-        <td>Scott</td>
-        <td>Tiger</td>
-        <td>scott@tiger.com</td>
-        <td>2018-10-01</td>
-        <td>201801</td>
-    </tr>
-    <tr>
-        <td>Donald</td>
-        <td>Duck</td>
-        <td>donald@duck.com</td>
-        <td>2019-02-10</td>
-        <td>201902</td>
-    </tr>
-</table></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
-
-INSERT INTO users_mthly_part_201706
-    (user_first_name, user_last_name, user_email_id, created_dt, created_mnth)
-VALUES 
-    (&#39;Mickey&#39;, &#39;Mouse&#39;, &#39;mickey@mouse.com&#39;, &#39;2017-06-22&#39;, 201706)
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
-1 rows affected.
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+CREATE TABLE users_part_a 
+PARTITION OF users_part  
+FOR VALUES IN (&#39;A&#39;)
 </pre></div>
 </div>
 </div>
@@ -1009,92 +552,159 @@ VALUES
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
-SELECT user_first_name, user_last_name, user_email_id, created_dt, created_mnth
-FROM users_mthly_part
+UPDATE users_part
+SET
+    user_role = &#39;A&#39;
+WHERE user_email_id = &#39;scott@tiger.com&#39;
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
-3 rows affected.
-</pre></div>
-</div>
-<div class="output text_html"><table>
-    <tr>
-        <th>user_first_name</th>
-        <th>user_last_name</th>
-        <th>user_email_id</th>
-        <th>created_dt</th>
-        <th>created_mnth</th>
-    </tr>
-    <tr>
-        <td>Mickey</td>
-        <td>Mouse</td>
-        <td>mickey@mouse.com</td>
-        <td>2017-06-22</td>
-        <td>201706</td>
-    </tr>
-    <tr>
-        <td>Scott</td>
-        <td>Tiger</td>
-        <td>scott@tiger.com</td>
-        <td>2018-10-01</td>
-        <td>201801</td>
-    </tr>
-    <tr>
-        <td>Donald</td>
-        <td>Duck</td>
-        <td>donald@duck.com</td>
-        <td>2019-02-10</td>
-        <td>201902</td>
-    </tr>
-</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
-SELECT user_first_name, user_last_name, user_email_id, created_dt, created_mnth
-FROM users_mthly_part_201706
+SELECT * FROM users_part
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
-1 rows affected.
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT * FROM users_part_a
 </pre></div>
 </div>
-<div class="output text_html"><table>
-    <tr>
-        <th>user_first_name</th>
-        <th>user_last_name</th>
-        <th>user_email_id</th>
-        <th>created_dt</th>
-        <th>created_mnth</th>
-    </tr>
-    <tr>
-        <td>Mickey</td>
-        <td>Mouse</td>
-        <td>mickey@mouse.com</td>
-        <td>2017-06-22</td>
-        <td>201706</td>
-    </tr>
-</table></div></div>
 </div>
 </div>
-<div class="section" id="dropping-partitions">
-<h2>Dropping Partitions<a class="headerlink" href="#dropping-partitions" title="Permalink to this headline">¶</a></h2>
-<p>Let us understand how we can drop partitions from a partitioned table.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT * FROM users_part_default
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition error">
+<p class="admonition-title">Error</p>
+<p>This will fail as there are records with user_role ‘U’ in default partition.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+CREATE TABLE users_part_u 
+PARTITION OF users_part  
+FOR VALUES IN (&#39;U&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We can detach the partition, add partition for ‘U’ and load the data from detached partitione into the new partition created.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+ALTER TABLE users_part
+    DETACH PARTITION users_part_default
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+CREATE TABLE users_part_u 
+PARTITION OF users_part  
+FOR VALUES IN (&#39;U&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+INSERT INTO users_part
+SELECT * FROM users_part_default
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT * FROM users_part_a
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT * FROM users_part_u
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We can drop and create partition for default or truncate and attach the existing default partition.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+DROP TABLE users_part_default
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+CREATE TABLE users_part_default
+PARTITION OF users_part DEFAULT
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="manipulating-data">
+<h2>Manipulating Data<a class="headerlink" href="#manipulating-data" title="Permalink to this headline">¶</a></h2>
+<p>Let us understand how we can manipulate data for a partitioned table.</p>
 <ul class="simple">
-<li><p>We just need to drop the partition similar to dropping a table.</p></li>
-<li><p>Here is the syntax - <code class="docutils literal notranslate"><span class="pre">DROP</span> <span class="pre">TABLE</span> <span class="pre">&lt;table_for_partition&gt;</span></code></p></li>
-<li><p>One can also detach partition instead of dropping it. It is useful in case of taking the back up of partitions before dropping it.</p></li>
+<li><p>We can insert data using the table (most preferred way).</p></li>
+<li><p>As we define table for each partition, we can insert data using table created for specific partition. We can either use <code class="docutils literal notranslate"><span class="pre">users_part</span></code> or <code class="docutils literal notranslate"><span class="pre">users_part_u</span></code> to insert records with user_role <strong>‘U’</strong>.</p></li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">users_part_u</span> 
+<span class="n">PARTITION</span> <span class="k">OF</span> <span class="n">users_part</span>  
+<span class="k">FOR</span> <span class="k">VALUES</span> <span class="k">IN</span> <span class="p">(</span><span class="s1">&#39;U&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>As part of the update, if we change the value in a partitioned column which will result in changing partition, then internally data from one partition will be moved to other.</p></li>
+<li><p>We can delete the data using the table or the table created for each partition (either by using table name <code class="docutils literal notranslate"><span class="pre">users_part</span></code> or partitions such as <code class="docutils literal notranslate"><span class="pre">users_part_u</span></code>, <code class="docutils literal notranslate"><span class="pre">users_part_a</span></code> etc.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
-
-DROP TABLE users_mthly_part_201706
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_sms_user:sms_password@localhost:5432/itversity_sms_db
 </pre></div>
 </div>
 </div>
@@ -1103,22 +713,7 @@ DROP TABLE users_mthly_part_201706
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
-SELECT user_first_name, user_last_name, user_email_id, created_dt, created_mnth
-FROM users_mthly_part
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="managing-indexes">
-<h2>Managing Indexes<a class="headerlink" href="#managing-indexes" title="Permalink to this headline">¶</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
-
-SELECT *
-FROM pg_catalog.pg_indexes
-WHERE tablename = &#39;users_mthly_part&#39;
+TRUNCATE TABLE users_part
 </pre></div>
 </div>
 </div>
@@ -1127,8 +722,11 @@ WHERE tablename = &#39;users_mthly_part&#39;
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
-CREATE INDEX users_mthly_part_idx1
-ON users_mthly_part(created_dt)
+INSERT INTO users_part (user_first_name, user_last_name, user_email_id, user_role)
+VALUES 
+    (&#39;Scott&#39;, &#39;Tiger&#39;, &#39;scott@tiger.com&#39;, &#39;U&#39;),
+    (&#39;Donald&#39;, &#39;Duck&#39;, &#39;donald@duck.com&#39;, &#39;U&#39;),
+    (&#39;Mickey&#39;, &#39;Mouse&#39;, &#39;mickey@mouse.com&#39;, &#39;U&#39;)
 </pre></div>
 </div>
 </div>
@@ -1137,9 +735,65 @@ ON users_mthly_part(created_dt)
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
-SELECT *
-FROM pg_catalog.pg_indexes
-WHERE tablename = &#39;users_mthly_part&#39;
+INSERT INTO users_part_a (user_first_name, user_last_name, user_email_id, user_role)
+VALUES
+    (&#39;Matt&#39;, &#39;Clarke&#39;, &#39;matt@clarke.com&#39;, &#39;A&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT * FROM users_part
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+UPDATE users_part SET
+    user_role = &#39;A&#39;
+WHERE user_email_id = &#39;donald@duck.com&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT * FROM users_part_a
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+DELETE FROM users_part WHERE user_email_id = &#39;donald@duck.com&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+DELETE FROM users_part_u WHERE user_email_id = &#39;mickey@mouse.com&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT * FROM users_part
 </pre></div>
 </div>
 </div>
@@ -1147,6 +801,40 @@ WHERE tablename = &#39;users_mthly_part&#39;
 </div>
 <div class="section" id="range-partitioning">
 <h2>Range Partitioning<a class="headerlink" href="#range-partitioning" title="Permalink to this headline">¶</a></h2>
+<p>Let us understand how we can take care of range partitioning of tables.</p>
+<ul class="simple">
+<li><p>It is primarily used to create partitions based up on a given range of values.</p></li>
+<li><p>Here are the steps involved in creating table using range partitioning strategy.</p>
+<ul>
+<li><p>Create table using <code class="docutils literal notranslate"><span class="pre">PARTITION</span> <span class="pre">BY</span> <span class="pre">RANGE</span></code></p></li>
+<li><p>Add default and range specific partitions</p></li>
+<li><p>Validate by inserting data into the table</p></li>
+</ul>
+</li>
+<li><p>We can detach as well as drop the partitions from the table.</p></li>
+</ul>
+<div class="section" id="id1">
+<h3>Create Partitioned Table<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>Let us create partitioned table with name <code class="docutils literal notranslate"><span class="pre">users_range_part</span></code>.</p>
+<ul class="simple">
+<li><p>It contains same columns as <code class="docutils literal notranslate"><span class="pre">users</span></code>.</p></li>
+<li><p>We will partition the table based up on <code class="docutils literal notranslate"><span class="pre">created_dt</span></code> field.</p></li>
+<li><p>We will create one partition per year with naming conveniont <strong>users_range_part_yyyy</strong> (users_range_part_2016).</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_sms_user:sms_password@localhost:5432/itversity_sms_db
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> DROP TABLE IF EXISTS users_range_part
@@ -1175,12 +863,73 @@ CREATE TABLE users_range_part (
 </div>
 </div>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We will not be able to insert the data until we add at least one partition.</p>
+</div>
+</div>
+</div>
+<div class="section" id="managing-partitions-range">
+<h2>Managing Partitions - Range<a class="headerlink" href="#managing-partitions-range" title="Permalink to this headline">¶</a></h2>
+<p>Let us understand how to add partitions to the table <code class="docutils literal notranslate"><span class="pre">users_range_part</span></code>.</p>
+<ul class="simple">
+<li><p>All users data created in a specific year should go to the respective partition created.</p></li>
+<li><p>For example, all users data created in the year of 2016 should go to <code class="docutils literal notranslate"><span class="pre">users_range_part_2016</span></code>.</p></li>
+<li><p>We can add partition to existing partitioned table using <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">TABLE</span> <span class="pre">partition_name</span> <span class="pre">PARTITION</span> <span class="pre">OF</span> <span class="pre">table</span></code>.</p></li>
+<li><p>We can have a partition for default values so that all the data that does not satisfy the partition condition can be added to it.</p></li>
+<li><p>We can have a partition for specific range of values.</p></li>
+<li><p>Once partitions are added, we can insert data into the partitioned table.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Here is how we can create partition for default values for a range partitioned table <strong>users_range_part</strong>.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_sms_user:sms_password@localhost:5432/itversity_sms_db
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
 CREATE TABLE users_range_part_default
 PARTITION OF users_range_part DEFAULT
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+CREATE TABLE users_range_part_2016
+PARTITION OF users_range_part
+FOR VALUES FROM (&#39;2016-01-01&#39;) TO (&#39;2016-12-31&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition error">
+<p class="admonition-title">Error</p>
+<p>As there is a overlap between the previous partition and below one, command to create partition for data ranging from 2016-01-01 till 2017-12-31 will fail.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+CREATE TABLE users_range_part_2017
+PARTITION OF users_range_part
+FOR VALUES FROM (&#39;2016-01-01&#39;) TO (&#39;2017-12-31&#39;)
 </pre></div>
 </div>
 </div>
@@ -1294,8 +1043,623 @@ FROM users_range_part_2020
 </div>
 </div>
 </div>
+<div class="section" id="repartitioning-range">
+<h2>Repartitioning - Range<a class="headerlink" href="#repartitioning-range" title="Permalink to this headline">¶</a></h2>
+<p>Let us understand how we can repartition the existing partitioned table.</p>
+<ul class="simple">
+<li><p>We will use <strong>users_range_part</strong> table. It is originally partitioned for each year.</p></li>
+<li><p>Now we would like to partition for each month.</p></li>
+<li><p>Here are the steps that are involved in repartitioning from year to month.</p>
+<ul>
+<li><p>Detach all yearly partitions from <strong>users_range_part</strong>.</p></li>
+<li><p>Add new partitions for each month.</p></li>
+<li><p>Load data from detached partitions into the table with new partitions for each month.</p></li>
+<li><p>Validate to ensure that all the data is copied.</p></li>
+<li><p>Drop all the detached partitions.</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_sms_user:sms_password@localhost:5432/itversity_sms_db
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Detach all yearly partitions</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+ALTER TABLE users_range_part
+    DETACH PARTITION users_range_part_2016
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+ALTER TABLE users_range_part
+    DETACH PARTITION users_range_part_2017
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+ALTER TABLE users_range_part
+    DETACH PARTITION users_range_part_2018
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+ALTER TABLE users_range_part
+    DETACH PARTITION users_range_part_2019
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+ALTER TABLE users_range_part
+    DETACH PARTITION users_range_part_2020
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Add new partitions for every month between 2016 January and 2020 December.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install psycopg2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">pandas.tseries.offsets</span> <span class="kn">import</span> <span class="n">MonthBegin</span><span class="p">,</span> <span class="n">MonthEnd</span>
+
+<span class="n">months</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="s1">&#39;1/1/2016&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;3/31/2016&#39;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;1M&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">month</span> <span class="ow">in</span> <span class="n">months</span><span class="p">:</span>
+    <span class="n">begin_date</span> <span class="o">=</span> <span class="n">month</span> <span class="o">-</span> <span class="n">MonthBegin</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">end_date</span> <span class="o">=</span> <span class="n">month</span> <span class="o">+</span> <span class="n">MonthEnd</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">month</span><span class="p">)[:</span><span class="mi">7</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">begin_date</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">end_date</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">psycopg2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">pandas.tseries.offsets</span> <span class="kn">import</span> <span class="n">MonthBegin</span><span class="p">,</span> <span class="n">MonthEnd</span>
+
+<span class="n">months</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="s1">&#39;1/1/2016&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;12/31/2020&#39;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;1M&#39;</span><span class="p">)</span>
+
+<span class="n">connection</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
+    <span class="n">host</span><span class="o">=</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
+    <span class="n">port</span><span class="o">=</span><span class="s1">&#39;5432&#39;</span><span class="p">,</span>
+    <span class="n">database</span><span class="o">=</span><span class="s1">&#39;itversity_sms_db&#39;</span><span class="p">,</span>
+    <span class="n">user</span><span class="o">=</span><span class="s1">&#39;itversity_sms_user&#39;</span><span class="p">,</span>
+    <span class="n">password</span><span class="o">=</span><span class="s1">&#39;sms_password&#39;</span>
+<span class="p">)</span>
+<span class="n">cursor</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+<span class="n">table_name</span> <span class="o">=</span> <span class="s1">&#39;users_range_part&#39;</span>
+<span class="n">query</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">CREATE TABLE </span><span class="si">{table_name}</span><span class="s1">_</span><span class="si">{yyyymm}</span><span class="s1"></span>
+<span class="s1">PARTITION OF </span><span class="si">{table_name}</span><span class="s1"></span>
+<span class="s1">FOR VALUES FROM (&#39;</span><span class="si">{begin_date}</span><span class="s1">&#39;) TO (&#39;</span><span class="si">{end_date}</span><span class="s1">&#39;)</span>
+<span class="s1">&#39;&#39;&#39;</span>
+<span class="k">for</span> <span class="n">month</span> <span class="ow">in</span> <span class="n">months</span><span class="p">:</span>
+    <span class="n">begin_date</span> <span class="o">=</span> <span class="n">month</span> <span class="o">-</span> <span class="n">MonthBegin</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">end_date</span> <span class="o">=</span> <span class="n">month</span> <span class="o">+</span> <span class="n">MonthEnd</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Adding partition for </span><span class="si">{</span><span class="n">begin_date</span><span class="si">}</span><span class="s1"> and </span><span class="si">{</span><span class="n">end_date</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+        <span class="n">query</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">table_name</span><span class="o">=</span><span class="n">table_name</span><span class="p">,</span>
+            <span class="n">yyyymm</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">month</span><span class="p">)[:</span><span class="mi">7</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span>
+            <span class="n">begin_date</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">begin_date</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
+            <span class="n">end_date</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">end_date</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="p">),</span> <span class="p">()</span>
+    <span class="p">)</span>
+<span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+<span class="n">cursor</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">connection</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Load data from detached yearly partitions into monthly partitioned table.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+INSERT INTO users_range_part
+SELECT * FROM users_range_part_2016
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+INSERT INTO users_range_part
+SELECT * FROM users_range_part_2017
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+INSERT INTO users_range_part
+SELECT * FROM users_range_part_2018
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+INSERT INTO users_range_part
+SELECT * FROM users_range_part_2019
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+INSERT INTO users_range_part
+SELECT * FROM users_range_part_2020
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT * FROM users_range_part
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT * FROM users_range_part_201706
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT * FROM users_range_part_201810
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT * FROM users_range_part_201902
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As we are able to see the data in the monthly partitioned table, we can drop the tables which are created earlier using yearly partitioning strategy.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+DROP TABLE users_range_part_2016
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+DROP TABLE users_range_part_2017
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+DROP TABLE users_range_part_2018
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+DROP TABLE users_range_part_2019
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+DROP TABLE users_range_part_2020
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT table_catalog, 
+    table_schema, 
+    table_name FROM information_schema.tables
+WHERE table_name ~ &#39;users_range_part_&#39;
+ORDER BY table_name
+</pre></div>
+</div>
+</div>
+</div>
+</div>
 <div class="section" id="hash-partitioning">
 <h2>Hash Partitioning<a class="headerlink" href="#hash-partitioning" title="Permalink to this headline">¶</a></h2>
+<p>Let us understand how we can take care of Hash partitioning of tables.</p>
+<ul class="simple">
+<li><p>It is primarily used to create partitions based up on modulus and reminder.</p></li>
+<li><p>Here are the steps involved in creating table using range partitioning strategy.</p>
+<ul>
+<li><p>Create table using <code class="docutils literal notranslate"><span class="pre">PARTITION</span> <span class="pre">BY</span> <span class="pre">HASH</span></code></p></li>
+<li><p>Add default and range specific partitions</p></li>
+<li><p>Validate by inserting data into the table</p></li>
+</ul>
+</li>
+<li><p>We can detach as well as drop the partitions from the table.</p></li>
+<li><p>Hash partitioning is typically done on sparse columns such as <code class="docutils literal notranslate"><span class="pre">user_id</span></code>.</p></li>
+<li><p>If we want to use hash partitioning on more than one tables with common key, we typically partition all the tables using same key.</p></li>
+</ul>
+<div class="section" id="id2">
+<h3>Create Partitioned Table<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>Let us create partitioned table with name <code class="docutils literal notranslate"><span class="pre">users_hash_part</span></code>.</p>
+<ul class="simple">
+<li><p>It contains same columns as <code class="docutils literal notranslate"><span class="pre">users</span></code>.</p></li>
+<li><p>We will partition the table based up on <code class="docutils literal notranslate"><span class="pre">user_id</span></code> field.</p></li>
+<li><p>We will create one partition for each reminder with modulus 8.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_sms_user:sms_password@localhost:5432/itversity_sms_db
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> DROP TABLE IF EXISTS users_hash_part
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+CREATE TABLE users_hash_part (
+    user_id SERIAL,
+    user_first_name VARCHAR(30) NOT NULL,
+    user_last_name VARCHAR(30) NOT NULL,
+    user_email_id VARCHAR(50) NOT NULL,
+    user_email_validated BOOLEAN DEFAULT FALSE,
+    user_password VARCHAR(200),
+    user_role VARCHAR(1) NOT NULL DEFAULT &#39;U&#39;, --U and A
+    is_active BOOLEAN DEFAULT FALSE,
+    created_dt DATE DEFAULT CURRENT_DATE,
+    last_updated_ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (user_id)
+) PARTITION BY HASH(user_id)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We will not be able to insert the data until we add at least one partition.</p>
+</div>
+</div>
+</div>
+<div class="section" id="managing-partitions-hash">
+<h2>Managing Partitions - Hash<a class="headerlink" href="#managing-partitions-hash" title="Permalink to this headline">¶</a></h2>
+<p>Let us understand how to add partitions to the table <code class="docutils literal notranslate"><span class="pre">users_hash_part</span></code>.</p>
+<ul class="simple">
+<li><p>We would like to divide our data into 8 hash buckets.</p></li>
+<li><p>While adding partitions for <strong>hash partitioned table</strong>, we need to specify modulus and remainder.</p></li>
+<li><p>For each and every record inserted, following will happen for the column specified as partitioned key.</p>
+<ul>
+<li><p>A hash will be computed. Hash is nothing but an integer.</p></li>
+<li><p>The integer generated will be divided by the value specified in <strong>modulus</strong>.</p></li>
+<li><p>Based up on the reminder, the record will be inserted into corresponding partiting.</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_sms_user:sms_password@localhost:5432/itversity_sms_db
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition error">
+<p class="admonition-title">Error</p>
+<p>We cannot have a default partition for hash partitioned table.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+CREATE TABLE users_hash_part_default
+PARTITION OF users_hash_part DEFAULT
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Let us add partitions using modulus as 8. For each remainder between 0 to 7. we need to add a partition.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+CREATE TABLE users_hash_part_0_of_8
+PARTITION OF users_hash_part
+FOR VALUES WITH (modulus 8, remainder 0)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+CREATE TABLE users_hash_part_1_of_8
+PARTITION OF users_hash_part
+FOR VALUES WITH (modulus 8, remainder 1)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+CREATE TABLE users_hash_part_2_of_8
+PARTITION OF users_hash_part
+FOR VALUES WITH (modulus 8, remainder 2)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+CREATE TABLE users_hash_part_3_of_8
+PARTITION OF users_hash_part
+FOR VALUES WITH (modulus 8, remainder 3)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+CREATE TABLE users_hash_part_4_of_8
+PARTITION OF users_hash_part
+FOR VALUES WITH (modulus 8, remainder 4)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+CREATE TABLE users_hash_part_5_of_8
+PARTITION OF users_hash_part
+FOR VALUES WITH (modulus 8, remainder 5)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+CREATE TABLE users_hash_part_6_of_8
+PARTITION OF users_hash_part
+FOR VALUES WITH (modulus 8, remainder 6)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+CREATE TABLE users_hash_part_7_of_8
+PARTITION OF users_hash_part
+FOR VALUES WITH (modulus 8, remainder 7)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+INSERT INTO users_hash_part
+    (user_first_name, user_last_name, user_email_id, created_dt)
+VALUES 
+    (&#39;Scott&#39;, &#39;Tiger&#39;, &#39;scott@tiger.com&#39;, &#39;2018-10-01&#39;),
+    (&#39;Donald&#39;, &#39;Duck&#39;, &#39;donald@duck.com&#39;, &#39;2019-02-10&#39;),
+    (&#39;Mickey&#39;, &#39;Mouse&#39;, &#39;mickey@mouse.com&#39;, &#39;2017-06-22&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>user_id</strong> is populated by sequence. The hash of every sequence generated integer will be divided by modulus (which is 8) and based up on the remainder data will be inserted into corresponding partition.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT * FROM users_hash_part
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT * FROM users_hash_part_0_of_8
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT * FROM users_hash_part_1_of_8
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT * FROM users_hash_part_2_of_8
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT * FROM users_hash_part_3_of_8
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT * FROM users_hash_part_4_of_8
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT * FROM users_hash_part_5_of_8
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT * FROM users_hash_part_6_of_8
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT * FROM users_hash_part_7_of_8
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 <div class="section" id="usage-scenarios">
 <h2>Usage Scenarios<a class="headerlink" href="#usage-scenarios" title="Permalink to this headline">¶</a></h2>
@@ -1311,6 +1675,325 @@ FROM users_range_part_2020
 </ul>
 </li>
 <li><p>In case of log tables, where we might want to retain data for several years, we tend to use range partition on date column. If we use list partition, then we might end up in duplication of data unnecessarily.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_sms_user:sms_password@localhost:5432/itversity_sms_db
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Monthly partition using list. We need to have additional column to store the month to use list partitioning strategy.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+DROP TABLE IF EXISTS users_mthly
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+CREATE TABLE users_mthly (
+    user_id SERIAL,
+    user_first_name VARCHAR(30) NOT NULL,
+    user_last_name VARCHAR(30) NOT NULL,
+    user_email_id VARCHAR(50) NOT NULL,
+    user_email_validated BOOLEAN DEFAULT FALSE,
+    user_password VARCHAR(200),
+    user_role VARCHAR(1) NOT NULL DEFAULT &#39;U&#39;, --U and A
+    is_active BOOLEAN DEFAULT FALSE,
+    created_dt DATE DEFAULT CURRENT_DATE,
+    created_mnth INT,
+    last_updated_ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (created_mnth, user_id)
+) PARTITION BY LIST(created_mnth)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+CREATE TABLE users_mthly_201601
+PARTITION OF users_mthly
+FOR VALUES IN (201601)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+CREATE TABLE users_mthly_201602
+PARTITION OF users_mthly
+FOR VALUES IN (201602)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Monthly partition using range. Partition strategy is defined on top of <strong>created_dt</strong>. No additional column is required.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+DROP TABLE IF EXISTS users_mthly
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+CREATE TABLE users_mthly (
+    user_id SERIAL,
+    user_first_name VARCHAR(30) NOT NULL,
+    user_last_name VARCHAR(30) NOT NULL,
+    user_email_id VARCHAR(50) NOT NULL,
+    user_email_validated BOOLEAN DEFAULT FALSE,
+    user_password VARCHAR(200),
+    user_role VARCHAR(1) NOT NULL DEFAULT &#39;U&#39;, --U and A
+    is_active BOOLEAN DEFAULT FALSE,
+    created_dt DATE DEFAULT CURRENT_DATE,
+    last_updated_ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (created_dt, user_id)
+) PARTITION BY RANGE(created_dt)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+CREATE TABLE users_mthly_201601
+PARTITION OF users_mthly
+FOR VALUES FROM (&#39;2016-01-01&#39;) TO (&#39;2016-01-31&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+CREATE TABLE users_mthly_201602
+PARTITION OF users_mthly
+FOR VALUES FROM (&#39;2016-02-01&#39;) TO (&#39;2016-02-29&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="sub-partitioning">
+<h2>Sub Partitioning<a class="headerlink" href="#sub-partitioning" title="Permalink to this headline">¶</a></h2>
+<p>We can also have sub partitions created with different permutations and combinations. Sub Partitioning is also known as nested partitioning.</p>
+<ul class="simple">
+<li><p>List - List</p></li>
+<li><p>List - Range
+and others.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Try different sub-partitioning strategies based up on your requirements.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_sms_user:sms_password@localhost:5432/itversity_sms_db
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="list-list-partitioning">
+<h3>List - List Partitioning<a class="headerlink" href="#list-list-partitioning" title="Permalink to this headline">¶</a></h3>
+<p>Let us understand how we can create table using list - list sub partitioning.</p>
+<ul class="simple">
+<li><p>Create table with <code class="docutils literal notranslate"><span class="pre">PARTITION</span> <span class="pre">BY</span> <span class="pre">LIST</span></code> with <code class="docutils literal notranslate"><span class="pre">created_year</span></code>.</p></li>
+<li><p>Create tables for yearly partitions with <code class="docutils literal notranslate"><span class="pre">PARTITION</span> <span class="pre">BY</span> <span class="pre">LIST</span></code> with <code class="docutils literal notranslate"><span class="pre">created_month</span></code>.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+DROP TABLE IF EXISTS users_qtly
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+CREATE TABLE users_qtly (
+    user_id SERIAL,
+    user_first_name VARCHAR(30) NOT NULL,
+    user_last_name VARCHAR(30) NOT NULL,
+    user_email_id VARCHAR(50) NOT NULL,
+    user_email_validated BOOLEAN DEFAULT FALSE,
+    user_password VARCHAR(200),
+    user_role VARCHAR(1) NOT NULL DEFAULT &#39;U&#39;, --U and A
+    is_active BOOLEAN DEFAULT FALSE,
+    created_dt DATE DEFAULT CURRENT_DATE,
+    created_year INT,
+    created_mnth INT,
+    last_updated_ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (created_year, created_mnth, user_id)
+) PARTITION BY LIST(created_year)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+CREATE TABLE users_qtly_2016
+PARTITION OF users_qtly
+FOR VALUES IN (2016)
+    PARTITION BY LIST (created_mnth)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+CREATE TABLE users_qtly_2016q1
+PARTITION OF users_qtly_2016
+FOR VALUES IN (1, 2, 3)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+CREATE TABLE users_qtly_2016q2
+PARTITION OF users_qtly_2016
+FOR VALUES IN (4, 5, 6)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="list-range-partitioning">
+<h3>List - Range Partitioning<a class="headerlink" href="#list-range-partitioning" title="Permalink to this headline">¶</a></h3>
+<p>Let us understand how we can create table using list - Range sub partitioning.</p>
+<ul class="simple">
+<li><p>Create table with <code class="docutils literal notranslate"><span class="pre">PARTITION</span> <span class="pre">BY</span> <span class="pre">LIST</span></code> with <code class="docutils literal notranslate"><span class="pre">created_year</span></code>.</p></li>
+<li><p>Create tables for yearly partitions with <code class="docutils literal notranslate"><span class="pre">PARTITION</span> <span class="pre">BY</span> <span class="pre">RANGE</span></code> with <code class="docutils literal notranslate"><span class="pre">created_month</span></code>.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+DROP TABLE IF EXISTS users_qtly
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+CREATE TABLE users_qtly (
+    user_id SERIAL,
+    user_first_name VARCHAR(30) NOT NULL,
+    user_last_name VARCHAR(30) NOT NULL,
+    user_email_id VARCHAR(50) NOT NULL,
+    user_email_validated BOOLEAN DEFAULT FALSE,
+    user_password VARCHAR(200),
+    user_role VARCHAR(1) NOT NULL DEFAULT &#39;U&#39;, --U and A
+    is_active BOOLEAN DEFAULT FALSE,
+    created_dt DATE DEFAULT CURRENT_DATE,
+    created_year INT,
+    created_mnth INT,
+    last_updated_ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (created_year, created_mnth, user_id)
+) PARTITION BY LIST(created_year)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+CREATE TABLE users_qtly_2016
+PARTITION OF users_qtly
+FOR VALUES IN (2016)
+    PARTITION BY RANGE (created_mnth)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+CREATE TABLE users_qtly_2016q1
+PARTITION OF users_qtly_2016
+FOR VALUES FROM (1) TO (3)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+CREATE TABLE users_qtly_2016q2
+PARTITION OF users_qtly_2016
+FOR VALUES FROM (4) TO (6)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise-partitioning-tables">
+<h2>Exercise - Partitioning Tables<a class="headerlink" href="#exercise-partitioning-tables" title="Permalink to this headline">¶</a></h2>
+<p>Here is the exercise to get comfort with partitioning. We will be using range partitioning.</p>
+<ul class="simple">
+<li><p>Use retail database. Make sure <strong>orders</strong> table already exists.</p></li>
+<li><p>Create table <strong>orders_part</strong> with the same columns as orders.</p></li>
+<li><p>Partition the table by month using range partitioning on <strong>order_date</strong>.</p></li>
+<li><p>Add 14 partitions - 13 based up on the data and 1 default. Here is the naming convention.</p>
+<ul>
+<li><p>Default - orders_part_default</p></li>
+<li><p>Partition for 2014 January - orders_part_201401</p></li>
+</ul>
+</li>
+<li><p>Load the data from <strong>orders</strong> into <strong>orders_part</strong>.</p></li>
+<li><p>Get count on <strong>orders_part</strong> as well as all the 14 partitions. You should get 0 for default partition.</p></li>
 </ul>
 </div>
 </div>
