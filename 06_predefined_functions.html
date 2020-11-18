@@ -245,6 +245,11 @@
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#using-position-or-strpos">
+     Using position or strpos
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#trimming-and-padding-functions">
      Trimming and Padding Functions
     </a>
@@ -317,6 +322,48 @@
   <a class="reference internal nav-link" href="#exercises-pre-defined-functions">
    Exercises - Pre-Defined Functions
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-1">
+     Exercise 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-2">
+     Exercise 2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-3">
+     Exercise 3
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-4">
+     Exercise 4
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-5">
+     Exercise 5
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-6">
+     Exercise 6
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-7">
+     Exercise 7
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-8">
+     Exercise 8
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -342,9 +389,18 @@
 <li><p>Using CASE and WHEN</p></li>
 <li><p>Exercises - Pre-Defined Functions</p></li>
 </ul>
+<p>Here are the key objectives of this section.</p>
+<ul class="simple">
+<li><p>How to use official documentation of Postgres to get syntax and symantecs of the pre-defined functions?</p></li>
+<li><p>Understand different categories of functions</p></li>
+<li><p>How to use functions effectively using real world examples?</p></li>
+<li><p>How to manipulate strings and dates?</p></li>
+<li><p>How to deal with nulls, convert data types etc?</p></li>
+<li><p>Self evaluate by solving the exercises by using multiple functions in tandem.</p></li>
+</ul>
 <div class="section" id="overview-of-pre-defined-functions">
 <h2>Overview of Pre-Defined Functions<a class="headerlink" href="#overview-of-pre-defined-functions" title="Permalink to this headline">¶</a></h2>
-<p>Like any RDBMS, Postgres provide robust set of pre-defined functions to come up with the solutions quickly as per the business requirements. There are many functions, but we will see the most common ones here.</p>
+<p>Like any RDBMS, Postgres provides robust set of pre-defined functions to come up with solutions quickly as per the business requirements. There are many functions, but we will see the most common ones here.</p>
 <ul class="simple">
 <li><p>Following are the categories of functions that are more commonly used.</p>
 <ul>
@@ -356,6 +412,7 @@
 <li><p>and more</p></li>
 </ul>
 </li>
+<li><p>One can go to the official documentation from <a class="reference external" href="https://www.postgresql.org/">Postgres website</a>.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -366,7 +423,12 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5433/itversity_retail_db
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env: DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
 </pre></div>
 </div>
 </div>
@@ -377,6 +439,4021 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>specific_catalog</th>
+        <th>specific_schema</th>
+        <th>specific_name</th>
+        <th>routine_catalog</th>
+        <th>routine_schema</th>
+        <th>routine_name</th>
+        <th>routine_type</th>
+        <th>module_catalog</th>
+        <th>module_schema</th>
+        <th>module_name</th>
+        <th>udt_catalog</th>
+        <th>udt_schema</th>
+        <th>udt_name</th>
+        <th>data_type</th>
+        <th>character_maximum_length</th>
+        <th>character_octet_length</th>
+        <th>character_set_catalog</th>
+        <th>character_set_schema</th>
+        <th>character_set_name</th>
+        <th>collation_catalog</th>
+        <th>collation_schema</th>
+        <th>collation_name</th>
+        <th>numeric_precision</th>
+        <th>numeric_precision_radix</th>
+        <th>numeric_scale</th>
+        <th>datetime_precision</th>
+        <th>interval_type</th>
+        <th>interval_precision</th>
+        <th>type_udt_catalog</th>
+        <th>type_udt_schema</th>
+        <th>type_udt_name</th>
+        <th>scope_catalog</th>
+        <th>scope_schema</th>
+        <th>scope_name</th>
+        <th>maximum_cardinality</th>
+        <th>dtd_identifier</th>
+        <th>routine_body</th>
+        <th>routine_definition</th>
+        <th>external_name</th>
+        <th>external_language</th>
+        <th>parameter_style</th>
+        <th>is_deterministic</th>
+        <th>sql_data_access</th>
+        <th>is_null_call</th>
+        <th>sql_path</th>
+        <th>schema_level_routine</th>
+        <th>max_dynamic_result_sets</th>
+        <th>is_user_defined_cast</th>
+        <th>is_implicitly_invocable</th>
+        <th>security_type</th>
+        <th>to_sql_specific_catalog</th>
+        <th>to_sql_specific_schema</th>
+        <th>to_sql_specific_name</th>
+        <th>as_locator</th>
+        <th>created</th>
+        <th>last_altered</th>
+        <th>new_savepoint_level</th>
+        <th>is_udt_dependent</th>
+        <th>result_cast_from_data_type</th>
+        <th>result_cast_as_locator</th>
+        <th>result_cast_char_max_length</th>
+        <th>result_cast_char_octet_length</th>
+        <th>result_cast_char_set_catalog</th>
+        <th>result_cast_char_set_schema</th>
+        <th>result_cast_char_set_name</th>
+        <th>result_cast_collation_catalog</th>
+        <th>result_cast_collation_schema</th>
+        <th>result_cast_collation_name</th>
+        <th>result_cast_numeric_precision</th>
+        <th>result_cast_numeric_precision_radix</th>
+        <th>result_cast_numeric_scale</th>
+        <th>result_cast_datetime_precision</th>
+        <th>result_cast_interval_type</th>
+        <th>result_cast_interval_precision</th>
+        <th>result_cast_type_udt_catalog</th>
+        <th>result_cast_type_udt_schema</th>
+        <th>result_cast_type_udt_name</th>
+        <th>result_cast_scope_catalog</th>
+        <th>result_cast_scope_schema</th>
+        <th>result_cast_scope_name</th>
+        <th>result_cast_maximum_cardinality</th>
+        <th>result_cast_dtd_identifier</th>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>boolin_1242</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>boolin</td>
+        <td>FUNCTION</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>boolean</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>bool</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>0</td>
+        <td>EXTERNAL</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INTERNAL</td>
+        <td>GENERAL</td>
+        <td>YES</td>
+        <td>MODIFIES</td>
+        <td>YES</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>0</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INVOKER</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>boolout_1243</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>boolout</td>
+        <td>FUNCTION</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>cstring</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>cstring</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>0</td>
+        <td>EXTERNAL</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INTERNAL</td>
+        <td>GENERAL</td>
+        <td>YES</td>
+        <td>MODIFIES</td>
+        <td>YES</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>0</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INVOKER</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>byteain_1244</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>byteain</td>
+        <td>FUNCTION</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>bytea</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>bytea</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>0</td>
+        <td>EXTERNAL</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INTERNAL</td>
+        <td>GENERAL</td>
+        <td>YES</td>
+        <td>MODIFIES</td>
+        <td>YES</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>0</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INVOKER</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>byteaout_31</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>byteaout</td>
+        <td>FUNCTION</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>cstring</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>cstring</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>0</td>
+        <td>EXTERNAL</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INTERNAL</td>
+        <td>GENERAL</td>
+        <td>YES</td>
+        <td>MODIFIES</td>
+        <td>YES</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>0</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INVOKER</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>charin_1245</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>charin</td>
+        <td>FUNCTION</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>&quot;char&quot;</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>char</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>0</td>
+        <td>EXTERNAL</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INTERNAL</td>
+        <td>GENERAL</td>
+        <td>YES</td>
+        <td>MODIFIES</td>
+        <td>YES</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>0</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INVOKER</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>charout_33</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>charout</td>
+        <td>FUNCTION</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>cstring</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>cstring</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>0</td>
+        <td>EXTERNAL</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INTERNAL</td>
+        <td>GENERAL</td>
+        <td>YES</td>
+        <td>MODIFIES</td>
+        <td>YES</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>0</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INVOKER</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>namein_34</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>namein</td>
+        <td>FUNCTION</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>name</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>name</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>0</td>
+        <td>EXTERNAL</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INTERNAL</td>
+        <td>GENERAL</td>
+        <td>YES</td>
+        <td>MODIFIES</td>
+        <td>YES</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>0</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INVOKER</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>nameout_35</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>nameout</td>
+        <td>FUNCTION</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>cstring</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>cstring</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>0</td>
+        <td>EXTERNAL</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INTERNAL</td>
+        <td>GENERAL</td>
+        <td>YES</td>
+        <td>MODIFIES</td>
+        <td>YES</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>0</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INVOKER</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>int2in_38</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>int2in</td>
+        <td>FUNCTION</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>smallint</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>int2</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>0</td>
+        <td>EXTERNAL</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INTERNAL</td>
+        <td>GENERAL</td>
+        <td>YES</td>
+        <td>MODIFIES</td>
+        <td>YES</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>0</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INVOKER</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>int2out_39</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>int2out</td>
+        <td>FUNCTION</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>cstring</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>cstring</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>0</td>
+        <td>EXTERNAL</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INTERNAL</td>
+        <td>GENERAL</td>
+        <td>YES</td>
+        <td>MODIFIES</td>
+        <td>YES</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>0</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INVOKER</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span> 
+
+SELECT * FROM information_schema.routines 
+WHERE routine_name ~ &#39;str&#39;
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+35 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>specific_catalog</th>
+        <th>specific_schema</th>
+        <th>specific_name</th>
+        <th>routine_catalog</th>
+        <th>routine_schema</th>
+        <th>routine_name</th>
+        <th>routine_type</th>
+        <th>module_catalog</th>
+        <th>module_schema</th>
+        <th>module_name</th>
+        <th>udt_catalog</th>
+        <th>udt_schema</th>
+        <th>udt_name</th>
+        <th>data_type</th>
+        <th>character_maximum_length</th>
+        <th>character_octet_length</th>
+        <th>character_set_catalog</th>
+        <th>character_set_schema</th>
+        <th>character_set_name</th>
+        <th>collation_catalog</th>
+        <th>collation_schema</th>
+        <th>collation_name</th>
+        <th>numeric_precision</th>
+        <th>numeric_precision_radix</th>
+        <th>numeric_scale</th>
+        <th>datetime_precision</th>
+        <th>interval_type</th>
+        <th>interval_precision</th>
+        <th>type_udt_catalog</th>
+        <th>type_udt_schema</th>
+        <th>type_udt_name</th>
+        <th>scope_catalog</th>
+        <th>scope_schema</th>
+        <th>scope_name</th>
+        <th>maximum_cardinality</th>
+        <th>dtd_identifier</th>
+        <th>routine_body</th>
+        <th>routine_definition</th>
+        <th>external_name</th>
+        <th>external_language</th>
+        <th>parameter_style</th>
+        <th>is_deterministic</th>
+        <th>sql_data_access</th>
+        <th>is_null_call</th>
+        <th>sql_path</th>
+        <th>schema_level_routine</th>
+        <th>max_dynamic_result_sets</th>
+        <th>is_user_defined_cast</th>
+        <th>is_implicitly_invocable</th>
+        <th>security_type</th>
+        <th>to_sql_specific_catalog</th>
+        <th>to_sql_specific_schema</th>
+        <th>to_sql_specific_name</th>
+        <th>as_locator</th>
+        <th>created</th>
+        <th>last_altered</th>
+        <th>new_savepoint_level</th>
+        <th>is_udt_dependent</th>
+        <th>result_cast_from_data_type</th>
+        <th>result_cast_as_locator</th>
+        <th>result_cast_char_max_length</th>
+        <th>result_cast_char_octet_length</th>
+        <th>result_cast_char_set_catalog</th>
+        <th>result_cast_char_set_schema</th>
+        <th>result_cast_char_set_name</th>
+        <th>result_cast_collation_catalog</th>
+        <th>result_cast_collation_schema</th>
+        <th>result_cast_collation_name</th>
+        <th>result_cast_numeric_precision</th>
+        <th>result_cast_numeric_precision_radix</th>
+        <th>result_cast_numeric_scale</th>
+        <th>result_cast_datetime_precision</th>
+        <th>result_cast_interval_type</th>
+        <th>result_cast_interval_precision</th>
+        <th>result_cast_type_udt_catalog</th>
+        <th>result_cast_type_udt_schema</th>
+        <th>result_cast_type_udt_name</th>
+        <th>result_cast_scope_catalog</th>
+        <th>result_cast_scope_schema</th>
+        <th>result_cast_scope_name</th>
+        <th>result_cast_maximum_cardinality</th>
+        <th>result_cast_dtd_identifier</th>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>string_to_array_394</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>string_to_array</td>
+        <td>FUNCTION</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>ARRAY</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>_text</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>0</td>
+        <td>EXTERNAL</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INTERNAL</td>
+        <td>GENERAL</td>
+        <td>YES</td>
+        <td>MODIFIES</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>0</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INVOKER</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>array_to_string_395</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>array_to_string</td>
+        <td>FUNCTION</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>text</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>text</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>0</td>
+        <td>EXTERNAL</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INTERNAL</td>
+        <td>GENERAL</td>
+        <td>NO</td>
+        <td>MODIFIES</td>
+        <td>YES</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>0</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INVOKER</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>string_to_array_376</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>string_to_array</td>
+        <td>FUNCTION</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>ARRAY</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>_text</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>0</td>
+        <td>EXTERNAL</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INTERNAL</td>
+        <td>GENERAL</td>
+        <td>YES</td>
+        <td>MODIFIES</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>0</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INVOKER</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>array_to_string_384</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>array_to_string</td>
+        <td>FUNCTION</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>text</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>text</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>0</td>
+        <td>EXTERNAL</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INTERNAL</td>
+        <td>GENERAL</td>
+        <td>NO</td>
+        <td>MODIFIES</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>0</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INVOKER</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>strpos_868</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>strpos</td>
+        <td>FUNCTION</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>integer</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>int4</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>0</td>
+        <td>EXTERNAL</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INTERNAL</td>
+        <td>GENERAL</td>
+        <td>YES</td>
+        <td>MODIFIES</td>
+        <td>YES</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>0</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INVOKER</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>substr_877</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>substr</td>
+        <td>FUNCTION</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>text</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>text</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>0</td>
+        <td>EXTERNAL</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INTERNAL</td>
+        <td>GENERAL</td>
+        <td>YES</td>
+        <td>MODIFIES</td>
+        <td>YES</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>0</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INVOKER</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>substr_883</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>substr</td>
+        <td>FUNCTION</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>text</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>text</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>0</td>
+        <td>EXTERNAL</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INTERNAL</td>
+        <td>GENERAL</td>
+        <td>YES</td>
+        <td>MODIFIES</td>
+        <td>YES</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>0</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INVOKER</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>substring_936</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>substring</td>
+        <td>FUNCTION</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>text</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>text</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>0</td>
+        <td>EXTERNAL</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INTERNAL</td>
+        <td>GENERAL</td>
+        <td>YES</td>
+        <td>MODIFIES</td>
+        <td>YES</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>0</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INVOKER</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>substring_937</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>substring</td>
+        <td>FUNCTION</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>text</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>text</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>0</td>
+        <td>EXTERNAL</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INTERNAL</td>
+        <td>GENERAL</td>
+        <td>YES</td>
+        <td>MODIFIES</td>
+        <td>YES</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>0</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INVOKER</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>pg_get_partition_constraintdef_3408</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>pg_get_partition_constraintdef</td>
+        <td>FUNCTION</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>text</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>text</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>0</td>
+        <td>EXTERNAL</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INTERNAL</td>
+        <td>GENERAL</td>
+        <td>NO</td>
+        <td>MODIFIES</td>
+        <td>YES</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>0</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INVOKER</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>pg_get_constraintdef_1387</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>pg_get_constraintdef</td>
+        <td>FUNCTION</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>text</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>text</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>0</td>
+        <td>EXTERNAL</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INTERNAL</td>
+        <td>GENERAL</td>
+        <td>NO</td>
+        <td>MODIFIES</td>
+        <td>YES</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>0</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INVOKER</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>RI_FKey_restrict_del_1648</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>RI_FKey_restrict_del</td>
+        <td>FUNCTION</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>trigger</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>trigger</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>0</td>
+        <td>EXTERNAL</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INTERNAL</td>
+        <td>GENERAL</td>
+        <td>NO</td>
+        <td>MODIFIES</td>
+        <td>YES</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>0</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INVOKER</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>RI_FKey_restrict_upd_1649</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>RI_FKey_restrict_upd</td>
+        <td>FUNCTION</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>trigger</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>trigger</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>0</td>
+        <td>EXTERNAL</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INTERNAL</td>
+        <td>GENERAL</td>
+        <td>NO</td>
+        <td>MODIFIES</td>
+        <td>YES</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>0</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INVOKER</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>substring_1680</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>substring</td>
+        <td>FUNCTION</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>bit</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>bit</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>0</td>
+        <td>EXTERNAL</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INTERNAL</td>
+        <td>GENERAL</td>
+        <td>YES</td>
+        <td>MODIFIES</td>
+        <td>YES</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>0</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INVOKER</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>substring_1699</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>substring</td>
+        <td>FUNCTION</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>bit</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>bit</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>0</td>
+        <td>EXTERNAL</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INTERNAL</td>
+        <td>GENERAL</td>
+        <td>YES</td>
+        <td>MODIFIES</td>
+        <td>YES</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>0</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INVOKER</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>string_agg_transfn_3535</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>string_agg_transfn</td>
+        <td>FUNCTION</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>internal</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>internal</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>0</td>
+        <td>EXTERNAL</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INTERNAL</td>
+        <td>GENERAL</td>
+        <td>YES</td>
+        <td>MODIFIES</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>0</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INVOKER</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>string_agg_finalfn_3536</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>string_agg_finalfn</td>
+        <td>FUNCTION</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>text</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>text</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>0</td>
+        <td>EXTERNAL</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INTERNAL</td>
+        <td>GENERAL</td>
+        <td>YES</td>
+        <td>MODIFIES</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>0</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INVOKER</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>string_agg_3538</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>string_agg</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>text</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>text</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>0</td>
+        <td>EXTERNAL</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INTERNAL</td>
+        <td>GENERAL</td>
+        <td>YES</td>
+        <td>MODIFIES</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>0</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INVOKER</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>bytea_string_agg_transfn_3543</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>bytea_string_agg_transfn</td>
+        <td>FUNCTION</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>internal</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>internal</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>0</td>
+        <td>EXTERNAL</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INTERNAL</td>
+        <td>GENERAL</td>
+        <td>YES</td>
+        <td>MODIFIES</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>0</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INVOKER</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>bytea_string_agg_finalfn_3544</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>bytea_string_agg_finalfn</td>
+        <td>FUNCTION</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>bytea</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>bytea</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>0</td>
+        <td>EXTERNAL</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INTERNAL</td>
+        <td>GENERAL</td>
+        <td>YES</td>
+        <td>MODIFIES</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>0</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INVOKER</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>string_agg_3545</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>string_agg</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>bytea</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>bytea</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>0</td>
+        <td>EXTERNAL</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INTERNAL</td>
+        <td>GENERAL</td>
+        <td>YES</td>
+        <td>MODIFIES</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>0</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INVOKER</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>substring_2012</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>substring</td>
+        <td>FUNCTION</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>bytea</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>bytea</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>0</td>
+        <td>EXTERNAL</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INTERNAL</td>
+        <td>GENERAL</td>
+        <td>YES</td>
+        <td>MODIFIES</td>
+        <td>YES</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>0</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INVOKER</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>substring_2013</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>substring</td>
+        <td>FUNCTION</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>bytea</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>bytea</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>0</td>
+        <td>EXTERNAL</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INTERNAL</td>
+        <td>GENERAL</td>
+        <td>YES</td>
+        <td>MODIFIES</td>
+        <td>YES</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>0</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INVOKER</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>substr_2085</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>substr</td>
+        <td>FUNCTION</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>bytea</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>bytea</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>0</td>
+        <td>EXTERNAL</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INTERNAL</td>
+        <td>GENERAL</td>
+        <td>YES</td>
+        <td>MODIFIES</td>
+        <td>YES</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>0</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INVOKER</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>substr_2086</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>substr</td>
+        <td>FUNCTION</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>bytea</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>bytea</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>0</td>
+        <td>EXTERNAL</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INTERNAL</td>
+        <td>GENERAL</td>
+        <td>YES</td>
+        <td>MODIFIES</td>
+        <td>YES</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>0</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INVOKER</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>substring_2073</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>substring</td>
+        <td>FUNCTION</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>text</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>text</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>0</td>
+        <td>EXTERNAL</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INTERNAL</td>
+        <td>GENERAL</td>
+        <td>YES</td>
+        <td>MODIFIES</td>
+        <td>YES</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>0</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INVOKER</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>substring_2074</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>substring</td>
+        <td>FUNCTION</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>text</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>text</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>0</td>
+        <td>SQL</td>
+        <td>None</td>
+        <td>None</td>
+        <td>SQL</td>
+        <td>GENERAL</td>
+        <td>YES</td>
+        <td>MODIFIES</td>
+        <td>YES</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>0</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INVOKER</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>cstring_in_2292</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>cstring_in</td>
+        <td>FUNCTION</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>cstring</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>cstring</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>0</td>
+        <td>EXTERNAL</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INTERNAL</td>
+        <td>GENERAL</td>
+        <td>YES</td>
+        <td>MODIFIES</td>
+        <td>YES</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>0</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INVOKER</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>cstring_out_2293</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>cstring_out</td>
+        <td>FUNCTION</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>cstring</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>cstring</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>0</td>
+        <td>EXTERNAL</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INTERNAL</td>
+        <td>GENERAL</td>
+        <td>YES</td>
+        <td>MODIFIES</td>
+        <td>YES</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>0</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INVOKER</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>cstring_recv_2500</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>cstring_recv</td>
+        <td>FUNCTION</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>cstring</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>cstring</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>0</td>
+        <td>EXTERNAL</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INTERNAL</td>
+        <td>GENERAL</td>
+        <td>NO</td>
+        <td>MODIFIES</td>
+        <td>YES</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>0</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INVOKER</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>cstring_send_2501</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>cstring_send</td>
+        <td>FUNCTION</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>bytea</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>bytea</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>0</td>
+        <td>EXTERNAL</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INTERNAL</td>
+        <td>GENERAL</td>
+        <td>NO</td>
+        <td>MODIFIES</td>
+        <td>YES</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>0</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INVOKER</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>pg_get_constraintdef_2508</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>pg_get_constraintdef</td>
+        <td>FUNCTION</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>text</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>text</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>0</td>
+        <td>EXTERNAL</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INTERNAL</td>
+        <td>GENERAL</td>
+        <td>NO</td>
+        <td>MODIFIES</td>
+        <td>YES</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>0</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INVOKER</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>json_strip_nulls_3261</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>json_strip_nulls</td>
+        <td>FUNCTION</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>json</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>json</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>0</td>
+        <td>EXTERNAL</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INTERNAL</td>
+        <td>GENERAL</td>
+        <td>YES</td>
+        <td>MODIFIES</td>
+        <td>YES</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>0</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INVOKER</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>strip_3623</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>strip</td>
+        <td>FUNCTION</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>tsvector</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>tsvector</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>0</td>
+        <td>EXTERNAL</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INTERNAL</td>
+        <td>GENERAL</td>
+        <td>YES</td>
+        <td>MODIFIES</td>
+        <td>YES</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>0</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INVOKER</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>jsonb_strip_nulls_3262</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>jsonb_strip_nulls</td>
+        <td>FUNCTION</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>jsonb</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>jsonb</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>0</td>
+        <td>EXTERNAL</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INTERNAL</td>
+        <td>GENERAL</td>
+        <td>YES</td>
+        <td>MODIFIES</td>
+        <td>YES</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>0</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INVOKER</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT substring(&#39;Thomas&#39; from 2 for 3)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>substring</th>
+    </tr>
+    <tr>
+        <td>hom</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT substring(&#39;Thomas&#39;, 2, 3)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>substring</th>
+    </tr>
+    <tr>
+        <td>hom</td>
+    </tr>
+</table></div></div>
 </div>
 </div>
 <div class="section" id="string-manipulation-functions">
@@ -390,23 +4467,34 @@
 <li><p>Reversing strings - <code class="docutils literal notranslate"><span class="pre">reverse</span></code></p></li>
 <li><p>Concatenating multiple strings <code class="docutils literal notranslate"><span class="pre">concat</span></code> and <code class="docutils literal notranslate"><span class="pre">concat_ws</span></code></p></li>
 </ul>
+<div class="section" id="case-conversion-and-length">
+<h3>Case Conversion and Length<a class="headerlink" href="#case-conversion-and-length" title="Permalink to this headline">¶</a></h3>
+<p>Let us understand how to perform case conversion of a string and also get length of a string.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
 </pre></div>
 </div>
 </div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5433/itversity_retail_db
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The sql extension is already loaded. To reload it, use:
+  %reload_ext sql
 </pre></div>
 </div>
 </div>
 </div>
-<div class="section" id="case-conversion-and-length">
-<h3>Case Conversion and Length<a class="headerlink" href="#case-conversion-and-length" title="Permalink to this headline">¶</a></h3>
-<p>Let us understand how to perform case conversion functions of a string and also length of a string.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env: DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
+</pre></div>
+</div>
+</div>
+</div>
 <ul class="simple">
 <li><p>Case Conversion Functions - <code class="docutils literal notranslate"><span class="pre">lower</span></code>, <code class="docutils literal notranslate"><span class="pre">upper</span></code>, <code class="docutils literal notranslate"><span class="pre">initcap</span></code></p></li>
 </ul>
@@ -420,6 +4508,23 @@ SELECT lower(&#39;hEllo wOrlD&#39;) AS lower_result,
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>lower_result</th>
+        <th>upper_result</th>
+        <th>initcap_result</th>
+    </tr>
+    <tr>
+        <td>hello world</td>
+        <td>HELLO WORLD</td>
+        <td>Hello World</td>
+    </tr>
+</table></div></div>
 </div>
 <ul class="simple">
 <li><p>Getting length - <code class="docutils literal notranslate"><span class="pre">length</span></code></p></li>
@@ -432,10 +4537,23 @@ SELECT length(&#39;hEllo wOrlD&#39;) AS result
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>result</th>
+    </tr>
+    <tr>
+        <td>11</td>
+    </tr>
+</table></div></div>
 </div>
 <p>Let us see how to use these functions on top of the table. We will use orders table which was loaded as part of last section.</p>
 <ul class="simple">
-<li><p>order_status for some of the orders is in lower case and we will convert every thing to upper case.</p></li>
+<li><p>order_status for all the orders is in upper case and we will convert every thing to lower case.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -445,6 +4563,79 @@ SELECT * FROM orders LIMIT 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_id</th>
+        <th>order_date</th>
+        <th>order_customer_id</th>
+        <th>order_status</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>11599</td>
+        <td>CLOSED</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>256</td>
+        <td>PENDING_PAYMENT</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>12111</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>8827</td>
+        <td>CLOSED</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>11318</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>7130</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>4530</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>8</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>2911</td>
+        <td>PROCESSING</td>
+    </tr>
+    <tr>
+        <td>9</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>5657</td>
+        <td>PENDING_PAYMENT</td>
+    </tr>
+    <tr>
+        <td>10</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>5648</td>
+        <td>PENDING_PAYMENT</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -457,14 +4648,113 @@ FROM orders LIMIT 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_id</th>
+        <th>order_date</th>
+        <th>order_customer_id</th>
+        <th>order_status</th>
+        <th>order_status_length</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>11599</td>
+        <td>closed</td>
+        <td>6</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>256</td>
+        <td>pending_payment</td>
+        <td>15</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>12111</td>
+        <td>complete</td>
+        <td>8</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>8827</td>
+        <td>closed</td>
+        <td>6</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>11318</td>
+        <td>complete</td>
+        <td>8</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>7130</td>
+        <td>complete</td>
+        <td>8</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>4530</td>
+        <td>complete</td>
+        <td>8</td>
+    </tr>
+    <tr>
+        <td>8</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>2911</td>
+        <td>processing</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>9</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>5657</td>
+        <td>pending_payment</td>
+        <td>15</td>
+    </tr>
+    <tr>
+        <td>10</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>5648</td>
+        <td>pending_payment</td>
+        <td>15</td>
+    </tr>
+</table></div></div>
 </div>
 </div>
 <div class="section" id="extracting-data-substr-and-split-part">
 <h3>Extracting Data - substr and split_part<a class="headerlink" href="#extracting-data-substr-and-split-part" title="Permalink to this headline">¶</a></h3>
 <p>Let us understand how to extract data from strings using <code class="docutils literal notranslate"><span class="pre">substr</span></code>/<code class="docutils literal notranslate"><span class="pre">substring</span></code> and <code class="docutils literal notranslate"><span class="pre">split</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
+</pre></div>
+</div>
+</div>
+</div>
 <ul class="simple">
-<li><p>We can get syntax and symantecs of the functions using <code class="docutils literal notranslate"><span class="pre">DESCRIBE</span> <span class="pre">FUNCTION</span></code></p></li>
-<li><p>We can extract first four characters from string using substr or substring.</p></li>
+<li><p>We can extract first four characters from string using <code class="docutils literal notranslate"><span class="pre">substr</span></code> or <code class="docutils literal notranslate"><span class="pre">substring</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">substring</span></code> have broader options (regular expression) and also can be used with different styles (using keywords such as <code class="docutils literal notranslate"><span class="pre">FROM</span></code>, <code class="docutils literal notranslate"><span class="pre">FOR</span></code>).</p></li>
+<li><p>Unlike in other relational databases, we cannot pass negative integers to <code class="docutils literal notranslate"><span class="pre">substr</span></code> or <code class="docutils literal notranslate"><span class="pre">substring</span></code> to get the information from right. We need to use functions like <code class="docutils literal notranslate"><span class="pre">right</span></code> instead.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -479,7 +4769,117 @@ SELECT substr(&#39;2013-07-25 00:00:00.0&#39;, 1, 4) AS result
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
-SELECT substr(&#39;2013-07-25 00:00:00.0&#39;, 6, 2) AS result
+SELECT substring(&#39;2013-07-25 00:00:00.0&#39;, 1, 4) AS result
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>result</th>
+    </tr>
+    <tr>
+        <td>2013</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT substring(&#39;2013-07-25 00:00:00.0&#39; FROM 1 FOR 4) AS result
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>result</th>
+    </tr>
+    <tr>
+        <td>2013</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT substring(&#39;2013-07-25 00:00:00.0&#39;, 6, 2) AS result
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>result</th>
+    </tr>
+    <tr>
+        <td>07</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT substring(&#39;2013-07-25 00:00:00.0&#39;, 9, 2) AS result
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>result</th>
+    </tr>
+    <tr>
+        <td>25</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT substring(&#39;2013-07-25 00:00:00.0&#39; from 12) AS result
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>result</th>
+    </tr>
+    <tr>
+        <td>00:00:00.0</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT right(&#39;123 456 7890&#39;, 4) AS result
 </pre></div>
 </div>
 </div>
@@ -488,19 +4888,58 @@ SELECT substr(&#39;2013-07-25 00:00:00.0&#39;, 6, 2) AS result
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
-SELECT substr(&#39;2013-07-25 00:00:00.0&#39;, 9, 2) AS result
+SELECT left(&#39;123 456 7890&#39;, 3) AS result
 </pre></div>
 </div>
 </div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We can also use combination of <code class="docutils literal notranslate"><span class="pre">substring</span></code> and <code class="docutils literal notranslate"><span class="pre">length</span></code> like below to get last 4 digits or characters from a string.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
-SELECT substr(&#39;2013-07-25 00:00:00.0&#39;, 12) AS result
+SELECT substring(&#39;123 456 7890&#39; FROM length(&#39;123 456 7890&#39;) - 4) AS result
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>result</th>
+    </tr>
+    <tr>
+        <td> 7890</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT substring(&#39;123 456 7890&#39; FROM &#39;....$&#39;) AS result
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>result</th>
+    </tr>
+    <tr>
+        <td>7890</td>
+    </tr>
+</table></div></div>
 </div>
 <ul class="simple">
 <li><p>Let us see how we can extract date part from order_date of orders.</p></li>
@@ -542,9 +4981,77 @@ SELECT split_part(&#39;2013-07-25&#39;, &#39;-&#39;, 1) AS result
 </div>
 </div>
 </div>
+<div class="section" id="using-position-or-strpos">
+<h3>Using position or strpos<a class="headerlink" href="#using-position-or-strpos" title="Permalink to this headline">¶</a></h3>
+<p>At times we might want to get the position of a substring in a main string. For example, we might want to check whether email ids have <strong>&#64;</strong> in them. We can use functions such as <code class="docutils literal notranslate"><span class="pre">position</span></code> or <code class="docutils literal notranslate"><span class="pre">strpos</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span> 
+
+SELECT position(&#39;@&#39; IN &#39;it@versity.com&#39;),
+    position(&#39;@&#39; IN &#39;itversity.com&#39;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>position</th>
+        <th>position_1</th>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>0</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span> 
+
+SELECT strpos(&#39;it@versity.com&#39;, &#39;@&#39;),
+    strpos(&#39;itversity.com&#39;, &#39;@&#39;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>strpos</th>
+        <th>strpos_1</th>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>0</td>
+    </tr>
+</table></div></div>
+</div>
+</div>
 <div class="section" id="trimming-and-padding-functions">
 <h3>Trimming and Padding Functions<a class="headerlink" href="#trimming-and-padding-functions" title="Permalink to this headline">¶</a></h3>
 <p>Let us understand how to trim or remove leading and/or trailing spaces in a string.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
+</pre></div>
+</div>
+</div>
+</div>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">ltrim</span></code> is used to remove the spaces on the left side of the string.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">rtrim</span></code> is used to remove the spaces on the right side of the string.</p></li>
@@ -650,6 +5157,20 @@ SELECT lpad(100::varchar, 2, &#39;0&#39;) AS result
 <div class="section" id="reverse-and-concatenating-multiple-strings">
 <h3>Reverse and Concatenating multiple strings<a class="headerlink" href="#reverse-and-concatenating-multiple-strings" title="Permalink to this headline">¶</a></h3>
 <p>Let us understand how to reverse a string as well as concatenate multiple strings.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
+</pre></div>
+</div>
+</div>
+</div>
 <ul class="simple">
 <li><p>We can use <code class="docutils literal notranslate"><span class="pre">reverse</span></code> to reverse a string.</p></li>
 <li><p>We can concatenate multiple strings using <code class="docutils literal notranslate"><span class="pre">concat</span></code> and <code class="docutils literal notranslate"><span class="pre">concat_ws</span></code>.</p></li>
@@ -728,6 +5249,9 @@ FROM
 <li><p>Extracting information using <code class="docutils literal notranslate"><span class="pre">to_char</span></code> as well as calendar functions.</p></li>
 <li><p>Dealing with unix timestamp using <code class="docutils literal notranslate"><span class="pre">from_unixtime</span></code>, <code class="docutils literal notranslate"><span class="pre">to_unix_timestamp</span></code></p></li>
 </ul>
+<div class="section" id="getting-current-date-and-timestamp">
+<h3>Getting Current Date and Timestamp<a class="headerlink" href="#getting-current-date-and-timestamp" title="Permalink to this headline">¶</a></h3>
+<p>Let us understand how to get the details about current or today’s date as well as current timestamp.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
@@ -742,9 +5266,6 @@ FROM
 </div>
 </div>
 </div>
-<div class="section" id="getting-current-date-and-timestamp">
-<h3>Getting Current Date and Timestamp<a class="headerlink" href="#getting-current-date-and-timestamp" title="Permalink to this headline">¶</a></h3>
-<p>Let us understand how to get the details about current or today’s date as well as current timestamp.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">current_date</span></code> is the function or operator which will return today’s date.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">current_timestamp</span></code> is the function or operator which will return current time up to milliseconds.</p></li>
@@ -755,7 +5276,7 @@ FROM
 <li><p>Timestamp - <code class="docutils literal notranslate"><span class="pre">yyyy-MM-dd</span> <span class="pre">HH:mm:ss.SSS</span></code></p></li>
 </ul>
 </li>
-<li><p>Keep in mind that a date or timestamp in Spark SQL are nothing but special strings containing values using above specified formats. We can apply all string manipulation functions on date or timestamp.</p></li>
+<li><p>We can apply all string manipulation functions on date or timestamp once they are typecasted to strings using <code class="docutils literal notranslate"><span class="pre">varchar</span></code>.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -775,6 +5296,19 @@ SELECT current_timestamp AS current_timestamp
 </div>
 </div>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Example of applying string manipulation functions on dates. However, it is not a good practice. Postgres provide functions on dates or timestamps for most of the common requirements.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT substring(current_date::varchar, 1, 4) AS current_date
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 <div class="section" id="date-arithmetic">
 <h3>Date Arithmetic<a class="headerlink" href="#date-arithmetic" title="Permalink to this headline">¶</a></h3>
@@ -785,6 +5319,20 @@ SELECT current_timestamp AS current_timestamp
 <li><p>We can combine multiple criteria in one operation using <code class="docutils literal notranslate"><span class="pre">INTERVAL</span></code></p></li>
 <li><p>We can get difference between 2 dates or timestamps using minus (<code class="docutils literal notranslate"><span class="pre">-</span></code>) operator.</p></li>
 </ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5433/itversity_retail_db
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
@@ -930,6 +5478,20 @@ SELECT current_timestamp - &#39;2019-03-30&#39;::date AS result
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5433/itversity_retail_db
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
 SELECT date_trunc(&#39;YEAR&#39;, current_date) AS year_beginning
@@ -978,6 +5540,20 @@ SELECT date_trunc(&#39;HOUR&#39;, current_timestamp) AS hour_beginning
 <h3>Extracting information using to_char<a class="headerlink" href="#extracting-information-using-to-char" title="Permalink to this headline">¶</a></h3>
 <p>Let us understand how to use <code class="docutils literal notranslate"><span class="pre">to_char</span></code> to extract information from date or timestamp.</p>
 <p>Here is how we can get date related information such as year, month, day etc from date or timestamp.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5433/itversity_retail_db
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
@@ -1107,12 +5683,28 @@ SELECT current_timestamp AS current_timestamp,
 </div>
 </div>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When we use <code class="docutils literal notranslate"><span class="pre">Day</span></code> to get the complete name of a day, it will return 9 character string by padding with spaces.</p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
 SELECT current_timestamp AS current_timestamp, 
     to_char(current_timestamp, &#39;Day&#39;) AS dayname
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT current_timestamp AS current_timestamp, 
+    to_char(&#39;2020-11-17&#39;::date, &#39;Day&#39;) AS dayname,
+    length(to_char(&#39;2020-11-17&#39;::date, &#39;Day&#39;)) AS dayname_length,
+    length(trim(to_char(&#39;2020-11-17&#39;::date, &#39;Day&#39;))) AS dayname_trimmed_length
 </pre></div>
 </div>
 </div>
@@ -1210,6 +5802,20 @@ SELECT to_char(current_timestamp, &#39;yyyy/MM/dd&#39;) AS current_date
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5433/itversity_retail_db
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
 SELECT extract(century FROM current_date) AS century
@@ -1293,7 +5899,7 @@ SELECT extract(doy FROM current_date) AS day_of_year
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
-SELECT extract(dow FROM current_date) AS da_of_week
+SELECT extract(dow FROM current_date) AS day_of_week
 </pre></div>
 </div>
 </div>
@@ -1348,6 +5954,20 @@ SELECT extract(milliseconds FROM current_timestamp) AS millis
 <ul class="simple">
 <li><p>We can unix epoch in Unix/Linux terminal using <code class="docutils literal notranslate"><span class="pre">date</span> <span class="pre">'+%s'</span></code></p></li>
 </ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5433/itversity_retail_db
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
@@ -1883,12 +6503,522 @@ LIMIT 10
 <h2>Exercises - Pre-Defined Functions<a class="headerlink" href="#exercises-pre-defined-functions" title="Permalink to this headline">¶</a></h2>
 <p>Here are the exercises to ensure our understanding related to Pre-Defined Functions.</p>
 <ul class="simple">
-<li><p>Get count of monthly orders.</p></li>
-<li><p>Get count of orders placed on every saturday and sunday.</p></li>
-<li><p>Get count of orders placed over weekdays.</p></li>
-<li><p>Update customer names with upper case names.</p></li>
-<li><p>Add new column to customers table by name full name and populate it.</p></li>
+<li><p>We will use <strong>users</strong> table as well as other tables we got as part of retail database.</p></li>
+<li><p>Information will be provided with each exercise.</p></li>
 </ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+DROP TABLE IF EXISTS users
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+CREATE TABLE users(
+    user_id SERIAL PRIMARY KEY,
+    user_first_name VARCHAR(30),
+    user_last_name VARCHAR(30),
+    user_email_id VARCHAR(50),
+    user_gender VARCHAR(1),
+    user_unique_id VARCHAR(15),
+    user_phone_no VARCHAR(20),
+    user_dob DATE,
+    created_ts TIMESTAMP
+)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+insert into users (
+    user_first_name, user_last_name, user_email_id, user_gender, 
+    user_unique_id, user_phone_no, user_dob, created_ts
+) VALUES
+    (&#39;Giuseppe&#39;, &#39;Bode&#39;, &#39;gbode0@imgur.com&#39;, &#39;M&#39;, &#39;88833-8759&#39;, 
+     &#39;+86 (764) 443-1967&#39;, &#39;1973-05-31&#39;, &#39;2018-04-15 12:13:38&#39;),
+    (&#39;Lexy&#39;, &#39;Gisbey&#39;, &#39;lgisbey1@mail.ru&#39;, &#39;F&#39;, &#39;262501-029&#39;, 
+     &#39;+86 (751) 160-3742&#39;, &#39;2003-05-31&#39;, &#39;2020-12-29 06:44:09&#39;),
+    (&#39;Karel&#39;, &#39;Claringbold&#39;, &#39;kclaringbold2@yale.edu&#39;, &#39;F&#39;, &#39;391-33-2823&#39;, 
+     &#39;+62 (445) 471-2682&#39;, &#39;1985-11-28&#39;, &#39;2018-11-19 00:04:08&#39;),
+    (&#39;Marv&#39;, &#39;Tanswill&#39;, &#39;mtanswill3@dedecms.com&#39;, &#39;F&#39;, &#39;1195413-80&#39;, 
+     &#39;+62 (497) 736-6802&#39;, &#39;1998-05-24&#39;, &#39;2018-11-19 16:29:43&#39;),
+    (&#39;Gertie&#39;, &#39;Espinoza&#39;, &#39;gespinoza4@nationalgeographic.com&#39;, &#39;M&#39;, &#39;471-24-6869&#39;, 
+     &#39;+249 (687) 506-2960&#39;, &#39;1997-10-30&#39;, &#39;2020-01-25 21:31:10&#39;),
+    (&#39;Saleem&#39;, &#39;Danneil&#39;, &#39;sdanneil5@guardian.co.uk&#39;, &#39;F&#39;, &#39;192374-933&#39;, 
+     &#39;+63 (810) 321-0331&#39;, &#39;1992-03-08&#39;, &#39;2020-11-07 19:01:14&#39;),
+    (&#39;Rickert&#39;, &#39;O&#39;&#39;Shiels&#39;, &#39;roshiels6@wikispaces.com&#39;, &#39;M&#39;, &#39;749-27-47-52&#39;, 
+     &#39;+86 (184) 759-3933&#39;, &#39;1972-11-01&#39;, &#39;2018-03-20 10:53:24&#39;),
+    (&#39;Cybil&#39;, &#39;Lissimore&#39;, &#39;clissimore7@pinterest.com&#39;, &#39;M&#39;, &#39;461-75-4198&#39;, 
+     &#39;+54 (613) 939-6976&#39;, &#39;1978-03-03&#39;, &#39;2019-12-09 14:08:30&#39;),
+    (&#39;Melita&#39;, &#39;Rimington&#39;, &#39;mrimington8@mozilla.org&#39;, &#39;F&#39;, &#39;892-36-676-2&#39;, 
+     &#39;+48 (322) 829-8638&#39;, &#39;1995-12-15&#39;, &#39;2018-04-03 04:21:33&#39;),
+    (&#39;Benetta&#39;, &#39;Nana&#39;, &#39;bnana9@google.com&#39;, &#39;M&#39;, &#39;197-54-1646&#39;, 
+     &#39;+420 (934) 611-0020&#39;, &#39;1971-12-07&#39;, &#39;2018-10-17 21:02:51&#39;),
+    (&#39;Gregorius&#39;, &#39;Gullane&#39;, &#39;ggullanea@prnewswire.com&#39;, &#39;F&#39;, &#39;232-55-52-58&#39;, 
+     &#39;+62 (780) 859-1578&#39;, &#39;1973-09-18&#39;, &#39;2020-01-14 23:38:53&#39;),
+    (&#39;Una&#39;, &#39;Glayzer&#39;, &#39;uglayzerb@pinterest.com&#39;, &#39;M&#39;, &#39;898-84-336-6&#39;, 
+     &#39;+380 (840) 437-3981&#39;, &#39;1983-05-26&#39;, &#39;2019-09-17 03:24:21&#39;),
+    (&#39;Jamie&#39;, &#39;Vosper&#39;, &#39;jvosperc@umich.edu&#39;, &#39;M&#39;, &#39;247-95-68-44&#39;, 
+     &#39;+81 (205) 723-1942&#39;, &#39;1972-03-18&#39;, &#39;2020-07-23 16:39:33&#39;),
+    (&#39;Calley&#39;, &#39;Tilson&#39;, &#39;ctilsond@issuu.com&#39;, &#39;F&#39;, &#39;415-48-894-3&#39;, 
+     &#39;+229 (698) 777-4904&#39;, &#39;1987-06-12&#39;, &#39;2020-06-05 12:10:50&#39;),
+    (&#39;Peadar&#39;, &#39;Gregorowicz&#39;, &#39;pgregorowicze@omniture.com&#39;, &#39;M&#39;, &#39;403-39-5-869&#39;, 
+     &#39;+7 (267) 853-3262&#39;, &#39;1996-09-21&#39;, &#39;2018-05-29 23:51:31&#39;),
+    (&#39;Jeanie&#39;, &#39;Webling&#39;, &#39;jweblingf@booking.com&#39;, &#39;F&#39;, &#39;399-83-05-03&#39;, 
+     &#39;+351 (684) 413-0550&#39;, &#39;1994-12-27&#39;, &#39;2018-02-09 01:31:11&#39;),
+    (&#39;Yankee&#39;, &#39;Jelf&#39;, &#39;yjelfg@wufoo.com&#39;, &#39;F&#39;, &#39;607-99-0411&#39;, 
+     &#39;+1 (864) 112-7432&#39;, &#39;1988-11-13&#39;, &#39;2019-09-16 16:09:12&#39;),
+    (&#39;Blair&#39;, &#39;Aumerle&#39;, &#39;baumerleh@toplist.cz&#39;, &#39;F&#39;, &#39;430-01-578-5&#39;, 
+     &#39;+7 (393) 232-1860&#39;, &#39;1979-11-09&#39;, &#39;2018-10-28 19:25:35&#39;),
+    (&#39;Pavlov&#39;, &#39;Steljes&#39;, &#39;psteljesi@macromedia.com&#39;, &#39;F&#39;, &#39;571-09-6181&#39;, 
+     &#39;+598 (877) 881-3236&#39;, &#39;1991-06-24&#39;, &#39;2020-09-18 05:34:31&#39;),
+    (&#39;Darn&#39;, &#39;Hadeke&#39;, &#39;dhadekej@last.fm&#39;, &#39;M&#39;, &#39;478-32-02-87&#39;, 
+     &#39;+370 (347) 110-4270&#39;, &#39;1984-09-04&#39;, &#39;2018-02-10 12:56:00&#39;),
+    (&#39;Wendell&#39;, &#39;Spanton&#39;, &#39;wspantonk@de.vu&#39;, &#39;F&#39;, null, 
+     &#39;+84 (301) 762-1316&#39;, &#39;1973-07-24&#39;, &#39;2018-01-30 01:20:11&#39;),
+    (&#39;Carlo&#39;, &#39;Yearby&#39;, &#39;cyearbyl@comcast.net&#39;, &#39;F&#39;, null, 
+     &#39;+55 (288) 623-4067&#39;, &#39;1974-11-11&#39;, &#39;2018-06-24 03:18:40&#39;),
+    (&#39;Sheila&#39;, &#39;Evitts&#39;, &#39;sevittsm@webmd.com&#39;, null, &#39;830-40-5287&#39;,
+     null, &#39;1977-03-01&#39;, &#39;2020-07-20 09:59:41&#39;),
+    (&#39;Sianna&#39;, &#39;Lowdham&#39;, &#39;slowdhamn@stanford.edu&#39;, null, &#39;778-0845&#39;, 
+     null, &#39;1985-12-23&#39;, &#39;2018-06-29 02:42:49&#39;),
+    (&#39;Phylys&#39;, &#39;Aslie&#39;, &#39;paslieo@qq.com&#39;, &#39;M&#39;, &#39;368-44-4478&#39;, 
+     &#39;+86 (765) 152-8654&#39;, &#39;1984-03-22&#39;, &#39;2019-10-01 01:34:28&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise-1">
+<h3>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h3>
+<p>Get all the number of users created per year.</p>
+<ul class="simple">
+<li><p>Use <strong>users</strong> table for this exercise.</p></li>
+<li><p>Output should contain 4 digit year and count.</p></li>
+<li><p>Use date specific functions to get the year using created_ts.</p></li>
+<li><p>Make sure you define aliases to the columns as <strong>created_year</strong> and <strong>user_count</strong> respectively.</p></li>
+<li><p>Data should be sorted in ascending order by <strong>created_year</strong>.</p></li>
+<li><p>When you run the query using Jupyter environment, it might have decimals for integers. Hence you can display results even with decimal points.</p></li>
+<li><p>Here is the sample output.</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>created_year</p></th>
+<th class="head"><p>user_count</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>2018</p></td>
+<td><p>13</p></td>
+</tr>
+<tr class="row-odd"><td><p>2019</p></td>
+<td><p>4</p></td>
+</tr>
+<tr class="row-even"><td><p>2020</p></td>
+<td><p>8</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="exercise-2">
+<h3>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this headline">¶</a></h3>
+<p>Get the day name of the birth days for all the users born in the month of June.</p>
+<ul class="simple">
+<li><p>Use <strong>users</strong> table for this exercise.</p></li>
+<li><p>Output should contain user_id, user_dob, user_email_id and user_day_of_birth.</p></li>
+<li><p>Use date specific functions to get the month using user_dob.</p></li>
+<li><p><strong>user_day_of_birth</strong> should be full day with first character in upper case such as <strong>Tuesday</strong></p></li>
+<li><p>Data should be sorted by day with in the month of May.</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>user_id</p></th>
+<th class="head"><p>user_dob</p></th>
+<th class="head"><p>user_email_id</p></th>
+<th class="head"><p>user_day_of_birth</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>1998-05-24</p></td>
+<td><p>mtanswill3&#64;dedecms.com</p></td>
+<td><p>Sunday</p></td>
+</tr>
+<tr class="row-odd"><td><p>12</p></td>
+<td><p>1983-05-26</p></td>
+<td><p>uglayzerb&#64;pinterest.com</p></td>
+<td><p>Thursday</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>1973-05-31</p></td>
+<td><p>gbode0&#64;imgur.com</p></td>
+<td><p>Thursday</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>2003-05-31</p></td>
+<td><p>lgisbey1&#64;mail.ru</p></td>
+<td><p>Saturday</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="exercise-3">
+<h3>Exercise 3<a class="headerlink" href="#exercise-3" title="Permalink to this headline">¶</a></h3>
+<p>Get the names and email ids of users added in year 2019.</p>
+<ul class="simple">
+<li><p>Use <strong>users</strong> table for this exercise.</p></li>
+<li><p>Output should contain user_id, user_name, user_email_id, created_ts, created_year.</p></li>
+<li><p>Use date specific functions to get the year using created_ts.</p></li>
+<li><p><strong>user_name</strong> is a derived column by concatenating user_first_name and user_last_name with space in between.</p></li>
+<li><p><strong>user_name</strong> should have values in upper case.</p></li>
+<li><p>Data should be sorted in ascending order by user_name</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>user_id</p></th>
+<th class="head"><p>user_name</p></th>
+<th class="head"><p>user_email_id</p></th>
+<th class="head"><p>created_ts</p></th>
+<th class="head"><p>created_year</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>CYBIL LISSIMORE</p></td>
+<td><p>clissimore7&#64;pinterest.com</p></td>
+<td><p>2019-12-09 14:08:30</p></td>
+<td><p>2019.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>25</p></td>
+<td><p>PHYLYS ASLIE</p></td>
+<td><p>paslieo&#64;qq.com</p></td>
+<td><p>2019-10-01 01:34:28</p></td>
+<td><p>2019.0</p></td>
+</tr>
+<tr class="row-even"><td><p>12</p></td>
+<td><p>UNA GLAYZER</p></td>
+<td><p>uglayzerb&#64;pinterest.com</p></td>
+<td><p>2019-09-17 03:24:21</p></td>
+<td><p>2019.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>17</p></td>
+<td><p>YANKEE JELF</p></td>
+<td><p>yjelfg&#64;wufoo.com</p></td>
+<td><p>2019-09-16 16:09:12</p></td>
+<td><p>2019.0</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="exercise-4">
+<h3>Exercise 4<a class="headerlink" href="#exercise-4" title="Permalink to this headline">¶</a></h3>
+<p>Get the number of users by gender.</p>
+<ul class="simple">
+<li><p>Use <strong>users</strong> table for this exercise.</p></li>
+<li><p>Output should contain gender and user_count.</p></li>
+<li><p>For males the output should display <strong>Male</strong> and for females the output should display <strong>Female</strong>.</p></li>
+<li><p>If gender is not specified, then it should display <strong>Not Specified</strong>.</p></li>
+<li><p>Data should be sorted in descending order by user_count.</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>user_gender</p></th>
+<th class="head"><p>user_count</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Female</p></td>
+<td><p>13</p></td>
+</tr>
+<tr class="row-odd"><td><p>Male</p></td>
+<td><p>10</p></td>
+</tr>
+<tr class="row-even"><td><p>Not Specified</p></td>
+<td><p>2</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="exercise-5">
+<h3>Exercise 5<a class="headerlink" href="#exercise-5" title="Permalink to this headline">¶</a></h3>
+<p>Get last 4 digits of unique ids.</p>
+<ul class="simple">
+<li><p>Use <strong>users</strong> table for this exercise.</p></li>
+<li><p>Output should contain user_id, user_unique_id and user_unique_id_last4</p></li>
+<li><p>Unique ids are either null or not null.</p></li>
+<li><p>Unique ids contain numbers and hyphens and are of different length.</p></li>
+<li><p>We need to get last 4 digits discarding hyphens only when the number of digits are at least 9.</p></li>
+<li><p>If unique id is null, then you should dispaly <strong>Not Specified</strong>.</p></li>
+<li><p>After discarding hyphens, if unique id have less than 9 digits then you should display <strong>Invalid Unique Id</strong>.</p></li>
+<li><p>Data should be sorted by user_id. You might see <strong>None</strong> or <strong>null</strong> for those user ids where there is no unique id for <strong>user_unique_id</strong></p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>user_id</p></th>
+<th class="head"><p>user_unique_id</p></th>
+<th class="head"><p>user_unique_id_last4</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>88833-8759</p></td>
+<td><p>8759</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>262501-029</p></td>
+<td><p>1029</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>391-33-2823</p></td>
+<td><p>2823</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>1195413-80</p></td>
+<td><p>1380</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>471-24-6869</p></td>
+<td><p>6869</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>192374-933</p></td>
+<td><p>4933</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>749-27-47-52</p></td>
+<td><p>4752</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>461-75-4198</p></td>
+<td><p>4198</p></td>
+</tr>
+<tr class="row-even"><td><p>9</p></td>
+<td><p>892-36-676-2</p></td>
+<td><p>6762</p></td>
+</tr>
+<tr class="row-odd"><td><p>10</p></td>
+<td><p>197-54-1646</p></td>
+<td><p>1646</p></td>
+</tr>
+<tr class="row-even"><td><p>11</p></td>
+<td><p>232-55-52-58</p></td>
+<td><p>5258</p></td>
+</tr>
+<tr class="row-odd"><td><p>12</p></td>
+<td><p>898-84-336-6</p></td>
+<td><p>3366</p></td>
+</tr>
+<tr class="row-even"><td><p>13</p></td>
+<td><p>247-95-68-44</p></td>
+<td><p>6844</p></td>
+</tr>
+<tr class="row-odd"><td><p>14</p></td>
+<td><p>415-48-894-3</p></td>
+<td><p>8943</p></td>
+</tr>
+<tr class="row-even"><td><p>15</p></td>
+<td><p>403-39-5-869</p></td>
+<td><p>5869</p></td>
+</tr>
+<tr class="row-odd"><td><p>16</p></td>
+<td><p>399-83-05-03</p></td>
+<td><p>0503</p></td>
+</tr>
+<tr class="row-even"><td><p>17</p></td>
+<td><p>607-99-0411</p></td>
+<td><p>0411</p></td>
+</tr>
+<tr class="row-odd"><td><p>18</p></td>
+<td><p>430-01-578-5</p></td>
+<td><p>5785</p></td>
+</tr>
+<tr class="row-even"><td><p>19</p></td>
+<td><p>571-09-6181</p></td>
+<td><p>6181</p></td>
+</tr>
+<tr class="row-odd"><td><p>20</p></td>
+<td><p>478-32-02-87</p></td>
+<td><p>0287</p></td>
+</tr>
+<tr class="row-even"><td><p>21</p></td>
+<td><p></p></td>
+<td><p>Not Specified</p></td>
+</tr>
+<tr class="row-odd"><td><p>22</p></td>
+<td><p></p></td>
+<td><p>Not Specified</p></td>
+</tr>
+<tr class="row-even"><td><p>23</p></td>
+<td><p>830-40-5287</p></td>
+<td><p>5287</p></td>
+</tr>
+<tr class="row-odd"><td><p>24</p></td>
+<td><p>778-0845</p></td>
+<td><p>Invalid Unique Id</p></td>
+</tr>
+<tr class="row-even"><td><p>25</p></td>
+<td><p>368-44-4478</p></td>
+<td><p>4478</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="exercise-6">
+<h3>Exercise 6<a class="headerlink" href="#exercise-6" title="Permalink to this headline">¶</a></h3>
+<p>Get the count of users based up on country code.</p>
+<ul class="simple">
+<li><p>Use users table for this exercise.</p></li>
+<li><p>Output should contain country code and count.</p></li>
+<li><p>There should be no <code class="docutils literal notranslate"><span class="pre">+</span></code> in the country code. It should only contain digits.</p></li>
+<li><p>Data should be sorted as numbers by country code.</p></li>
+<li><p>We should discard user_phone_no with null values.</p></li>
+<li><p>Here is the desired output:</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>country_code</p></th>
+<th class="head"><p>user_count</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-even"><td><p>48</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>54</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>55</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>62</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-even"><td><p>63</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>81</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>84</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>86</p></td>
+<td><p>4</p></td>
+</tr>
+<tr class="row-even"><td><p>229</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>249</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>351</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>370</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>380</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>420</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>598</p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="exercise-7">
+<h3>Exercise 7<a class="headerlink" href="#exercise-7" title="Permalink to this headline">¶</a></h3>
+<p>Let us validate if we have invalid <strong>order_item_subtotal</strong> as part of <strong>order_items</strong> table.</p>
+<ul class="simple">
+<li><p><strong>order_items</strong> table have 6 fields.</p>
+<ul>
+<li><p>order_item_id</p></li>
+<li><p>order_item_order_id</p></li>
+<li><p>order_item_product_id</p></li>
+<li><p>order_item_quantity</p></li>
+<li><p>order_item_subtotal</p></li>
+<li><p>order_item_product_price</p></li>
+</ul>
+</li>
+<li><p><strong>order_item_subtotal</strong> is nothing but product of <strong>order_item_quantity</strong> and <strong>order_item_product_price</strong>. It means order_item_subtotal is compute by multiplying order_item_quantity and order_item_product_price for each item.</p></li>
+<li><p>You need to get the count of order_items where <strong>order_item_subtotal</strong> is not equal to the product of <strong>order_item_quantity</strong> and <strong>order_item_product_price</strong>.</p></li>
+<li><p>There can be issues related to rounding off. Make sure it is taken care using appropriate function.</p></li>
+<li><p>Output should be 0 as there are no such records.</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>count</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="exercise-8">
+<h3>Exercise 8<a class="headerlink" href="#exercise-8" title="Permalink to this headline">¶</a></h3>
+<p>Get number of orders placed on weekdays and weekends in the month of January 2014.</p>
+<ul class="simple">
+<li><p><strong>orders</strong> have 4 fields</p>
+<ul>
+<li><p>order_id</p></li>
+<li><p>order_date</p></li>
+<li><p>order_customer_id</p></li>
+<li><p>order_status</p></li>
+</ul>
+</li>
+<li><p>Use order date to determine the day on which orders are placed.</p></li>
+<li><p>Output should contain 2 columns - day_type and order_count.</p></li>
+<li><p><strong>day_type</strong> should have 2 values <strong>Week days</strong> and <strong>Weekend days</strong>.</p></li>
+<li><p>Here is the desired output.</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>day_type</p></th>
+<th class="head"><p>order_count</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Weekend days</p></td>
+<td><p>1505</p></td>
+</tr>
+<tr class="row-odd"><td><p>Week days</p></td>
+<td><p>4403</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 

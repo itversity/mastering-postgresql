@@ -1,0 +1,586 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>&lt;no title&gt; &#8212; My Jupyter Book</title>
+    
+  <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">My Jupyter Book</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="mastering-postgresql.html">
+   Mastering Postgresql
+  </a>
+ </li>
+</ul>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_getting_started.html">
+   Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_dml_or_crud_operations.html">
+   DML or CRUD Operations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_writing_basic_sql_queries.html">
+   Writing Basic SQL Queries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04_creating_tables_and_indexes.html">
+   Creating Tables and Indexes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05_partitioning_tables_and_indexes.html">
+   Partitioning Tables and Indexes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_predefined_functions.html">
+   Pre-Defined Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="07_writing_advanced_sql_queries.html">
+   Writing Advanced SQL Queries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="08_query_performance_tuning.html">
+   Query Performance Tuning
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/bonus_sqlalchemy_crud.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/bonus_sqlalchemy_crud.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="simple nav section-nav flex-column">
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <p>Here are the requirements for SQL Alchemy material for Python based application developers.</p>
+<ul class="simple">
+<li><p>Setup SQLAlchemy</p></li>
+<li><p>Establish Connection to Database</p></li>
+<li><p>Create Tables</p>
+<ul>
+<li><p>users</p>
+<ul>
+<li><p>user_id (not null and sequence generated)</p></li>
+<li><p>user_first_name</p></li>
+<li><p>user_last_name</p></li>
+<li><p>user_email_id (not null)</p></li>
+<li><p>user_role (‘U’ or ‘A’)</p></li>
+<li><p>user_phone_no</p></li>
+<li><p>created_dt</p></li>
+</ul>
+</li>
+<li><p>courses</p>
+<ul>
+<li><p>course_id (not null and sequence generated)</p></li>
+<li><p>course_name</p></li>
+<li><p>course_description</p></li>
+<li><p>course_price</p></li>
+<li><p>course_publish_dt</p></li>
+<li><p>course_status (active, inactive)</p></li>
+</ul>
+</li>
+<li><p>students</p>
+<ul>
+<li><p>student_id</p></li>
+<li><p>user_id (foreign key to users.user_id)</p></li>
+<li><p>course_id (foreign key to courses.course_id)</p></li>
+<li><p>price_paid</p></li>
+<li><p>enrolled_dt</p></li>
+<li><p>course_status (not started, in progress, completed)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Create Models</p></li>
+<li><p>Integration of Logging</p></li>
+<li><p>CRUD Operations</p>
+<ul>
+<li><p>Add user</p></li>
+<li><p>Update user details</p></li>
+<li><p>Add course with only id, name and description</p></li>
+<li><p>Update course with price, publish_dt and status as active</p></li>
+<li><p>Add student using user_id and course_id along with other details with course_status as not started.</p></li>
+<li><p>Update course status of student as in progress or completed</p></li>
+</ul>
+</li>
+<li><p>Querying Data</p>
+<ul>
+<li><p>Get the users who have not signed up for the course</p></li>
+<li><p>Get the student details along with course name</p></li>
+<li><p>Get count of students by course status for a given course</p></li>
+</ul>
+</li>
+<li><p>Logging Queries</p></li>
+<li><p>Overview of Flask SQLAlchemy</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install SQLAlchemy
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install psycopg2-binary
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Setup Postgres Database</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">DATABASE</span> <span class="n">sms_db</span><span class="p">;</span>
+<span class="n">CREATE</span> <span class="n">USER</span> <span class="n">sms_user</span> <span class="n">WITH</span> <span class="n">ENCRYPTED</span> <span class="n">PASSWORD</span> <span class="s1">&#39;itversity&#39;</span><span class="p">;</span>
+<span class="n">GRANT</span> <span class="n">ALL</span> <span class="n">ON</span> <span class="n">DATABASE</span> <span class="n">sms_db</span> <span class="n">TO</span> <span class="n">sms_user</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Setup Tables</p></li>
+</ul>
+<p><strong>Students</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">students</span> <span class="p">(</span>
+    <span class="n">student_id</span> <span class="n">SERIAL</span> <span class="n">PRIMARY</span> <span class="n">KEY</span><span class="p">,</span>
+    <span class="n">student_first_name</span> <span class="n">VARCHAR</span><span class="p">(</span><span class="mi">30</span><span class="p">),</span>
+    <span class="n">student_last_name</span> <span class="n">VARCHAR</span><span class="p">(</span><span class="mi">30</span><span class="p">),</span>
+    <span class="n">student_email_id</span> <span class="n">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span>
+    <span class="n">student_contact_no</span> <span class="n">VARCHAR</span><span class="p">(</span><span class="mi">15</span><span class="p">),</span>
+    <span class="n">student_status</span> <span class="n">VARCHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Students Data</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">insert</span> <span class="n">into</span> <span class="n">students</span> <span class="p">(</span><span class="n">student_id</span><span class="p">,</span> <span class="n">student_first_name</span><span class="p">,</span> <span class="n">student_last_name</span><span class="p">,</span> <span class="n">student_email_id</span><span class="p">,</span> <span class="n">student_contact_no</span><span class="p">,</span> <span class="n">student_status</span><span class="p">)</span>
+<span class="n">values</span> <span class="p">(</span><span class="n">NEXTVAL</span><span class="p">(</span><span class="s1">&#39;students_student_id_seq&#39;</span><span class="p">),</span> <span class="s1">&#39;Malinda&#39;</span><span class="p">,</span> <span class="s1">&#39;Massen&#39;</span><span class="p">,</span> <span class="s1">&#39;mmassen0@amazon.de&#39;</span><span class="p">,</span> <span class="s1">&#39;4019269093&#39;</span><span class="p">,</span> <span class="s1">&#39;Active&#39;</span><span class="p">);</span>
+<span class="n">insert</span> <span class="n">into</span> <span class="n">students</span> <span class="p">(</span><span class="n">student_id</span><span class="p">,</span> <span class="n">student_first_name</span><span class="p">,</span> <span class="n">student_last_name</span><span class="p">,</span> <span class="n">student_email_id</span><span class="p">,</span> <span class="n">student_contact_no</span><span class="p">,</span> <span class="n">student_status</span><span class="p">)</span>
+<span class="n">values</span> <span class="p">(</span><span class="n">NEXTVAL</span><span class="p">(</span><span class="s1">&#39;students_student_id_seq&#39;</span><span class="p">),</span> <span class="s1">&#39;Helli&#39;</span><span class="p">,</span> <span class="s1">&#39;Buckerfield&#39;</span><span class="p">,</span> <span class="s1">&#39;hbuckerfield1@dedecms.com&#39;</span><span class="p">,</span> <span class="s1">&#39;1444418720&#39;</span><span class="p">,</span> <span class="s1">&#39;Pending&#39;</span><span class="p">);</span>
+<span class="n">insert</span> <span class="n">into</span> <span class="n">students</span> <span class="p">(</span><span class="n">student_id</span><span class="p">,</span> <span class="n">student_first_name</span><span class="p">,</span> <span class="n">student_last_name</span><span class="p">,</span> <span class="n">student_email_id</span><span class="p">,</span> <span class="n">student_contact_no</span><span class="p">,</span> <span class="n">student_status</span><span class="p">)</span> 
+<span class="n">values</span> <span class="p">(</span><span class="n">NEXTVAL</span><span class="p">(</span><span class="s1">&#39;students_student_id_seq&#39;</span><span class="p">),</span> <span class="s1">&#39;Sollie&#39;</span><span class="p">,</span> <span class="s1">&#39;Handling&#39;</span><span class="p">,</span> <span class="s1">&#39;shandling2@mac.com&#39;</span><span class="p">,</span> <span class="s1">&#39;9063517646&#39;</span><span class="p">,</span> <span class="s1">&#39;Pending&#39;</span><span class="p">);</span>
+<span class="n">insert</span> <span class="n">into</span> <span class="n">students</span> <span class="p">(</span><span class="n">student_id</span><span class="p">,</span> <span class="n">student_first_name</span><span class="p">,</span> <span class="n">student_last_name</span><span class="p">,</span> <span class="n">student_email_id</span><span class="p">,</span> <span class="n">student_contact_no</span><span class="p">,</span> <span class="n">student_status</span><span class="p">)</span>
+<span class="n">values</span> <span class="p">(</span><span class="n">NEXTVAL</span><span class="p">(</span><span class="s1">&#39;students_student_id_seq&#39;</span><span class="p">),</span> <span class="s1">&#39;Hobart&#39;</span><span class="p">,</span> <span class="s1">&#39;Tidder&#39;</span><span class="p">,</span> <span class="s1">&#39;htidder3@people.com.cn&#39;</span><span class="p">,</span> <span class="s1">&#39;4489119934&#39;</span><span class="p">,</span> <span class="s1">&#39;Rejected&#39;</span><span class="p">);</span>
+<span class="n">insert</span> <span class="n">into</span> <span class="n">students</span> <span class="p">(</span><span class="n">student_id</span><span class="p">,</span> <span class="n">student_first_name</span><span class="p">,</span> <span class="n">student_last_name</span><span class="p">,</span> <span class="n">student_email_id</span><span class="p">,</span> <span class="n">student_contact_no</span><span class="p">,</span> <span class="n">student_status</span><span class="p">)</span>
+<span class="n">values</span> <span class="p">(</span><span class="n">NEXTVAL</span><span class="p">(</span><span class="s1">&#39;students_student_id_seq&#39;</span><span class="p">),</span> <span class="s1">&#39;Feliks&#39;</span><span class="p">,</span> <span class="s1">&#39;Blackater&#39;</span><span class="p">,</span> <span class="s1">&#39;fblackater4@booking.com&#39;</span><span class="p">,</span> <span class="s1">&#39;3378957603&#39;</span><span class="p">,</span> <span class="s1">&#39;Rejected&#39;</span><span class="p">);</span>
+<span class="n">insert</span> <span class="n">into</span> <span class="n">students</span> <span class="p">(</span><span class="n">student_id</span><span class="p">,</span> <span class="n">student_first_name</span><span class="p">,</span> <span class="n">student_last_name</span><span class="p">,</span> <span class="n">student_email_id</span><span class="p">,</span> <span class="n">student_contact_no</span><span class="p">,</span> <span class="n">student_status</span><span class="p">)</span> 
+<span class="n">values</span> <span class="p">(</span><span class="n">NEXTVAL</span><span class="p">(</span><span class="s1">&#39;students_student_id_seq&#39;</span><span class="p">),</span> <span class="s1">&#39;Kanya&#39;</span><span class="p">,</span> <span class="s1">&#39;Teodori&#39;</span><span class="p">,</span> <span class="s1">&#39;kteodori5@vimeo.com&#39;</span><span class="p">,</span> <span class="s1">&#39;1265187419&#39;</span><span class="p">,</span> <span class="s1">&#39;Active&#39;</span><span class="p">);</span>
+<span class="n">insert</span> <span class="n">into</span> <span class="n">students</span> <span class="p">(</span><span class="n">student_id</span><span class="p">,</span> <span class="n">student_first_name</span><span class="p">,</span> <span class="n">student_last_name</span><span class="p">,</span> <span class="n">student_email_id</span><span class="p">,</span> <span class="n">student_contact_no</span><span class="p">,</span> <span class="n">student_status</span><span class="p">)</span>
+<span class="n">values</span> <span class="p">(</span><span class="n">NEXTVAL</span><span class="p">(</span><span class="s1">&#39;students_student_id_seq&#39;</span><span class="p">),</span> <span class="s1">&#39;Renaldo&#39;</span><span class="p">,</span> <span class="s1">&#39;Swyre&#39;</span><span class="p">,</span> <span class="s1">&#39;rswyre6@techcrunch.com&#39;</span><span class="p">,</span> <span class="n">null</span><span class="p">,</span> <span class="s1">&#39;Pending&#39;</span><span class="p">);</span>
+<span class="n">insert</span> <span class="n">into</span> <span class="n">students</span> <span class="p">(</span><span class="n">student_id</span><span class="p">,</span> <span class="n">student_first_name</span><span class="p">,</span> <span class="n">student_last_name</span><span class="p">,</span> <span class="n">student_email_id</span><span class="p">,</span> <span class="n">student_contact_no</span><span class="p">,</span> <span class="n">student_status</span><span class="p">)</span>
+<span class="n">values</span> <span class="p">(</span><span class="n">NEXTVAL</span><span class="p">(</span><span class="s1">&#39;students_student_id_seq&#39;</span><span class="p">),</span> <span class="s1">&#39;Constancia&#39;</span><span class="p">,</span> <span class="s1">&#39;Parton&#39;</span><span class="p">,</span> <span class="s1">&#39;cparton7@gnu.org&#39;</span><span class="p">,</span> <span class="s1">&#39;1821041621&#39;</span><span class="p">,</span> <span class="s1">&#39;Rejected&#39;</span><span class="p">);</span>
+<span class="n">insert</span> <span class="n">into</span> <span class="n">students</span> <span class="p">(</span><span class="n">student_id</span><span class="p">,</span> <span class="n">student_first_name</span><span class="p">,</span> <span class="n">student_last_name</span><span class="p">,</span> <span class="n">student_email_id</span><span class="p">,</span> <span class="n">student_contact_no</span><span class="p">,</span> <span class="n">student_status</span><span class="p">)</span>
+<span class="n">values</span> <span class="p">(</span><span class="n">NEXTVAL</span><span class="p">(</span><span class="s1">&#39;students_student_id_seq&#39;</span><span class="p">),</span> <span class="s1">&#39;Ker&#39;</span><span class="p">,</span> <span class="s1">&#39;Bilbee&#39;</span><span class="p">,</span> <span class="s1">&#39;kbilbee8@yelp.com&#39;</span><span class="p">,</span> <span class="s1">&#39;1661616087&#39;</span><span class="p">,</span> <span class="n">null</span><span class="p">);</span>
+<span class="n">insert</span> <span class="n">into</span> <span class="n">students</span> <span class="p">(</span><span class="n">student_id</span><span class="p">,</span> <span class="n">student_first_name</span><span class="p">,</span> <span class="n">student_last_name</span><span class="p">,</span> <span class="n">student_email_id</span><span class="p">,</span> <span class="n">student_contact_no</span><span class="p">,</span> <span class="n">student_status</span><span class="p">)</span>
+<span class="n">values</span> <span class="p">(</span><span class="n">NEXTVAL</span><span class="p">(</span><span class="s1">&#39;students_student_id_seq&#39;</span><span class="p">),</span> <span class="s1">&#39;Ophelie&#39;</span><span class="p">,</span> <span class="s1">&#39;Dain&#39;</span><span class="p">,</span> <span class="s1">&#39;odain9@fda.gov&#39;</span><span class="p">,</span> <span class="s1">&#39;7586941625&#39;</span><span class="p">,</span> <span class="s1">&#39;Rejected&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">connection</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="s1">&#39;sms_user&#39;</span><span class="p">,</span>
+                        <span class="n">password</span><span class="o">=</span><span class="s1">&#39;itversity&#39;</span><span class="p">,</span>
+                        <span class="n">host</span><span class="o">=</span><span class="s1">&#39;dslab.itversity.com&#39;</span><span class="p">,</span>
+                        <span class="n">database</span><span class="o">=</span><span class="s1">&#39;sms_db&#39;</span><span class="p">,</span>
+                        <span class="n">port</span><span class="o">=</span><span class="s1">&#39;5433&#39;</span>
+                       <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlalchemy</span> <span class="k">as</span> <span class="nn">db</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">psycopg2</span>
+
+<span class="kn">from</span> <span class="nn">sqlalchemy.ext.declarative</span> <span class="kn">import</span> <span class="n">declarative_base</span>
+<span class="n">Base</span> <span class="o">=</span> <span class="n">declarative_base</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Student</span><span class="p">(</span><span class="n">Base</span><span class="p">):</span>
+    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;students&#39;</span>
+    <span class="n">student_id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">student_first_name</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">30</span><span class="p">))</span>
+    <span class="n">student_last_name</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">30</span><span class="p">))</span>
+    <span class="n">student_email_id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span> <span class="n">unique</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">student_contact_no</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">15</span><span class="p">))</span>
+    <span class="n">student_status</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+    
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;&quot;&quot;&lt;Student(student_id=&#39;</span><span class="si">%s</span><span class="s2">&#39;, student_first_name=&#39;</span><span class="si">%s</span><span class="s2">&#39;, student_last_name=&#39;</span><span class="si">%s</span><span class="s2">&#39;,</span>
+<span class="s2">                           student_email_id=&#39;</span><span class="si">%s</span><span class="s2">&#39;, student_contact_no=&#39;</span><span class="si">%s</span><span class="s2">&#39;, student_status=&#39;</span><span class="si">%s</span><span class="s2">&#39;</span>
+<span class="s2">                  )&gt;&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span>
+                  <span class="bp">self</span><span class="o">.</span><span class="n">student_id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">student_first_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">student_last_name</span><span class="p">,</span>
+                  <span class="bp">self</span><span class="o">.</span><span class="n">student_email_id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">student_contact_no</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">student_status</span>
+                  <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">logging</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">()</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s1">&#39;sqlalchemy.engine&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+<span class="n">engine</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">create_engine</span><span class="p">(</span><span class="s1">&#39;postgresql://sms_user:itversity@dslab.itversity.com:5433/sms_db&#39;</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy.orm</span> <span class="kn">import</span> <span class="n">sessionmaker</span>
+<span class="n">Session</span> <span class="o">=</span> <span class="n">sessionmaker</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="n">engine</span><span class="p">)</span>
+<span class="n">session</span> <span class="o">=</span> <span class="n">Session</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">Student</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">student</span> <span class="ow">in</span> <span class="n">query</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">student</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_student</span> <span class="o">=</span> <span class="n">Student</span><span class="p">(</span><span class="n">student_first_name</span><span class="o">=</span><span class="s1">&#39;Donald&#39;</span><span class="p">,</span> 
+                  <span class="n">student_last_name</span><span class="o">=</span><span class="s1">&#39;Duck&#39;</span><span class="p">,</span>
+                  <span class="n">student_email_id</span><span class="o">=</span><span class="s1">&#39;donald@duck.com&#39;</span><span class="p">,</span> 
+                  <span class="n">student_contact_no</span><span class="o">=</span><span class="s1">&#39;1234567890&#39;</span><span class="p">,</span> 
+                  <span class="n">student_status</span><span class="o">=</span><span class="s1">&#39;Pending&#39;</span>
+                 <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">new_student</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">student</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">Student</span><span class="p">)</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">student_first_name</span><span class="o">=</span><span class="s1">&#39;Donald&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">student</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">student</span><span class="o">.</span><span class="n">student_status</span> <span class="o">=</span> <span class="s1">&#39;Approved&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">student</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">session</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">student</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">func</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">status_count</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">Student</span><span class="o">.</span><span class="n">student_status</span><span class="p">,</span> <span class="n">func</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="s1">&#39;count&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">group_by</span><span class="p">(</span><span class="n">Student</span><span class="o">.</span><span class="n">student_status</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">status_count</span><span class="o">.</span><span class="n">column_descriptions</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

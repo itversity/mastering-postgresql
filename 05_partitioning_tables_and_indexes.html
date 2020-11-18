@@ -345,6 +345,15 @@
 <li><p>Sub Partitioning</p></li>
 <li><p>Exercise - Paritioning Tables</p></li>
 </ul>
+<p>Here are the key objectives of this section.</p>
+<ul class="simple">
+<li><p>Different partitioning strategies</p></li>
+<li><p>How to create and manage partitioned tables?</p></li>
+<li><p>How to manipulate data by inserting, updating and deleting data from managed tables?</p></li>
+<li><p>How to repartition the tables if partitioning strategy is changed (example: from yearly to monthly)?</p></li>
+<li><p>Learn about sub partitioning or nested partitioning or multi level partitioning with examples.</p></li>
+<li><p>Self evaluate whether one understood key skills related to partitioned tables or not using exercises.</p></li>
+</ul>
 <div class="section" id="overview-of-partitioning">
 <h2>Overview of Partitioning<a class="headerlink" href="#overview-of-partitioning" title="Permalink to this headline">¶</a></h2>
 <p>Most of the modern database technologies support wide variety of partitioning strategies. However, here are the most commonly used ones.</p>
@@ -483,14 +492,21 @@ VALUES
 </div>
 <div class="section" id="managing-partitions-list">
 <h2>Managing Partitions - List<a class="headerlink" href="#managing-partitions-list" title="Permalink to this headline">¶</a></h2>
-<p>Let us understand how to add partitions to the table <code class="docutils literal notranslate"><span class="pre">users_part</span></code>.</p>
+<p>Let us understand how to manage partitions for a partitioned table using <code class="docutils literal notranslate"><span class="pre">users_part</span></code>.</p>
 <ul class="simple">
 <li><p>All users data with <code class="docutils literal notranslate"><span class="pre">user_role</span></code> as <strong>‘U’</strong> should go to one partition by name <code class="docutils literal notranslate"><span class="pre">users_part_u</span></code>.</p></li>
-<li><p>All users data with <code class="docutils literal notranslate"><span class="pre">user_role</span></code> as <strong>‘A’</strong> should to one partition by name <code class="docutils literal notranslate"><span class="pre">users_part_a</span></code>.</p></li>
-<li><p>We can add partition to existing partitioned table using <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">TABLE</span> <span class="pre">partition_name</span> <span class="pre">PARTITION</span> <span class="pre">OF</span> <span class="pre">table</span></code>.</p></li>
+<li><p>All users data with <code class="docutils literal notranslate"><span class="pre">user_role</span></code> as <strong>‘A’</strong> should go to one partition by name <code class="docutils literal notranslate"><span class="pre">users_part_a</span></code>.</p></li>
+<li><p>We can add partition to existing partitioned table using <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">TABLE</span> <span class="pre">partition_name</span> <span class="pre">PARTITION</span> <span class="pre">OF</span> <span class="pre">table_name</span></code>.</p></li>
 <li><p>We can have a partition for default values so that all the data that does not satisfy the partition condition can be added to it.</p></li>
-<li><p>We can have a partition for each value or for a set of values.</p></li>
+<li><p>We can have a partition for each value or for a set of values.</p>
+<ul>
+<li><p>We can have one partition for <code class="docutils literal notranslate"><span class="pre">U</span></code> as well as <code class="docutils literal notranslate"><span class="pre">A</span></code> and default partition for all other values.</p></li>
+<li><p>We can have individual partitions for <code class="docutils literal notranslate"><span class="pre">U</span></code>, <code class="docutils literal notranslate"><span class="pre">A</span></code> respectively and default partition for all other values.</p></li>
+<li><p>We can use <code class="docutils literal notranslate"><span class="pre">FOR</span> <span class="pre">VALUES</span> <span class="pre">IN</span> <span class="pre">(val1,</span> <span class="pre">val2)</span></code> as part of <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">TABLE</span> <span class="pre">partition_name</span> <span class="pre">PARTITION</span> <span class="pre">OF</span> <span class="pre">table_name</span></code> to specify values for respective table created for partition.</p></li>
+</ul>
+</li>
 <li><p>Once partitions are added, we can insert data into the partitioned table.</p></li>
+<li><p>We can detach using <code class="docutils literal notranslate"><span class="pre">ALTER</span> <span class="pre">TABLE</span></code> and drop the partition or drop the partition directly. To drop the partition we need to use <code class="docutils literal notranslate"><span class="pre">DROP</span> <span class="pre">TABLE</span></code> command.</p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -533,6 +549,15 @@ VALUES
     (&#39;Scott&#39;, &#39;Tiger&#39;, &#39;scott@tiger.com&#39;, &#39;U&#39;),
     (&#39;Donald&#39;, &#39;Duck&#39;, &#39;donald@duck.com&#39;, &#39;U&#39;),
     (&#39;Mickey&#39;, &#39;Mouse&#39;, &#39;mickey@mouse.com&#39;, &#39;U&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT * FROM users_part_default
 </pre></div>
 </div>
 </div>
@@ -684,7 +709,8 @@ PARTITION OF users_part DEFAULT
 <p>Let us understand how we can manipulate data for a partitioned table.</p>
 <ul class="simple">
 <li><p>We can insert data using the table (most preferred way).</p></li>
-<li><p>As we define table for each partition, we can insert data using table created for specific partition. We can either use <code class="docutils literal notranslate"><span class="pre">users_part</span></code> or <code class="docutils literal notranslate"><span class="pre">users_part_u</span></code> to insert records with user_role <strong>‘U’</strong>.</p></li>
+<li><p>As we define table for each partition, we can insert data using table created for specific partition.</p></li>
+<li><p>In the case of <code class="docutils literal notranslate"><span class="pre">users_part</span></code> partitioned table, we can either use table name<code class="docutils literal notranslate"><span class="pre">users_part</span></code> or partition name <code class="docutils literal notranslate"><span class="pre">users_part_u</span></code> to insert records with user_role <strong>‘U’</strong>.</p></li>
 </ul>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">users_part_u</span> 
 <span class="n">PARTITION</span> <span class="k">OF</span> <span class="n">users_part</span>  
@@ -693,8 +719,12 @@ PARTITION OF users_part DEFAULT
 </div>
 <ul class="simple">
 <li><p>As part of the update, if we change the value in a partitioned column which will result in changing partition, then internally data from one partition will be moved to other.</p></li>
-<li><p>We can delete the data using the table or the table created for each partition (either by using table name <code class="docutils literal notranslate"><span class="pre">users_part</span></code> or partitions such as <code class="docutils literal notranslate"><span class="pre">users_part_u</span></code>, <code class="docutils literal notranslate"><span class="pre">users_part_a</span></code> etc.</p></li>
+<li><p>We can delete the data using the table or the table created for each partition (either by using table name <code class="docutils literal notranslate"><span class="pre">users_part</span></code> or partitions such as <code class="docutils literal notranslate"><span class="pre">users_part_u</span></code>, <code class="docutils literal notranslate"><span class="pre">users_part_a</span></code> etc</p></li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>DML is same irrespective of the partitioning strategy. This applies to all 3 partitioning strategies - <strong>list</strong>, <strong>range</strong> as well as <strong>hash</strong>.</p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
@@ -727,6 +757,15 @@ VALUES
     (&#39;Scott&#39;, &#39;Tiger&#39;, &#39;scott@tiger.com&#39;, &#39;U&#39;),
     (&#39;Donald&#39;, &#39;Duck&#39;, &#39;donald@duck.com&#39;, &#39;U&#39;),
     (&#39;Mickey&#39;, &#39;Mouse&#39;, &#39;mickey@mouse.com&#39;, &#39;U&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT * FROM users_part_u
 </pre></div>
 </div>
 </div>
@@ -819,7 +858,7 @@ SELECT * FROM users_part
 <ul class="simple">
 <li><p>It contains same columns as <code class="docutils literal notranslate"><span class="pre">users</span></code>.</p></li>
 <li><p>We will partition the table based up on <code class="docutils literal notranslate"><span class="pre">created_dt</span></code> field.</p></li>
-<li><p>We will create one partition per year with naming conveniont <strong>users_range_part_yyyy</strong> (users_range_part_2016).</p></li>
+<li><p>We will create one partition per year with naming convention <strong>users_range_part_yyyy</strong> (users_range_part_2016).</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -871,13 +910,13 @@ CREATE TABLE users_range_part (
 </div>
 <div class="section" id="managing-partitions-range">
 <h2>Managing Partitions - Range<a class="headerlink" href="#managing-partitions-range" title="Permalink to this headline">¶</a></h2>
-<p>Let us understand how to add partitions to the table <code class="docutils literal notranslate"><span class="pre">users_range_part</span></code>.</p>
+<p>Let us understand how to manage partitions for the table <code class="docutils literal notranslate"><span class="pre">users_range_part</span></code>.</p>
 <ul class="simple">
 <li><p>All users data created in a specific year should go to the respective partition created.</p></li>
 <li><p>For example, all users data created in the year of 2016 should go to <code class="docutils literal notranslate"><span class="pre">users_range_part_2016</span></code>.</p></li>
-<li><p>We can add partition to existing partitioned table using <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">TABLE</span> <span class="pre">partition_name</span> <span class="pre">PARTITION</span> <span class="pre">OF</span> <span class="pre">table</span></code>.</p></li>
+<li><p>We can add partition to existing partitioned table using <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">TABLE</span> <span class="pre">partition_name</span> <span class="pre">PARTITION</span> <span class="pre">OF</span> <span class="pre">table_name</span></code>.</p></li>
 <li><p>We can have a partition for default values so that all the data that does not satisfy the partition condition can be added to it.</p></li>
-<li><p>We can have a partition for specific range of values.</p></li>
+<li><p>We can have a partition for specific range of values using <code class="docutils literal notranslate"><span class="pre">FOR</span> <span class="pre">VALUES</span> <span class="pre">FROM</span> <span class="pre">(from_value)</span> <span class="pre">TO</span> <span class="pre">(to_value)</span></code> as part of <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">TABLE</span> <span class="pre">partition_name</span> <span class="pre">PARTITION</span> <span class="pre">OF</span> <span class="pre">table_name</span></code>.</p></li>
 <li><p>Once partitions are added, we can insert data into the partitioned table.</p></li>
 </ul>
 <div class="admonition note">
@@ -933,6 +972,10 @@ FOR VALUES FROM (&#39;2016-01-01&#39;) TO (&#39;2017-12-31&#39;)
 </pre></div>
 </div>
 </div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is how we can create partitions for the years <strong>2017</strong>, <strong>2018</strong>, <strong>2019</strong> etc</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1148,8 +1191,8 @@ ALTER TABLE users_range_part
 <span class="k">for</span> <span class="n">month</span> <span class="ow">in</span> <span class="n">months</span><span class="p">:</span>
     <span class="n">begin_date</span> <span class="o">=</span> <span class="n">month</span> <span class="o">-</span> <span class="n">MonthBegin</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">end_date</span> <span class="o">=</span> <span class="n">month</span> <span class="o">+</span> <span class="n">MonthEnd</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">month</span><span class="p">)[:</span><span class="mi">7</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">begin_date</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">month</span><span class="p">)[:</span><span class="mi">7</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">begin_date</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">end_date</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 </div>
@@ -1360,10 +1403,10 @@ ORDER BY table_name
 <p>Let us understand how we can take care of Hash partitioning of tables.</p>
 <ul class="simple">
 <li><p>It is primarily used to create partitions based up on modulus and reminder.</p></li>
-<li><p>Here are the steps involved in creating table using range partitioning strategy.</p>
+<li><p>Here are the steps involved in creating table using hash partitioning strategy.</p>
 <ul>
 <li><p>Create table using <code class="docutils literal notranslate"><span class="pre">PARTITION</span> <span class="pre">BY</span> <span class="pre">HASH</span></code></p></li>
-<li><p>Add default and range specific partitions</p></li>
+<li><p>Add default and remainder specific partitions based up on modulus.</p></li>
 <li><p>Validate by inserting data into the table</p></li>
 </ul>
 </li>
@@ -1429,7 +1472,7 @@ CREATE TABLE users_hash_part (
 </div>
 <div class="section" id="managing-partitions-hash">
 <h2>Managing Partitions - Hash<a class="headerlink" href="#managing-partitions-hash" title="Permalink to this headline">¶</a></h2>
-<p>Let us understand how to add partitions to the table <code class="docutils literal notranslate"><span class="pre">users_hash_part</span></code>.</p>
+<p>Let us understand how to manage partitions using table <code class="docutils literal notranslate"><span class="pre">users_hash_part</span></code> which is partitioned using <strong>hash</strong>.</p>
 <ul class="simple">
 <li><p>We would like to divide our data into 8 hash buckets.</p></li>
 <li><p>While adding partitions for <strong>hash partitioned table</strong>, we need to specify modulus and remainder.</p></li>
@@ -1437,7 +1480,7 @@ CREATE TABLE users_hash_part (
 <ul>
 <li><p>A hash will be computed. Hash is nothing but an integer.</p></li>
 <li><p>The integer generated will be divided by the value specified in <strong>modulus</strong>.</p></li>
-<li><p>Based up on the reminder, the record will be inserted into corresponding partiting.</p></li>
+<li><p>Based up on the remainder, the record will be inserted into corresponding partition.</p></li>
 </ul>
 </li>
 </ul>
@@ -1665,10 +1708,10 @@ SELECT * FROM users_hash_part_7_of_8
 <h2>Usage Scenarios<a class="headerlink" href="#usage-scenarios" title="Permalink to this headline">¶</a></h2>
 <p>Let us go through some of the usage scenarios with respect to partitioning.</p>
 <ul class="simple">
-<li><p>It is typically used to manage large tables so that the tables does not grow abnormally large over a period of time.</p></li>
-<li><p>Paritioning is quite often used on top of log tables, reporting tables etc.</p></li>
+<li><p>It is typically used to manage large tables so that the tables does not grow abnormally over a period of time.</p></li>
+<li><p>Partitioning is quite often used on top of log tables, reporting tables etc.</p></li>
 <li><p>If a log table is partitioned and if we want to have data for 7 years, partitions older than 7 years can be quickly dropped.</p></li>
-<li><p>Dropping partittions to clean up huge chunk of data is much faster compared to running delete command on non partitioned table.</p></li>
+<li><p>Dropping partitions to clean up huge chunk of data is much faster compared to running delete command on non partitioned table.</p></li>
 <li><p>For tables like orders with limited set of statuses, we often use list partitioning based up on the status. It can be 2 partitions (CLOSED orders and ACTIVE orders) or separate partition for each status.</p>
 <ul>
 <li><p>As most of the operations will be on <strong>Active Orders</strong>, this approach can significantly improve the performance.</p></li>
@@ -1806,7 +1849,7 @@ FOR VALUES FROM (&#39;2016-02-01&#39;) TO (&#39;2016-02-29&#39;)
 </div>
 <div class="section" id="sub-partitioning">
 <h2>Sub Partitioning<a class="headerlink" href="#sub-partitioning" title="Permalink to this headline">¶</a></h2>
-<p>We can also have sub partitions created with different permutations and combinations. Sub Partitioning is also known as nested partitioning.</p>
+<p>We can have sub partitions created with different permutations and combinations. Sub Partitioning is also known as nested partitioning.</p>
 <ul class="simple">
 <li><p>List - List</p></li>
 <li><p>List - Range
@@ -1822,6 +1865,12 @@ and others.</p></li>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The sql extension is already loaded. To reload it, use:
+  %reload_ext sql
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1829,19 +1878,34 @@ and others.</p></li>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env: DATABASE_URL=postgresql://itversity_sms_user:sms_password@localhost:5432/itversity_sms_db
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="list-list-partitioning">
 <h3>List - List Partitioning<a class="headerlink" href="#list-list-partitioning" title="Permalink to this headline">¶</a></h3>
-<p>Let us understand how we can create table using list - list sub partitioning.</p>
+<p>Let us understand how we can create table using list - list sub partitioning. We would like to have main partition per year and then sub partitions per quarter.</p>
 <ul class="simple">
-<li><p>Create table with <code class="docutils literal notranslate"><span class="pre">PARTITION</span> <span class="pre">BY</span> <span class="pre">LIST</span></code> with <code class="docutils literal notranslate"><span class="pre">created_year</span></code>.</p></li>
+<li><p>Create table <code class="docutils literal notranslate"><span class="pre">users_qtly</span></code> with <code class="docutils literal notranslate"><span class="pre">PARTITION</span> <span class="pre">BY</span> <span class="pre">LIST</span></code> with <code class="docutils literal notranslate"><span class="pre">created_year</span></code>.</p></li>
 <li><p>Create tables for yearly partitions with <code class="docutils literal notranslate"><span class="pre">PARTITION</span> <span class="pre">BY</span> <span class="pre">LIST</span></code> with <code class="docutils literal notranslate"><span class="pre">created_month</span></code>.</p></li>
+<li><p>Create tables for quarterly partitions with list of values using <code class="docutils literal notranslate"><span class="pre">FOR</span> <span class="pre">VALUES</span> <span class="pre">IN</span></code>.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
 DROP TABLE IF EXISTS users_qtly
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
 </pre></div>
 </div>
 </div>
@@ -1868,6 +1932,15 @@ CREATE TABLE users_qtly (
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1876,7 +1949,16 @@ CREATE TABLE users_qtly (
 CREATE TABLE users_qtly_2016
 PARTITION OF users_qtly
 FOR VALUES IN (2016)
-    PARTITION BY LIST (created_mnth)
+PARTITION BY LIST (created_mnth)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
 </pre></div>
 </div>
 </div>
@@ -1891,6 +1973,15 @@ FOR VALUES IN (1, 2, 3)
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1902,20 +1993,39 @@ FOR VALUES IN (4, 5, 6)
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="list-range-partitioning">
 <h3>List - Range Partitioning<a class="headerlink" href="#list-range-partitioning" title="Permalink to this headline">¶</a></h3>
-<p>Let us understand how we can create table using list - Range sub partitioning.</p>
+<p>Let us understand how we can create table using list - Range sub partitioning using same example as before (partitioning by year and then by quarter).</p>
 <ul class="simple">
 <li><p>Create table with <code class="docutils literal notranslate"><span class="pre">PARTITION</span> <span class="pre">BY</span> <span class="pre">LIST</span></code> with <code class="docutils literal notranslate"><span class="pre">created_year</span></code>.</p></li>
 <li><p>Create tables for yearly partitions with <code class="docutils literal notranslate"><span class="pre">PARTITION</span> <span class="pre">BY</span> <span class="pre">RANGE</span></code> with <code class="docutils literal notranslate"><span class="pre">created_month</span></code>.</p></li>
+<li><p>Create tables for quarterly partitions with the range of values using <code class="docutils literal notranslate"><span class="pre">FOR</span> <span class="pre">VALUES</span> <span class="pre">FROM</span> <span class="pre">(lower_bound)</span> <span class="pre">TO</span> <span class="pre">(upper_bound)</span></code>.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
 DROP TABLE IF EXISTS users_qtly
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
 </pre></div>
 </div>
 </div>
@@ -1942,6 +2052,15 @@ CREATE TABLE users_qtly (
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1950,7 +2069,16 @@ CREATE TABLE users_qtly (
 CREATE TABLE users_qtly_2016
 PARTITION OF users_qtly
 FOR VALUES IN (2016)
-    PARTITION BY RANGE (created_mnth)
+PARTITION BY RANGE (created_mnth)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
 </pre></div>
 </div>
 </div>
@@ -1965,6 +2093,15 @@ FOR VALUES FROM (1) TO (3)
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1973,6 +2110,15 @@ FOR VALUES FROM (1) TO (3)
 CREATE TABLE users_qtly_2016q2
 PARTITION OF users_qtly_2016
 FOR VALUES FROM (4) TO (6)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
 </pre></div>
 </div>
 </div>
@@ -1993,7 +2139,7 @@ FOR VALUES FROM (4) TO (6)
 </ul>
 </li>
 <li><p>Load the data from <strong>orders</strong> into <strong>orders_part</strong>.</p></li>
-<li><p>Get count on <strong>orders_part</strong> as well as all the 14 partitions. You should get 0 for default partition.</p></li>
+<li><p>Get count on <strong>orders_part</strong> as well as all the 14 partitions. You should get 0 for default partition and all the records should be distributed using the other 13 partitions.</p></li>
 </ul>
 </div>
 </div>
