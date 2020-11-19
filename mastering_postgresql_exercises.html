@@ -1,0 +1,2301 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Getting Started &#8212; My Jupyter Book</title>
+    
+  <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Query Performance Tuning" href="08_query_performance_tuning.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">My Jupyter Book</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="mastering-postgresql.html">
+   Mastering Postgresql
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_getting_started.html">
+   Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_dml_or_crud_operations.html">
+   DML or CRUD Operations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_writing_basic_sql_queries.html">
+   Writing Basic SQL Queries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04_creating_tables_and_indexes.html">
+   Creating Tables and Indexes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05_partitioning_tables_and_indexes.html">
+   Partitioning Tables and Indexes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_predefined_functions.html">
+   Pre-Defined Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="07_writing_advanced_sql_queries.html">
+   Writing Advanced SQL Queries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="08_query_performance_tuning.html">
+   Query Performance Tuning
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="#dml-or-crud-operations">
+   DML or CRUD Operations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="#basic-sql-queries">
+   Basic SQL Queries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="#managing-database-objects">
+   Managing Database Objects
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="#partitioning-tables">
+   Partitioning Tables
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="#pre-defined-functions">
+   Pre-Defined Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="#analytics-functions">
+   Analytics Functions
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/mastering_postgresql_exercises.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/mastering_postgresql_exercises.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Getting Started
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-loading-data">
+     Exercise - Loading Data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dml-or-crud-operations">
+   DML or CRUD Operations
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-1-create-table">
+     Exercise 1 - Create Table
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-2-inserting-data">
+     Exercise 2 - Inserting Data
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-3-updating-data">
+     Exercise 3 - Updating Data
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-4-deleting-data">
+     Exercise 4 - Deleting Data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#basic-sql-queries">
+   Basic SQL Queries
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-1-customer-order-count">
+     Exercise 1 - Customer order count
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-2-dormant-customers">
+     Exercise 2 - Dormant Customers
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-3-revenue-per-customer">
+     Exercise 3 - Revenue Per Customer
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-4-revenue-per-category">
+     Exercise 4 - Revenue Per Category
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-5-product-count-per-department">
+     Exercise 5 - Product Count Per Department
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#managing-database-objects">
+   Managing Database Objects
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-1">
+     Exercise 1
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-2">
+     Exercise 2
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-3">
+     Exercise 3
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-4">
+     Exercise 4
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-5">
+     Exercise 5
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#partitioning-tables">
+   Partitioning Tables
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Exercise 1
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Exercise 2
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pre-defined-functions">
+   Pre-Defined Functions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     Exercise 1
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     Exercise 2
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     Exercise 3
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     Exercise 4
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     Exercise 5
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-6">
+     Exercise 6
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-7">
+     Exercise 7
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-8">
+     Exercise 8
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analytics-functions">
+   Analytics Functions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#prepare-hr-database">
+     Prepare HR Database
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     Exercise 1
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id9">
+     Exercise 2
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id10">
+     Exercise 3
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id11">
+     Exercise 4
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id12">
+     Exercise 5
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="getting-started">
+<h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+<p>Here is the exercise related to getting started module.</p>
+<div class="section" id="exercise-loading-data">
+<h2>Exercise - Loading Data<a class="headerlink" href="#exercise-loading-data" title="Permalink to this headline">¶</a></h2>
+<p>As part of this exercise, you need to take care of loading data using <code class="docutils literal notranslate"><span class="pre">COPY</span></code> Command.</p>
+<ul class="simple">
+<li><p>You can connect to the database using following details in the environment provided by us.</p>
+<ul>
+<li><p>Host: localhost</p></li>
+<li><p>Port: 5342</p></li>
+<li><p>Database Name: YOUR_OS_USER_hr_db</p></li>
+<li><p>User Name: YOUR_OS_USER_hr_user</p></li>
+<li><p>Password: YOUR_OS_USER_PASSWORD (provided by us).</p></li>
+</ul>
+</li>
+<li><p>If you are using your own environment, make sure to create database for storing HR Data.</p>
+<ul>
+<li><p>Database Name: hr_db</p></li>
+<li><p>User Name: hr_user</p></li>
+<li><p>You can create user with password of your choice.</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">DATABASE</span> <span class="n">hr_db</span><span class="p">;</span>
+<span class="k">CREATE</span> <span class="k">USER</span> <span class="n">hr_user</span> <span class="k">WITH</span> <span class="n">PASSWORD</span> <span class="s1">&#39;hr_password&#39;</span><span class="p">;</span>
+<span class="k">GRANT</span> <span class="k">ALL</span> <span class="k">ON</span> <span class="k">DATABASE</span> <span class="n">hr_db</span> <span class="k">TO</span> <span class="n">hr_user</span><span class="p">;</span>
+<span class="k">GRANT</span> <span class="n">pg_read_server_files</span> <span class="k">TO</span> <span class="n">hr_user</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Create table using this script.</p></li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">employees</span>
+   <span class="p">(</span> <span class="n">employee_id</span> <span class="nb">INTEGER</span>
+   <span class="p">,</span> <span class="n">first_name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+   <span class="p">,</span> <span class="n">last_name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span>
+   <span class="p">,</span> <span class="n">email</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span>
+   <span class="p">,</span> <span class="n">phone_number</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+   <span class="p">,</span> <span class="n">hire_date</span> <span class="nb">DATE</span>
+   <span class="p">,</span> <span class="n">job_id</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+   <span class="p">,</span> <span class="n">salary</span> <span class="nb">NUMERIC</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+   <span class="p">,</span> <span class="n">commission_pct</span> <span class="nb">NUMERIC</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+   <span class="p">,</span> <span class="n">manager_id</span> <span class="nb">INTEGER</span>
+   <span class="p">,</span> <span class="n">department_id</span> <span class="nb">INTEGER</span>
+   <span class="p">)</span> <span class="p">;</span>
+<span class="k">CREATE</span> <span class="k">UNIQUE</span> <span class="k">INDEX</span> <span class="n">emp_emp_id_pk</span>
+         <span class="k">ON</span> <span class="n">employees</span> <span class="p">(</span><span class="n">employee_id</span><span class="p">)</span> <span class="p">;</span>
+<span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">employees</span> <span class="k">ADD</span>
+   <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">employee_id</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Understand data.</p>
+<ul>
+<li><p>Check for delimiters (record as well as field).</p></li>
+<li><p>Check whether header exists or not.</p></li>
+<li><p>Ensure number of fields for the table and data being loaded are same or not.</p></li>
+</ul>
+</li>
+<li><p>Load data into the table using <code class="docutils literal notranslate"><span class="pre">COPY</span></code> Command.</p></li>
+<li><p>Validate by running these queries. You can also use SQL Workbench to run the queries to validate whether data is loaded successfully or not.</p></li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">employees</span> <span class="k">LIMIT</span> <span class="mi">10</span><span class="p">;</span>
+<span class="k">SELECT</span> <span class="k">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">employees</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="dml-or-crud-operations">
+<h1>DML or CRUD Operations<a class="headerlink" href="#dml-or-crud-operations" title="Permalink to this headline">¶</a></h1>
+<p>Let’s create a table and perform database operations using direct SQL.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/pqtKUUI5cCo?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+</div></div>
+</div>
+<div class="section" id="exercise-1-create-table">
+<h2>Exercise 1 - Create Table<a class="headerlink" href="#exercise-1-create-table" title="Permalink to this headline">¶</a></h2>
+<p>Create table - <strong>courses</strong></p>
+<ul class="simple">
+<li><p>course_id - sequence generated integer and primary key</p></li>
+<li><p>course_name - which holds alpha numeric or string values up to 60 characters</p></li>
+<li><p>course_author - which holds the name of the author up to 40 characters</p></li>
+<li><p>course_status - which holds one of these values (published, draft, inactive).</p></li>
+<li><p>course_published_dt - which holds date type value.</p></li>
+</ul>
+<p>Provide the script as answer for this exercise.</p>
+</div>
+<div class="section" id="exercise-2-inserting-data">
+<h2>Exercise 2 - Inserting Data<a class="headerlink" href="#exercise-2-inserting-data" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Insert data into courses using the data provided. Make sure id is system generated.</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Course Name</p></th>
+<th class="head"><p>Course Author</p></th>
+<th class="head"><p>Course Status</p></th>
+<th class="head"><p>Course Published Date</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Programming using Python</p></td>
+<td><p>Bob Dillon</p></td>
+<td><p>published</p></td>
+<td><p>2020-09-30</p></td>
+</tr>
+<tr class="row-odd"><td><p>Data Engineering using Python</p></td>
+<td><p>Bob Dillon</p></td>
+<td><p>published</p></td>
+<td><p>2020-07-15</p></td>
+</tr>
+<tr class="row-even"><td><p>Data Engineering using Scala</p></td>
+<td><p>Elvis Presley</p></td>
+<td><p>draft</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>Programming using Scala</p></td>
+<td><p>Elvis Presley</p></td>
+<td><p>published</p></td>
+<td><p>2020-05-12</p></td>
+</tr>
+<tr class="row-even"><td><p>Programming using Java</p></td>
+<td><p>Mike Jack</p></td>
+<td><p>inactive</p></td>
+<td><p>2020-08-10</p></td>
+</tr>
+<tr class="row-odd"><td><p>Web Applications - Python Flask</p></td>
+<td><p>Bob Dillon</p></td>
+<td><p>inactive</p></td>
+<td><p>2020-07-20</p></td>
+</tr>
+<tr class="row-even"><td><p>Web Applications - Java Spring</p></td>
+<td><p>Mike Jack</p></td>
+<td><p>draft</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>Pipeline Orchestration - Python</p></td>
+<td><p>Bob Dillon</p></td>
+<td><p>draft</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>Streaming Pipelines - Python</p></td>
+<td><p>Bob Dillon</p></td>
+<td><p>published</p></td>
+<td><p>2020-10-05</p></td>
+</tr>
+<tr class="row-odd"><td><p>Web Applications - Scala Play</p></td>
+<td><p>Elvis Presley</p></td>
+<td><p>inactive</p></td>
+<td><p>2020-09-30</p></td>
+</tr>
+<tr class="row-even"><td><p>Web Applications - Python Django</p></td>
+<td><p>Bob Dillon</p></td>
+<td><p>published</p></td>
+<td><p>2020-06-23</p></td>
+</tr>
+<tr class="row-odd"><td><p>Server Automation - Ansible</p></td>
+<td><p>Uncle Sam</p></td>
+<td><p>published</p></td>
+<td><p>2020-07-05</p></td>
+</tr>
+</tbody>
+</table>
+<p>Provide the insert statement(s) as answer for this exercise.</p>
+</div>
+<div class="section" id="exercise-3-updating-data">
+<h2>Exercise 3 - Updating Data<a class="headerlink" href="#exercise-3-updating-data" title="Permalink to this headline">¶</a></h2>
+<p>Update the status of all the <strong>draft courses</strong> related to Python and Scala to <strong>published</strong> along with the <strong>course_published_dt using system date</strong>.</p>
+<p>Provide the update statement as answer for this exercise.</p>
+</div>
+<div class="section" id="exercise-4-deleting-data">
+<h2>Exercise 4 - Deleting Data<a class="headerlink" href="#exercise-4-deleting-data" title="Permalink to this headline">¶</a></h2>
+<p>Delete all the courses which are neither in draft mode nor published.</p>
+<p>Provide the delete statement as answer for this exercise.</p>
+<p>Validation - Get count of all published courses by author and make sure output is sorted in descending order by count.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">course_author</span><span class="p">,</span> <span class="k">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="k">AS</span> <span class="n">course_count</span>
+<span class="k">FROM</span> <span class="n">courses</span>
+<span class="k">WHERE</span> <span class="n">course_status</span><span class="o">=</span> <span class="s1">&#39;published&#39;</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="n">course_author</span>
+</pre></div>
+</div>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Course Author</p></th>
+<th class="head"><p>Course Count</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Bob Dillon</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-odd"><td><p>Elvis Presley</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-even"><td><p>Uncle Sam</p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="basic-sql-queries">
+<h1>Basic SQL Queries<a class="headerlink" href="#basic-sql-queries" title="Permalink to this headline">¶</a></h1>
+<p>Here are some of the exercises for which you can write SQL queries to self evaluate.</p>
+<div class="section" id="exercise-1-customer-order-count">
+<h2>Exercise 1 - Customer order count<a class="headerlink" href="#exercise-1-customer-order-count" title="Permalink to this headline">¶</a></h2>
+<p>Get order count per customer for the month of 2014 January.</p>
+<ul class="simple">
+<li><p>Tables - orders and customers</p></li>
+<li><p>Data should be sorted in descending order by count and ascending order by customer id.</p></li>
+<li><p>Output should contain customer_id, customer_first_name, customer_last_name and customer_order_count.</p></li>
+</ul>
+</div>
+<div class="section" id="exercise-2-dormant-customers">
+<h2>Exercise 2 - Dormant Customers<a class="headerlink" href="#exercise-2-dormant-customers" title="Permalink to this headline">¶</a></h2>
+<p>Get the customer details who have not placed any order for the month of 2014 January.</p>
+<ul class="simple">
+<li><p>Tables - orders and customers</p></li>
+<li><p>Data should be sorted in ascending order by customer_id</p></li>
+<li><p>Output should contain all the fields from customers</p></li>
+</ul>
+</div>
+<div class="section" id="exercise-3-revenue-per-customer">
+<h2>Exercise 3 - Revenue Per Customer<a class="headerlink" href="#exercise-3-revenue-per-customer" title="Permalink to this headline">¶</a></h2>
+<p>Get the revenue generated by each customer for the month of 2014 January</p>
+<ul class="simple">
+<li><p>Tables - orders, order_items and customers</p></li>
+<li><p>Data should be sorted in descending order by revenue and then ascending order by customer_id</p></li>
+<li><p>Output should contain customer_id, customer_first_name, customer_last_name, customer_revenue.</p></li>
+<li><p>If there are no orders placed by customer, then the corresponding revenue for a give customer should be 0.</p></li>
+<li><p>Consider only COMPLETE and CLOSED orders</p></li>
+</ul>
+</div>
+<div class="section" id="exercise-4-revenue-per-category">
+<h2>Exercise 4 - Revenue Per Category<a class="headerlink" href="#exercise-4-revenue-per-category" title="Permalink to this headline">¶</a></h2>
+<p>Get the revenue generated for each category for the month of 2014 January</p>
+<ul class="simple">
+<li><p>Tables - orders, order_items, products and categories</p></li>
+<li><p>Data should be sorted in ascending order by category_id.</p></li>
+<li><p>Output should contain all the fields from category along with the revenue as category_revenue.</p></li>
+<li><p>Consider only COMPLETE and CLOSED orders</p></li>
+</ul>
+</div>
+<div class="section" id="exercise-5-product-count-per-department">
+<h2>Exercise 5 - Product Count Per Department<a class="headerlink" href="#exercise-5-product-count-per-department" title="Permalink to this headline">¶</a></h2>
+<p>Get the products for each department.</p>
+<ul class="simple">
+<li><p>Tables - departments, categories, products</p></li>
+<li><p>Data should be sorted in ascending order by department_id</p></li>
+<li><p>Output should contain all the fields from department and the product count as product_count</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="managing-database-objects">
+<h1>Managing Database Objects<a class="headerlink" href="#managing-database-objects" title="Permalink to this headline">¶</a></h1>
+<p>This exercise is primarily to assess your capabilities related to put all important DDL concepts in practice by coming up with solution for a typical data migration problem from one database (mysql) to another (postgres).</p>
+<ul class="simple">
+<li><p>Here are the high level steps for database migration from one type of database to another type of database.</p>
+<ul>
+<li><p>Extract DDL Statements from source database (MySQL).</p></li>
+<li><p>Extract the data in the form of delimited files and ship them to target database.</p></li>
+<li><p>Refactor scripts as per target database (Postgres).</p></li>
+<li><p>Create tables in the target database.</p></li>
+<li><p>Execute pre-migration steps (disable constraints, drop indexes etc).</p></li>
+<li><p>Load the data using native utilities.</p></li>
+<li><p>Execute post-migration steps (enable constraints, create or rebuild indexes, reset sequences etc).</p></li>
+<li><p>Sanity checks with basic queries.</p></li>
+<li><p>Make sure all the impacted applications are validated thoroughly.</p></li>
+</ul>
+</li>
+<li><p>We have scripts and data set available in our GitHub repository. If you are using our environment the repository is already cloned under <strong>/data/retail_db</strong>.</p></li>
+<li><p>It have scripts to create tables with primary keys. Those scripts are generated from MySQL tables and refactored for Postgres.</p>
+<ul>
+<li><p>Script to create tables: <strong>create_db_tables_pg.sql</strong></p></li>
+<li><p>Load data into tables: <strong>load_db_tables_pg.sql</strong></p></li>
+</ul>
+</li>
+<li><p>Here are the steps you need to perform to take care of this exercise.</p>
+<ul>
+<li><p>Create tables</p></li>
+<li><p>Load data</p></li>
+<li><p>All the tables have surrogate primary keys. Here are the details.</p>
+<ul>
+<li><p>orders.order_id</p></li>
+<li><p>order_items.order_item_id</p></li>
+<li><p>customers.customer_id</p></li>
+<li><p>products.product_id</p></li>
+<li><p>categories.category_id</p></li>
+<li><p>departments.department_id</p></li>
+</ul>
+</li>
+<li><p>Get the maximum value from all surrogate primary key fields.</p></li>
+<li><p>Create sequences for all surrogate primary key fields using maximum value. Make sure to use standard naming conventions for sequences.</p></li>
+<li><p>Ensure sequences are mapped to the surrogate primary key fields.</p></li>
+<li><p>Create foreign key constraints based up on this information.</p>
+<ul>
+<li><p>orders.order_customer_id to customers.customer_id</p></li>
+<li><p>order_items.order_item_order_id to orders.order_id</p></li>
+<li><p>order_items.order_item_product_id to products.product_id</p></li>
+<li><p>products.product_category_id to categories.category_id</p></li>
+<li><p>categories.category_department_id to departments.department_id</p></li>
+</ul>
+</li>
+<li><p>Insert few records in <code class="docutils literal notranslate"><span class="pre">departments</span></code> to ensure that sequence generated numbers are used for <code class="docutils literal notranslate"><span class="pre">department_id</span></code>.</p></li>
+</ul>
+</li>
+<li><p>Here are the commands to launch <code class="docutils literal notranslate"><span class="pre">psql</span></code> and run scripts to create tables as well as load data into tables.</p></li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span>psql -U itversity_retail_user \
+  -h localhost \
+  -p 5432 \
+  -d itversity_retail_db \
+  -W
+
+\i /data/retail_db/create_db_tables_pg.sql
+
+\i /data/retail_db/load_db_tables_pg.sql
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>We use this approach of creating tables, loading data and then adding constraints as well as resetting sequences for large volume data migrations from one database to another database.</p></li>
+<li><p>Here are the commands or queries you need to come up with to solve this problem.</p></li>
+</ul>
+<div class="section" id="exercise-1">
+<h2>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h2>
+<p>Queries to get maximum values from surrogate primary keys.</p>
+</div>
+<div class="section" id="exercise-2">
+<h2>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this headline">¶</a></h2>
+<p>Commands to add sequences with <code class="docutils literal notranslate"><span class="pre">START</span> <span class="pre">WITH</span></code> pointing to the maximum value for the corresponding surrogate primary key fields. Make sure to use meaningful names to sequences <strong>TABLENAME_SURROGATEFIELD_seq</strong> (example: users_user_id_seq for users.user_id)</p>
+</div>
+<div class="section" id="exercise-3">
+<h2>Exercise 3<a class="headerlink" href="#exercise-3" title="Permalink to this headline">¶</a></h2>
+<p>Commands to alter sequences to bind them to corresponding surrogate primary key fields.</p>
+</div>
+<div class="section" id="exercise-4">
+<h2>Exercise 4<a class="headerlink" href="#exercise-4" title="Permalink to this headline">¶</a></h2>
+<p>Commands to add foreign key constraints.</p>
+</div>
+<div class="section" id="exercise-5">
+<h2>Exercise 5<a class="headerlink" href="#exercise-5" title="Permalink to this headline">¶</a></h2>
+<p>Queries to validate whether constraints are created or not. You can come up with queries against <code class="docutils literal notranslate"><span class="pre">information_schema</span></code> tables such as <code class="docutils literal notranslate"><span class="pre">columns</span></code>, <code class="docutils literal notranslate"><span class="pre">sequences</span></code> etc.</p>
+</div>
+</div>
+<div class="section" id="partitioning-tables">
+<h1>Partitioning Tables<a class="headerlink" href="#partitioning-tables" title="Permalink to this headline">¶</a></h1>
+<p>Here is the exercise to get comfort with partitioning. We will be using range partitioning.</p>
+<ul class="simple">
+<li><p>Use retail database. Make sure <strong>orders</strong> table already exists.</p></li>
+</ul>
+<div class="section" id="id1">
+<h2>Exercise 1<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>Create table <strong>orders_part</strong> with the same columns as orders.</p>
+<ul class="simple">
+<li><p>Partition the table by month using range partitioning on <strong>order_date</strong>.</p></li>
+<li><p>Add 14 partitions - 13 based up on the data and 1 default. Here is the naming convention.</p>
+<ul>
+<li><p>Default - orders_part_default</p></li>
+<li><p>Partition for 2014 January - orders_part_201401</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2>Exercise 2<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>Let us load and validate data in the partitioned table.</p>
+<ul class="simple">
+<li><p>Load the data from <strong>orders</strong> into <strong>orders_part</strong>.</p></li>
+<li><p>Get count on <strong>orders_part</strong> as well as all the 14 partitions. You should get 0 for default partition and all the records should be distributed using the other 13 partitions.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="pre-defined-functions">
+<h1>Pre-Defined Functions<a class="headerlink" href="#pre-defined-functions" title="Permalink to this headline">¶</a></h1>
+<p>Here are the exercises to ensure our understanding related to Pre-Defined Functions.</p>
+<ul class="simple">
+<li><p>We will use <strong>users</strong> table as well as other tables we got as part of retail database.</p></li>
+<li><p>Information will be provided with each exercise.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+DROP TABLE IF EXISTS users
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+CREATE TABLE users(
+    user_id SERIAL PRIMARY KEY,
+    user_first_name VARCHAR(30),
+    user_last_name VARCHAR(30),
+    user_email_id VARCHAR(50),
+    user_gender VARCHAR(1),
+    user_unique_id VARCHAR(15),
+    user_phone_no VARCHAR(20),
+    user_dob DATE,
+    created_ts TIMESTAMP
+)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+insert into users (
+    user_first_name, user_last_name, user_email_id, user_gender, 
+    user_unique_id, user_phone_no, user_dob, created_ts
+) VALUES
+    (&#39;Giuseppe&#39;, &#39;Bode&#39;, &#39;gbode0@imgur.com&#39;, &#39;M&#39;, &#39;88833-8759&#39;, 
+     &#39;+86 (764) 443-1967&#39;, &#39;1973-05-31&#39;, &#39;2018-04-15 12:13:38&#39;),
+    (&#39;Lexy&#39;, &#39;Gisbey&#39;, &#39;lgisbey1@mail.ru&#39;, &#39;F&#39;, &#39;262501-029&#39;, 
+     &#39;+86 (751) 160-3742&#39;, &#39;2003-05-31&#39;, &#39;2020-12-29 06:44:09&#39;),
+    (&#39;Karel&#39;, &#39;Claringbold&#39;, &#39;kclaringbold2@yale.edu&#39;, &#39;F&#39;, &#39;391-33-2823&#39;, 
+     &#39;+62 (445) 471-2682&#39;, &#39;1985-11-28&#39;, &#39;2018-11-19 00:04:08&#39;),
+    (&#39;Marv&#39;, &#39;Tanswill&#39;, &#39;mtanswill3@dedecms.com&#39;, &#39;F&#39;, &#39;1195413-80&#39;, 
+     &#39;+62 (497) 736-6802&#39;, &#39;1998-05-24&#39;, &#39;2018-11-19 16:29:43&#39;),
+    (&#39;Gertie&#39;, &#39;Espinoza&#39;, &#39;gespinoza4@nationalgeographic.com&#39;, &#39;M&#39;, &#39;471-24-6869&#39;, 
+     &#39;+249 (687) 506-2960&#39;, &#39;1997-10-30&#39;, &#39;2020-01-25 21:31:10&#39;),
+    (&#39;Saleem&#39;, &#39;Danneil&#39;, &#39;sdanneil5@guardian.co.uk&#39;, &#39;F&#39;, &#39;192374-933&#39;, 
+     &#39;+63 (810) 321-0331&#39;, &#39;1992-03-08&#39;, &#39;2020-11-07 19:01:14&#39;),
+    (&#39;Rickert&#39;, &#39;O&#39;&#39;Shiels&#39;, &#39;roshiels6@wikispaces.com&#39;, &#39;M&#39;, &#39;749-27-47-52&#39;, 
+     &#39;+86 (184) 759-3933&#39;, &#39;1972-11-01&#39;, &#39;2018-03-20 10:53:24&#39;),
+    (&#39;Cybil&#39;, &#39;Lissimore&#39;, &#39;clissimore7@pinterest.com&#39;, &#39;M&#39;, &#39;461-75-4198&#39;, 
+     &#39;+54 (613) 939-6976&#39;, &#39;1978-03-03&#39;, &#39;2019-12-09 14:08:30&#39;),
+    (&#39;Melita&#39;, &#39;Rimington&#39;, &#39;mrimington8@mozilla.org&#39;, &#39;F&#39;, &#39;892-36-676-2&#39;, 
+     &#39;+48 (322) 829-8638&#39;, &#39;1995-12-15&#39;, &#39;2018-04-03 04:21:33&#39;),
+    (&#39;Benetta&#39;, &#39;Nana&#39;, &#39;bnana9@google.com&#39;, &#39;M&#39;, &#39;197-54-1646&#39;, 
+     &#39;+420 (934) 611-0020&#39;, &#39;1971-12-07&#39;, &#39;2018-10-17 21:02:51&#39;),
+    (&#39;Gregorius&#39;, &#39;Gullane&#39;, &#39;ggullanea@prnewswire.com&#39;, &#39;F&#39;, &#39;232-55-52-58&#39;, 
+     &#39;+62 (780) 859-1578&#39;, &#39;1973-09-18&#39;, &#39;2020-01-14 23:38:53&#39;),
+    (&#39;Una&#39;, &#39;Glayzer&#39;, &#39;uglayzerb@pinterest.com&#39;, &#39;M&#39;, &#39;898-84-336-6&#39;, 
+     &#39;+380 (840) 437-3981&#39;, &#39;1983-05-26&#39;, &#39;2019-09-17 03:24:21&#39;),
+    (&#39;Jamie&#39;, &#39;Vosper&#39;, &#39;jvosperc@umich.edu&#39;, &#39;M&#39;, &#39;247-95-68-44&#39;, 
+     &#39;+81 (205) 723-1942&#39;, &#39;1972-03-18&#39;, &#39;2020-07-23 16:39:33&#39;),
+    (&#39;Calley&#39;, &#39;Tilson&#39;, &#39;ctilsond@issuu.com&#39;, &#39;F&#39;, &#39;415-48-894-3&#39;, 
+     &#39;+229 (698) 777-4904&#39;, &#39;1987-06-12&#39;, &#39;2020-06-05 12:10:50&#39;),
+    (&#39;Peadar&#39;, &#39;Gregorowicz&#39;, &#39;pgregorowicze@omniture.com&#39;, &#39;M&#39;, &#39;403-39-5-869&#39;, 
+     &#39;+7 (267) 853-3262&#39;, &#39;1996-09-21&#39;, &#39;2018-05-29 23:51:31&#39;),
+    (&#39;Jeanie&#39;, &#39;Webling&#39;, &#39;jweblingf@booking.com&#39;, &#39;F&#39;, &#39;399-83-05-03&#39;, 
+     &#39;+351 (684) 413-0550&#39;, &#39;1994-12-27&#39;, &#39;2018-02-09 01:31:11&#39;),
+    (&#39;Yankee&#39;, &#39;Jelf&#39;, &#39;yjelfg@wufoo.com&#39;, &#39;F&#39;, &#39;607-99-0411&#39;, 
+     &#39;+1 (864) 112-7432&#39;, &#39;1988-11-13&#39;, &#39;2019-09-16 16:09:12&#39;),
+    (&#39;Blair&#39;, &#39;Aumerle&#39;, &#39;baumerleh@toplist.cz&#39;, &#39;F&#39;, &#39;430-01-578-5&#39;, 
+     &#39;+7 (393) 232-1860&#39;, &#39;1979-11-09&#39;, &#39;2018-10-28 19:25:35&#39;),
+    (&#39;Pavlov&#39;, &#39;Steljes&#39;, &#39;psteljesi@macromedia.com&#39;, &#39;F&#39;, &#39;571-09-6181&#39;, 
+     &#39;+598 (877) 881-3236&#39;, &#39;1991-06-24&#39;, &#39;2020-09-18 05:34:31&#39;),
+    (&#39;Darn&#39;, &#39;Hadeke&#39;, &#39;dhadekej@last.fm&#39;, &#39;M&#39;, &#39;478-32-02-87&#39;, 
+     &#39;+370 (347) 110-4270&#39;, &#39;1984-09-04&#39;, &#39;2018-02-10 12:56:00&#39;),
+    (&#39;Wendell&#39;, &#39;Spanton&#39;, &#39;wspantonk@de.vu&#39;, &#39;F&#39;, null, 
+     &#39;+84 (301) 762-1316&#39;, &#39;1973-07-24&#39;, &#39;2018-01-30 01:20:11&#39;),
+    (&#39;Carlo&#39;, &#39;Yearby&#39;, &#39;cyearbyl@comcast.net&#39;, &#39;F&#39;, null, 
+     &#39;+55 (288) 623-4067&#39;, &#39;1974-11-11&#39;, &#39;2018-06-24 03:18:40&#39;),
+    (&#39;Sheila&#39;, &#39;Evitts&#39;, &#39;sevittsm@webmd.com&#39;, null, &#39;830-40-5287&#39;,
+     null, &#39;1977-03-01&#39;, &#39;2020-07-20 09:59:41&#39;),
+    (&#39;Sianna&#39;, &#39;Lowdham&#39;, &#39;slowdhamn@stanford.edu&#39;, null, &#39;778-0845&#39;, 
+     null, &#39;1985-12-23&#39;, &#39;2018-06-29 02:42:49&#39;),
+    (&#39;Phylys&#39;, &#39;Aslie&#39;, &#39;paslieo@qq.com&#39;, &#39;M&#39;, &#39;368-44-4478&#39;, 
+     &#39;+86 (765) 152-8654&#39;, &#39;1984-03-22&#39;, &#39;2019-10-01 01:34:28&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>Exercise 1<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>Get all the number of users created per year.</p>
+<ul class="simple">
+<li><p>Use <strong>users</strong> table for this exercise.</p></li>
+<li><p>Output should contain 4 digit year and count.</p></li>
+<li><p>Use date specific functions to get the year using created_ts.</p></li>
+<li><p>Make sure you define aliases to the columns as <strong>created_year</strong> and <strong>user_count</strong> respectively.</p></li>
+<li><p>Data should be sorted in ascending order by <strong>created_year</strong>.</p></li>
+<li><p>When you run the query using Jupyter environment, it might have decimals for integers. Hence you can display results even with decimal points.</p></li>
+<li><p>Here is the sample output.</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>created_year</p></th>
+<th class="head"><p>user_count</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>2018</p></td>
+<td><p>13</p></td>
+</tr>
+<tr class="row-odd"><td><p>2019</p></td>
+<td><p>4</p></td>
+</tr>
+<tr class="row-even"><td><p>2020</p></td>
+<td><p>8</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id4">
+<h2>Exercise 2<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>Get the day name of the birth days for all the users born in the month of June.</p>
+<ul class="simple">
+<li><p>Use <strong>users</strong> table for this exercise.</p></li>
+<li><p>Output should contain user_id, user_dob, user_email_id and user_day_of_birth.</p></li>
+<li><p>Use date specific functions to get the month using user_dob.</p></li>
+<li><p><strong>user_day_of_birth</strong> should be full day with first character in upper case such as <strong>Tuesday</strong></p></li>
+<li><p>Data should be sorted by day with in the month of May.</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>user_id</p></th>
+<th class="head"><p>user_dob</p></th>
+<th class="head"><p>user_email_id</p></th>
+<th class="head"><p>user_day_of_birth</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>1998-05-24</p></td>
+<td><p>mtanswill3&#64;dedecms.com</p></td>
+<td><p>Sunday</p></td>
+</tr>
+<tr class="row-odd"><td><p>12</p></td>
+<td><p>1983-05-26</p></td>
+<td><p>uglayzerb&#64;pinterest.com</p></td>
+<td><p>Thursday</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>1973-05-31</p></td>
+<td><p>gbode0&#64;imgur.com</p></td>
+<td><p>Thursday</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>2003-05-31</p></td>
+<td><p>lgisbey1&#64;mail.ru</p></td>
+<td><p>Saturday</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id5">
+<h2>Exercise 3<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>Get the names and email ids of users added in year 2019.</p>
+<ul class="simple">
+<li><p>Use <strong>users</strong> table for this exercise.</p></li>
+<li><p>Output should contain user_id, user_name, user_email_id, created_ts, created_year.</p></li>
+<li><p>Use date specific functions to get the year using created_ts.</p></li>
+<li><p><strong>user_name</strong> is a derived column by concatenating user_first_name and user_last_name with space in between.</p></li>
+<li><p><strong>user_name</strong> should have values in upper case.</p></li>
+<li><p>Data should be sorted in ascending order by user_name</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>user_id</p></th>
+<th class="head"><p>user_name</p></th>
+<th class="head"><p>user_email_id</p></th>
+<th class="head"><p>created_ts</p></th>
+<th class="head"><p>created_year</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>CYBIL LISSIMORE</p></td>
+<td><p>clissimore7&#64;pinterest.com</p></td>
+<td><p>2019-12-09 14:08:30</p></td>
+<td><p>2019.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>25</p></td>
+<td><p>PHYLYS ASLIE</p></td>
+<td><p>paslieo&#64;qq.com</p></td>
+<td><p>2019-10-01 01:34:28</p></td>
+<td><p>2019.0</p></td>
+</tr>
+<tr class="row-even"><td><p>12</p></td>
+<td><p>UNA GLAYZER</p></td>
+<td><p>uglayzerb&#64;pinterest.com</p></td>
+<td><p>2019-09-17 03:24:21</p></td>
+<td><p>2019.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>17</p></td>
+<td><p>YANKEE JELF</p></td>
+<td><p>yjelfg&#64;wufoo.com</p></td>
+<td><p>2019-09-16 16:09:12</p></td>
+<td><p>2019.0</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id6">
+<h2>Exercise 4<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p>Get the number of users by gender.</p>
+<ul class="simple">
+<li><p>Use <strong>users</strong> table for this exercise.</p></li>
+<li><p>Output should contain gender and user_count.</p></li>
+<li><p>For males the output should display <strong>Male</strong> and for females the output should display <strong>Female</strong>.</p></li>
+<li><p>If gender is not specified, then it should display <strong>Not Specified</strong>.</p></li>
+<li><p>Data should be sorted in descending order by user_count.</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>user_gender</p></th>
+<th class="head"><p>user_count</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Female</p></td>
+<td><p>13</p></td>
+</tr>
+<tr class="row-odd"><td><p>Male</p></td>
+<td><p>10</p></td>
+</tr>
+<tr class="row-even"><td><p>Not Specified</p></td>
+<td><p>2</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id7">
+<h2>Exercise 5<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<p>Get last 4 digits of unique ids.</p>
+<ul class="simple">
+<li><p>Use <strong>users</strong> table for this exercise.</p></li>
+<li><p>Output should contain user_id, user_unique_id and user_unique_id_last4</p></li>
+<li><p>Unique ids are either null or not null.</p></li>
+<li><p>Unique ids contain numbers and hyphens and are of different length.</p></li>
+<li><p>We need to get last 4 digits discarding hyphens only when the number of digits are at least 9.</p></li>
+<li><p>If unique id is null, then you should dispaly <strong>Not Specified</strong>.</p></li>
+<li><p>After discarding hyphens, if unique id have less than 9 digits then you should display <strong>Invalid Unique Id</strong>.</p></li>
+<li><p>Data should be sorted by user_id. You might see <strong>None</strong> or <strong>null</strong> for those user ids where there is no unique id for <strong>user_unique_id</strong></p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>user_id</p></th>
+<th class="head"><p>user_unique_id</p></th>
+<th class="head"><p>user_unique_id_last4</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>88833-8759</p></td>
+<td><p>8759</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>262501-029</p></td>
+<td><p>1029</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>391-33-2823</p></td>
+<td><p>2823</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>1195413-80</p></td>
+<td><p>1380</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>471-24-6869</p></td>
+<td><p>6869</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>192374-933</p></td>
+<td><p>4933</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>749-27-47-52</p></td>
+<td><p>4752</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>461-75-4198</p></td>
+<td><p>4198</p></td>
+</tr>
+<tr class="row-even"><td><p>9</p></td>
+<td><p>892-36-676-2</p></td>
+<td><p>6762</p></td>
+</tr>
+<tr class="row-odd"><td><p>10</p></td>
+<td><p>197-54-1646</p></td>
+<td><p>1646</p></td>
+</tr>
+<tr class="row-even"><td><p>11</p></td>
+<td><p>232-55-52-58</p></td>
+<td><p>5258</p></td>
+</tr>
+<tr class="row-odd"><td><p>12</p></td>
+<td><p>898-84-336-6</p></td>
+<td><p>3366</p></td>
+</tr>
+<tr class="row-even"><td><p>13</p></td>
+<td><p>247-95-68-44</p></td>
+<td><p>6844</p></td>
+</tr>
+<tr class="row-odd"><td><p>14</p></td>
+<td><p>415-48-894-3</p></td>
+<td><p>8943</p></td>
+</tr>
+<tr class="row-even"><td><p>15</p></td>
+<td><p>403-39-5-869</p></td>
+<td><p>5869</p></td>
+</tr>
+<tr class="row-odd"><td><p>16</p></td>
+<td><p>399-83-05-03</p></td>
+<td><p>0503</p></td>
+</tr>
+<tr class="row-even"><td><p>17</p></td>
+<td><p>607-99-0411</p></td>
+<td><p>0411</p></td>
+</tr>
+<tr class="row-odd"><td><p>18</p></td>
+<td><p>430-01-578-5</p></td>
+<td><p>5785</p></td>
+</tr>
+<tr class="row-even"><td><p>19</p></td>
+<td><p>571-09-6181</p></td>
+<td><p>6181</p></td>
+</tr>
+<tr class="row-odd"><td><p>20</p></td>
+<td><p>478-32-02-87</p></td>
+<td><p>0287</p></td>
+</tr>
+<tr class="row-even"><td><p>21</p></td>
+<td><p></p></td>
+<td><p>Not Specified</p></td>
+</tr>
+<tr class="row-odd"><td><p>22</p></td>
+<td><p></p></td>
+<td><p>Not Specified</p></td>
+</tr>
+<tr class="row-even"><td><p>23</p></td>
+<td><p>830-40-5287</p></td>
+<td><p>5287</p></td>
+</tr>
+<tr class="row-odd"><td><p>24</p></td>
+<td><p>778-0845</p></td>
+<td><p>Invalid Unique Id</p></td>
+</tr>
+<tr class="row-even"><td><p>25</p></td>
+<td><p>368-44-4478</p></td>
+<td><p>4478</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="exercise-6">
+<h2>Exercise 6<a class="headerlink" href="#exercise-6" title="Permalink to this headline">¶</a></h2>
+<p>Get the count of users based up on country code.</p>
+<ul class="simple">
+<li><p>Use users table for this exercise.</p></li>
+<li><p>Output should contain country code and count.</p></li>
+<li><p>There should be no <code class="docutils literal notranslate"><span class="pre">+</span></code> in the country code. It should only contain digits.</p></li>
+<li><p>Data should be sorted as numbers by country code.</p></li>
+<li><p>We should discard user_phone_no with null values.</p></li>
+<li><p>Here is the desired output:</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>country_code</p></th>
+<th class="head"><p>user_count</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-even"><td><p>48</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>54</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>55</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>62</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-even"><td><p>63</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>81</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>84</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>86</p></td>
+<td><p>4</p></td>
+</tr>
+<tr class="row-even"><td><p>229</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>249</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>351</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>370</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>380</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>420</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>598</p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="exercise-7">
+<h2>Exercise 7<a class="headerlink" href="#exercise-7" title="Permalink to this headline">¶</a></h2>
+<p>Let us validate if we have invalid <strong>order_item_subtotal</strong> as part of <strong>order_items</strong> table.</p>
+<ul class="simple">
+<li><p><strong>order_items</strong> table have 6 fields.</p>
+<ul>
+<li><p>order_item_id</p></li>
+<li><p>order_item_order_id</p></li>
+<li><p>order_item_product_id</p></li>
+<li><p>order_item_quantity</p></li>
+<li><p>order_item_subtotal</p></li>
+<li><p>order_item_product_price</p></li>
+</ul>
+</li>
+<li><p><strong>order_item_subtotal</strong> is nothing but product of <strong>order_item_quantity</strong> and <strong>order_item_product_price</strong>. It means order_item_subtotal is compute by multiplying order_item_quantity and order_item_product_price for each item.</p></li>
+<li><p>You need to get the count of order_items where <strong>order_item_subtotal</strong> is not equal to the product of <strong>order_item_quantity</strong> and <strong>order_item_product_price</strong>.</p></li>
+<li><p>There can be issues related to rounding off. Make sure it is taken care using appropriate function.</p></li>
+<li><p>Output should be 0 as there are no such records.</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>count</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="exercise-8">
+<h2>Exercise 8<a class="headerlink" href="#exercise-8" title="Permalink to this headline">¶</a></h2>
+<p>Get number of orders placed on weekdays and weekends in the month of January 2014.</p>
+<ul class="simple">
+<li><p><strong>orders</strong> have 4 fields</p>
+<ul>
+<li><p>order_id</p></li>
+<li><p>order_date</p></li>
+<li><p>order_customer_id</p></li>
+<li><p>order_status</p></li>
+</ul>
+</li>
+<li><p>Use order date to determine the day on which orders are placed.</p></li>
+<li><p>Output should contain 2 columns - day_type and order_count.</p></li>
+<li><p><strong>day_type</strong> should have 2 values <strong>Week days</strong> and <strong>Weekend days</strong>.</p></li>
+<li><p>Here is the desired output.</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>day_type</p></th>
+<th class="head"><p>order_count</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Weekend days</p></td>
+<td><p>1505</p></td>
+</tr>
+<tr class="row-odd"><td><p>Week days</p></td>
+<td><p>4403</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="analytics-functions">
+<h1>Analytics Functions<a class="headerlink" href="#analytics-functions" title="Permalink to this headline">¶</a></h1>
+<p>Let us take care of the exercises related to analytics functions. We will be using HR database for the same.</p>
+<ul class="simple">
+<li><p>Get all the employees who is making more than average salary with in each department.</p></li>
+<li><p>Get cumulative salary for one of the department along with department name.</p></li>
+<li><p>Get top 3 paid employees with in each department by salary (use dense_rank)</p></li>
+<li><p>Get top 3 products sold in the month of 2014 January by revenue.</p></li>
+<li><p>Get top 3 products in each category sold in the month of 2014 January by revenue.</p></li>
+</ul>
+<div class="section" id="prepare-hr-database">
+<h2>Prepare HR Database<a class="headerlink" href="#prepare-hr-database" title="Permalink to this headline">¶</a></h2>
+<p>Here are the steps to prepare HR database.</p>
+<ul class="simple">
+<li><p>Connect to HR DB using <code class="docutils literal notranslate"><span class="pre">psql</span></code> or SQL Workbench. Here is the sample <code class="docutils literal notranslate"><span class="pre">psql</span></code> command.</p></li>
+</ul>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>psql -h localhost <span class="se">\</span>
+    -p <span class="m">5432</span> <span class="se">\</span>
+    -d itversity_hr_db <span class="se">\</span>
+    -U itversity_hr_user <span class="se">\</span>
+    -W
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Run scripts to create tables and load the data. You can also drop the tables if they already exists.</p></li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span>\i /data/hr_db/drop_tables_pg.sql
+\i /data/hr_db/create_tables_pg.sql
+\i /data/hr_db/load_tables_pg.sql
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Validate to ensure that data is available in the tables by running these queries.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_hr_user:hr_password@localhost:5432/itversity_hr_db
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env: DATABASE_URL=postgresql://itversity_hr_user:hr_password@localhost:5432/itversity_hr_db
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT * FROM employees LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_hr_user:***@localhost:5432/itversity_hr_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>employee_id</th>
+        <th>first_name</th>
+        <th>last_name</th>
+        <th>email</th>
+        <th>phone_number</th>
+        <th>hire_date</th>
+        <th>job_id</th>
+        <th>salary</th>
+        <th>commission_pct</th>
+        <th>manager_id</th>
+        <th>department_id</th>
+    </tr>
+    <tr>
+        <td>100</td>
+        <td>Steven</td>
+        <td>King</td>
+        <td>SKING</td>
+        <td>515.123.4567</td>
+        <td>1987-06-17</td>
+        <td>AD_PRES</td>
+        <td>24000.00</td>
+        <td>None</td>
+        <td>None</td>
+        <td>90</td>
+    </tr>
+    <tr>
+        <td>101</td>
+        <td>Neena</td>
+        <td>Kochhar</td>
+        <td>NKOCHHAR</td>
+        <td>515.123.4568</td>
+        <td>1989-09-21</td>
+        <td>AD_VP</td>
+        <td>17000.00</td>
+        <td>None</td>
+        <td>100</td>
+        <td>90</td>
+    </tr>
+    <tr>
+        <td>102</td>
+        <td>Lex</td>
+        <td>De Haan</td>
+        <td>LDEHAAN</td>
+        <td>515.123.4569</td>
+        <td>1993-01-13</td>
+        <td>AD_VP</td>
+        <td>17000.00</td>
+        <td>None</td>
+        <td>100</td>
+        <td>90</td>
+    </tr>
+    <tr>
+        <td>103</td>
+        <td>Alexander</td>
+        <td>Hunold</td>
+        <td>AHUNOLD</td>
+        <td>590.423.4567</td>
+        <td>1990-01-03</td>
+        <td>IT_PROG</td>
+        <td>9000.00</td>
+        <td>None</td>
+        <td>102</td>
+        <td>60</td>
+    </tr>
+    <tr>
+        <td>104</td>
+        <td>Bruce</td>
+        <td>Ernst</td>
+        <td>BERNST</td>
+        <td>590.423.4568</td>
+        <td>1991-05-21</td>
+        <td>IT_PROG</td>
+        <td>6000.00</td>
+        <td>None</td>
+        <td>103</td>
+        <td>60</td>
+    </tr>
+    <tr>
+        <td>105</td>
+        <td>David</td>
+        <td>Austin</td>
+        <td>DAUSTIN</td>
+        <td>590.423.4569</td>
+        <td>1997-06-25</td>
+        <td>IT_PROG</td>
+        <td>4800.00</td>
+        <td>None</td>
+        <td>103</td>
+        <td>60</td>
+    </tr>
+    <tr>
+        <td>106</td>
+        <td>Valli</td>
+        <td>Pataballa</td>
+        <td>VPATABAL</td>
+        <td>590.423.4560</td>
+        <td>1998-02-05</td>
+        <td>IT_PROG</td>
+        <td>4800.00</td>
+        <td>None</td>
+        <td>103</td>
+        <td>60</td>
+    </tr>
+    <tr>
+        <td>107</td>
+        <td>Diana</td>
+        <td>Lorentz</td>
+        <td>DLORENTZ</td>
+        <td>590.423.5567</td>
+        <td>1999-02-07</td>
+        <td>IT_PROG</td>
+        <td>4200.00</td>
+        <td>None</td>
+        <td>103</td>
+        <td>60</td>
+    </tr>
+    <tr>
+        <td>108</td>
+        <td>Nancy</td>
+        <td>Greenberg</td>
+        <td>NGREENBE</td>
+        <td>515.124.4569</td>
+        <td>1994-08-17</td>
+        <td>FI_MGR</td>
+        <td>12000.00</td>
+        <td>None</td>
+        <td>101</td>
+        <td>100</td>
+    </tr>
+    <tr>
+        <td>109</td>
+        <td>Daniel</td>
+        <td>Faviet</td>
+        <td>DFAVIET</td>
+        <td>515.124.4169</td>
+        <td>1994-08-16</td>
+        <td>FI_ACCOUNT</td>
+        <td>9000.00</td>
+        <td>None</td>
+        <td>108</td>
+        <td>100</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span> 
+
+SELECT * FROM departments 
+ORDER BY manager_id NULLS LAST
+LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_hr_user:***@localhost:5432/itversity_hr_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>department_id</th>
+        <th>department_name</th>
+        <th>manager_id</th>
+        <th>location_id</th>
+    </tr>
+    <tr>
+        <td>90</td>
+        <td>Executive</td>
+        <td>100</td>
+        <td>1700</td>
+    </tr>
+    <tr>
+        <td>60</td>
+        <td>IT</td>
+        <td>103</td>
+        <td>1400</td>
+    </tr>
+    <tr>
+        <td>100</td>
+        <td>Finance</td>
+        <td>108</td>
+        <td>1700</td>
+    </tr>
+    <tr>
+        <td>30</td>
+        <td>Purchasing</td>
+        <td>114</td>
+        <td>1700</td>
+    </tr>
+    <tr>
+        <td>50</td>
+        <td>Shipping</td>
+        <td>121</td>
+        <td>1500</td>
+    </tr>
+    <tr>
+        <td>80</td>
+        <td>Sales</td>
+        <td>145</td>
+        <td>2500</td>
+    </tr>
+    <tr>
+        <td>10</td>
+        <td>Administration</td>
+        <td>200</td>
+        <td>1700</td>
+    </tr>
+    <tr>
+        <td>20</td>
+        <td>Marketing</td>
+        <td>201</td>
+        <td>1800</td>
+    </tr>
+    <tr>
+        <td>40</td>
+        <td>Human Resources</td>
+        <td>203</td>
+        <td>2400</td>
+    </tr>
+    <tr>
+        <td>70</td>
+        <td>Public Relations</td>
+        <td>204</td>
+        <td>2700</td>
+    </tr>
+</table></div></div>
+</div>
+</div>
+<div class="section" id="id8">
+<h2>Exercise 1<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<p>Get all the employees who is making more than average salary with in each department.</p>
+<ul class="simple">
+<li><p>Use HR database employees and department tables for this problem.</p></li>
+<li><p>Compute average salary expense for each department and get those employee details who are making more salary than average salary.</p></li>
+<li><p>Make sure average salary expense per department is rounded off to 2 decimals.</p></li>
+<li><p>Output should contain employee_id, department_name, salary and avg_salary_expense (derived field).</p></li>
+<li><p>Data should be sorted in ascending order by department_id and descending order by salary.</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>employee_id</p></th>
+<th class="head"><p>department_name</p></th>
+<th class="head"><p>salary</p></th>
+<th class="head"><p>avg_salary_expense</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>201</p></td>
+<td><p>Marketing</p></td>
+<td><p>13000.00</p></td>
+<td><p>9500.00</p></td>
+</tr>
+<tr class="row-odd"><td><p>114</p></td>
+<td><p>Purchasing</p></td>
+<td><p>11000.00</p></td>
+<td><p>4150.00</p></td>
+</tr>
+<tr class="row-even"><td><p>121</p></td>
+<td><p>Shipping</p></td>
+<td><p>8200.00</p></td>
+<td><p>3475.56</p></td>
+</tr>
+<tr class="row-odd"><td><p>120</p></td>
+<td><p>Shipping</p></td>
+<td><p>8000.00</p></td>
+<td><p>3475.56</p></td>
+</tr>
+<tr class="row-even"><td><p>122</p></td>
+<td><p>Shipping</p></td>
+<td><p>7900.00</p></td>
+<td><p>3475.56</p></td>
+</tr>
+<tr class="row-odd"><td><p>123</p></td>
+<td><p>Shipping</p></td>
+<td><p>6500.00</p></td>
+<td><p>3475.56</p></td>
+</tr>
+<tr class="row-even"><td><p>124</p></td>
+<td><p>Shipping</p></td>
+<td><p>5800.00</p></td>
+<td><p>3475.56</p></td>
+</tr>
+<tr class="row-odd"><td><p>184</p></td>
+<td><p>Shipping</p></td>
+<td><p>4200.00</p></td>
+<td><p>3475.56</p></td>
+</tr>
+<tr class="row-even"><td><p>185</p></td>
+<td><p>Shipping</p></td>
+<td><p>4100.00</p></td>
+<td><p>3475.56</p></td>
+</tr>
+<tr class="row-odd"><td><p>192</p></td>
+<td><p>Shipping</p></td>
+<td><p>4000.00</p></td>
+<td><p>3475.56</p></td>
+</tr>
+<tr class="row-even"><td><p>193</p></td>
+<td><p>Shipping</p></td>
+<td><p>3900.00</p></td>
+<td><p>3475.56</p></td>
+</tr>
+<tr class="row-odd"><td><p>188</p></td>
+<td><p>Shipping</p></td>
+<td><p>3800.00</p></td>
+<td><p>3475.56</p></td>
+</tr>
+<tr class="row-even"><td><p>137</p></td>
+<td><p>Shipping</p></td>
+<td><p>3600.00</p></td>
+<td><p>3475.56</p></td>
+</tr>
+<tr class="row-odd"><td><p>189</p></td>
+<td><p>Shipping</p></td>
+<td><p>3600.00</p></td>
+<td><p>3475.56</p></td>
+</tr>
+<tr class="row-even"><td><p>141</p></td>
+<td><p>Shipping</p></td>
+<td><p>3500.00</p></td>
+<td><p>3475.56</p></td>
+</tr>
+<tr class="row-odd"><td><p>103</p></td>
+<td><p>IT</p></td>
+<td><p>9000.00</p></td>
+<td><p>5760.00</p></td>
+</tr>
+<tr class="row-even"><td><p>104</p></td>
+<td><p>IT</p></td>
+<td><p>6000.00</p></td>
+<td><p>5760.00</p></td>
+</tr>
+<tr class="row-odd"><td><p>145</p></td>
+<td><p>Sales</p></td>
+<td><p>14000.00</p></td>
+<td><p>8955.88</p></td>
+</tr>
+<tr class="row-even"><td><p>146</p></td>
+<td><p>Sales</p></td>
+<td><p>13500.00</p></td>
+<td><p>8955.88</p></td>
+</tr>
+<tr class="row-odd"><td><p>147</p></td>
+<td><p>Sales</p></td>
+<td><p>12000.00</p></td>
+<td><p>8955.88</p></td>
+</tr>
+<tr class="row-even"><td><p>168</p></td>
+<td><p>Sales</p></td>
+<td><p>11500.00</p></td>
+<td><p>8955.88</p></td>
+</tr>
+<tr class="row-odd"><td><p>148</p></td>
+<td><p>Sales</p></td>
+<td><p>11000.00</p></td>
+<td><p>8955.88</p></td>
+</tr>
+<tr class="row-even"><td><p>174</p></td>
+<td><p>Sales</p></td>
+<td><p>11000.00</p></td>
+<td><p>8955.88</p></td>
+</tr>
+<tr class="row-odd"><td><p>149</p></td>
+<td><p>Sales</p></td>
+<td><p>10500.00</p></td>
+<td><p>8955.88</p></td>
+</tr>
+<tr class="row-even"><td><p>162</p></td>
+<td><p>Sales</p></td>
+<td><p>10500.00</p></td>
+<td><p>8955.88</p></td>
+</tr>
+<tr class="row-odd"><td><p>156</p></td>
+<td><p>Sales</p></td>
+<td><p>10000.00</p></td>
+<td><p>8955.88</p></td>
+</tr>
+<tr class="row-even"><td><p>150</p></td>
+<td><p>Sales</p></td>
+<td><p>10000.00</p></td>
+<td><p>8955.88</p></td>
+</tr>
+<tr class="row-odd"><td><p>169</p></td>
+<td><p>Sales</p></td>
+<td><p>10000.00</p></td>
+<td><p>8955.88</p></td>
+</tr>
+<tr class="row-even"><td><p>170</p></td>
+<td><p>Sales</p></td>
+<td><p>9600.00</p></td>
+<td><p>8955.88</p></td>
+</tr>
+<tr class="row-odd"><td><p>163</p></td>
+<td><p>Sales</p></td>
+<td><p>9500.00</p></td>
+<td><p>8955.88</p></td>
+</tr>
+<tr class="row-even"><td><p>151</p></td>
+<td><p>Sales</p></td>
+<td><p>9500.00</p></td>
+<td><p>8955.88</p></td>
+</tr>
+<tr class="row-odd"><td><p>157</p></td>
+<td><p>Sales</p></td>
+<td><p>9500.00</p></td>
+<td><p>8955.88</p></td>
+</tr>
+<tr class="row-even"><td><p>158</p></td>
+<td><p>Sales</p></td>
+<td><p>9000.00</p></td>
+<td><p>8955.88</p></td>
+</tr>
+<tr class="row-odd"><td><p>152</p></td>
+<td><p>Sales</p></td>
+<td><p>9000.00</p></td>
+<td><p>8955.88</p></td>
+</tr>
+<tr class="row-even"><td><p>100</p></td>
+<td><p>Executive</p></td>
+<td><p>24000.00</p></td>
+<td><p>19333.33</p></td>
+</tr>
+<tr class="row-odd"><td><p>108</p></td>
+<td><p>Finance</p></td>
+<td><p>12000.00</p></td>
+<td><p>8600.00</p></td>
+</tr>
+<tr class="row-even"><td><p>109</p></td>
+<td><p>Finance</p></td>
+<td><p>9000.00</p></td>
+<td><p>8600.00</p></td>
+</tr>
+<tr class="row-odd"><td><p>205</p></td>
+<td><p>Accounting</p></td>
+<td><p>12000.00</p></td>
+<td><p>10150.00</p></td>
+</tr>
+</tbody>
+</table>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_hr_user:hr_password@localhost:5432/itversity_hr_db
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env: DATABASE_URL=postgresql://itversity_hr_user:hr_password@localhost:5432/itversity_hr_db
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id9">
+<h2>Exercise 2<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<p>Get cumulative salary with in each department for Finance and IT department along with department name.</p>
+<ul class="simple">
+<li><p>Use HR database employees and department tables for this problem.</p></li>
+<li><p>Compute cumulative salary expense for <strong>Finance</strong> as well as <strong>IT</strong> departments with in respective departments.</p></li>
+<li><p>Make sure cumulative salary expense per department is rounded off to 2 decimals.</p></li>
+<li><p>Output should contain employee_id, department_name, salary and cum_salary_expense (derived field).</p></li>
+<li><p>Data should be sorted in ascending order by department_name and then salary.</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>employee_id</p></th>
+<th class="head"><p>department_name</p></th>
+<th class="head"><p>salary</p></th>
+<th class="head"><p>cum_salary_expense</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>113</p></td>
+<td><p>Finance</p></td>
+<td><p>6900.00</p></td>
+<td><p>6900.00</p></td>
+</tr>
+<tr class="row-odd"><td><p>111</p></td>
+<td><p>Finance</p></td>
+<td><p>7700.00</p></td>
+<td><p>14600.00</p></td>
+</tr>
+<tr class="row-even"><td><p>112</p></td>
+<td><p>Finance</p></td>
+<td><p>7800.00</p></td>
+<td><p>22400.00</p></td>
+</tr>
+<tr class="row-odd"><td><p>110</p></td>
+<td><p>Finance</p></td>
+<td><p>8200.00</p></td>
+<td><p>30600.00</p></td>
+</tr>
+<tr class="row-even"><td><p>109</p></td>
+<td><p>Finance</p></td>
+<td><p>9000.00</p></td>
+<td><p>39600.00</p></td>
+</tr>
+<tr class="row-odd"><td><p>108</p></td>
+<td><p>Finance</p></td>
+<td><p>12000.00</p></td>
+<td><p>51600.00</p></td>
+</tr>
+<tr class="row-even"><td><p>107</p></td>
+<td><p>IT</p></td>
+<td><p>4200.00</p></td>
+<td><p>4200.00</p></td>
+</tr>
+<tr class="row-odd"><td><p>106</p></td>
+<td><p>IT</p></td>
+<td><p>4800.00</p></td>
+<td><p>9000.00</p></td>
+</tr>
+<tr class="row-even"><td><p>105</p></td>
+<td><p>IT</p></td>
+<td><p>4800.00</p></td>
+<td><p>13800.00</p></td>
+</tr>
+<tr class="row-odd"><td><p>104</p></td>
+<td><p>IT</p></td>
+<td><p>6000.00</p></td>
+<td><p>19800.00</p></td>
+</tr>
+<tr class="row-even"><td><p>103</p></td>
+<td><p>IT</p></td>
+<td><p>9000.00</p></td>
+<td><p>28800.00</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id10">
+<h2>Exercise 3<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<p>Get top 3 paid employees with in each department by salary (use dense_rank)</p>
+<ul class="simple">
+<li><p>Use HR database employees and department tables for this problem.</p></li>
+<li><p>Highest paid employee should be ranked first.</p></li>
+<li><p>Output should contain employee_id, department_id, department_name, salary and employee_rank (derived field).</p></li>
+<li><p>Data should be sorted in ascending order by department_id in ascending order and then salary in descending order.</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>employee_id</p></th>
+<th class="head"><p>department_id</p></th>
+<th class="head"><p>department_name</p></th>
+<th class="head"><p>salary</p></th>
+<th class="head"><p>employee_rank</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>200</p></td>
+<td><p>10</p></td>
+<td><p>Administration</p></td>
+<td><p>4400.00</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>201</p></td>
+<td><p>20</p></td>
+<td><p>Marketing</p></td>
+<td><p>13000.00</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>202</p></td>
+<td><p>20</p></td>
+<td><p>Marketing</p></td>
+<td><p>6000.00</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p>114</p></td>
+<td><p>30</p></td>
+<td><p>Purchasing</p></td>
+<td><p>11000.00</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>115</p></td>
+<td><p>30</p></td>
+<td><p>Purchasing</p></td>
+<td><p>3100.00</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p>116</p></td>
+<td><p>30</p></td>
+<td><p>Purchasing</p></td>
+<td><p>2900.00</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-even"><td><p>203</p></td>
+<td><p>40</p></td>
+<td><p>Human Resources</p></td>
+<td><p>6500.00</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>121</p></td>
+<td><p>50</p></td>
+<td><p>Shipping</p></td>
+<td><p>8200.00</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>120</p></td>
+<td><p>50</p></td>
+<td><p>Shipping</p></td>
+<td><p>8000.00</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p>122</p></td>
+<td><p>50</p></td>
+<td><p>Shipping</p></td>
+<td><p>7900.00</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-even"><td><p>103</p></td>
+<td><p>60</p></td>
+<td><p>IT</p></td>
+<td><p>9000.00</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>104</p></td>
+<td><p>60</p></td>
+<td><p>IT</p></td>
+<td><p>6000.00</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-even"><td><p>105</p></td>
+<td><p>60</p></td>
+<td><p>IT</p></td>
+<td><p>4800.00</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-odd"><td><p>106</p></td>
+<td><p>60</p></td>
+<td><p>IT</p></td>
+<td><p>4800.00</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-even"><td><p>204</p></td>
+<td><p>70</p></td>
+<td><p>Public Relations</p></td>
+<td><p>10000.00</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>145</p></td>
+<td><p>80</p></td>
+<td><p>Sales</p></td>
+<td><p>14000.00</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>146</p></td>
+<td><p>80</p></td>
+<td><p>Sales</p></td>
+<td><p>13500.00</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p>147</p></td>
+<td><p>80</p></td>
+<td><p>Sales</p></td>
+<td><p>12000.00</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-even"><td><p>100</p></td>
+<td><p>90</p></td>
+<td><p>Executive</p></td>
+<td><p>24000.00</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>101</p></td>
+<td><p>90</p></td>
+<td><p>Executive</p></td>
+<td><p>17000.00</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-even"><td><p>102</p></td>
+<td><p>90</p></td>
+<td><p>Executive</p></td>
+<td><p>17000.00</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p>108</p></td>
+<td><p>100</p></td>
+<td><p>Finance</p></td>
+<td><p>12000.00</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>109</p></td>
+<td><p>100</p></td>
+<td><p>Finance</p></td>
+<td><p>9000.00</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p>110</p></td>
+<td><p>100</p></td>
+<td><p>Finance</p></td>
+<td><p>8200.00</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-even"><td><p>205</p></td>
+<td><p>110</p></td>
+<td><p>Accounting</p></td>
+<td><p>12000.00</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>206</p></td>
+<td><p>110</p></td>
+<td><p>Accounting</p></td>
+<td><p>8300.00</p></td>
+<td><p>2</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id11">
+<h2>Exercise 4<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<p>Get top 3 products sold in the month of 2014 January by revenue.</p>
+<ul class="simple">
+<li><p>Use retail database tables such as orders, order_items and products.</p></li>
+<li><p>Highest revenue generating product should come at top.</p></li>
+<li><p>Output should contain product_id, product_name, revenue, product_rank. <strong>revenue</strong> and <strong>product_rank</strong> are derived fields.</p></li>
+<li><p>Data should be sorted in descending order by revenue.</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>product_id</p></th>
+<th class="head"><p>product_name</p></th>
+<th class="head"><p>revenue</p></th>
+<th class="head"><p>product_rank</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1004</p></td>
+<td><p>Field &amp; Stream Sportsman 16 Gun Fire Safe</p></td>
+<td><p>250787.46</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>365</p></td>
+<td><p>Perfect Fitness Perfect Rip Deck</p></td>
+<td><p>151474.75</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-even"><td><p>957</p></td>
+<td><p>Diamondback Women’s Serene Classic Comfort Bi</p></td>
+<td><p>148190.12</p></td>
+<td><p>3</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id12">
+<h2>Exercise 5<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
+<p>Get top 3 products sold in the month of 2014 January under selected categories by revenue. The categories are <strong>Cardio Equipment</strong> and <strong>Strength Training</strong>.</p>
+<ul class="simple">
+<li><p>Use retail database tables such as orders, order_items, products as well as categories.</p></li>
+<li><p>Highest revenue generating product should come at top.</p></li>
+<li><p>Output should contain category_id, category_name, product_id, product_name, revenue, product_rank. revenue and product_rank are derived fields.</p></li>
+<li><p>Data should be sorted in ascending order by category_id and descending order by revenue.</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>category_id</p></th>
+<th class="head"><p>category_name</p></th>
+<th class="head"><p>product_id</p></th>
+<th class="head"><p>product_name</p></th>
+<th class="head"><p>revenue</p></th>
+<th class="head"><p>product_rank</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>9</p></td>
+<td><p>Cardio Equipment</p></td>
+<td><p>191</p></td>
+<td><p>Nike Men’s Free 5.0+ Running Shoe</p></td>
+<td><p>132286.77</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>9</p></td>
+<td><p>Cardio Equipment</p></td>
+<td><p>172</p></td>
+<td><p>Nike Women’s Tempo Shorts</p></td>
+<td><p>870.00</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-even"><td><p>10</p></td>
+<td><p>Strength Training</p></td>
+<td><p>208</p></td>
+<td><p>SOLE E35 Elliptical</p></td>
+<td><p>1999.99</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>10</p></td>
+<td><p>Strength Training</p></td>
+<td><p>203</p></td>
+<td><p>GoPro HERO3+ Black Edition Camera</p></td>
+<td><p>1199.97</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-even"><td><p>10</p></td>
+<td><p>Strength Training</p></td>
+<td><p>216</p></td>
+<td><p>Yakima DoubleDown Ace Hitch Mount 4-Bike Rack</p></td>
+<td><p>189.00</p></td>
+<td><p>3</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="08_query_performance_tuning.html" title="previous page">Query Performance Tuning</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

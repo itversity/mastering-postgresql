@@ -135,6 +135,41 @@
    Query Performance Tuning
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mastering_postgresql_exercises.html">
+   Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mastering_postgresql_exercises.html#dml-or-crud-operations">
+   DML or CRUD Operations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mastering_postgresql_exercises.html#basic-sql-queries">
+   Basic SQL Queries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mastering_postgresql_exercises.html#managing-database-objects">
+   Managing Database Objects
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mastering_postgresql_exercises.html#partitioning-tables">
+   Partitioning Tables
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mastering_postgresql_exercises.html#pre-defined-functions">
+   Pre-Defined Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mastering_postgresql_exercises.html#analytics-functions">
+   Analytics Functions
+  </a>
+ </li>
 </ul>
 
 </nav>
@@ -285,6 +320,28 @@
   <a class="reference internal nav-link" href="#exercise-database-operations">
    Exercise - Database Operations
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-1-create-table">
+     Exercise 1 - Create Table
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-2-inserting-data">
+     Exercise 2 - Inserting Data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-3-updating-data">
+     Exercise 3 - Updating Data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-4-deleting-data">
+     Exercise 4 - Deleting Data
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -2379,16 +2436,21 @@ UPDATE users
 <div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/pqtKUUI5cCo?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
 </div></div>
 </div>
+<div class="section" id="exercise-1-create-table">
+<h3>Exercise 1 - Create Table<a class="headerlink" href="#exercise-1-create-table" title="Permalink to this headline">¶</a></h3>
+<p>Create table - <strong>courses</strong></p>
 <ul class="simple">
-<li><p>Create table - <strong>courses</strong></p>
-<ul>
 <li><p>course_id - sequence generated integer and primary key</p></li>
 <li><p>course_name - which holds alpha numeric or string values up to 60 characters</p></li>
 <li><p>course_author - which holds the name of the author up to 40 characters</p></li>
 <li><p>course_status - which holds one of these values (published, draft, inactive).</p></li>
 <li><p>course_published_dt - which holds date type value.</p></li>
 </ul>
-</li>
+<p>Provide the script as answer for this exercise.</p>
+</div>
+<div class="section" id="exercise-2-inserting-data">
+<h3>Exercise 2 - Inserting Data<a class="headerlink" href="#exercise-2-inserting-data" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
 <li><p>Insert data into courses using the data provided. Make sure id is system generated.</p></li>
 </ul>
 <table class="colwidths-auto table">
@@ -2462,11 +2524,18 @@ UPDATE users
 </tr>
 </tbody>
 </table>
-<ul class="simple">
-<li><p>Update the status of all the <strong>draft courses</strong> related to Python and Scala to <strong>published</strong> along with the <strong>course_published_dt using system date</strong>.</p></li>
-<li><p>Delete all the courses which are neither in draft mode nor published.</p></li>
-<li><p>Validation - Get count of all published courses by author and make sure output is sorted in descending order by count.</p></li>
-</ul>
+<p>Provide the insert statement(s) as answer for this exercise.</p>
+</div>
+<div class="section" id="exercise-3-updating-data">
+<h3>Exercise 3 - Updating Data<a class="headerlink" href="#exercise-3-updating-data" title="Permalink to this headline">¶</a></h3>
+<p>Update the status of all the <strong>draft courses</strong> related to Python and Scala to <strong>published</strong> along with the <strong>course_published_dt using system date</strong>.</p>
+<p>Provide the update statement as answer for this exercise.</p>
+</div>
+<div class="section" id="exercise-4-deleting-data">
+<h3>Exercise 4 - Deleting Data<a class="headerlink" href="#exercise-4-deleting-data" title="Permalink to this headline">¶</a></h3>
+<p>Delete all the courses which are neither in draft mode nor published.</p>
+<p>Provide the delete statement as answer for this exercise.</p>
+<p>Validation - Get count of all published courses by author and make sure output is sorted in descending order by count.</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">course_author</span><span class="p">,</span> <span class="k">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="k">AS</span> <span class="n">course_count</span>
 <span class="k">FROM</span> <span class="n">courses</span>
 <span class="k">WHERE</span> <span class="n">course_status</span><span class="o">=</span> <span class="s1">&#39;published&#39;</span>
@@ -2491,6 +2560,7 @@ UPDATE users
 </tr>
 </tbody>
 </table>
+</div>
 </div>
 </div>
 

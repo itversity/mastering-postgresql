@@ -135,6 +135,41 @@
    Query Performance Tuning
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mastering_postgresql_exercises.html">
+   Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mastering_postgresql_exercises.html#dml-or-crud-operations">
+   DML or CRUD Operations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mastering_postgresql_exercises.html#basic-sql-queries">
+   Basic SQL Queries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mastering_postgresql_exercises.html#managing-database-objects">
+   Managing Database Objects
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mastering_postgresql_exercises.html#partitioning-tables">
+   Partitioning Tables
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mastering_postgresql_exercises.html#pre-defined-functions">
+   Pre-Defined Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mastering_postgresql_exercises.html#analytics-functions">
+   Analytics Functions
+  </a>
+ </li>
 </ul>
 
 </nav>
@@ -324,6 +359,43 @@
    </li>
   </ul>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises-analytics-functions">
+   Exercises - Analytics Functions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#prepare-hr-database">
+     Prepare HR Database
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-1">
+     Exercise 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-2">
+     Exercise 2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-3">
+     Exercise 3
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-4">
+     Exercise 4
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-5">
+     Exercise 5
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 
         </nav>
@@ -373,11 +445,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env: DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -386,15 +453,6 @@
 CREATE OR REPLACE VIEW orders_v
 AS
 SELECT * FROM orders
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-Done.
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
 </pre></div>
 </div>
 </div>
@@ -408,15 +466,6 @@ SET order_status = lower(order_status)
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-68883 rows affected.
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -426,79 +475,6 @@ SELECT * FROM orders LIMIT 10
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-10 rows affected.
-</pre></div>
-</div>
-<div class="output text_html"><table>
-    <tr>
-        <th>order_id</th>
-        <th>order_date</th>
-        <th>order_customer_id</th>
-        <th>order_status</th>
-    </tr>
-    <tr>
-        <td>4068</td>
-        <td>2013-08-17 00:00:00</td>
-        <td>12293</td>
-        <td>pending</td>
-    </tr>
-    <tr>
-        <td>8926</td>
-        <td>2013-09-19 00:00:00</td>
-        <td>10517</td>
-        <td>on_hold</td>
-    </tr>
-    <tr>
-        <td>14047</td>
-        <td>2013-10-20 00:00:00</td>
-        <td>6473</td>
-        <td>closed</td>
-    </tr>
-    <tr>
-        <td>19552</td>
-        <td>2013-11-23 00:00:00</td>
-        <td>7057</td>
-        <td>on_hold</td>
-    </tr>
-    <tr>
-        <td>20471</td>
-        <td>2013-11-29 00:00:00</td>
-        <td>9957</td>
-        <td>complete</td>
-    </tr>
-    <tr>
-        <td>24016</td>
-        <td>2013-12-21 00:00:00</td>
-        <td>604</td>
-        <td>complete</td>
-    </tr>
-    <tr>
-        <td>24408</td>
-        <td>2013-12-23 00:00:00</td>
-        <td>5799</td>
-        <td>closed</td>
-    </tr>
-    <tr>
-        <td>25063</td>
-        <td>2013-12-27 00:00:00</td>
-        <td>5593</td>
-        <td>complete</td>
-    </tr>
-    <tr>
-        <td>26112</td>
-        <td>2014-01-03 00:00:00</td>
-        <td>333</td>
-        <td>canceled</td>
-    </tr>
-    <tr>
-        <td>50404</td>
-        <td>2014-06-06 00:00:00</td>
-        <td>8773</td>
-        <td>processing</td>
-    </tr>
-</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -506,15 +482,6 @@ SELECT * FROM orders LIMIT 10
 
 UPDATE orders_v
 SET order_status = upper(order_status)
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-68883 rows affected.
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
 </pre></div>
 </div>
 </div>
@@ -531,15 +498,6 @@ SELECT * FROM orders o
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-Done.
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -549,145 +507,6 @@ SELECT * FROM order_details_v LIMIT 10
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-10 rows affected.
-</pre></div>
-</div>
-<div class="output text_html"><table>
-    <tr>
-        <th>order_id</th>
-        <th>order_date</th>
-        <th>order_customer_id</th>
-        <th>order_status</th>
-        <th>order_item_id</th>
-        <th>order_item_order_id</th>
-        <th>order_item_product_id</th>
-        <th>order_item_quantity</th>
-        <th>order_item_subtotal</th>
-        <th>order_item_product_price</th>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>2013-07-25 00:00:00</td>
-        <td>11599</td>
-        <td>CLOSED</td>
-        <td>1</td>
-        <td>1</td>
-        <td>957</td>
-        <td>1</td>
-        <td>299.98</td>
-        <td>299.98</td>
-    </tr>
-    <tr>
-        <td>2</td>
-        <td>2013-07-25 00:00:00</td>
-        <td>256</td>
-        <td>PENDING_PAYMENT</td>
-        <td>2</td>
-        <td>2</td>
-        <td>1073</td>
-        <td>1</td>
-        <td>199.99</td>
-        <td>199.99</td>
-    </tr>
-    <tr>
-        <td>2</td>
-        <td>2013-07-25 00:00:00</td>
-        <td>256</td>
-        <td>PENDING_PAYMENT</td>
-        <td>3</td>
-        <td>2</td>
-        <td>502</td>
-        <td>5</td>
-        <td>250.0</td>
-        <td>50.0</td>
-    </tr>
-    <tr>
-        <td>2</td>
-        <td>2013-07-25 00:00:00</td>
-        <td>256</td>
-        <td>PENDING_PAYMENT</td>
-        <td>4</td>
-        <td>2</td>
-        <td>403</td>
-        <td>1</td>
-        <td>129.99</td>
-        <td>129.99</td>
-    </tr>
-    <tr>
-        <td>4</td>
-        <td>2013-07-25 00:00:00</td>
-        <td>8827</td>
-        <td>CLOSED</td>
-        <td>5</td>
-        <td>4</td>
-        <td>897</td>
-        <td>2</td>
-        <td>49.98</td>
-        <td>24.99</td>
-    </tr>
-    <tr>
-        <td>4</td>
-        <td>2013-07-25 00:00:00</td>
-        <td>8827</td>
-        <td>CLOSED</td>
-        <td>6</td>
-        <td>4</td>
-        <td>365</td>
-        <td>5</td>
-        <td>299.95</td>
-        <td>59.99</td>
-    </tr>
-    <tr>
-        <td>4</td>
-        <td>2013-07-25 00:00:00</td>
-        <td>8827</td>
-        <td>CLOSED</td>
-        <td>7</td>
-        <td>4</td>
-        <td>502</td>
-        <td>3</td>
-        <td>150.0</td>
-        <td>50.0</td>
-    </tr>
-    <tr>
-        <td>4</td>
-        <td>2013-07-25 00:00:00</td>
-        <td>8827</td>
-        <td>CLOSED</td>
-        <td>8</td>
-        <td>4</td>
-        <td>1014</td>
-        <td>4</td>
-        <td>199.92</td>
-        <td>49.98</td>
-    </tr>
-    <tr>
-        <td>5</td>
-        <td>2013-07-25 00:00:00</td>
-        <td>11318</td>
-        <td>COMPLETE</td>
-        <td>9</td>
-        <td>5</td>
-        <td>957</td>
-        <td>1</td>
-        <td>299.98</td>
-        <td>299.98</td>
-    </tr>
-    <tr>
-        <td>5</td>
-        <td>2013-07-25 00:00:00</td>
-        <td>11318</td>
-        <td>COMPLETE</td>
-        <td>10</td>
-        <td>5</td>
-        <td>365</td>
-        <td>5</td>
-        <td>299.95</td>
-        <td>59.99</td>
-    </tr>
-</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -697,19 +516,6 @@ SELECT count(1) FROM order_details_v
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-1 rows affected.
-</pre></div>
-</div>
-<div class="output text_html"><table>
-    <tr>
-        <th>count</th>
-    </tr>
-    <tr>
-        <td>172198</td>
-    </tr>
-</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -727,68 +533,6 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-10 rows affected.
-</pre></div>
-</div>
-<div class="output text_html"><table>
-    <tr>
-        <th>order_date</th>
-        <th>order_item_product_id</th>
-        <th>revenue</th>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>1004</td>
-        <td>10799.46</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>957</td>
-        <td>9599.36</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>191</td>
-        <td>8499.15</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>365</td>
-        <td>7558.74</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>1073</td>
-        <td>6999.65</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>1014</td>
-        <td>6397.44</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>403</td>
-        <td>5589.57</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>502</td>
-        <td>5100.00</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>627</td>
-        <td>2879.28</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>226</td>
-        <td>599.99</td>
-    </tr>
-</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -799,60 +543,6 @@ WHERE order_id = 2
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3 rows affected.
-</pre></div>
-</div>
-<div class="output text_html"><table>
-    <tr>
-        <th>order_id</th>
-        <th>order_date</th>
-        <th>order_customer_id</th>
-        <th>order_status</th>
-        <th>order_item_id</th>
-        <th>order_item_order_id</th>
-        <th>order_item_product_id</th>
-        <th>order_item_quantity</th>
-        <th>order_item_subtotal</th>
-        <th>order_item_product_price</th>
-    </tr>
-    <tr>
-        <td>2</td>
-        <td>2013-07-25 00:00:00</td>
-        <td>256</td>
-        <td>PENDING_PAYMENT</td>
-        <td>2</td>
-        <td>2</td>
-        <td>1073</td>
-        <td>1</td>
-        <td>199.99</td>
-        <td>199.99</td>
-    </tr>
-    <tr>
-        <td>2</td>
-        <td>2013-07-25 00:00:00</td>
-        <td>256</td>
-        <td>PENDING_PAYMENT</td>
-        <td>3</td>
-        <td>2</td>
-        <td>502</td>
-        <td>5</td>
-        <td>250.0</td>
-        <td>50.0</td>
-    </tr>
-    <tr>
-        <td>2</td>
-        <td>2013-07-25 00:00:00</td>
-        <td>256</td>
-        <td>PENDING_PAYMENT</td>
-        <td>4</td>
-        <td>2</td>
-        <td>403</td>
-        <td>1</td>
-        <td>129.99</td>
-        <td>129.99</td>
-    </tr>
-</table></div></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -869,18 +559,6 @@ WHERE order_id = 2
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-(psycopg2.errors.ObjectNotInPrerequisiteState) cannot update view &quot;order_details_v&quot;
-DETAIL:  Views that do not select from a single table or view are not automatically updatable.
-HINT:  To enable updating the view, provide an INSTEAD OF UPDATE trigger or an unconditional ON UPDATE DO INSTEAD rule.
-
-[SQL: UPDATE order_details_v SET order_status = &#39;pending_payment&#39;
-WHERE order_id = 2]
-(Background on this error at: http://sqlalche.me/e/13/e3q8)
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -894,145 +572,6 @@ WITH order_details_v AS (
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-10 rows affected.
-</pre></div>
-</div>
-<div class="output text_html"><table>
-    <tr>
-        <th>order_id</th>
-        <th>order_date</th>
-        <th>order_customer_id</th>
-        <th>order_status</th>
-        <th>order_item_id</th>
-        <th>order_item_order_id</th>
-        <th>order_item_product_id</th>
-        <th>order_item_quantity</th>
-        <th>order_item_subtotal</th>
-        <th>order_item_product_price</th>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>2013-07-25 00:00:00</td>
-        <td>11599</td>
-        <td>CLOSED</td>
-        <td>1</td>
-        <td>1</td>
-        <td>957</td>
-        <td>1</td>
-        <td>299.98</td>
-        <td>299.98</td>
-    </tr>
-    <tr>
-        <td>2</td>
-        <td>2013-07-25 00:00:00</td>
-        <td>256</td>
-        <td>PENDING_PAYMENT</td>
-        <td>2</td>
-        <td>2</td>
-        <td>1073</td>
-        <td>1</td>
-        <td>199.99</td>
-        <td>199.99</td>
-    </tr>
-    <tr>
-        <td>2</td>
-        <td>2013-07-25 00:00:00</td>
-        <td>256</td>
-        <td>PENDING_PAYMENT</td>
-        <td>3</td>
-        <td>2</td>
-        <td>502</td>
-        <td>5</td>
-        <td>250.0</td>
-        <td>50.0</td>
-    </tr>
-    <tr>
-        <td>2</td>
-        <td>2013-07-25 00:00:00</td>
-        <td>256</td>
-        <td>PENDING_PAYMENT</td>
-        <td>4</td>
-        <td>2</td>
-        <td>403</td>
-        <td>1</td>
-        <td>129.99</td>
-        <td>129.99</td>
-    </tr>
-    <tr>
-        <td>4</td>
-        <td>2013-07-25 00:00:00</td>
-        <td>8827</td>
-        <td>CLOSED</td>
-        <td>5</td>
-        <td>4</td>
-        <td>897</td>
-        <td>2</td>
-        <td>49.98</td>
-        <td>24.99</td>
-    </tr>
-    <tr>
-        <td>4</td>
-        <td>2013-07-25 00:00:00</td>
-        <td>8827</td>
-        <td>CLOSED</td>
-        <td>6</td>
-        <td>4</td>
-        <td>365</td>
-        <td>5</td>
-        <td>299.95</td>
-        <td>59.99</td>
-    </tr>
-    <tr>
-        <td>4</td>
-        <td>2013-07-25 00:00:00</td>
-        <td>8827</td>
-        <td>CLOSED</td>
-        <td>7</td>
-        <td>4</td>
-        <td>502</td>
-        <td>3</td>
-        <td>150.0</td>
-        <td>50.0</td>
-    </tr>
-    <tr>
-        <td>4</td>
-        <td>2013-07-25 00:00:00</td>
-        <td>8827</td>
-        <td>CLOSED</td>
-        <td>8</td>
-        <td>4</td>
-        <td>1014</td>
-        <td>4</td>
-        <td>199.92</td>
-        <td>49.98</td>
-    </tr>
-    <tr>
-        <td>5</td>
-        <td>2013-07-25 00:00:00</td>
-        <td>11318</td>
-        <td>COMPLETE</td>
-        <td>9</td>
-        <td>5</td>
-        <td>957</td>
-        <td>1</td>
-        <td>299.98</td>
-        <td>299.98</td>
-    </tr>
-    <tr>
-        <td>5</td>
-        <td>2013-07-25 00:00:00</td>
-        <td>11318</td>
-        <td>COMPLETE</td>
-        <td>10</td>
-        <td>5</td>
-        <td>365</td>
-        <td>5</td>
-        <td>299.95</td>
-        <td>59.99</td>
-    </tr>
-</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1054,68 +593,6 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-10 rows affected.
-</pre></div>
-</div>
-<div class="output text_html"><table>
-    <tr>
-        <th>order_date</th>
-        <th>order_item_product_id</th>
-        <th>revenue</th>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>1004</td>
-        <td>10799.46</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>957</td>
-        <td>9599.36</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>191</td>
-        <td>8499.15</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>365</td>
-        <td>7558.74</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>1073</td>
-        <td>6999.65</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>1014</td>
-        <td>6397.44</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>403</td>
-        <td>5589.57</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>502</td>
-        <td>5100.00</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>627</td>
-        <td>2879.28</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>226</td>
-        <td>599.99</td>
-    </tr>
-</table></div></div>
 </div>
 </div>
 <div class="section" id="sub-queries">
@@ -1169,21 +646,6 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-0 rows affected.
-</pre></div>
-</div>
-<div class="output text_html"><table>
-    <tr>
-        <th>order_item_id</th>
-        <th>order_item_order_id</th>
-        <th>order_item_product_id</th>
-        <th>order_item_quantity</th>
-        <th>order_item_subtotal</th>
-        <th>order_item_product_price</th>
-    </tr>
-</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1199,101 +661,6 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-10 rows affected.
-</pre></div>
-</div>
-<div class="output text_html"><table>
-    <tr>
-        <th>order_item_id</th>
-        <th>order_item_order_id</th>
-        <th>order_item_product_id</th>
-        <th>order_item_quantity</th>
-        <th>order_item_subtotal</th>
-        <th>order_item_product_price</th>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>1</td>
-        <td>957</td>
-        <td>1</td>
-        <td>299.98</td>
-        <td>299.98</td>
-    </tr>
-    <tr>
-        <td>2</td>
-        <td>2</td>
-        <td>1073</td>
-        <td>1</td>
-        <td>199.99</td>
-        <td>199.99</td>
-    </tr>
-    <tr>
-        <td>3</td>
-        <td>2</td>
-        <td>502</td>
-        <td>5</td>
-        <td>250.0</td>
-        <td>50.0</td>
-    </tr>
-    <tr>
-        <td>4</td>
-        <td>2</td>
-        <td>403</td>
-        <td>1</td>
-        <td>129.99</td>
-        <td>129.99</td>
-    </tr>
-    <tr>
-        <td>5</td>
-        <td>4</td>
-        <td>897</td>
-        <td>2</td>
-        <td>49.98</td>
-        <td>24.99</td>
-    </tr>
-    <tr>
-        <td>6</td>
-        <td>4</td>
-        <td>365</td>
-        <td>5</td>
-        <td>299.95</td>
-        <td>59.99</td>
-    </tr>
-    <tr>
-        <td>7</td>
-        <td>4</td>
-        <td>502</td>
-        <td>3</td>
-        <td>150.0</td>
-        <td>50.0</td>
-    </tr>
-    <tr>
-        <td>8</td>
-        <td>4</td>
-        <td>1014</td>
-        <td>4</td>
-        <td>199.92</td>
-        <td>49.98</td>
-    </tr>
-    <tr>
-        <td>9</td>
-        <td>5</td>
-        <td>957</td>
-        <td>1</td>
-        <td>299.98</td>
-        <td>299.98</td>
-    </tr>
-    <tr>
-        <td>10</td>
-        <td>5</td>
-        <td>365</td>
-        <td>5</td>
-        <td>299.95</td>
-        <td>59.99</td>
-    </tr>
-</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1308,21 +675,6 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-0 rows affected.
-</pre></div>
-</div>
-<div class="output text_html"><table>
-    <tr>
-        <th>order_item_id</th>
-        <th>order_item_order_id</th>
-        <th>order_item_product_id</th>
-        <th>order_item_quantity</th>
-        <th>order_item_subtotal</th>
-        <th>order_item_product_price</th>
-    </tr>
-</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1337,101 +689,6 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-10 rows affected.
-</pre></div>
-</div>
-<div class="output text_html"><table>
-    <tr>
-        <th>order_item_id</th>
-        <th>order_item_order_id</th>
-        <th>order_item_product_id</th>
-        <th>order_item_quantity</th>
-        <th>order_item_subtotal</th>
-        <th>order_item_product_price</th>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>1</td>
-        <td>957</td>
-        <td>1</td>
-        <td>299.98</td>
-        <td>299.98</td>
-    </tr>
-    <tr>
-        <td>2</td>
-        <td>2</td>
-        <td>1073</td>
-        <td>1</td>
-        <td>199.99</td>
-        <td>199.99</td>
-    </tr>
-    <tr>
-        <td>3</td>
-        <td>2</td>
-        <td>502</td>
-        <td>5</td>
-        <td>250.0</td>
-        <td>50.0</td>
-    </tr>
-    <tr>
-        <td>4</td>
-        <td>2</td>
-        <td>403</td>
-        <td>1</td>
-        <td>129.99</td>
-        <td>129.99</td>
-    </tr>
-    <tr>
-        <td>5</td>
-        <td>4</td>
-        <td>897</td>
-        <td>2</td>
-        <td>49.98</td>
-        <td>24.99</td>
-    </tr>
-    <tr>
-        <td>6</td>
-        <td>4</td>
-        <td>365</td>
-        <td>5</td>
-        <td>299.95</td>
-        <td>59.99</td>
-    </tr>
-    <tr>
-        <td>7</td>
-        <td>4</td>
-        <td>502</td>
-        <td>3</td>
-        <td>150.0</td>
-        <td>50.0</td>
-    </tr>
-    <tr>
-        <td>8</td>
-        <td>4</td>
-        <td>1014</td>
-        <td>4</td>
-        <td>199.92</td>
-        <td>49.98</td>
-    </tr>
-    <tr>
-        <td>9</td>
-        <td>5</td>
-        <td>957</td>
-        <td>1</td>
-        <td>299.98</td>
-        <td>299.98</td>
-    </tr>
-    <tr>
-        <td>10</td>
-        <td>5</td>
-        <td>365</td>
-        <td>5</td>
-        <td>299.95</td>
-        <td>59.99</td>
-    </tr>
-</table></div></div>
 </div>
 </div>
 </div>
@@ -1456,11 +713,6 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env: DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1475,14 +727,6 @@ CREATE TABLE customer_order_metrics_dly (
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Done.
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1490,15 +734,6 @@ CREATE TABLE customer_order_metrics_dly (
 
 ALTER TABLE customer_order_metrics_dly
     ADD PRIMARY KEY (customer_id, order_date)
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-Done.
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
 </pre></div>
 </div>
 </div>
@@ -1518,15 +753,6 @@ FROM orders o
 WHERE o.order_date BETWEEN &#39;2013-08-01&#39; AND &#39;2013-08-31&#39;
 GROUP BY o.order_customer_id,
     o.order_date
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-4708 rows affected.
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
 </pre></div>
 </div>
 </div>
@@ -1554,15 +780,6 @@ SET
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-4708 rows affected.
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1575,79 +792,6 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-10 rows affected.
-</pre></div>
-</div>
-<div class="output text_html"><table>
-    <tr>
-        <th>customer_id</th>
-        <th>order_date</th>
-        <th>order_count</th>
-        <th>order_revenue</th>
-    </tr>
-    <tr>
-        <td>10993</td>
-        <td>2013-08-01</td>
-        <td>2</td>
-        <td>449.89</td>
-    </tr>
-    <tr>
-        <td>11060</td>
-        <td>2013-08-01</td>
-        <td>5</td>
-        <td>919.93</td>
-    </tr>
-    <tr>
-        <td>11063</td>
-        <td>2013-08-01</td>
-        <td>1</td>
-        <td>179.97</td>
-    </tr>
-    <tr>
-        <td>11106</td>
-        <td>2013-08-01</td>
-        <td>2</td>
-        <td>259.98</td>
-    </tr>
-    <tr>
-        <td>11218</td>
-        <td>2013-08-01</td>
-        <td>5</td>
-        <td>1187.87</td>
-    </tr>
-    <tr>
-        <td>11310</td>
-        <td>2013-08-01</td>
-        <td>1</td>
-        <td>199.95</td>
-    </tr>
-    <tr>
-        <td>11358</td>
-        <td>2013-08-01</td>
-        <td>1</td>
-        <td>59.99</td>
-    </tr>
-    <tr>
-        <td>11399</td>
-        <td>2013-08-01</td>
-        <td>4</td>
-        <td>999.9</td>
-    </tr>
-    <tr>
-        <td>11560</td>
-        <td>2013-08-01</td>
-        <td>4</td>
-        <td>649.89</td>
-    </tr>
-    <tr>
-        <td>11571</td>
-        <td>2013-08-01</td>
-        <td>2</td>
-        <td>503.94</td>
-    </tr>
-</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1667,15 +811,6 @@ GROUP BY o.order_customer_id,
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-569 rows affected.
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1688,19 +823,6 @@ WHERE o.order_customer_id IS NULL
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-1 rows affected.
-</pre></div>
-</div>
-<div class="output text_html"><table>
-    <tr>
-        <th>count</th>
-    </tr>
-    <tr>
-        <td>30</td>
-    </tr>
-</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1714,19 +836,6 @@ WHERE NOT EXISTS (
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-1 rows affected.
-</pre></div>
-</div>
-<div class="output text_html"><table>
-    <tr>
-        <th>count</th>
-    </tr>
-    <tr>
-        <td>30</td>
-    </tr>
-</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1737,15 +846,6 @@ WHERE NOT EXISTS (
     SELECT 1 FROM orders o
     WHERE c.customer_id = o.order_customer_id
 )
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-30 rows affected.
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
 </pre></div>
 </div>
 </div>
@@ -1772,24 +872,10 @@ WHERE NOT EXISTS (
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env: DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> TRUNCATE TABLE customer_order_metrics_dly
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-Done.
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
 </pre></div>
 </div>
 </div>
@@ -1812,15 +898,6 @@ GROUP BY o.order_customer_id,
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-4708 rows affected.
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1840,15 +917,6 @@ SET
         GROUP BY o.order_customer_id,
             o.order_date
     )
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-4708 rows affected.
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
 </pre></div>
 </div>
 </div>
@@ -1876,28 +944,10 @@ GROUP BY o.order_customer_id,
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-9265 rows affected.
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> TRUNCATE TABLE customer_order_metrics_dly
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-Done.
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
 </pre></div>
 </div>
 </div>
@@ -1920,15 +970,6 @@ GROUP BY o.order_customer_id,
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-4708 rows affected.
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1948,15 +989,6 @@ GROUP BY o.order_customer_id,
 ON CONFLICT (customer_id, order_date) DO UPDATE SET
     order_count = EXCLUDED.order_count,
     order_revenue = EXCLUDED.order_revenue
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-13973 rows affected.
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
 </pre></div>
 </div>
 </div>
@@ -2110,11 +1142,6 @@ ON CONFLICT (customer_id, order_date) DO UPDATE SET
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env: DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2132,108 +1159,6 @@ LIMIT 18
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-18 rows affected.
-</pre></div>
-</div>
-<div class="output text_html"><table>
-    <tr>
-        <th>order_date</th>
-        <th>order_status</th>
-        <th>count</th>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>CANCELED</td>
-        <td>1</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>CLOSED</td>
-        <td>20</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>COMPLETE</td>
-        <td>42</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>ON_HOLD</td>
-        <td>5</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>PAYMENT_REVIEW</td>
-        <td>3</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>PENDING</td>
-        <td>13</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>PENDING_PAYMENT</td>
-        <td>41</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>PROCESSING</td>
-        <td>16</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>SUSPECTED_FRAUD</td>
-        <td>2</td>
-    </tr>
-    <tr>
-        <td>2013-07-26 00:00:00</td>
-        <td>CANCELED</td>
-        <td>3</td>
-    </tr>
-    <tr>
-        <td>2013-07-26 00:00:00</td>
-        <td>CLOSED</td>
-        <td>29</td>
-    </tr>
-    <tr>
-        <td>2013-07-26 00:00:00</td>
-        <td>COMPLETE</td>
-        <td>87</td>
-    </tr>
-    <tr>
-        <td>2013-07-26 00:00:00</td>
-        <td>ON_HOLD</td>
-        <td>19</td>
-    </tr>
-    <tr>
-        <td>2013-07-26 00:00:00</td>
-        <td>PAYMENT_REVIEW</td>
-        <td>6</td>
-    </tr>
-    <tr>
-        <td>2013-07-26 00:00:00</td>
-        <td>PENDING</td>
-        <td>31</td>
-    </tr>
-    <tr>
-        <td>2013-07-26 00:00:00</td>
-        <td>PENDING_PAYMENT</td>
-        <td>59</td>
-    </tr>
-    <tr>
-        <td>2013-07-26 00:00:00</td>
-        <td>PROCESSING</td>
-        <td>30</td>
-    </tr>
-    <tr>
-        <td>2013-07-26 00:00:00</td>
-        <td>SUSPECTED_FRAUD</td>
-        <td>5</td>
-    </tr>
-</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2265,145 +1190,6 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-10 rows affected.
-</pre></div>
-</div>
-<div class="output text_html"><table>
-    <tr>
-        <th>order_date</th>
-        <th>CANCELED</th>
-        <th>CLOSED</th>
-        <th>COMPLETE</th>
-        <th>ON_HOLD</th>
-        <th>PAYMENT_REVIEW</th>
-        <th>PENDING</th>
-        <th>PENDING_PAYMENT</th>
-        <th>PROCESSING</th>
-        <th>SUSPECTED_FRAUD</th>
-    </tr>
-    <tr>
-        <td>2013-07-25</td>
-        <td>1</td>
-        <td>20</td>
-        <td>42</td>
-        <td>5</td>
-        <td>3</td>
-        <td>13</td>
-        <td>41</td>
-        <td>16</td>
-        <td>2</td>
-    </tr>
-    <tr>
-        <td>2013-07-26</td>
-        <td>3</td>
-        <td>29</td>
-        <td>87</td>
-        <td>19</td>
-        <td>6</td>
-        <td>31</td>
-        <td>59</td>
-        <td>30</td>
-        <td>5</td>
-    </tr>
-    <tr>
-        <td>2013-07-27</td>
-        <td>None</td>
-        <td>26</td>
-        <td>66</td>
-        <td>6</td>
-        <td>3</td>
-        <td>20</td>
-        <td>46</td>
-        <td>31</td>
-        <td>4</td>
-    </tr>
-    <tr>
-        <td>2013-07-28</td>
-        <td>6</td>
-        <td>18</td>
-        <td>63</td>
-        <td>12</td>
-        <td>4</td>
-        <td>18</td>
-        <td>37</td>
-        <td>26</td>
-        <td>3</td>
-    </tr>
-    <tr>
-        <td>2013-07-29</td>
-        <td>5</td>
-        <td>18</td>
-        <td>88</td>
-        <td>13</td>
-        <td>2</td>
-        <td>30</td>
-        <td>66</td>
-        <td>29</td>
-        <td>2</td>
-    </tr>
-    <tr>
-        <td>2013-07-30</td>
-        <td>4</td>
-        <td>22</td>
-        <td>89</td>
-        <td>11</td>
-        <td>None</td>
-        <td>20</td>
-        <td>43</td>
-        <td>27</td>
-        <td>11</td>
-    </tr>
-    <tr>
-        <td>2013-07-31</td>
-        <td>3</td>
-        <td>28</td>
-        <td>80</td>
-        <td>15</td>
-        <td>1</td>
-        <td>29</td>
-        <td>61</td>
-        <td>29</td>
-        <td>6</td>
-    </tr>
-    <tr>
-        <td>2013-08-01</td>
-        <td>5</td>
-        <td>21</td>
-        <td>76</td>
-        <td>10</td>
-        <td>1</td>
-        <td>44</td>
-        <td>56</td>
-        <td>24</td>
-        <td>9</td>
-    </tr>
-    <tr>
-        <td>2013-08-02</td>
-        <td>2</td>
-        <td>25</td>
-        <td>81</td>
-        <td>8</td>
-        <td>3</td>
-        <td>24</td>
-        <td>48</td>
-        <td>25</td>
-        <td>8</td>
-    </tr>
-    <tr>
-        <td>2013-08-03</td>
-        <td>3</td>
-        <td>19</td>
-        <td>65</td>
-        <td>10</td>
-        <td>3</td>
-        <td>17</td>
-        <td>35</td>
-        <td>26</td>
-        <td>5</td>
-    </tr>
-</table></div></div>
 </div>
 </div>
 <div class="section" id="overview-of-analytic-functions">
@@ -2437,21 +1223,10 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The sql extension is already loaded. To reload it, use:
-  %reload_ext sql
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env: DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
 </pre></div>
 </div>
 </div>
@@ -2464,15 +1239,6 @@ DROP TABLE IF EXISTS daily_revenue
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-Done.
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2481,20 +1247,11 @@ Done.
 CREATE TABLE daily_revenue
 AS
 SELECT o.order_date,
-       round(sum(oi.order_item_subtotal)::numeric, 2) AS revenue
+    round(sum(oi.order_item_subtotal)::numeric, 2) AS revenue
 FROM orders o JOIN order_items oi
 ON o.order_id = oi.order_item_order_id
 WHERE o.order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)
 GROUP BY o.order_date
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-364 rows affected.
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
 </pre></div>
 </div>
 </div>
@@ -2508,57 +1265,6 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-10 rows affected.
-</pre></div>
-</div>
-<div class="output text_html"><table>
-    <tr>
-        <th>order_date</th>
-        <th>revenue</th>
-    </tr>
-    <tr>
-        <td>2014-07-17 00:00:00</td>
-        <td>36384.77</td>
-    </tr>
-    <tr>
-        <td>2014-07-14 00:00:00</td>
-        <td>29937.52</td>
-    </tr>
-    <tr>
-        <td>2013-09-03 00:00:00</td>
-        <td>44379.10</td>
-    </tr>
-    <tr>
-        <td>2014-07-01 00:00:00</td>
-        <td>40165.66</td>
-    </tr>
-    <tr>
-        <td>2013-08-04 00:00:00</td>
-        <td>35093.01</td>
-    </tr>
-    <tr>
-        <td>2014-05-10 00:00:00</td>
-        <td>45317.70</td>
-    </tr>
-    <tr>
-        <td>2014-07-24 00:00:00</td>
-        <td>50885.19</td>
-    </tr>
-    <tr>
-        <td>2013-10-15 00:00:00</td>
-        <td>38585.85</td>
-    </tr>
-    <tr>
-        <td>2014-05-19 00:00:00</td>
-        <td>23506.14</td>
-    </tr>
-    <tr>
-        <td>2014-01-02 00:00:00</td>
-        <td>21872.70</td>
-    </tr>
-</table></div></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -2572,15 +1278,6 @@ DROP TABLE IF EXISTS daily_product_revenue
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-Done.
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2589,21 +1286,12 @@ Done.
 CREATE TABLE daily_product_revenue
 AS
 SELECT o.order_date,
-       oi.order_item_product_id,
-       round(sum(oi.order_item_subtotal)::numeric, 2) AS revenue
+    oi.order_item_product_id,
+    round(sum(oi.order_item_subtotal)::numeric, 2) AS revenue
 FROM orders o JOIN order_items oi
 ON o.order_id = oi.order_item_order_id
 WHERE o.order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)
 GROUP BY o.order_date, oi.order_item_product_id
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-9120 rows affected.
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
 </pre></div>
 </div>
 </div>
@@ -2617,68 +1305,6 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-10 rows affected.
-</pre></div>
-</div>
-<div class="output text_html"><table>
-    <tr>
-        <th>order_date</th>
-        <th>order_item_product_id</th>
-        <th>revenue</th>
-    </tr>
-    <tr>
-        <td>2014-02-21 00:00:00</td>
-        <td>78</td>
-        <td>199.98</td>
-    </tr>
-    <tr>
-        <td>2014-06-26 00:00:00</td>
-        <td>24</td>
-        <td>239.97</td>
-    </tr>
-    <tr>
-        <td>2014-05-24 00:00:00</td>
-        <td>804</td>
-        <td>79.96</td>
-    </tr>
-    <tr>
-        <td>2014-04-21 00:00:00</td>
-        <td>403</td>
-        <td>4029.69</td>
-    </tr>
-    <tr>
-        <td>2014-06-07 00:00:00</td>
-        <td>502</td>
-        <td>4950.00</td>
-    </tr>
-    <tr>
-        <td>2014-06-02 00:00:00</td>
-        <td>295</td>
-        <td>99.95</td>
-    </tr>
-    <tr>
-        <td>2013-10-25 00:00:00</td>
-        <td>924</td>
-        <td>63.96</td>
-    </tr>
-    <tr>
-        <td>2013-09-26 00:00:00</td>
-        <td>677</td>
-        <td>399.96</td>
-    </tr>
-    <tr>
-        <td>2013-11-03 00:00:00</td>
-        <td>627</td>
-        <td>2559.36</td>
-    </tr>
-    <tr>
-        <td>2013-11-04 00:00:00</td>
-        <td>835</td>
-        <td>127.96</td>
-    </tr>
-</table></div></div>
 </div>
 </div>
 </div>
@@ -2698,12 +1324,6 @@ LIMIT 10
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The sql extension is already loaded. To reload it, use:
-  %reload_ext sql
 </pre></div>
 </div>
 </div>
@@ -2729,7 +1349,7 @@ LIMIT 10
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
 SELECT department_id,
-       sum(salary) AS department_salary_expense
+    sum(salary) AS department_salary_expense
 FROM employees
 GROUP BY department_id
 ORDER BY department_id
@@ -2742,14 +1362,14 @@ ORDER BY department_id
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
 SELECT e.employee_id, e.department_id, e.salary,
-       ae.department_salary_expense,
-       ae.avg_salary_expense
+    ae.department_salary_expense,
+    ae.avg_salary_expense
 FROM employees e JOIN (
-     SELECT department_id, 
-            sum(salary) AS department_salary_expense,
-            avg(salary) AS avg_salary_expense
-     FROM employees
-     GROUP BY department_id
+    SELECT department_id, 
+        sum(salary) AS department_salary_expense,
+        avg(salary) AS avg_salary_expense
+    FROM employees
+    GROUP BY department_id
 ) ae
 ON e.department_id = ae.department_id
 ORDER BY department_id, salary
@@ -2769,9 +1389,9 @@ ORDER BY department_id, salary
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
 SELECT e.employee_id, e.department_id, e.salary,
-       sum(e.salary) 
-         OVER (PARTITION BY e.department_id)
-         AS department_salary_expense
+    sum(e.salary) OVER (
+        PARTITION BY e.department_id
+    ) AS department_salary_expense
 FROM employees e
 ORDER BY e.department_id
 </pre></div>
@@ -2783,11 +1403,21 @@ ORDER BY e.department_id
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
 SELECT e.employee_id, e.department_id, e.salary,
-    sum(e.salary) OVER (PARTITION BY e.department_id) AS sum_sal_expense,
-    avg(e.salary) OVER (PARTITION BY e.department_id) AS avg_sal_expense,
-    min(e.salary) OVER (PARTITION BY e.department_id) AS min_sal_expense,
-    max(e.salary) OVER (PARTITION BY e.department_id) AS max_sal_expense,
-    count(e.salary) OVER (PARTITION BY e.department_id) AS cnt_sal_expense
+    sum(e.salary) OVER (
+        PARTITION BY e.department_id
+    ) AS sum_sal_expense,
+    avg(e.salary) OVER (
+        PARTITION BY e.department_id
+    ) AS avg_sal_expense,
+    min(e.salary) OVER (
+        PARTITION BY e.department_id
+    ) AS min_sal_expense,
+    max(e.salary) OVER (
+        PARTITION BY e.department_id
+    ) AS max_sal_expense,
+    count(e.salary) OVER (
+        PARTITION BY e.department_id
+    ) AS cnt_sal_expense
 FROM employees e
 ORDER BY e.department_id
 </pre></div>
@@ -2797,11 +1427,6 @@ ORDER BY e.department_id
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env: DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
 </pre></div>
 </div>
 </div>
@@ -2824,101 +1449,6 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-10 rows affected.
-</pre></div>
-</div>
-<div class="output text_html"><table>
-    <tr>
-        <th>order_date</th>
-        <th>order_item_product_id</th>
-        <th>revenue</th>
-        <th>sum_revenue</th>
-        <th>min_revenue</th>
-        <th>max_revenue</th>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>1004</td>
-        <td>5599.72</td>
-        <td>31547.23</td>
-        <td>49.98</td>
-        <td>5599.72</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>191</td>
-        <td>5099.49</td>
-        <td>31547.23</td>
-        <td>49.98</td>
-        <td>5599.72</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>957</td>
-        <td>4499.70</td>
-        <td>31547.23</td>
-        <td>49.98</td>
-        <td>5599.72</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>365</td>
-        <td>3359.44</td>
-        <td>31547.23</td>
-        <td>49.98</td>
-        <td>5599.72</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>1073</td>
-        <td>2999.85</td>
-        <td>31547.23</td>
-        <td>49.98</td>
-        <td>5599.72</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>1014</td>
-        <td>2798.88</td>
-        <td>31547.23</td>
-        <td>49.98</td>
-        <td>5599.72</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>403</td>
-        <td>1949.85</td>
-        <td>31547.23</td>
-        <td>49.98</td>
-        <td>5599.72</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>502</td>
-        <td>1650.00</td>
-        <td>31547.23</td>
-        <td>49.98</td>
-        <td>5599.72</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>627</td>
-        <td>1079.73</td>
-        <td>31547.23</td>
-        <td>49.98</td>
-        <td>5599.72</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>226</td>
-        <td>599.99</td>
-        <td>31547.23</td>
-        <td>49.98</td>
-        <td>5599.72</td>
-    </tr>
-</table></div></div>
 </div>
 </div>
 <div class="section" id="analytic-functions-windowing">
@@ -2935,12 +1465,6 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The sql extension is already loaded. To reload it, use:
-  %reload_ext sql
-</pre></div>
-</div>
-</div>
 </div>
 <div class="section" id="getting-lead-and-lag-values">
 <h3>Getting LEAD and LAG values<a class="headerlink" href="#getting-lead-and-lag-values" title="Permalink to this headline">¶</a></h3>
@@ -2952,383 +1476,64 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env: DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
 SELECT t.*,
-  lead(order_date) OVER (ORDER BY order_date DESC) AS prior_date,
-  lead(revenue) OVER (ORDER BY order_date DESC) AS prior_revenue,
-  lag(order_date) OVER (ORDER BY order_date) AS lag_prior_date,
-  lag(revenue) OVER (ORDER BY order_date) AS lag_prior_revenue
+    lead(order_date) OVER (ORDER BY order_date DESC) AS prior_date,
+    lead(revenue) OVER (ORDER BY order_date DESC) AS prior_revenue,
+    lag(order_date) OVER (ORDER BY order_date) AS lag_prior_date,
+    lag(revenue) OVER (ORDER BY order_date) AS lag_prior_revenue
 FROM daily_revenue AS t
 ORDER BY order_date DESC
 LIMIT 10
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-10 rows affected.
-</pre></div>
-</div>
-<div class="output text_html"><table>
-    <tr>
-        <th>order_date</th>
-        <th>revenue</th>
-        <th>prior_date</th>
-        <th>prior_revenue</th>
-        <th>lag_prior_date</th>
-        <th>lag_prior_revenue</th>
-    </tr>
-    <tr>
-        <td>2014-07-24 00:00:00</td>
-        <td>50885.19</td>
-        <td>2014-07-23 00:00:00</td>
-        <td>38795.23</td>
-        <td>2014-07-23 00:00:00</td>
-        <td>38795.23</td>
-    </tr>
-    <tr>
-        <td>2014-07-23 00:00:00</td>
-        <td>38795.23</td>
-        <td>2014-07-22 00:00:00</td>
-        <td>36717.24</td>
-        <td>2014-07-22 00:00:00</td>
-        <td>36717.24</td>
-    </tr>
-    <tr>
-        <td>2014-07-22 00:00:00</td>
-        <td>36717.24</td>
-        <td>2014-07-21 00:00:00</td>
-        <td>51427.70</td>
-        <td>2014-07-21 00:00:00</td>
-        <td>51427.70</td>
-    </tr>
-    <tr>
-        <td>2014-07-21 00:00:00</td>
-        <td>51427.70</td>
-        <td>2014-07-20 00:00:00</td>
-        <td>60047.45</td>
-        <td>2014-07-20 00:00:00</td>
-        <td>60047.45</td>
-    </tr>
-    <tr>
-        <td>2014-07-20 00:00:00</td>
-        <td>60047.45</td>
-        <td>2014-07-19 00:00:00</td>
-        <td>38420.99</td>
-        <td>2014-07-19 00:00:00</td>
-        <td>38420.99</td>
-    </tr>
-    <tr>
-        <td>2014-07-19 00:00:00</td>
-        <td>38420.99</td>
-        <td>2014-07-18 00:00:00</td>
-        <td>43856.60</td>
-        <td>2014-07-18 00:00:00</td>
-        <td>43856.60</td>
-    </tr>
-    <tr>
-        <td>2014-07-18 00:00:00</td>
-        <td>43856.60</td>
-        <td>2014-07-17 00:00:00</td>
-        <td>36384.77</td>
-        <td>2014-07-17 00:00:00</td>
-        <td>36384.77</td>
-    </tr>
-    <tr>
-        <td>2014-07-17 00:00:00</td>
-        <td>36384.77</td>
-        <td>2014-07-16 00:00:00</td>
-        <td>43011.92</td>
-        <td>2014-07-16 00:00:00</td>
-        <td>43011.92</td>
-    </tr>
-    <tr>
-        <td>2014-07-16 00:00:00</td>
-        <td>43011.92</td>
-        <td>2014-07-15 00:00:00</td>
-        <td>53480.23</td>
-        <td>2014-07-15 00:00:00</td>
-        <td>53480.23</td>
-    </tr>
-    <tr>
-        <td>2014-07-15 00:00:00</td>
-        <td>53480.23</td>
-        <td>2014-07-14 00:00:00</td>
-        <td>29937.52</td>
-        <td>2014-07-14 00:00:00</td>
-        <td>29937.52</td>
-    </tr>
-</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
 SELECT t.*,
-  lead(order_date, 7) OVER (ORDER BY order_date DESC) AS prior_date,
-  lead(revenue, 7) OVER (ORDER BY order_date DESC) AS prior_revenue
+    lead(order_date, 7) OVER (ORDER BY order_date DESC) AS prior_date,
+    lead(revenue, 7) OVER (ORDER BY order_date DESC) AS prior_revenue
 FROM daily_revenue t
 ORDER BY order_date DESC
 LIMIT 10
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-10 rows affected.
-</pre></div>
-</div>
-<div class="output text_html"><table>
-    <tr>
-        <th>order_date</th>
-        <th>revenue</th>
-        <th>prior_date</th>
-        <th>prior_revenue</th>
-    </tr>
-    <tr>
-        <td>2014-07-24 00:00:00</td>
-        <td>50885.19</td>
-        <td>2014-07-17 00:00:00</td>
-        <td>36384.77</td>
-    </tr>
-    <tr>
-        <td>2014-07-23 00:00:00</td>
-        <td>38795.23</td>
-        <td>2014-07-16 00:00:00</td>
-        <td>43011.92</td>
-    </tr>
-    <tr>
-        <td>2014-07-22 00:00:00</td>
-        <td>36717.24</td>
-        <td>2014-07-15 00:00:00</td>
-        <td>53480.23</td>
-    </tr>
-    <tr>
-        <td>2014-07-21 00:00:00</td>
-        <td>51427.70</td>
-        <td>2014-07-14 00:00:00</td>
-        <td>29937.52</td>
-    </tr>
-    <tr>
-        <td>2014-07-20 00:00:00</td>
-        <td>60047.45</td>
-        <td>2014-07-13 00:00:00</td>
-        <td>40410.99</td>
-    </tr>
-    <tr>
-        <td>2014-07-19 00:00:00</td>
-        <td>38420.99</td>
-        <td>2014-07-12 00:00:00</td>
-        <td>38449.77</td>
-    </tr>
-    <tr>
-        <td>2014-07-18 00:00:00</td>
-        <td>43856.60</td>
-        <td>2014-07-11 00:00:00</td>
-        <td>29596.32</td>
-    </tr>
-    <tr>
-        <td>2014-07-17 00:00:00</td>
-        <td>36384.77</td>
-        <td>2014-07-10 00:00:00</td>
-        <td>47826.02</td>
-    </tr>
-    <tr>
-        <td>2014-07-16 00:00:00</td>
-        <td>43011.92</td>
-        <td>2014-07-09 00:00:00</td>
-        <td>36929.91</td>
-    </tr>
-    <tr>
-        <td>2014-07-15 00:00:00</td>
-        <td>53480.23</td>
-        <td>2014-07-08 00:00:00</td>
-        <td>50434.81</td>
-    </tr>
-</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
 SELECT t.*,
-  lead(order_date, 7) OVER (ORDER BY order_date DESC) AS prior_date,
-  lead(revenue, 7) OVER (ORDER BY order_date DESC) AS prior_revenue
+    lead(order_date, 7) OVER (ORDER BY order_date DESC) AS prior_date,
+    lead(revenue, 7) OVER (ORDER BY order_date DESC) AS prior_revenue
 FROM daily_revenue t
 ORDER BY order_date
 LIMIT 10
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-10 rows affected.
-</pre></div>
-</div>
-<div class="output text_html"><table>
-    <tr>
-        <th>order_date</th>
-        <th>revenue</th>
-        <th>prior_date</th>
-        <th>prior_revenue</th>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>31547.23</td>
-        <td>None</td>
-        <td>None</td>
-    </tr>
-    <tr>
-        <td>2013-07-26 00:00:00</td>
-        <td>54713.23</td>
-        <td>None</td>
-        <td>None</td>
-    </tr>
-    <tr>
-        <td>2013-07-27 00:00:00</td>
-        <td>48411.48</td>
-        <td>None</td>
-        <td>None</td>
-    </tr>
-    <tr>
-        <td>2013-07-28 00:00:00</td>
-        <td>35672.03</td>
-        <td>None</td>
-        <td>None</td>
-    </tr>
-    <tr>
-        <td>2013-07-29 00:00:00</td>
-        <td>54579.70</td>
-        <td>None</td>
-        <td>None</td>
-    </tr>
-    <tr>
-        <td>2013-07-30 00:00:00</td>
-        <td>49329.29</td>
-        <td>None</td>
-        <td>None</td>
-    </tr>
-    <tr>
-        <td>2013-07-31 00:00:00</td>
-        <td>59212.49</td>
-        <td>None</td>
-        <td>None</td>
-    </tr>
-    <tr>
-        <td>2013-08-01 00:00:00</td>
-        <td>49160.08</td>
-        <td>2013-07-25 00:00:00</td>
-        <td>31547.23</td>
-    </tr>
-    <tr>
-        <td>2013-08-02 00:00:00</td>
-        <td>50688.58</td>
-        <td>2013-07-26 00:00:00</td>
-        <td>54713.23</td>
-    </tr>
-    <tr>
-        <td>2013-08-03 00:00:00</td>
-        <td>43416.74</td>
-        <td>2013-07-27 00:00:00</td>
-        <td>48411.48</td>
-    </tr>
-</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
 SELECT t.*,
-  lead(order_date, 7) OVER (ORDER BY order_date DESC) AS prior_date,
-  lead(revenue, 7, 0.0) OVER (ORDER BY order_date DESC) AS prior_revenue
+    lead(order_date, 7) OVER (ORDER BY order_date DESC) AS prior_date,
+    lead(revenue, 7, 0.0) OVER (ORDER BY order_date DESC) AS prior_revenue
 FROM daily_revenue t
 ORDER BY order_date
 LIMIT 10
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-10 rows affected.
-</pre></div>
-</div>
-<div class="output text_html"><table>
-    <tr>
-        <th>order_date</th>
-        <th>revenue</th>
-        <th>prior_date</th>
-        <th>prior_revenue</th>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>31547.23</td>
-        <td>None</td>
-        <td>0.0</td>
-    </tr>
-    <tr>
-        <td>2013-07-26 00:00:00</td>
-        <td>54713.23</td>
-        <td>None</td>
-        <td>0.0</td>
-    </tr>
-    <tr>
-        <td>2013-07-27 00:00:00</td>
-        <td>48411.48</td>
-        <td>None</td>
-        <td>0.0</td>
-    </tr>
-    <tr>
-        <td>2013-07-28 00:00:00</td>
-        <td>35672.03</td>
-        <td>None</td>
-        <td>0.0</td>
-    </tr>
-    <tr>
-        <td>2013-07-29 00:00:00</td>
-        <td>54579.70</td>
-        <td>None</td>
-        <td>0.0</td>
-    </tr>
-    <tr>
-        <td>2013-07-30 00:00:00</td>
-        <td>49329.29</td>
-        <td>None</td>
-        <td>0.0</td>
-    </tr>
-    <tr>
-        <td>2013-07-31 00:00:00</td>
-        <td>59212.49</td>
-        <td>None</td>
-        <td>0.0</td>
-    </tr>
-    <tr>
-        <td>2013-08-01 00:00:00</td>
-        <td>49160.08</td>
-        <td>2013-07-25 00:00:00</td>
-        <td>31547.23</td>
-    </tr>
-    <tr>
-        <td>2013-08-02 00:00:00</td>
-        <td>50688.58</td>
-        <td>2013-07-26 00:00:00</td>
-        <td>54713.23</td>
-    </tr>
-    <tr>
-        <td>2013-08-03 00:00:00</td>
-        <td>43416.74</td>
-        <td>2013-07-27 00:00:00</td>
-        <td>48411.48</td>
-    </tr>
-</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3340,312 +1545,26 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-10 rows affected.
-</pre></div>
-</div>
-<div class="output text_html"><table>
-    <tr>
-        <th>order_date</th>
-        <th>order_item_product_id</th>
-        <th>revenue</th>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>1004</td>
-        <td>5599.72</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>191</td>
-        <td>5099.49</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>957</td>
-        <td>4499.70</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>365</td>
-        <td>3359.44</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>1073</td>
-        <td>2999.85</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>1014</td>
-        <td>2798.88</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>403</td>
-        <td>1949.85</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>502</td>
-        <td>1650.00</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>627</td>
-        <td>1079.73</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>226</td>
-        <td>599.99</td>
-    </tr>
-</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
 SELECT t.*,
-  LEAD(order_item_product_id) OVER (
-    PARTITION BY order_date 
-    ORDER BY revenue DESC
-  ) next_product_id,
-  LEAD(revenue) OVER (
-    PARTITION BY order_date 
-    ORDER BY revenue DESC
-  ) next_revenue
+    LEAD(order_item_product_id) OVER (
+        PARTITION BY order_date 
+        ORDER BY revenue DESC
+    ) next_product_id,
+    LEAD(revenue) OVER (
+        PARTITION BY order_date 
+        ORDER BY revenue DESC
+    ) next_revenue
 FROM daily_product_revenue t
 ORDER BY order_date, revenue DESC
 LIMIT 30
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-30 rows affected.
-</pre></div>
-</div>
-<div class="output text_html"><table>
-    <tr>
-        <th>order_date</th>
-        <th>order_item_product_id</th>
-        <th>revenue</th>
-        <th>next_product_id</th>
-        <th>next_revenue</th>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>1004</td>
-        <td>5599.72</td>
-        <td>191</td>
-        <td>5099.49</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>191</td>
-        <td>5099.49</td>
-        <td>957</td>
-        <td>4499.70</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>957</td>
-        <td>4499.70</td>
-        <td>365</td>
-        <td>3359.44</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>365</td>
-        <td>3359.44</td>
-        <td>1073</td>
-        <td>2999.85</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>1073</td>
-        <td>2999.85</td>
-        <td>1014</td>
-        <td>2798.88</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>1014</td>
-        <td>2798.88</td>
-        <td>403</td>
-        <td>1949.85</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>403</td>
-        <td>1949.85</td>
-        <td>502</td>
-        <td>1650.00</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>502</td>
-        <td>1650.00</td>
-        <td>627</td>
-        <td>1079.73</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>627</td>
-        <td>1079.73</td>
-        <td>226</td>
-        <td>599.99</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>226</td>
-        <td>599.99</td>
-        <td>24</td>
-        <td>319.96</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>24</td>
-        <td>319.96</td>
-        <td>821</td>
-        <td>207.96</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>821</td>
-        <td>207.96</td>
-        <td>625</td>
-        <td>199.99</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>625</td>
-        <td>199.99</td>
-        <td>705</td>
-        <td>119.99</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>705</td>
-        <td>119.99</td>
-        <td>572</td>
-        <td>119.97</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>572</td>
-        <td>119.97</td>
-        <td>666</td>
-        <td>109.99</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>666</td>
-        <td>109.99</td>
-        <td>725</td>
-        <td>108.00</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>725</td>
-        <td>108.00</td>
-        <td>134</td>
-        <td>100.00</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>134</td>
-        <td>100.00</td>
-        <td>906</td>
-        <td>99.96</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>906</td>
-        <td>99.96</td>
-        <td>828</td>
-        <td>95.97</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>828</td>
-        <td>95.97</td>
-        <td>810</td>
-        <td>79.96</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>810</td>
-        <td>79.96</td>
-        <td>924</td>
-        <td>79.95</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>924</td>
-        <td>79.95</td>
-        <td>926</td>
-        <td>79.95</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>926</td>
-        <td>79.95</td>
-        <td>93</td>
-        <td>74.97</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>93</td>
-        <td>74.97</td>
-        <td>835</td>
-        <td>63.98</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>835</td>
-        <td>63.98</td>
-        <td>897</td>
-        <td>49.98</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>897</td>
-        <td>49.98</td>
-        <td>None</td>
-        <td>None</td>
-    </tr>
-    <tr>
-        <td>2013-07-26 00:00:00</td>
-        <td>1004</td>
-        <td>10799.46</td>
-        <td>365</td>
-        <td>7978.67</td>
-    </tr>
-    <tr>
-        <td>2013-07-26 00:00:00</td>
-        <td>365</td>
-        <td>7978.67</td>
-        <td>957</td>
-        <td>6899.54</td>
-    </tr>
-    <tr>
-        <td>2013-07-26 00:00:00</td>
-        <td>957</td>
-        <td>6899.54</td>
-        <td>191</td>
-        <td>6799.32</td>
-    </tr>
-    <tr>
-        <td>2013-07-26 00:00:00</td>
-        <td>191</td>
-        <td>6799.32</td>
-        <td>1014</td>
-        <td>4798.08</td>
-    </tr>
-</table></div></div>
 </div>
 </div>
 <div class="section" id="getting-first-and-last-values">
@@ -3657,102 +1576,18 @@ LIMIT 30
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
 SELECT t.*,
-  first_value(order_item_product_id) OVER (
-    PARTITION BY order_date ORDER BY revenue DESC
-  ) first_product_id,
-  first_value(revenue) OVER (
-    PARTITION BY order_date ORDER BY revenue DESC
-  ) first_revenue
+    first_value(order_item_product_id) OVER (
+        PARTITION BY order_date ORDER BY revenue DESC
+    ) first_product_id,
+    first_value(revenue) OVER (
+        PARTITION BY order_date ORDER BY revenue DESC
+    ) first_revenue
 FROM daily_product_revenue t
 ORDER BY order_date, revenue DESC
 LIMIT 10
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-10 rows affected.
-</pre></div>
-</div>
-<div class="output text_html"><table>
-    <tr>
-        <th>order_date</th>
-        <th>order_item_product_id</th>
-        <th>revenue</th>
-        <th>first_product_id</th>
-        <th>first_revenue</th>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>1004</td>
-        <td>5599.72</td>
-        <td>1004</td>
-        <td>5599.72</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>191</td>
-        <td>5099.49</td>
-        <td>1004</td>
-        <td>5599.72</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>957</td>
-        <td>4499.70</td>
-        <td>1004</td>
-        <td>5599.72</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>365</td>
-        <td>3359.44</td>
-        <td>1004</td>
-        <td>5599.72</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>1073</td>
-        <td>2999.85</td>
-        <td>1004</td>
-        <td>5599.72</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>1014</td>
-        <td>2798.88</td>
-        <td>1004</td>
-        <td>5599.72</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>403</td>
-        <td>1949.85</td>
-        <td>1004</td>
-        <td>5599.72</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>502</td>
-        <td>1650.00</td>
-        <td>1004</td>
-        <td>5599.72</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>627</td>
-        <td>1079.73</td>
-        <td>1004</td>
-        <td>5599.72</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>226</td>
-        <td>599.99</td>
-        <td>1004</td>
-        <td>5599.72</td>
-    </tr>
-</table></div></div>
 </div>
 <p>Let us see an example with last_value. While using last_value we need to specify <strong>ROWS BETWEEN CURRENT ROW AND UNBOUNDED FOLLOWING/PRECEEDING</strong>.</p>
 <ul class="simple">
@@ -3779,230 +1614,6 @@ LIMIT 30
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-30 rows affected.
-</pre></div>
-</div>
-<div class="output text_html"><table>
-    <tr>
-        <th>order_date</th>
-        <th>order_item_product_id</th>
-        <th>revenue</th>
-        <th>last_product_id</th>
-        <th>last_revenue</th>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>1004</td>
-        <td>5599.72</td>
-        <td>1004</td>
-        <td>5599.72</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>191</td>
-        <td>5099.49</td>
-        <td>1004</td>
-        <td>5599.72</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>957</td>
-        <td>4499.70</td>
-        <td>1004</td>
-        <td>5599.72</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>365</td>
-        <td>3359.44</td>
-        <td>1004</td>
-        <td>5599.72</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>1073</td>
-        <td>2999.85</td>
-        <td>1004</td>
-        <td>5599.72</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>1014</td>
-        <td>2798.88</td>
-        <td>1004</td>
-        <td>5599.72</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>403</td>
-        <td>1949.85</td>
-        <td>1004</td>
-        <td>5599.72</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>502</td>
-        <td>1650.00</td>
-        <td>1004</td>
-        <td>5599.72</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>627</td>
-        <td>1079.73</td>
-        <td>1004</td>
-        <td>5599.72</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>226</td>
-        <td>599.99</td>
-        <td>1004</td>
-        <td>5599.72</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>24</td>
-        <td>319.96</td>
-        <td>1004</td>
-        <td>5599.72</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>821</td>
-        <td>207.96</td>
-        <td>1004</td>
-        <td>5599.72</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>625</td>
-        <td>199.99</td>
-        <td>1004</td>
-        <td>5599.72</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>705</td>
-        <td>119.99</td>
-        <td>1004</td>
-        <td>5599.72</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>572</td>
-        <td>119.97</td>
-        <td>1004</td>
-        <td>5599.72</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>666</td>
-        <td>109.99</td>
-        <td>1004</td>
-        <td>5599.72</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>725</td>
-        <td>108.00</td>
-        <td>1004</td>
-        <td>5599.72</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>134</td>
-        <td>100.00</td>
-        <td>1004</td>
-        <td>5599.72</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>906</td>
-        <td>99.96</td>
-        <td>1004</td>
-        <td>5599.72</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>828</td>
-        <td>95.97</td>
-        <td>1004</td>
-        <td>5599.72</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>810</td>
-        <td>79.96</td>
-        <td>1004</td>
-        <td>5599.72</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>924</td>
-        <td>79.95</td>
-        <td>1004</td>
-        <td>5599.72</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>926</td>
-        <td>79.95</td>
-        <td>1004</td>
-        <td>5599.72</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>93</td>
-        <td>74.97</td>
-        <td>1004</td>
-        <td>5599.72</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>835</td>
-        <td>63.98</td>
-        <td>1004</td>
-        <td>5599.72</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>897</td>
-        <td>49.98</td>
-        <td>1004</td>
-        <td>5599.72</td>
-    </tr>
-    <tr>
-        <td>2013-07-26 00:00:00</td>
-        <td>1004</td>
-        <td>10799.46</td>
-        <td>1004</td>
-        <td>10799.46</td>
-    </tr>
-    <tr>
-        <td>2013-07-26 00:00:00</td>
-        <td>365</td>
-        <td>7978.67</td>
-        <td>1004</td>
-        <td>10799.46</td>
-    </tr>
-    <tr>
-        <td>2013-07-26 00:00:00</td>
-        <td>957</td>
-        <td>6899.54</td>
-        <td>1004</td>
-        <td>10799.46</td>
-    </tr>
-    <tr>
-        <td>2013-07-26 00:00:00</td>
-        <td>191</td>
-        <td>6799.32</td>
-        <td>1004</td>
-        <td>10799.46</td>
-    </tr>
-</table></div></div>
 </div>
 </div>
 </div>
@@ -4021,21 +1632,10 @@ LIMIT 30
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The sql extension is already loaded. To reload it, use:
-  %reload_ext sql
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env: DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
 </pre></div>
 </div>
 </div>
@@ -4045,209 +1645,16 @@ LIMIT 30
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
 SELECT t.*,
-  rank() OVER (
-    PARTITION BY order_date
-    ORDER BY revenue DESC
-  ) AS rnk
+    rank() OVER (
+        PARTITION BY order_date
+        ORDER BY revenue DESC
+    ) AS rnk
 FROM daily_product_revenue t
 ORDER BY order_date, revenue DESC
 LIMIT 30
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-30 rows affected.
-</pre></div>
-</div>
-<div class="output text_html"><table>
-    <tr>
-        <th>order_date</th>
-        <th>order_item_product_id</th>
-        <th>revenue</th>
-        <th>rnk</th>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>1004</td>
-        <td>5599.72</td>
-        <td>1</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>191</td>
-        <td>5099.49</td>
-        <td>2</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>957</td>
-        <td>4499.70</td>
-        <td>3</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>365</td>
-        <td>3359.44</td>
-        <td>4</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>1073</td>
-        <td>2999.85</td>
-        <td>5</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>1014</td>
-        <td>2798.88</td>
-        <td>6</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>403</td>
-        <td>1949.85</td>
-        <td>7</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>502</td>
-        <td>1650.00</td>
-        <td>8</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>627</td>
-        <td>1079.73</td>
-        <td>9</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>226</td>
-        <td>599.99</td>
-        <td>10</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>24</td>
-        <td>319.96</td>
-        <td>11</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>821</td>
-        <td>207.96</td>
-        <td>12</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>625</td>
-        <td>199.99</td>
-        <td>13</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>705</td>
-        <td>119.99</td>
-        <td>14</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>572</td>
-        <td>119.97</td>
-        <td>15</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>666</td>
-        <td>109.99</td>
-        <td>16</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>725</td>
-        <td>108.00</td>
-        <td>17</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>134</td>
-        <td>100.00</td>
-        <td>18</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>906</td>
-        <td>99.96</td>
-        <td>19</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>828</td>
-        <td>95.97</td>
-        <td>20</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>810</td>
-        <td>79.96</td>
-        <td>21</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>924</td>
-        <td>79.95</td>
-        <td>22</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>926</td>
-        <td>79.95</td>
-        <td>22</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>93</td>
-        <td>74.97</td>
-        <td>24</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>835</td>
-        <td>63.98</td>
-        <td>25</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>897</td>
-        <td>49.98</td>
-        <td>26</td>
-    </tr>
-    <tr>
-        <td>2013-07-26 00:00:00</td>
-        <td>1004</td>
-        <td>10799.46</td>
-        <td>1</td>
-    </tr>
-    <tr>
-        <td>2013-07-26 00:00:00</td>
-        <td>365</td>
-        <td>7978.67</td>
-        <td>2</td>
-    </tr>
-    <tr>
-        <td>2013-07-26 00:00:00</td>
-        <td>957</td>
-        <td>6899.54</td>
-        <td>3</td>
-    </tr>
-    <tr>
-        <td>2013-07-26 00:00:00</td>
-        <td>191</td>
-        <td>6799.32</td>
-        <td>4</td>
-    </tr>
-</table></div></div>
 </div>
 <p>Here is another example to assign sparse ranks using employees data set with in each department.</p>
 <div class="cell docutils container">
@@ -4255,21 +1662,21 @@ LIMIT 30
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
 SELECT
-  employee_id,
-  department_id,
-  salary,
-  rank() OVER (
-    PARTITION BY department_id
-    ORDER BY salary DESC
-  ) rnk,
-  dense_rank() OVER (
-    PARTITION BY department_id
-    ORDER BY salary DESC
-  ) drnk,
-  row_number() OVER (
-    PARTITION BY department_id
-    ORDER BY salary DESC
-  ) rn
+    employee_id,
+    department_id,
+    salary,
+    rank() OVER (
+        PARTITION BY department_id
+        ORDER BY salary DESC
+      ) rnk,
+    dense_rank() OVER (
+        PARTITION BY department_id
+        ORDER BY salary DESC
+      ) drnk,
+    row_number() OVER (
+        PARTITION BY department_id
+        ORDER BY salary DESC
+      ) rn
 FROM employees
 ORDER BY department_id, salary DESC
 </pre></div>
@@ -4307,280 +1714,25 @@ FROM employees
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
 SELECT
-  t.*,
-  rank() OVER (
-    PARTITION BY order_date
-    ORDER BY revenue DESC
-  ) rnk,
-  dense_rank() OVER (
-    PARTITION BY order_date
-    ORDER BY revenue DESC
-  ) drnk,
-  row_number() OVER (
-    PARTITION BY order_date
-    ORDER BY revenue DESC
-  ) rn
+    t.*,
+    rank() OVER (
+        PARTITION BY order_date
+        ORDER BY revenue DESC
+    ) rnk,
+    dense_rank() OVER (
+        PARTITION BY order_date
+        ORDER BY revenue DESC
+    ) drnk,
+    row_number() OVER (
+        PARTITION BY order_date
+        ORDER BY revenue DESC
+    ) rn
 FROM daily_product_revenue AS t
 ORDER BY order_date, revenue DESC
 LIMIT 30
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-30 rows affected.
-</pre></div>
-</div>
-<div class="output text_html"><table>
-    <tr>
-        <th>order_date</th>
-        <th>order_item_product_id</th>
-        <th>revenue</th>
-        <th>rnk</th>
-        <th>drnk</th>
-        <th>rn</th>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>1004</td>
-        <td>5599.72</td>
-        <td>1</td>
-        <td>1</td>
-        <td>1</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>191</td>
-        <td>5099.49</td>
-        <td>2</td>
-        <td>2</td>
-        <td>2</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>957</td>
-        <td>4499.70</td>
-        <td>3</td>
-        <td>3</td>
-        <td>3</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>365</td>
-        <td>3359.44</td>
-        <td>4</td>
-        <td>4</td>
-        <td>4</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>1073</td>
-        <td>2999.85</td>
-        <td>5</td>
-        <td>5</td>
-        <td>5</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>1014</td>
-        <td>2798.88</td>
-        <td>6</td>
-        <td>6</td>
-        <td>6</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>403</td>
-        <td>1949.85</td>
-        <td>7</td>
-        <td>7</td>
-        <td>7</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>502</td>
-        <td>1650.00</td>
-        <td>8</td>
-        <td>8</td>
-        <td>8</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>627</td>
-        <td>1079.73</td>
-        <td>9</td>
-        <td>9</td>
-        <td>9</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>226</td>
-        <td>599.99</td>
-        <td>10</td>
-        <td>10</td>
-        <td>10</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>24</td>
-        <td>319.96</td>
-        <td>11</td>
-        <td>11</td>
-        <td>11</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>821</td>
-        <td>207.96</td>
-        <td>12</td>
-        <td>12</td>
-        <td>12</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>625</td>
-        <td>199.99</td>
-        <td>13</td>
-        <td>13</td>
-        <td>13</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>705</td>
-        <td>119.99</td>
-        <td>14</td>
-        <td>14</td>
-        <td>14</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>572</td>
-        <td>119.97</td>
-        <td>15</td>
-        <td>15</td>
-        <td>15</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>666</td>
-        <td>109.99</td>
-        <td>16</td>
-        <td>16</td>
-        <td>16</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>725</td>
-        <td>108.00</td>
-        <td>17</td>
-        <td>17</td>
-        <td>17</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>134</td>
-        <td>100.00</td>
-        <td>18</td>
-        <td>18</td>
-        <td>18</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>906</td>
-        <td>99.96</td>
-        <td>19</td>
-        <td>19</td>
-        <td>19</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>828</td>
-        <td>95.97</td>
-        <td>20</td>
-        <td>20</td>
-        <td>20</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>810</td>
-        <td>79.96</td>
-        <td>21</td>
-        <td>21</td>
-        <td>21</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>924</td>
-        <td>79.95</td>
-        <td>22</td>
-        <td>22</td>
-        <td>22</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>926</td>
-        <td>79.95</td>
-        <td>22</td>
-        <td>22</td>
-        <td>23</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>93</td>
-        <td>74.97</td>
-        <td>24</td>
-        <td>23</td>
-        <td>24</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>835</td>
-        <td>63.98</td>
-        <td>25</td>
-        <td>24</td>
-        <td>25</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>897</td>
-        <td>49.98</td>
-        <td>26</td>
-        <td>25</td>
-        <td>26</td>
-    </tr>
-    <tr>
-        <td>2013-07-26 00:00:00</td>
-        <td>1004</td>
-        <td>10799.46</td>
-        <td>1</td>
-        <td>1</td>
-        <td>1</td>
-    </tr>
-    <tr>
-        <td>2013-07-26 00:00:00</td>
-        <td>365</td>
-        <td>7978.67</td>
-        <td>2</td>
-        <td>2</td>
-        <td>2</td>
-    </tr>
-    <tr>
-        <td>2013-07-26 00:00:00</td>
-        <td>957</td>
-        <td>6899.54</td>
-        <td>3</td>
-        <td>3</td>
-        <td>3</td>
-    </tr>
-    <tr>
-        <td>2013-07-26 00:00:00</td>
-        <td>191</td>
-        <td>6799.32</td>
-        <td>4</td>
-        <td>4</td>
-        <td>4</td>
-    </tr>
-</table></div></div>
 </div>
 </div>
 <div class="section" id="final-solution-top-5-daily-products">
@@ -4596,11 +1748,6 @@ LIMIT 30
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env: DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
 </pre></div>
 </div>
 </div>
@@ -4621,18 +1768,6 @@ SELECT * FROM (SELECT current_date) AS q
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 rows affected.
-</pre></div>
-</div>
-<div class="output text_html"><table>
-    <tr>
-        <th>current_date</th>
-    </tr>
-    <tr>
-        <td>2020-11-14</td>
-    </tr>
-</table></div></div>
 </div>
 <p>Let us see few more examples with respected to Nested Sub Queries.</p>
 <div class="cell docutils container">
@@ -4649,57 +1784,6 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-10 rows affected.
-</pre></div>
-</div>
-<div class="output text_html"><table>
-    <tr>
-        <th>order_date</th>
-        <th>order_count</th>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>143</td>
-    </tr>
-    <tr>
-        <td>2013-07-26 00:00:00</td>
-        <td>269</td>
-    </tr>
-    <tr>
-        <td>2013-07-27 00:00:00</td>
-        <td>202</td>
-    </tr>
-    <tr>
-        <td>2013-07-28 00:00:00</td>
-        <td>187</td>
-    </tr>
-    <tr>
-        <td>2013-07-29 00:00:00</td>
-        <td>253</td>
-    </tr>
-    <tr>
-        <td>2013-07-30 00:00:00</td>
-        <td>227</td>
-    </tr>
-    <tr>
-        <td>2013-07-31 00:00:00</td>
-        <td>252</td>
-    </tr>
-    <tr>
-        <td>2013-08-01 00:00:00</td>
-        <td>246</td>
-    </tr>
-    <tr>
-        <td>2013-08-02 00:00:00</td>
-        <td>224</td>
-    </tr>
-    <tr>
-        <td>2013-08-03 00:00:00</td>
-        <td>183</td>
-    </tr>
-</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -4716,57 +1800,6 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-10 rows affected.
-</pre></div>
-</div>
-<div class="output text_html"><table>
-    <tr>
-        <th>order_date</th>
-        <th>order_count</th>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>143</td>
-    </tr>
-    <tr>
-        <td>2013-07-26 00:00:00</td>
-        <td>269</td>
-    </tr>
-    <tr>
-        <td>2013-07-27 00:00:00</td>
-        <td>202</td>
-    </tr>
-    <tr>
-        <td>2013-07-28 00:00:00</td>
-        <td>187</td>
-    </tr>
-    <tr>
-        <td>2013-07-29 00:00:00</td>
-        <td>253</td>
-    </tr>
-    <tr>
-        <td>2013-07-30 00:00:00</td>
-        <td>227</td>
-    </tr>
-    <tr>
-        <td>2013-07-31 00:00:00</td>
-        <td>252</td>
-    </tr>
-    <tr>
-        <td>2013-08-01 00:00:00</td>
-        <td>246</td>
-    </tr>
-    <tr>
-        <td>2013-08-02 00:00:00</td>
-        <td>224</td>
-    </tr>
-    <tr>
-        <td>2013-08-03 00:00:00</td>
-        <td>183</td>
-    </tr>
-</table></div></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -4829,168 +1862,6 @@ LIMIT 30
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-30 rows affected.
-</pre></div>
-</div>
-<div class="output text_html"><table>
-    <tr>
-        <th>order_date</th>
-        <th>order_item_product_id</th>
-        <th>revenue</th>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>1004</td>
-        <td>5599.72</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>191</td>
-        <td>5099.49</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>957</td>
-        <td>4499.70</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>365</td>
-        <td>3359.44</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>1073</td>
-        <td>2999.85</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>1014</td>
-        <td>2798.88</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>403</td>
-        <td>1949.85</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>502</td>
-        <td>1650.00</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>627</td>
-        <td>1079.73</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>226</td>
-        <td>599.99</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>24</td>
-        <td>319.96</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>821</td>
-        <td>207.96</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>625</td>
-        <td>199.99</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>705</td>
-        <td>119.99</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>572</td>
-        <td>119.97</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>666</td>
-        <td>109.99</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>725</td>
-        <td>108.00</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>134</td>
-        <td>100.00</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>906</td>
-        <td>99.96</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>828</td>
-        <td>95.97</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>810</td>
-        <td>79.96</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>924</td>
-        <td>79.95</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>926</td>
-        <td>79.95</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>93</td>
-        <td>74.97</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>835</td>
-        <td>63.98</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>897</td>
-        <td>49.98</td>
-    </tr>
-    <tr>
-        <td>2013-07-26 00:00:00</td>
-        <td>1004</td>
-        <td>10799.46</td>
-    </tr>
-    <tr>
-        <td>2013-07-26 00:00:00</td>
-        <td>365</td>
-        <td>7978.67</td>
-    </tr>
-    <tr>
-        <td>2013-07-26 00:00:00</td>
-        <td>957</td>
-        <td>6899.54</td>
-    </tr>
-    <tr>
-        <td>2013-07-26 00:00:00</td>
-        <td>191</td>
-        <td>6799.32</td>
-    </tr>
-</table></div></div>
 </div>
 <p>Let us compute the rank for each product with in each date using revenue as criteria.</p>
 <div class="cell docutils container">
@@ -5018,199 +1889,6 @@ LIMIT 30
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-30 rows affected.
-</pre></div>
-</div>
-<div class="output text_html"><table>
-    <tr>
-        <th>order_date</th>
-        <th>order_item_product_id</th>
-        <th>revenue</th>
-        <th>drnk</th>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>1004</td>
-        <td>5599.72</td>
-        <td>1</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>191</td>
-        <td>5099.49</td>
-        <td>2</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>957</td>
-        <td>4499.70</td>
-        <td>3</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>365</td>
-        <td>3359.44</td>
-        <td>4</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>1073</td>
-        <td>2999.85</td>
-        <td>5</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>1014</td>
-        <td>2798.88</td>
-        <td>6</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>403</td>
-        <td>1949.85</td>
-        <td>7</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>502</td>
-        <td>1650.00</td>
-        <td>8</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>627</td>
-        <td>1079.73</td>
-        <td>9</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>226</td>
-        <td>599.99</td>
-        <td>10</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>24</td>
-        <td>319.96</td>
-        <td>11</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>821</td>
-        <td>207.96</td>
-        <td>12</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>625</td>
-        <td>199.99</td>
-        <td>13</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>705</td>
-        <td>119.99</td>
-        <td>14</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>572</td>
-        <td>119.97</td>
-        <td>15</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>666</td>
-        <td>109.99</td>
-        <td>16</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>725</td>
-        <td>108.00</td>
-        <td>17</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>134</td>
-        <td>100.00</td>
-        <td>18</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>906</td>
-        <td>99.96</td>
-        <td>19</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>828</td>
-        <td>95.97</td>
-        <td>20</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>810</td>
-        <td>79.96</td>
-        <td>21</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>924</td>
-        <td>79.95</td>
-        <td>22</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>926</td>
-        <td>79.95</td>
-        <td>22</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>93</td>
-        <td>74.97</td>
-        <td>23</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>835</td>
-        <td>63.98</td>
-        <td>24</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>897</td>
-        <td>49.98</td>
-        <td>25</td>
-    </tr>
-    <tr>
-        <td>2013-07-26 00:00:00</td>
-        <td>1004</td>
-        <td>10799.46</td>
-        <td>1</td>
-    </tr>
-    <tr>
-        <td>2013-07-26 00:00:00</td>
-        <td>365</td>
-        <td>7978.67</td>
-        <td>2</td>
-    </tr>
-    <tr>
-        <td>2013-07-26 00:00:00</td>
-        <td>957</td>
-        <td>6899.54</td>
-        <td>3</td>
-    </tr>
-    <tr>
-        <td>2013-07-26 00:00:00</td>
-        <td>191</td>
-        <td>6799.32</td>
-        <td>4</td>
-    </tr>
-</table></div></div>
 </div>
 <p>Now let us see how we can filter the data.</p>
 <div class="cell docutils container">
@@ -5240,139 +1918,6 @@ LIMIT 20
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-20 rows affected.
-</pre></div>
-</div>
-<div class="output text_html"><table>
-    <tr>
-        <th>order_date</th>
-        <th>order_item_product_id</th>
-        <th>revenue</th>
-        <th>drnk</th>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>1004</td>
-        <td>5599.72</td>
-        <td>1</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>191</td>
-        <td>5099.49</td>
-        <td>2</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>957</td>
-        <td>4499.70</td>
-        <td>3</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>365</td>
-        <td>3359.44</td>
-        <td>4</td>
-    </tr>
-    <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>1073</td>
-        <td>2999.85</td>
-        <td>5</td>
-    </tr>
-    <tr>
-        <td>2013-07-26 00:00:00</td>
-        <td>1004</td>
-        <td>10799.46</td>
-        <td>1</td>
-    </tr>
-    <tr>
-        <td>2013-07-26 00:00:00</td>
-        <td>365</td>
-        <td>7978.67</td>
-        <td>2</td>
-    </tr>
-    <tr>
-        <td>2013-07-26 00:00:00</td>
-        <td>957</td>
-        <td>6899.54</td>
-        <td>3</td>
-    </tr>
-    <tr>
-        <td>2013-07-26 00:00:00</td>
-        <td>191</td>
-        <td>6799.32</td>
-        <td>4</td>
-    </tr>
-    <tr>
-        <td>2013-07-26 00:00:00</td>
-        <td>1014</td>
-        <td>4798.08</td>
-        <td>5</td>
-    </tr>
-    <tr>
-        <td>2013-07-27 00:00:00</td>
-        <td>1004</td>
-        <td>9599.52</td>
-        <td>1</td>
-    </tr>
-    <tr>
-        <td>2013-07-27 00:00:00</td>
-        <td>191</td>
-        <td>5999.40</td>
-        <td>2</td>
-    </tr>
-    <tr>
-        <td>2013-07-27 00:00:00</td>
-        <td>957</td>
-        <td>5699.62</td>
-        <td>3</td>
-    </tr>
-    <tr>
-        <td>2013-07-27 00:00:00</td>
-        <td>1073</td>
-        <td>5399.73</td>
-        <td>4</td>
-    </tr>
-    <tr>
-        <td>2013-07-27 00:00:00</td>
-        <td>365</td>
-        <td>5099.15</td>
-        <td>5</td>
-    </tr>
-    <tr>
-        <td>2013-07-28 00:00:00</td>
-        <td>1004</td>
-        <td>5599.72</td>
-        <td>1</td>
-    </tr>
-    <tr>
-        <td>2013-07-28 00:00:00</td>
-        <td>957</td>
-        <td>5099.66</td>
-        <td>2</td>
-    </tr>
-    <tr>
-        <td>2013-07-28 00:00:00</td>
-        <td>365</td>
-        <td>4799.20</td>
-        <td>3</td>
-    </tr>
-    <tr>
-        <td>2013-07-28 00:00:00</td>
-        <td>403</td>
-        <td>4419.66</td>
-        <td>4</td>
-    </tr>
-    <tr>
-        <td>2013-07-28 00:00:00</td>
-        <td>191</td>
-        <td>4299.57</td>
-        <td>5</td>
-    </tr>
-</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -5390,140 +1935,883 @@ LIMIT 20
 </pre></div>
 </div>
 </div>
+</div>
+</div>
+</div>
+<div class="section" id="exercises-analytics-functions">
+<h2>Exercises - Analytics Functions<a class="headerlink" href="#exercises-analytics-functions" title="Permalink to this headline">¶</a></h2>
+<p>Let us take care of the exercises related to analytics functions. We will be using HR database for the same.</p>
+<ul class="simple">
+<li><p>Get all the employees who is making more than average salary with in each department.</p></li>
+<li><p>Get cumulative salary for one of the department along with department name.</p></li>
+<li><p>Get top 3 paid employees with in each department by salary (use dense_rank)</p></li>
+<li><p>Get top 3 products sold in the month of 2014 January by revenue.</p></li>
+<li><p>Get top 3 products in each category sold in the month of 2014 January by revenue.</p></li>
+</ul>
+<div class="section" id="prepare-hr-database">
+<h3>Prepare HR Database<a class="headerlink" href="#prepare-hr-database" title="Permalink to this headline">¶</a></h3>
+<p>Here are the steps to prepare HR database.</p>
+<ul class="simple">
+<li><p>Connect to HR DB using <code class="docutils literal notranslate"><span class="pre">psql</span></code> or SQL Workbench. Here is the sample <code class="docutils literal notranslate"><span class="pre">psql</span></code> command.</p></li>
+</ul>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>psql -h localhost <span class="se">\</span>
+    -p <span class="m">5432</span> <span class="se">\</span>
+    -d itversity_hr_db <span class="se">\</span>
+    -U itversity_hr_user <span class="se">\</span>
+    -W
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Run scripts to create tables and load the data. You can also drop the tables if they already exists.</p></li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span>\i /data/hr_db/drop_tables_pg.sql
+\i /data/hr_db/create_tables_pg.sql
+\i /data/hr_db/load_tables_pg.sql
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Validate to ensure that data is available in the tables by running these queries.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_hr_user:hr_password@localhost:5432/itversity_hr_db
+</pre></div>
+</div>
+</div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
-20 rows affected.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env: DATABASE_URL=postgresql://itversity_hr_user:hr_password@localhost:5432/itversity_hr_db
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT * FROM employees LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_hr_user:***@localhost:5432/itversity_hr_db
+10 rows affected.
 </pre></div>
 </div>
 <div class="output text_html"><table>
     <tr>
-        <th>order_date</th>
-        <th>order_item_product_id</th>
-        <th>revenue</th>
-        <th>drnk</th>
+        <th>employee_id</th>
+        <th>first_name</th>
+        <th>last_name</th>
+        <th>email</th>
+        <th>phone_number</th>
+        <th>hire_date</th>
+        <th>job_id</th>
+        <th>salary</th>
+        <th>commission_pct</th>
+        <th>manager_id</th>
+        <th>department_id</th>
     </tr>
     <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>1004</td>
-        <td>5599.72</td>
-        <td>1</td>
+        <td>100</td>
+        <td>Steven</td>
+        <td>King</td>
+        <td>SKING</td>
+        <td>515.123.4567</td>
+        <td>1987-06-17</td>
+        <td>AD_PRES</td>
+        <td>24000.00</td>
+        <td>None</td>
+        <td>None</td>
+        <td>90</td>
     </tr>
     <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>191</td>
-        <td>5099.49</td>
-        <td>2</td>
+        <td>101</td>
+        <td>Neena</td>
+        <td>Kochhar</td>
+        <td>NKOCHHAR</td>
+        <td>515.123.4568</td>
+        <td>1989-09-21</td>
+        <td>AD_VP</td>
+        <td>17000.00</td>
+        <td>None</td>
+        <td>100</td>
+        <td>90</td>
     </tr>
     <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>957</td>
-        <td>4499.70</td>
-        <td>3</td>
+        <td>102</td>
+        <td>Lex</td>
+        <td>De Haan</td>
+        <td>LDEHAAN</td>
+        <td>515.123.4569</td>
+        <td>1993-01-13</td>
+        <td>AD_VP</td>
+        <td>17000.00</td>
+        <td>None</td>
+        <td>100</td>
+        <td>90</td>
     </tr>
     <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>365</td>
-        <td>3359.44</td>
-        <td>4</td>
+        <td>103</td>
+        <td>Alexander</td>
+        <td>Hunold</td>
+        <td>AHUNOLD</td>
+        <td>590.423.4567</td>
+        <td>1990-01-03</td>
+        <td>IT_PROG</td>
+        <td>9000.00</td>
+        <td>None</td>
+        <td>102</td>
+        <td>60</td>
     </tr>
     <tr>
-        <td>2013-07-25 00:00:00</td>
-        <td>1073</td>
-        <td>2999.85</td>
-        <td>5</td>
+        <td>104</td>
+        <td>Bruce</td>
+        <td>Ernst</td>
+        <td>BERNST</td>
+        <td>590.423.4568</td>
+        <td>1991-05-21</td>
+        <td>IT_PROG</td>
+        <td>6000.00</td>
+        <td>None</td>
+        <td>103</td>
+        <td>60</td>
     </tr>
     <tr>
-        <td>2013-07-26 00:00:00</td>
-        <td>1004</td>
-        <td>10799.46</td>
-        <td>1</td>
+        <td>105</td>
+        <td>David</td>
+        <td>Austin</td>
+        <td>DAUSTIN</td>
+        <td>590.423.4569</td>
+        <td>1997-06-25</td>
+        <td>IT_PROG</td>
+        <td>4800.00</td>
+        <td>None</td>
+        <td>103</td>
+        <td>60</td>
     </tr>
     <tr>
-        <td>2013-07-26 00:00:00</td>
-        <td>365</td>
-        <td>7978.67</td>
-        <td>2</td>
+        <td>106</td>
+        <td>Valli</td>
+        <td>Pataballa</td>
+        <td>VPATABAL</td>
+        <td>590.423.4560</td>
+        <td>1998-02-05</td>
+        <td>IT_PROG</td>
+        <td>4800.00</td>
+        <td>None</td>
+        <td>103</td>
+        <td>60</td>
     </tr>
     <tr>
-        <td>2013-07-26 00:00:00</td>
-        <td>957</td>
-        <td>6899.54</td>
-        <td>3</td>
+        <td>107</td>
+        <td>Diana</td>
+        <td>Lorentz</td>
+        <td>DLORENTZ</td>
+        <td>590.423.5567</td>
+        <td>1999-02-07</td>
+        <td>IT_PROG</td>
+        <td>4200.00</td>
+        <td>None</td>
+        <td>103</td>
+        <td>60</td>
     </tr>
     <tr>
-        <td>2013-07-26 00:00:00</td>
-        <td>191</td>
-        <td>6799.32</td>
-        <td>4</td>
+        <td>108</td>
+        <td>Nancy</td>
+        <td>Greenberg</td>
+        <td>NGREENBE</td>
+        <td>515.124.4569</td>
+        <td>1994-08-17</td>
+        <td>FI_MGR</td>
+        <td>12000.00</td>
+        <td>None</td>
+        <td>101</td>
+        <td>100</td>
     </tr>
     <tr>
-        <td>2013-07-26 00:00:00</td>
-        <td>1014</td>
-        <td>4798.08</td>
-        <td>5</td>
-    </tr>
-    <tr>
-        <td>2013-07-27 00:00:00</td>
-        <td>1004</td>
-        <td>9599.52</td>
-        <td>1</td>
-    </tr>
-    <tr>
-        <td>2013-07-27 00:00:00</td>
-        <td>191</td>
-        <td>5999.40</td>
-        <td>2</td>
-    </tr>
-    <tr>
-        <td>2013-07-27 00:00:00</td>
-        <td>957</td>
-        <td>5699.62</td>
-        <td>3</td>
-    </tr>
-    <tr>
-        <td>2013-07-27 00:00:00</td>
-        <td>1073</td>
-        <td>5399.73</td>
-        <td>4</td>
-    </tr>
-    <tr>
-        <td>2013-07-27 00:00:00</td>
-        <td>365</td>
-        <td>5099.15</td>
-        <td>5</td>
-    </tr>
-    <tr>
-        <td>2013-07-28 00:00:00</td>
-        <td>1004</td>
-        <td>5599.72</td>
-        <td>1</td>
-    </tr>
-    <tr>
-        <td>2013-07-28 00:00:00</td>
-        <td>957</td>
-        <td>5099.66</td>
-        <td>2</td>
-    </tr>
-    <tr>
-        <td>2013-07-28 00:00:00</td>
-        <td>365</td>
-        <td>4799.20</td>
-        <td>3</td>
-    </tr>
-    <tr>
-        <td>2013-07-28 00:00:00</td>
-        <td>403</td>
-        <td>4419.66</td>
-        <td>4</td>
-    </tr>
-    <tr>
-        <td>2013-07-28 00:00:00</td>
-        <td>191</td>
-        <td>4299.57</td>
-        <td>5</td>
+        <td>109</td>
+        <td>Daniel</td>
+        <td>Faviet</td>
+        <td>DFAVIET</td>
+        <td>515.124.4169</td>
+        <td>1994-08-16</td>
+        <td>FI_ACCOUNT</td>
+        <td>9000.00</td>
+        <td>None</td>
+        <td>108</td>
+        <td>100</td>
     </tr>
 </table></div></div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span> 
+
+SELECT * FROM departments 
+ORDER BY manager_id NULLS LAST
+LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_hr_user:***@localhost:5432/itversity_hr_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>department_id</th>
+        <th>department_name</th>
+        <th>manager_id</th>
+        <th>location_id</th>
+    </tr>
+    <tr>
+        <td>90</td>
+        <td>Executive</td>
+        <td>100</td>
+        <td>1700</td>
+    </tr>
+    <tr>
+        <td>60</td>
+        <td>IT</td>
+        <td>103</td>
+        <td>1400</td>
+    </tr>
+    <tr>
+        <td>100</td>
+        <td>Finance</td>
+        <td>108</td>
+        <td>1700</td>
+    </tr>
+    <tr>
+        <td>30</td>
+        <td>Purchasing</td>
+        <td>114</td>
+        <td>1700</td>
+    </tr>
+    <tr>
+        <td>50</td>
+        <td>Shipping</td>
+        <td>121</td>
+        <td>1500</td>
+    </tr>
+    <tr>
+        <td>80</td>
+        <td>Sales</td>
+        <td>145</td>
+        <td>2500</td>
+    </tr>
+    <tr>
+        <td>10</td>
+        <td>Administration</td>
+        <td>200</td>
+        <td>1700</td>
+    </tr>
+    <tr>
+        <td>20</td>
+        <td>Marketing</td>
+        <td>201</td>
+        <td>1800</td>
+    </tr>
+    <tr>
+        <td>40</td>
+        <td>Human Resources</td>
+        <td>203</td>
+        <td>2400</td>
+    </tr>
+    <tr>
+        <td>70</td>
+        <td>Public Relations</td>
+        <td>204</td>
+        <td>2700</td>
+    </tr>
+</table></div></div>
+</div>
+</div>
+<div class="section" id="exercise-1">
+<h3>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h3>
+<p>Get all the employees who is making more than average salary with in each department.</p>
+<ul class="simple">
+<li><p>Use HR database employees and department tables for this problem.</p></li>
+<li><p>Compute average salary expense for each department and get those employee details who are making more salary than average salary.</p></li>
+<li><p>Make sure average salary expense per department is rounded off to 2 decimals.</p></li>
+<li><p>Output should contain employee_id, department_name, salary and avg_salary_expense (derived field).</p></li>
+<li><p>Data should be sorted in ascending order by department_id and descending order by salary.</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>employee_id</p></th>
+<th class="head"><p>department_name</p></th>
+<th class="head"><p>salary</p></th>
+<th class="head"><p>avg_salary_expense</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>201</p></td>
+<td><p>Marketing</p></td>
+<td><p>13000.00</p></td>
+<td><p>9500.00</p></td>
+</tr>
+<tr class="row-odd"><td><p>114</p></td>
+<td><p>Purchasing</p></td>
+<td><p>11000.00</p></td>
+<td><p>4150.00</p></td>
+</tr>
+<tr class="row-even"><td><p>121</p></td>
+<td><p>Shipping</p></td>
+<td><p>8200.00</p></td>
+<td><p>3475.56</p></td>
+</tr>
+<tr class="row-odd"><td><p>120</p></td>
+<td><p>Shipping</p></td>
+<td><p>8000.00</p></td>
+<td><p>3475.56</p></td>
+</tr>
+<tr class="row-even"><td><p>122</p></td>
+<td><p>Shipping</p></td>
+<td><p>7900.00</p></td>
+<td><p>3475.56</p></td>
+</tr>
+<tr class="row-odd"><td><p>123</p></td>
+<td><p>Shipping</p></td>
+<td><p>6500.00</p></td>
+<td><p>3475.56</p></td>
+</tr>
+<tr class="row-even"><td><p>124</p></td>
+<td><p>Shipping</p></td>
+<td><p>5800.00</p></td>
+<td><p>3475.56</p></td>
+</tr>
+<tr class="row-odd"><td><p>184</p></td>
+<td><p>Shipping</p></td>
+<td><p>4200.00</p></td>
+<td><p>3475.56</p></td>
+</tr>
+<tr class="row-even"><td><p>185</p></td>
+<td><p>Shipping</p></td>
+<td><p>4100.00</p></td>
+<td><p>3475.56</p></td>
+</tr>
+<tr class="row-odd"><td><p>192</p></td>
+<td><p>Shipping</p></td>
+<td><p>4000.00</p></td>
+<td><p>3475.56</p></td>
+</tr>
+<tr class="row-even"><td><p>193</p></td>
+<td><p>Shipping</p></td>
+<td><p>3900.00</p></td>
+<td><p>3475.56</p></td>
+</tr>
+<tr class="row-odd"><td><p>188</p></td>
+<td><p>Shipping</p></td>
+<td><p>3800.00</p></td>
+<td><p>3475.56</p></td>
+</tr>
+<tr class="row-even"><td><p>137</p></td>
+<td><p>Shipping</p></td>
+<td><p>3600.00</p></td>
+<td><p>3475.56</p></td>
+</tr>
+<tr class="row-odd"><td><p>189</p></td>
+<td><p>Shipping</p></td>
+<td><p>3600.00</p></td>
+<td><p>3475.56</p></td>
+</tr>
+<tr class="row-even"><td><p>141</p></td>
+<td><p>Shipping</p></td>
+<td><p>3500.00</p></td>
+<td><p>3475.56</p></td>
+</tr>
+<tr class="row-odd"><td><p>103</p></td>
+<td><p>IT</p></td>
+<td><p>9000.00</p></td>
+<td><p>5760.00</p></td>
+</tr>
+<tr class="row-even"><td><p>104</p></td>
+<td><p>IT</p></td>
+<td><p>6000.00</p></td>
+<td><p>5760.00</p></td>
+</tr>
+<tr class="row-odd"><td><p>145</p></td>
+<td><p>Sales</p></td>
+<td><p>14000.00</p></td>
+<td><p>8955.88</p></td>
+</tr>
+<tr class="row-even"><td><p>146</p></td>
+<td><p>Sales</p></td>
+<td><p>13500.00</p></td>
+<td><p>8955.88</p></td>
+</tr>
+<tr class="row-odd"><td><p>147</p></td>
+<td><p>Sales</p></td>
+<td><p>12000.00</p></td>
+<td><p>8955.88</p></td>
+</tr>
+<tr class="row-even"><td><p>168</p></td>
+<td><p>Sales</p></td>
+<td><p>11500.00</p></td>
+<td><p>8955.88</p></td>
+</tr>
+<tr class="row-odd"><td><p>148</p></td>
+<td><p>Sales</p></td>
+<td><p>11000.00</p></td>
+<td><p>8955.88</p></td>
+</tr>
+<tr class="row-even"><td><p>174</p></td>
+<td><p>Sales</p></td>
+<td><p>11000.00</p></td>
+<td><p>8955.88</p></td>
+</tr>
+<tr class="row-odd"><td><p>149</p></td>
+<td><p>Sales</p></td>
+<td><p>10500.00</p></td>
+<td><p>8955.88</p></td>
+</tr>
+<tr class="row-even"><td><p>162</p></td>
+<td><p>Sales</p></td>
+<td><p>10500.00</p></td>
+<td><p>8955.88</p></td>
+</tr>
+<tr class="row-odd"><td><p>156</p></td>
+<td><p>Sales</p></td>
+<td><p>10000.00</p></td>
+<td><p>8955.88</p></td>
+</tr>
+<tr class="row-even"><td><p>150</p></td>
+<td><p>Sales</p></td>
+<td><p>10000.00</p></td>
+<td><p>8955.88</p></td>
+</tr>
+<tr class="row-odd"><td><p>169</p></td>
+<td><p>Sales</p></td>
+<td><p>10000.00</p></td>
+<td><p>8955.88</p></td>
+</tr>
+<tr class="row-even"><td><p>170</p></td>
+<td><p>Sales</p></td>
+<td><p>9600.00</p></td>
+<td><p>8955.88</p></td>
+</tr>
+<tr class="row-odd"><td><p>163</p></td>
+<td><p>Sales</p></td>
+<td><p>9500.00</p></td>
+<td><p>8955.88</p></td>
+</tr>
+<tr class="row-even"><td><p>151</p></td>
+<td><p>Sales</p></td>
+<td><p>9500.00</p></td>
+<td><p>8955.88</p></td>
+</tr>
+<tr class="row-odd"><td><p>157</p></td>
+<td><p>Sales</p></td>
+<td><p>9500.00</p></td>
+<td><p>8955.88</p></td>
+</tr>
+<tr class="row-even"><td><p>158</p></td>
+<td><p>Sales</p></td>
+<td><p>9000.00</p></td>
+<td><p>8955.88</p></td>
+</tr>
+<tr class="row-odd"><td><p>152</p></td>
+<td><p>Sales</p></td>
+<td><p>9000.00</p></td>
+<td><p>8955.88</p></td>
+</tr>
+<tr class="row-even"><td><p>100</p></td>
+<td><p>Executive</p></td>
+<td><p>24000.00</p></td>
+<td><p>19333.33</p></td>
+</tr>
+<tr class="row-odd"><td><p>108</p></td>
+<td><p>Finance</p></td>
+<td><p>12000.00</p></td>
+<td><p>8600.00</p></td>
+</tr>
+<tr class="row-even"><td><p>109</p></td>
+<td><p>Finance</p></td>
+<td><p>9000.00</p></td>
+<td><p>8600.00</p></td>
+</tr>
+<tr class="row-odd"><td><p>205</p></td>
+<td><p>Accounting</p></td>
+<td><p>12000.00</p></td>
+<td><p>10150.00</p></td>
+</tr>
+</tbody>
+</table>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_hr_user:hr_password@localhost:5432/itversity_hr_db
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env: DATABASE_URL=postgresql://itversity_hr_user:hr_password@localhost:5432/itversity_hr_db
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise-2">
+<h3>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this headline">¶</a></h3>
+<p>Get cumulative salary with in each department for Finance and IT department along with department name.</p>
+<ul class="simple">
+<li><p>Use HR database employees and department tables for this problem.</p></li>
+<li><p>Compute cumulative salary expense for <strong>Finance</strong> as well as <strong>IT</strong> departments with in respective departments.</p></li>
+<li><p>Make sure cumulative salary expense per department is rounded off to 2 decimals.</p></li>
+<li><p>Output should contain employee_id, department_name, salary and cum_salary_expense (derived field).</p></li>
+<li><p>Data should be sorted in ascending order by department_name and then salary.</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>employee_id</p></th>
+<th class="head"><p>department_name</p></th>
+<th class="head"><p>salary</p></th>
+<th class="head"><p>cum_salary_expense</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>113</p></td>
+<td><p>Finance</p></td>
+<td><p>6900.00</p></td>
+<td><p>6900.00</p></td>
+</tr>
+<tr class="row-odd"><td><p>111</p></td>
+<td><p>Finance</p></td>
+<td><p>7700.00</p></td>
+<td><p>14600.00</p></td>
+</tr>
+<tr class="row-even"><td><p>112</p></td>
+<td><p>Finance</p></td>
+<td><p>7800.00</p></td>
+<td><p>22400.00</p></td>
+</tr>
+<tr class="row-odd"><td><p>110</p></td>
+<td><p>Finance</p></td>
+<td><p>8200.00</p></td>
+<td><p>30600.00</p></td>
+</tr>
+<tr class="row-even"><td><p>109</p></td>
+<td><p>Finance</p></td>
+<td><p>9000.00</p></td>
+<td><p>39600.00</p></td>
+</tr>
+<tr class="row-odd"><td><p>108</p></td>
+<td><p>Finance</p></td>
+<td><p>12000.00</p></td>
+<td><p>51600.00</p></td>
+</tr>
+<tr class="row-even"><td><p>107</p></td>
+<td><p>IT</p></td>
+<td><p>4200.00</p></td>
+<td><p>4200.00</p></td>
+</tr>
+<tr class="row-odd"><td><p>106</p></td>
+<td><p>IT</p></td>
+<td><p>4800.00</p></td>
+<td><p>9000.00</p></td>
+</tr>
+<tr class="row-even"><td><p>105</p></td>
+<td><p>IT</p></td>
+<td><p>4800.00</p></td>
+<td><p>13800.00</p></td>
+</tr>
+<tr class="row-odd"><td><p>104</p></td>
+<td><p>IT</p></td>
+<td><p>6000.00</p></td>
+<td><p>19800.00</p></td>
+</tr>
+<tr class="row-even"><td><p>103</p></td>
+<td><p>IT</p></td>
+<td><p>9000.00</p></td>
+<td><p>28800.00</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="exercise-3">
+<h3>Exercise 3<a class="headerlink" href="#exercise-3" title="Permalink to this headline">¶</a></h3>
+<p>Get top 3 paid employees with in each department by salary (use dense_rank)</p>
+<ul class="simple">
+<li><p>Use HR database employees and department tables for this problem.</p></li>
+<li><p>Highest paid employee should be ranked first.</p></li>
+<li><p>Output should contain employee_id, department_id, department_name, salary and employee_rank (derived field).</p></li>
+<li><p>Data should be sorted in ascending order by department_id in ascending order and then salary in descending order.</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>employee_id</p></th>
+<th class="head"><p>department_id</p></th>
+<th class="head"><p>department_name</p></th>
+<th class="head"><p>salary</p></th>
+<th class="head"><p>employee_rank</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>200</p></td>
+<td><p>10</p></td>
+<td><p>Administration</p></td>
+<td><p>4400.00</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>201</p></td>
+<td><p>20</p></td>
+<td><p>Marketing</p></td>
+<td><p>13000.00</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>202</p></td>
+<td><p>20</p></td>
+<td><p>Marketing</p></td>
+<td><p>6000.00</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p>114</p></td>
+<td><p>30</p></td>
+<td><p>Purchasing</p></td>
+<td><p>11000.00</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>115</p></td>
+<td><p>30</p></td>
+<td><p>Purchasing</p></td>
+<td><p>3100.00</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p>116</p></td>
+<td><p>30</p></td>
+<td><p>Purchasing</p></td>
+<td><p>2900.00</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-even"><td><p>203</p></td>
+<td><p>40</p></td>
+<td><p>Human Resources</p></td>
+<td><p>6500.00</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>121</p></td>
+<td><p>50</p></td>
+<td><p>Shipping</p></td>
+<td><p>8200.00</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>120</p></td>
+<td><p>50</p></td>
+<td><p>Shipping</p></td>
+<td><p>8000.00</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p>122</p></td>
+<td><p>50</p></td>
+<td><p>Shipping</p></td>
+<td><p>7900.00</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-even"><td><p>103</p></td>
+<td><p>60</p></td>
+<td><p>IT</p></td>
+<td><p>9000.00</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>104</p></td>
+<td><p>60</p></td>
+<td><p>IT</p></td>
+<td><p>6000.00</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-even"><td><p>105</p></td>
+<td><p>60</p></td>
+<td><p>IT</p></td>
+<td><p>4800.00</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-odd"><td><p>106</p></td>
+<td><p>60</p></td>
+<td><p>IT</p></td>
+<td><p>4800.00</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-even"><td><p>204</p></td>
+<td><p>70</p></td>
+<td><p>Public Relations</p></td>
+<td><p>10000.00</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>145</p></td>
+<td><p>80</p></td>
+<td><p>Sales</p></td>
+<td><p>14000.00</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>146</p></td>
+<td><p>80</p></td>
+<td><p>Sales</p></td>
+<td><p>13500.00</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p>147</p></td>
+<td><p>80</p></td>
+<td><p>Sales</p></td>
+<td><p>12000.00</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-even"><td><p>100</p></td>
+<td><p>90</p></td>
+<td><p>Executive</p></td>
+<td><p>24000.00</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>101</p></td>
+<td><p>90</p></td>
+<td><p>Executive</p></td>
+<td><p>17000.00</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-even"><td><p>102</p></td>
+<td><p>90</p></td>
+<td><p>Executive</p></td>
+<td><p>17000.00</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p>108</p></td>
+<td><p>100</p></td>
+<td><p>Finance</p></td>
+<td><p>12000.00</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>109</p></td>
+<td><p>100</p></td>
+<td><p>Finance</p></td>
+<td><p>9000.00</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p>110</p></td>
+<td><p>100</p></td>
+<td><p>Finance</p></td>
+<td><p>8200.00</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-even"><td><p>205</p></td>
+<td><p>110</p></td>
+<td><p>Accounting</p></td>
+<td><p>12000.00</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>206</p></td>
+<td><p>110</p></td>
+<td><p>Accounting</p></td>
+<td><p>8300.00</p></td>
+<td><p>2</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="exercise-4">
+<h3>Exercise 4<a class="headerlink" href="#exercise-4" title="Permalink to this headline">¶</a></h3>
+<p>Get top 3 products sold in the month of 2014 January by revenue.</p>
+<ul class="simple">
+<li><p>Use retail database tables such as orders, order_items and products.</p></li>
+<li><p>Highest revenue generating product should come at top.</p></li>
+<li><p>Output should contain product_id, product_name, revenue, product_rank. <strong>revenue</strong> and <strong>product_rank</strong> are derived fields.</p></li>
+<li><p>Data should be sorted in descending order by revenue.</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>product_id</p></th>
+<th class="head"><p>product_name</p></th>
+<th class="head"><p>revenue</p></th>
+<th class="head"><p>product_rank</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1004</p></td>
+<td><p>Field &amp; Stream Sportsman 16 Gun Fire Safe</p></td>
+<td><p>250787.46</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>365</p></td>
+<td><p>Perfect Fitness Perfect Rip Deck</p></td>
+<td><p>151474.75</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-even"><td><p>957</p></td>
+<td><p>Diamondback Women’s Serene Classic Comfort Bi</p></td>
+<td><p>148190.12</p></td>
+<td><p>3</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="exercise-5">
+<h3>Exercise 5<a class="headerlink" href="#exercise-5" title="Permalink to this headline">¶</a></h3>
+<p>Get top 3 products sold in the month of 2014 January under selected categories by revenue. The categories are <strong>Cardio Equipment</strong> and <strong>Strength Training</strong>.</p>
+<ul class="simple">
+<li><p>Use retail database tables such as orders, order_items, products as well as categories.</p></li>
+<li><p>Highest revenue generating product should come at top.</p></li>
+<li><p>Output should contain category_id, category_name, product_id, product_name, revenue, product_rank. revenue and product_rank are derived fields.</p></li>
+<li><p>Data should be sorted in ascending order by category_id and descending order by revenue.</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>category_id</p></th>
+<th class="head"><p>category_name</p></th>
+<th class="head"><p>product_id</p></th>
+<th class="head"><p>product_name</p></th>
+<th class="head"><p>revenue</p></th>
+<th class="head"><p>product_rank</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>9</p></td>
+<td><p>Cardio Equipment</p></td>
+<td><p>191</p></td>
+<td><p>Nike Men’s Free 5.0+ Running Shoe</p></td>
+<td><p>132286.77</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>9</p></td>
+<td><p>Cardio Equipment</p></td>
+<td><p>172</p></td>
+<td><p>Nike Women’s Tempo Shorts</p></td>
+<td><p>870.00</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-even"><td><p>10</p></td>
+<td><p>Strength Training</p></td>
+<td><p>208</p></td>
+<td><p>SOLE E35 Elliptical</p></td>
+<td><p>1999.99</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>10</p></td>
+<td><p>Strength Training</p></td>
+<td><p>203</p></td>
+<td><p>GoPro HERO3+ Black Edition Camera</p></td>
+<td><p>1199.97</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-even"><td><p>10</p></td>
+<td><p>Strength Training</p></td>
+<td><p>216</p></td>
+<td><p>Yakima DoubleDown Ace Hitch Mount 4-Bike Rack</p></td>
+<td><p>189.00</p></td>
+<td><p>3</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>

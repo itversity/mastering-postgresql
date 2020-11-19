@@ -135,6 +135,41 @@
    Query Performance Tuning
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mastering_postgresql_exercises.html">
+   Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mastering_postgresql_exercises.html#dml-or-crud-operations">
+   DML or CRUD Operations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mastering_postgresql_exercises.html#basic-sql-queries">
+   Basic SQL Queries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mastering_postgresql_exercises.html#managing-database-objects">
+   Managing Database Objects
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mastering_postgresql_exercises.html#partitioning-tables">
+   Partitioning Tables
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mastering_postgresql_exercises.html#pre-defined-functions">
+   Pre-Defined Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mastering_postgresql_exercises.html#analytics-functions">
+   Analytics Functions
+  </a>
+ </li>
 </ul>
 
 </nav>
@@ -278,6 +313,33 @@
   <a class="reference internal nav-link" href="#exercise-managing-database-objects">
    Exercise - Managing Database Objects
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-1">
+     Exercise 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-2">
+     Exercise 2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-3">
+     Exercise 3
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-4">
+     Exercise 4
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-5">
+     Exercise 5
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -3006,16 +3068,28 @@ WHERE sequence_name = &#39;users_user_id_seq&#39;
 </div>
 <ul class="simple">
 <li><p>We use this approach of creating tables, loading data and then adding constraints as well as resetting sequences for large volume data migrations from one database to another database.</p></li>
-<li><p>Here are the commands or queries you need to come up with to solve this problem.</p>
-<ul>
-<li><p>Queries to get maximum values from surrogate primary keys.</p></li>
-<li><p>Commands to add sequences with <code class="docutils literal notranslate"><span class="pre">START</span> <span class="pre">WITH</span></code> pointing to the maximum value for the corresponding surrogate primary key fields. Make sure to use meaningful names to sequences <strong>TABLENAME_SURROGATEFIELD_seq</strong> (example: users_user_id_seq for users.user_id)</p></li>
-<li><p>Commands to alter sequences to bind them to corresponding surrogate primary key fields.</p></li>
-<li><p>Commands to add foreign key constraints.</p></li>
-<li><p>Queries to validate whether constraints are created or not. You can come up with queries against <code class="docutils literal notranslate"><span class="pre">information_schema</span></code> tables such as <code class="docutils literal notranslate"><span class="pre">columns</span></code>, <code class="docutils literal notranslate"><span class="pre">sequences</span></code> etc.</p></li>
+<li><p>Here are the commands or queries you need to come up with to solve this problem.</p></li>
 </ul>
-</li>
-</ul>
+<div class="section" id="exercise-1">
+<h3>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h3>
+<p>Queries to get maximum values from surrogate primary keys.</p>
+</div>
+<div class="section" id="exercise-2">
+<h3>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this headline">¶</a></h3>
+<p>Commands to add sequences with <code class="docutils literal notranslate"><span class="pre">START</span> <span class="pre">WITH</span></code> pointing to the maximum value for the corresponding surrogate primary key fields. Make sure to use meaningful names to sequences <strong>TABLENAME_SURROGATEFIELD_seq</strong> (example: users_user_id_seq for users.user_id)</p>
+</div>
+<div class="section" id="exercise-3">
+<h3>Exercise 3<a class="headerlink" href="#exercise-3" title="Permalink to this headline">¶</a></h3>
+<p>Commands to alter sequences to bind them to corresponding surrogate primary key fields.</p>
+</div>
+<div class="section" id="exercise-4">
+<h3>Exercise 4<a class="headerlink" href="#exercise-4" title="Permalink to this headline">¶</a></h3>
+<p>Commands to add foreign key constraints.</p>
+</div>
+<div class="section" id="exercise-5">
+<h3>Exercise 5<a class="headerlink" href="#exercise-5" title="Permalink to this headline">¶</a></h3>
+<p>Queries to validate whether constraints are created or not. You can come up with queries against <code class="docutils literal notranslate"><span class="pre">information_schema</span></code> tables such as <code class="docutils literal notranslate"><span class="pre">columns</span></code>, <code class="docutils literal notranslate"><span class="pre">sequences</span></code> etc.</p>
+</div>
 </div>
 </div>
 
