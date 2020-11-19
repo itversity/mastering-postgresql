@@ -8,3 +8,4 @@
     - file: 06_predefined_functions
     - file: 07_writing_advanced_sql_queries
     - file: 08_query_performance_tuning
+    - file: mastering_postgresql_exercises
