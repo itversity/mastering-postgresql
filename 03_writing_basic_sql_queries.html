@@ -137,37 +137,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="mastering_postgresql_exercises.html">
-   Getting Started
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="mastering_postgresql_exercises.html#dml-or-crud-operations">
-   DML or CRUD Operations
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="mastering_postgresql_exercises.html#basic-sql-queries">
-   Basic SQL Queries
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="mastering_postgresql_exercises.html#managing-database-objects">
-   Managing Database Objects
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="mastering_postgresql_exercises.html#partitioning-tables">
-   Partitioning Tables
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="mastering_postgresql_exercises.html#pre-defined-functions">
-   Pre-Defined Functions
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="mastering_postgresql_exercises.html#analytics-functions">
-   Analytics Functions
+   Exercises - Mastering Postgresql
   </a>
  </li>
 </ul>
@@ -387,7 +357,7 @@
 <p>Here are some of the transformations we typically perform on regular basis.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/sA6Gq8Ulzng?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/Y8krusDetoQ?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
 </div></div>
 </div>
 <ul class="simple">
@@ -404,7 +374,7 @@
 <p>We will be using retail data model for this section. It contains 6 tables.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/fcac19Ih2fc?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/g5HfliqD-a0?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
 </div></div>
 </div>
 <ul class="simple">
@@ -433,7 +403,7 @@
 <p>Let us try to get daily product revenue using retail tables.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/EmmoTaaUciU?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/fkFaPYWfjv4?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
 </div></div>
 </div>
 <ul class="simple">
@@ -489,6 +459,11 @@
 <div class="section" id="preparing-tables">
 <h2>Preparing Tables<a class="headerlink" href="#preparing-tables" title="Permalink to this headline">¶</a></h2>
 <p>Let us prepare retail tables to come up with the solution for the problem statement.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/yeVIRyGyv7g?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+</div></div>
+</div>
 <ul class="simple">
 <li><p>Ensure that we have required database and user for retail data. We might provide the database as part of our labs. Here are the instructions to use <code class="docutils literal notranslate"><span class="pre">psql</span></code> for setting up the required tables.</p></li>
 </ul>
@@ -1024,6 +999,11 @@ LIMIT 10
 <div class="section" id="selecting-or-projecting-data">
 <h2>Selecting or Projecting Data<a class="headerlink" href="#selecting-or-projecting-data" title="Permalink to this headline">¶</a></h2>
 <p>Let us understand different aspects of projecting data. We primarily using <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> to project the data.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/0eSWEBDf23A?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+</div></div>
+</div>
 <ul class="simple">
 <li><p>We can project all columns using <code class="docutils literal notranslate"><span class="pre">*</span></code> or some columns using column names.</p></li>
 <li><p>We can provide aliases to a column or expression using <code class="docutils literal notranslate"><span class="pre">AS</span></code> in <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> clause.</p></li>
@@ -1712,6 +1692,11 @@ FROM orders
 <div class="section" id="filtering-data">
 <h2>Filtering Data<a class="headerlink" href="#filtering-data" title="Permalink to this headline">¶</a></h2>
 <p>Let us understand how we can filter the data as part of our queries.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/2DrLVbXd0Jo?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+</div></div>
+</div>
 <ul class="simple">
 <li><p>We use <code class="docutils literal notranslate"><span class="pre">WHERE</span></code> clause to filter the data.</p></li>
 <li><p>All comparison operators such as <code class="docutils literal notranslate"><span class="pre">=</span></code>, <code class="docutils literal notranslate"><span class="pre">!=</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code> etc can be used to compare a column or expression or literal with another column or expression or literal.</p></li>
@@ -2887,6 +2872,11 @@ WHERE user_password IS NOT NULL
 <div class="section" id="joining-tables-inner">
 <h2>Joining Tables – Inner<a class="headerlink" href="#joining-tables-inner" title="Permalink to this headline">¶</a></h2>
 <p>Let us understand how to join data from multiple tables.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/7Wg4zpfj02s?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+</div></div>
+</div>
 <ul class="simple">
 <li><p>We will primarily focus on ASCII style join (<strong>JOIN with ON</strong>).</p></li>
 <li><p>There are different types of joins.</p>
@@ -3344,6 +3334,11 @@ LIMIT 10
 <div class="section" id="joining-tables-outer">
 <h2>Joining Tables - Outer<a class="headerlink" href="#joining-tables-outer" title="Permalink to this headline">¶</a></h2>
 <p>Let us understand how to perform outer joins using SQL. There are 3 different types of outer joins.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/U050biNag4w?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+</div></div>
+</div>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">LEFT</span> <span class="pre">OUTER</span> <span class="pre">JOIN</span></code> (default) - Get all the records from both the datasets which satisfies JOIN condition along with those records which are in the left side table but not in the right side table.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">RIGHT</span> <span class="pre">OUTER</span> <span class="pre">JOIN</span></code> - Get all the records from both the datasets which satisfies JOIN condition along with those records which are in the right side table but not in the left side table.</p></li>
@@ -3847,6 +3842,11 @@ LIMIT 10
 <div class="section" id="performing-aggregations">
 <h2>Performing Aggregations<a class="headerlink" href="#performing-aggregations" title="Permalink to this headline">¶</a></h2>
 <p>Let us understand how to aggregate the data.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/mIPF0ENiKiE?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+</div></div>
+</div>
 <ul class="simple">
 <li><p>We can perform global aggregations as well as aggregations by key.</p></li>
 <li><p>Global Aggregations</p>
@@ -4710,6 +4710,11 @@ SELECT count(1) FROM (
 <div class="section" id="sorting-data">
 <h2>Sorting Data<a class="headerlink" href="#sorting-data" title="Permalink to this headline">¶</a></h2>
 <p>Let us understand how to sort the data using <strong>SQL</strong>.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/kI-y9WNhiv8?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+</div></div>
+</div>
 <ul class="simple">
 <li><p>We typically perform sorting as final step.</p></li>
 <li><p>Sorting can be done either by using one field or multiple fields. Sorting by multiple fields is also known as composite sorting.</p></li>
@@ -5692,6 +5697,11 @@ ORDER BY
 <div class="section" id="solution-daily-product-revenue">
 <h2>Solution – Daily Product Revenue<a class="headerlink" href="#solution-daily-product-revenue" title="Permalink to this headline">¶</a></h2>
 <p>Let us review the Final Solution for our problem statement <strong>daily_product_revenue</strong>.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/Gx56dPQX4C4?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+</div></div>
+</div>
 <ul class="simple">
 <li><p>Prepare tables</p>
 <ul>
@@ -5967,6 +5977,58 @@ SELECT count(1) FROM (
 <div class="section" id="exercises-basic-sql-queries">
 <h2>Exercises - Basic SQL Queries<a class="headerlink" href="#exercises-basic-sql-queries" title="Permalink to this headline">¶</a></h2>
 <p>Here are some of the exercises for which you can write SQL queries to self evaluate.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/auRIHsKXV6o?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+</div></div>
+</div>
+<ul class="simple">
+<li><p>Ensure that we have required database and user for retail data. <strong>We might provide the database as part of our labs.</strong> Here are the instructions to use <code class="docutils literal notranslate"><span class="pre">psql</span></code> for setting up the required tables.</p></li>
+</ul>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>psql -U postgres -h localhost -p <span class="m">5432</span> -W
+</pre></div>
+</div>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">DATABASE</span> <span class="n">itversity_retail_db</span><span class="p">;</span>
+<span class="k">CREATE</span> <span class="k">USER</span> <span class="n">itversity_retail_user</span> <span class="k">WITH</span> <span class="k">ENCRYPTED</span> <span class="n">PASSWORD</span> <span class="s1">&#39;retail_password&#39;</span><span class="p">;</span>
+<span class="k">GRANT</span> <span class="k">ALL</span> <span class="k">ON</span> <span class="k">DATABASE</span> <span class="n">itversity_retail_db</span> <span class="k">TO</span> <span class="n">itversity_retail_user</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Create Tables using the script provided. You can either use <code class="docutils literal notranslate"><span class="pre">psql</span></code> or <strong>SQL Workbench</strong>.</p></li>
+</ul>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>psql -U itversity_retail_user <span class="se">\</span>
+  -h localhost <span class="se">\</span>
+  -p <span class="m">5432</span> <span class="se">\</span>
+  -d itversity_retail_db <span class="se">\</span>
+  -W
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>You can drop the existing tables.</p></li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">order_items</span><span class="p">;</span>
+<span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">orders</span><span class="p">;</span>
+<span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">customers</span><span class="p">;</span>
+<span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">products</span><span class="p">;</span>
+<span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">categories</span><span class="p">;</span>
+<span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">departments</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Once the tables are dropped you can run below script to create the tables for the purpose of exercises.</p></li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span>\i /data/retail_db/create_db_tables_pg.sql
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Data shall be loaded using the script provided.</p></li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span>\i /data/retail_db/load_db_tables_pg.sql
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Run queries to validate we have data in all the 3 tables.</p></li>
+</ul>
 <div class="section" id="exercise-1-customer-order-count">
 <h3>Exercise 1 - Customer order count<a class="headerlink" href="#exercise-1-customer-order-count" title="Permalink to this headline">¶</a></h3>
 <p>Get order count per customer for the month of 2014 January.</p>

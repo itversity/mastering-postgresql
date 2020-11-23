@@ -137,37 +137,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="mastering_postgresql_exercises.html">
-   Getting Started
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="mastering_postgresql_exercises.html#dml-or-crud-operations">
-   DML or CRUD Operations
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="mastering_postgresql_exercises.html#basic-sql-queries">
-   Basic SQL Queries
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="mastering_postgresql_exercises.html#managing-database-objects">
-   Managing Database Objects
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="mastering_postgresql_exercises.html#partitioning-tables">
-   Partitioning Tables
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="mastering_postgresql_exercises.html#pre-defined-functions">
-   Pre-Defined Functions
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="mastering_postgresql_exercises.html#analytics-functions">
-   Analytics Functions
+   Exercises - Mastering Postgresql
   </a>
  </li>
 </ul>
@@ -455,10 +425,21 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The sql extension is already loaded. To reload it, use:
+  %reload_ext sql
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env: DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
 </pre></div>
 </div>
 </div>
@@ -469,6 +450,937 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>specific_catalog</th>
+        <th>specific_schema</th>
+        <th>specific_name</th>
+        <th>routine_catalog</th>
+        <th>routine_schema</th>
+        <th>routine_name</th>
+        <th>routine_type</th>
+        <th>module_catalog</th>
+        <th>module_schema</th>
+        <th>module_name</th>
+        <th>udt_catalog</th>
+        <th>udt_schema</th>
+        <th>udt_name</th>
+        <th>data_type</th>
+        <th>character_maximum_length</th>
+        <th>character_octet_length</th>
+        <th>character_set_catalog</th>
+        <th>character_set_schema</th>
+        <th>character_set_name</th>
+        <th>collation_catalog</th>
+        <th>collation_schema</th>
+        <th>collation_name</th>
+        <th>numeric_precision</th>
+        <th>numeric_precision_radix</th>
+        <th>numeric_scale</th>
+        <th>datetime_precision</th>
+        <th>interval_type</th>
+        <th>interval_precision</th>
+        <th>type_udt_catalog</th>
+        <th>type_udt_schema</th>
+        <th>type_udt_name</th>
+        <th>scope_catalog</th>
+        <th>scope_schema</th>
+        <th>scope_name</th>
+        <th>maximum_cardinality</th>
+        <th>dtd_identifier</th>
+        <th>routine_body</th>
+        <th>routine_definition</th>
+        <th>external_name</th>
+        <th>external_language</th>
+        <th>parameter_style</th>
+        <th>is_deterministic</th>
+        <th>sql_data_access</th>
+        <th>is_null_call</th>
+        <th>sql_path</th>
+        <th>schema_level_routine</th>
+        <th>max_dynamic_result_sets</th>
+        <th>is_user_defined_cast</th>
+        <th>is_implicitly_invocable</th>
+        <th>security_type</th>
+        <th>to_sql_specific_catalog</th>
+        <th>to_sql_specific_schema</th>
+        <th>to_sql_specific_name</th>
+        <th>as_locator</th>
+        <th>created</th>
+        <th>last_altered</th>
+        <th>new_savepoint_level</th>
+        <th>is_udt_dependent</th>
+        <th>result_cast_from_data_type</th>
+        <th>result_cast_as_locator</th>
+        <th>result_cast_char_max_length</th>
+        <th>result_cast_char_octet_length</th>
+        <th>result_cast_char_set_catalog</th>
+        <th>result_cast_char_set_schema</th>
+        <th>result_cast_char_set_name</th>
+        <th>result_cast_collation_catalog</th>
+        <th>result_cast_collation_schema</th>
+        <th>result_cast_collation_name</th>
+        <th>result_cast_numeric_precision</th>
+        <th>result_cast_numeric_precision_radix</th>
+        <th>result_cast_numeric_scale</th>
+        <th>result_cast_datetime_precision</th>
+        <th>result_cast_interval_type</th>
+        <th>result_cast_interval_precision</th>
+        <th>result_cast_type_udt_catalog</th>
+        <th>result_cast_type_udt_schema</th>
+        <th>result_cast_type_udt_name</th>
+        <th>result_cast_scope_catalog</th>
+        <th>result_cast_scope_schema</th>
+        <th>result_cast_scope_name</th>
+        <th>result_cast_maximum_cardinality</th>
+        <th>result_cast_dtd_identifier</th>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>boolin_1242</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>boolin</td>
+        <td>FUNCTION</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>boolean</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>bool</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>0</td>
+        <td>EXTERNAL</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INTERNAL</td>
+        <td>GENERAL</td>
+        <td>YES</td>
+        <td>MODIFIES</td>
+        <td>YES</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>0</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INVOKER</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>boolout_1243</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>boolout</td>
+        <td>FUNCTION</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>cstring</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>cstring</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>0</td>
+        <td>EXTERNAL</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INTERNAL</td>
+        <td>GENERAL</td>
+        <td>YES</td>
+        <td>MODIFIES</td>
+        <td>YES</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>0</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INVOKER</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>byteain_1244</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>byteain</td>
+        <td>FUNCTION</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>bytea</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>bytea</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>0</td>
+        <td>EXTERNAL</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INTERNAL</td>
+        <td>GENERAL</td>
+        <td>YES</td>
+        <td>MODIFIES</td>
+        <td>YES</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>0</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INVOKER</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>byteaout_31</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>byteaout</td>
+        <td>FUNCTION</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>cstring</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>cstring</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>0</td>
+        <td>EXTERNAL</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INTERNAL</td>
+        <td>GENERAL</td>
+        <td>YES</td>
+        <td>MODIFIES</td>
+        <td>YES</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>0</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INVOKER</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>charin_1245</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>charin</td>
+        <td>FUNCTION</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>&quot;char&quot;</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>char</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>0</td>
+        <td>EXTERNAL</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INTERNAL</td>
+        <td>GENERAL</td>
+        <td>YES</td>
+        <td>MODIFIES</td>
+        <td>YES</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>0</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INVOKER</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>charout_33</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>charout</td>
+        <td>FUNCTION</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>cstring</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>cstring</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>0</td>
+        <td>EXTERNAL</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INTERNAL</td>
+        <td>GENERAL</td>
+        <td>YES</td>
+        <td>MODIFIES</td>
+        <td>YES</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>0</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INVOKER</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>namein_34</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>namein</td>
+        <td>FUNCTION</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>name</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>name</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>0</td>
+        <td>EXTERNAL</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INTERNAL</td>
+        <td>GENERAL</td>
+        <td>YES</td>
+        <td>MODIFIES</td>
+        <td>YES</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>0</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INVOKER</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>nameout_35</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>nameout</td>
+        <td>FUNCTION</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>cstring</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>cstring</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>0</td>
+        <td>EXTERNAL</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INTERNAL</td>
+        <td>GENERAL</td>
+        <td>YES</td>
+        <td>MODIFIES</td>
+        <td>YES</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>0</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INVOKER</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>int2in_38</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>int2in</td>
+        <td>FUNCTION</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>smallint</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>int2</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>0</td>
+        <td>EXTERNAL</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INTERNAL</td>
+        <td>GENERAL</td>
+        <td>YES</td>
+        <td>MODIFIES</td>
+        <td>YES</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>0</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INVOKER</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>int2out_39</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>int2out</td>
+        <td>FUNCTION</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>cstring</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_retail_db</td>
+        <td>pg_catalog</td>
+        <td>cstring</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>0</td>
+        <td>EXTERNAL</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INTERNAL</td>
+        <td>GENERAL</td>
+        <td>YES</td>
+        <td>MODIFIES</td>
+        <td>YES</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>0</td>
+        <td>None</td>
+        <td>None</td>
+        <td>INVOKER</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1123,7 +2035,7 @@ FROM
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5433/itversity_retail_db
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
 </pre></div>
 </div>
 </div>
@@ -1190,7 +2102,7 @@ SELECT substring(current_date::varchar, 1, 4) AS current_date
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5433/itversity_retail_db
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
 </pre></div>
 </div>
 </div>
@@ -1347,7 +2259,7 @@ SELECT current_timestamp - &#39;2019-03-30&#39;::date AS result
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5433/itversity_retail_db
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
 </pre></div>
 </div>
 </div>
@@ -1411,7 +2323,7 @@ SELECT date_trunc(&#39;HOUR&#39;, current_timestamp) AS hour_beginning
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5433/itversity_retail_db
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
 </pre></div>
 </div>
 </div>
@@ -1657,10 +2569,10 @@ SELECT to_char(current_timestamp, &#39;yyyy/MM/dd&#39;) AS current_date
 </div>
 <div class="section" id="extracting-information-extract">
 <h3>Extracting information - extract<a class="headerlink" href="#extracting-information-extract" title="Permalink to this headline">¶</a></h3>
-<p>We can get year, month, day etc from date or timestamp using <code class="docutils literal notranslate"><span class="pre">extract</span></code> function.</p>
+<p>We can get year, month, day etc from date or timestamp using <code class="docutils literal notranslate"><span class="pre">extract</span></code> function. For almost all these scenarios such as getting year, month, day etc we can use <code class="docutils literal notranslate"><span class="pre">to_char</span></code> as well.</p>
 <ul class="simple">
-<li><p>Let us see the usage of <code class="docutils literal notranslate"><span class="pre">extract</span></code> such as year, quarter, month, week, day, hour etc.</p></li>
-<li><p>We can also use <code class="docutils literal notranslate"><span class="pre">date_part</span></code> in place of <code class="docutils literal notranslate"><span class="pre">extract</span></code>. However there is subtle difference in the syntax.</p></li>
+<li><p>Let us see the usage of <code class="docutils literal notranslate"><span class="pre">extract</span></code> to get information such as year, quarter, month, week, day, hour etc.</p></li>
+<li><p>We can also use <code class="docutils literal notranslate"><span class="pre">date_part</span></code> in place of <code class="docutils literal notranslate"><span class="pre">extract</span></code>. However there is subtle difference between them with respect to the syntax.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1671,7 +2583,7 @@ SELECT to_char(current_timestamp, &#39;yyyy/MM/dd&#39;) AS current_date
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5433/itversity_retail_db
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
 </pre></div>
 </div>
 </div>
@@ -1699,6 +2611,15 @@ SELECT date_part(&#39;century&#39;, current_date) AS century
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
 SELECT extract(decade FROM current_date) AS decade
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT date_part(&#39;decade&#39;, current_date) AS century
 </pre></div>
 </div>
 </div>
@@ -1807,12 +2728,11 @@ SELECT extract(milliseconds FROM current_timestamp) AS millis
 <h3>Dealing with Unix Timestamp<a class="headerlink" href="#dealing-with-unix-timestamp" title="Permalink to this headline">¶</a></h3>
 <p>Let us go through the functions that can be used to deal with Unix Timestamp.</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">from_unixtime</span></code> can be used to convert Unix epoch to regular timestamp.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">unix_timestamp</span></code> or <code class="docutils literal notranslate"><span class="pre">to_unix_timestamp</span></code> can be used to convert timestamp to Unix epoch.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">extract</span></code> with <code class="docutils literal notranslate"><span class="pre">epoch</span></code> can be used to convert Unix epoch to regular timestamp. We can also use <code class="docutils literal notranslate"><span class="pre">date_part</span></code>;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">to_timestamp</span></code> can be used to convert timestamp to Unix epoch.</p></li>
 <li><p>We can get Unix epoch or Unix timestamp by running <code class="docutils literal notranslate"><span class="pre">date</span> <span class="pre">'+%s'</span></code> in Unix/Linux terminal</p></li>
-<li><p>We can DESCRIBE on the above functions to get details about them.</p></li>
 </ul>
-<p>Let us sww how we can use functions such as <code class="docutils literal notranslate"><span class="pre">from_unixtime</span></code>, <code class="docutils literal notranslate"><span class="pre">unix_timestamp</span></code> or <code class="docutils literal notranslate"><span class="pre">to_unix_timestamp</span></code> to convert between timestamp and Unix timestamp or epoch.</p>
+<p>Let us sww how we can use functions such as <code class="docutils literal notranslate"><span class="pre">extract</span></code> or <code class="docutils literal notranslate"><span class="pre">to_timestamp</span></code> to convert between timestamp and Unix timestamp or epoch.</p>
 <ul class="simple">
 <li><p>We can unix epoch in Unix/Linux terminal using <code class="docutils literal notranslate"><span class="pre">date</span> <span class="pre">'+%s'</span></code></p></li>
 </ul>
@@ -1825,7 +2745,7 @@ SELECT extract(milliseconds FROM current_timestamp) AS millis
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5433/itversity_retail_db
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
 </pre></div>
 </div>
 </div>
@@ -1835,6 +2755,15 @@ SELECT extract(milliseconds FROM current_timestamp) AS millis
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
 SELECT extract(epoch FROM current_date) AS date_epoch
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT date_part(&#39;epoch&#39;, current_date) AS date_epoch
 </pre></div>
 </div>
 </div>
@@ -1882,14 +2811,13 @@ SELECT to_char(to_timestamp(1556662731), &#39;yyyyMM&#39;)::int AS yyyyMM_from_e
 <p>Here are some of the numeric functions we might use quite often.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">abs</span></code> - always return positive number</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">sum</span></code>, <code class="docutils literal notranslate"><span class="pre">avg</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">round</span></code> - rounds off to specified precision</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">ceil</span></code>, <code class="docutils literal notranslate"><span class="pre">floor</span></code> - always return integer.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">greatest</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sum</span></code>, <code class="docutils literal notranslate"><span class="pre">avg</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">min</span></code>, <code class="docutils literal notranslate"><span class="pre">max</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">random</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">pow</span></code>, <code class="docutils literal notranslate"><span class="pre">sqrt</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">cumedist</span></code>, <code class="docutils literal notranslate"><span class="pre">stddev</span></code>, <code class="docutils literal notranslate"><span class="pre">variance</span></code></p></li>
 </ul>
 <p>Some of the functions highlighted are aggregate functions, eg: <code class="docutils literal notranslate"><span class="pre">sum</span></code>, <code class="docutils literal notranslate"><span class="pre">avg</span></code>, <code class="docutils literal notranslate"><span class="pre">min</span></code>, <code class="docutils literal notranslate"><span class="pre">max</span></code> etc.</p>
 <div class="cell docutils container">
@@ -1901,7 +2829,7 @@ SELECT to_char(to_timestamp(1556662731), &#39;yyyyMM&#39;)::int AS yyyyMM_from_e
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5433/itversity_retail_db
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
 </pre></div>
 </div>
 </div>
@@ -1930,9 +2858,10 @@ WHERE order_item_order_id = 2
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
 SELECT order_item_order_id, 
-    sum(order_item_subtotal) AS order_revenue_avg 
+    sum(order_item_subtotal) AS order_revenue_sum
 FROM order_items
 GROUP BY order_item_order_id
+ORDER BY order_item_order_id
 LIMIT 10
 </pre></div>
 </div>
@@ -1966,7 +2895,7 @@ SELECT
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
-SELECT round(avg(order_item_subtotal::numeric), 2) AS order_revenue_avg 
+SELECT round(avg(order_item_subtotal)::numeric, 2) AS order_revenue_avg 
 FROM order_items
 WHERE order_item_order_id = 2
 </pre></div>
@@ -1978,7 +2907,7 @@ WHERE order_item_order_id = 2
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
 SELECT order_item_order_id, 
-    round(sum(order_item_subtotal::numeric), 2) AS order_revenue_avg 
+    round(sum(order_item_subtotal)::numeric, 2) AS order_revenue_avg 
 FROM order_items
 GROUP BY order_item_order_id
 LIMIT 10
@@ -1990,7 +2919,7 @@ LIMIT 10
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
-SELECT greatest(10, 11)
+SELECT greatest(10, 11, 10.5)
 </pre></div>
 </div>
 </div>
@@ -2000,7 +2929,7 @@ SELECT greatest(10, 11)
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
 SELECT order_item_order_id, 
-    round(sum(order_item_subtotal)::numeric, 2) AS order_revenue_avg,
+    round(sum(order_item_subtotal)::numeric, 2) AS order_revenue_sum,
     min(order_item_subtotal) AS order_item_subtotal_min,
     max(order_item_subtotal) AS order_item_subtotal_max 
 FROM order_items
@@ -2019,7 +2948,7 @@ LIMIT 10
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT (random() * 100)::int
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT (random() * 100)::int + 1
 </pre></div>
 </div>
 </div>
@@ -2044,7 +2973,7 @@ LIMIT 10
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5433/itversity_retail_db
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
 </pre></div>
 </div>
 </div>
@@ -2089,7 +3018,43 @@ SELECT split_part(&#39;2020-09-30&#39;, &#39;-&#39;, 2)::int AS month
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
-SELECT cast(&#39;0.04&#39; AS FLOAT) AS result
+SELECT to_char(&#39;2020-09-30&#39;::date, &#39;MM&#39;) AS month
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT to_char(&#39;2020-09-30&#39;::date, &#39;MM&#39;)::int AS month
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT to_char(current_date, &#39;MM&#39;)::int AS month
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT cast(&#39;0.04000&#39; AS FLOAT) AS result
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT &#39;0.04000&#39;::float AS result
 </pre></div>
 </div>
 </div>
@@ -2103,24 +3068,29 @@ SELECT cast(&#39;09&#39; AS INT) AS result
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT &#39;09&#39;::int AS result
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 <div class="section" id="handling-null-values">
 <h2>Handling NULL Values<a class="headerlink" href="#handling-null-values" title="Permalink to this headline">¶</a></h2>
 <p>Let us understand how to handle nulls.</p>
 <ul class="simple">
 <li><p>By default if we try to add or concatenate null to another column or expression or literal, it will return null.</p></li>
-<li><p>If we want to replace null with some default value, we can use <code class="docutils literal notranslate"><span class="pre">nvl</span></code>.</p>
+<li><p>If we want to replace null with some default value, we can use <code class="docutils literal notranslate"><span class="pre">coalesce</span></code>.</p>
 <ul>
 <li><p>Replace commission_pct with 0 if it is null.</p></li>
-<li><p>We can also use <code class="docutils literal notranslate"><span class="pre">coalesce</span></code> in the place of <code class="docutils literal notranslate"><span class="pre">nvl</span></code>.</p></li>
-</ul>
-</li>
-<li><p><code class="docutils literal notranslate"><span class="pre">nvl2</span></code> can be used to perform one action when the value is not null and some other action when the value is null.</p>
-<ul>
-<li><p>We want to increase commission_pct by 1 if it is not null and set commission_pct to 2 if it is null.</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">coalesce</span></code> returns first not null value if we pass multiple arguments to it.</p></li>
+<li><p>We have a function called as <code class="docutils literal notranslate"><span class="pre">nullif</span></code>. If the first argument is equal to second argument, it returns null. It is typically used when we compare against 2 columns where nulls are also involved.</p></li>
+<li><p>You might have seen functions like <code class="docutils literal notranslate"><span class="pre">nvl</span></code>, <code class="docutils literal notranslate"><span class="pre">nvl2</span></code> etc with respect to databases like Oracle. Postgres does not support them.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2131,7 +3101,7 @@ SELECT cast(&#39;09&#39; AS INT) AS result
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5433/itversity_retail_db
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
 </pre></div>
 </div>
 </div>
@@ -2159,6 +3129,13 @@ SELECT coalesce(1, 0) AS result
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
 SELECT coalesce(NULL, NULL, 2, NULL, 3) AS result
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> DROP TABLE IF EXISTS sales
 </pre></div>
 </div>
 </div>
@@ -2215,17 +3192,6 @@ FROM sales AS s
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
 SELECT s.*, 
-    nvl(commission_pct, 0) AS commission_pct
-FROM sales AS s
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
-
-SELECT s.*, 
     coalesce(commission_pct, 0) AS commission_pct
 FROM sales AS s
 </pre></div>
@@ -2239,6 +3205,24 @@ FROM sales AS s
 SELECT s.*, 
     round((sales_amount * coalesce(commission_pct, 0) / 100)::numeric, 2) AS commission_amount
 FROM sales AS s
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT nullif(1, 0)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT nullif(1, 1)
 </pre></div>
 </div>
 </div>
@@ -2265,10 +3249,37 @@ FROM sales AS s
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The sql extension is already loaded. To reload it, use:
+  %reload_ext sql
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5433/itversity_retail_db
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env: DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> DROP TABLE IF EXISTS sales
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
 </pre></div>
 </div>
 </div>
@@ -2277,10 +3288,196 @@ FROM sales AS s
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
-SELECT DISTINCT order_status FROM orders
+CREATE TABLE IF NOT EXISTS sales(
+    sales_person_id INT,
+    sales_amount FLOAT,
+    commission_pct INT
+)
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+INSERT INTO sales VALUES
+    (1, 1000, 10),
+    (2, 1500, 8),
+    (3, 500, NULL),
+    (4, 800, 5),
+    (5, 250, NULL)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+5 rows affected.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT * FROM sales
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+5 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>sales_person_id</th>
+        <th>sales_amount</th>
+        <th>commission_pct</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>1000.0</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>1500.0</td>
+        <td>8</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>500.0</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>800.0</td>
+        <td>5</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>250.0</td>
+        <td>None</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT s.*,
+    CASE WHEN commission_pct IS NOT NULL 
+        THEN round((sales_amount * commission_pct / 100)::numeric, 2)
+    ELSE 0
+    END AS commission_amount
+FROM sales s
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+5 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>sales_person_id</th>
+        <th>sales_amount</th>
+        <th>commission_pct</th>
+        <th>commission_amount</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>1000.0</td>
+        <td>10</td>
+        <td>100.00</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>1500.0</td>
+        <td>8</td>
+        <td>120.00</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>500.0</td>
+        <td>None</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>800.0</td>
+        <td>5</td>
+        <td>40.00</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>250.0</td>
+        <td>None</td>
+        <td>0</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT DISTINCT order_status FROM orders
+ORDER BY order_status
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+9 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_status</th>
+    </tr>
+    <tr>
+        <td>CANCELED</td>
+    </tr>
+    <tr>
+        <td>CLOSED</td>
+    </tr>
+    <tr>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>ON_HOLD</td>
+    </tr>
+    <tr>
+        <td>PAYMENT_REVIEW</td>
+    </tr>
+    <tr>
+        <td>PENDING</td>
+    </tr>
+    <tr>
+        <td>PENDING_PAYMENT</td>
+    </tr>
+    <tr>
+        <td>PROCESSING</td>
+    </tr>
+    <tr>
+        <td>SUSPECTED_FRAUD</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2294,6 +3491,90 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_id</th>
+        <th>order_date</th>
+        <th>order_customer_id</th>
+        <th>order_status</th>
+        <th>updated_order_status</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>11599</td>
+        <td>CLOSED</td>
+        <td>COMPLETED</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>256</td>
+        <td>PENDING_PAYMENT</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>12111</td>
+        <td>COMPLETE</td>
+        <td>COMPLETED</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>8827</td>
+        <td>CLOSED</td>
+        <td>COMPLETED</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>11318</td>
+        <td>COMPLETE</td>
+        <td>COMPLETED</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>7130</td>
+        <td>COMPLETE</td>
+        <td>COMPLETED</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>4530</td>
+        <td>COMPLETE</td>
+        <td>COMPLETED</td>
+    </tr>
+    <tr>
+        <td>8</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>2911</td>
+        <td>PROCESSING</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>9</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>5657</td>
+        <td>PENDING_PAYMENT</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>10</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>5648</td>
+        <td>PENDING_PAYMENT</td>
+        <td>None</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2308,6 +3589,90 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_id</th>
+        <th>order_date</th>
+        <th>order_customer_id</th>
+        <th>order_status</th>
+        <th>updated_order_status</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>11599</td>
+        <td>CLOSED</td>
+        <td>COMPLETED</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>256</td>
+        <td>PENDING_PAYMENT</td>
+        <td>PENDING_PAYMENT</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>12111</td>
+        <td>COMPLETE</td>
+        <td>COMPLETED</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>8827</td>
+        <td>CLOSED</td>
+        <td>COMPLETED</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>11318</td>
+        <td>COMPLETE</td>
+        <td>COMPLETED</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>7130</td>
+        <td>COMPLETE</td>
+        <td>COMPLETED</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>4530</td>
+        <td>COMPLETE</td>
+        <td>COMPLETED</td>
+    </tr>
+    <tr>
+        <td>8</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>2911</td>
+        <td>PROCESSING</td>
+        <td>PROCESSING</td>
+    </tr>
+    <tr>
+        <td>9</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>5657</td>
+        <td>PENDING_PAYMENT</td>
+        <td>PENDING_PAYMENT</td>
+    </tr>
+    <tr>
+        <td>10</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>5648</td>
+        <td>PENDING_PAYMENT</td>
+        <td>PENDING_PAYMENT</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2316,7 +3681,7 @@ LIMIT 10
 SELECT o.*,
     CASE 
         WHEN order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;) THEN &#39;COMPLETED&#39;
-        WHEN order_status LIKE &#39;%PENDING%&#39; THEN &#39;PENDING&#39;
+        WHEN order_status ~ &#39;PENDING&#39; THEN &#39;PENDING&#39;
         ELSE &#39;OTHER&#39;
     END AS updated_order_status
 FROM orders o
@@ -2324,6 +3689,90 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_id</th>
+        <th>order_date</th>
+        <th>order_customer_id</th>
+        <th>order_status</th>
+        <th>updated_order_status</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>11599</td>
+        <td>CLOSED</td>
+        <td>COMPLETED</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>256</td>
+        <td>PENDING_PAYMENT</td>
+        <td>PENDING</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>12111</td>
+        <td>COMPLETE</td>
+        <td>COMPLETED</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>8827</td>
+        <td>CLOSED</td>
+        <td>COMPLETED</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>11318</td>
+        <td>COMPLETE</td>
+        <td>COMPLETED</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>7130</td>
+        <td>COMPLETE</td>
+        <td>COMPLETED</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>4530</td>
+        <td>COMPLETE</td>
+        <td>COMPLETED</td>
+    </tr>
+    <tr>
+        <td>8</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>2911</td>
+        <td>PROCESSING</td>
+        <td>OTHER</td>
+    </tr>
+    <tr>
+        <td>9</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>5657</td>
+        <td>PENDING_PAYMENT</td>
+        <td>PENDING</td>
+    </tr>
+    <tr>
+        <td>10</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>5648</td>
+        <td>PENDING_PAYMENT</td>
+        <td>PENDING</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2341,6 +3790,90 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_id</th>
+        <th>order_date</th>
+        <th>order_customer_id</th>
+        <th>order_status</th>
+        <th>updated_order_status</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>11599</td>
+        <td>CLOSED</td>
+        <td>COMPLETED</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>256</td>
+        <td>PENDING_PAYMENT</td>
+        <td>PENDING</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>12111</td>
+        <td>COMPLETE</td>
+        <td>COMPLETED</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>8827</td>
+        <td>CLOSED</td>
+        <td>COMPLETED</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>11318</td>
+        <td>COMPLETE</td>
+        <td>COMPLETED</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>7130</td>
+        <td>COMPLETE</td>
+        <td>COMPLETED</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>4530</td>
+        <td>COMPLETE</td>
+        <td>COMPLETED</td>
+    </tr>
+    <tr>
+        <td>8</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>2911</td>
+        <td>PROCESSING</td>
+        <td>PENDING</td>
+    </tr>
+    <tr>
+        <td>9</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>5657</td>
+        <td>PENDING_PAYMENT</td>
+        <td>PENDING</td>
+    </tr>
+    <tr>
+        <td>10</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>5648</td>
+        <td>PENDING_PAYMENT</td>
+        <td>PENDING</td>
+    </tr>
+</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2359,6 +3892,53 @@ LIMIT 10
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+9 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_status</th>
+        <th>updated_order_status</th>
+    </tr>
+    <tr>
+        <td>CLOSED</td>
+        <td>COMPLETED</td>
+    </tr>
+    <tr>
+        <td>COMPLETE</td>
+        <td>COMPLETED</td>
+    </tr>
+    <tr>
+        <td>SUSPECTED_FRAUD</td>
+        <td>OTHER</td>
+    </tr>
+    <tr>
+        <td>CANCELED</td>
+        <td>OTHER</td>
+    </tr>
+    <tr>
+        <td>ON_HOLD</td>
+        <td>OTHER</td>
+    </tr>
+    <tr>
+        <td>PAYMENT_REVIEW</td>
+        <td>PENDING</td>
+    </tr>
+    <tr>
+        <td>PENDING_PAYMENT</td>
+        <td>PENDING</td>
+    </tr>
+    <tr>
+        <td>PENDING</td>
+        <td>PENDING</td>
+    </tr>
+    <tr>
+        <td>PROCESSING</td>
+        <td>PENDING</td>
+    </tr>
+</table></div></div>
 </div>
 </div>
 <div class="section" id="exercises-pre-defined-functions">
