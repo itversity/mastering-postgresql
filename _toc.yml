@@ -1,11 +1,29 @@
 - file: mastering-postgresql
+
+- file: 01_getting_started/01_getting_started
   sections:
-    - file: 01_getting_started
-    - file: 02_dml_or_crud_operations
-    - file: 03_writing_basic_sql_queries
-    - file: 04_creating_tables_and_indexes
-    - file: 05_partitioning_tables_and_indexes
-    - file: 06_predefined_functions
-    - file: 07_writing_advanced_sql_queries
-    - file: 08_query_performance_tuning
-    - file: mastering_postgresql_exercises
+    -file: 01_getting_started/02_connecting_to_database
+    -file: 01_getting_started/03_using_psql
+    -file: 01_getting_started/04_setup_postgres_using_docker
+    -file: 01_getting_started/05_setup_sql_workbench
+    -file: 01_getting_started/06_sql_workbench_and_postgres
+    -file: 01_getting_started/07_sql_workbench_features
+    -file: 01_getting_started/08_data_loading_utilities
+    -file: 01_getting_started/09_loading_data_postgres_in_docker
+    -file: 01_getting_started/10_exercise_loading_data
+
+- file: 02_dml_or_crud_operations
+
+- file: 03_writing_basic_sql_queries
+
+- file: 04_creating_tables_and_indexes
+
+- file: 05_partitioning_tables_and_indexes
+
+- file: 06_predefined_functions
+
+- file: 07_writing_advanced_sql_queries
+
+- file: 08_query_performance_tuning
+
+- file: mastering_postgresql_exercises
