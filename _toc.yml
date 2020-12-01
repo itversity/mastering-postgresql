@@ -12,17 +12,17 @@
     -file: 01_getting_started/09_loading_data_postgres_in_docker
     -file: 01_getting_started/10_exercise_loading_data
 
-- file: 02_dml_or_crud_operations
+- file: 02_dml_or_crud_operations/02_dml_or_crud_operations
 
-- file: 03_writing_basic_sql_queries
+- file: 03_writing_basic_sql_queries/03_writing_basic_sql_queries
 
-- file: 04_creating_tables_and_indexes
+- file: 04_creating_tables_and_indexes/04_creating_tables_and_indexes
 
-- file: 05_partitioning_tables_and_indexes
+- file: 05_partitioning_tables_and_indexes/05_partitioning_tables_and_indexes
 
-- file: 06_predefined_functions
+- file: 06_predefined_functions/06_predefined_functions
 
-- file: 07_writing_advanced_sql_queries
+- file: 07_writing_advanced_sql_queries/07_writing_advanced_sql_queries
 
 - file: 08_query_performance_tuning
 
