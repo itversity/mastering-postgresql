@@ -6782,7 +6782,28 @@ WHERE sequence_name = &#39;users_user_id_seq&#39;
 </div>
 <div class="section" id="exercise-4">
 <h3>Exercise 4<a class="headerlink" href="#exercise-4" title="Permalink to this headline">¶</a></h3>
-<p>Commands to add foreign key constraints.</p>
+<p>Add Foreign Key constraints to the tables.</p>
+<ul class="simple">
+<li><p>Validate if the tables have data violataing foreign key constraints (Hint: You can use left outer join to find rows in child table but not in parent table)</p></li>
+<li><p>Delete the data which violates the parent child relationship or foreign key relationship.</p></li>
+<li><p>Alter tables to add foreign keys as specified.</p></li>
+<li><p>Here are the relationships for your reference.</p>
+<ul>
+<li><p>orders.order_customer_id to customers.customer_id</p></li>
+<li><p>order_items.order_item_order_id to orders.order_id</p></li>
+<li><p>order_items.order_item_product_id to products.product_id</p></li>
+<li><p>products.product_category_id to categories.category_id</p></li>
+<li><p>categories.category_department_id to departments.department_id</p></li>
+</ul>
+</li>
+<li><p>Solution should contain the following:</p>
+<ul>
+<li><p>Queries for validation</p></li>
+<li><p>Delete statements to delete the data</p></li>
+<li><p>Commands to add foreign keys to the tables.</p></li>
+</ul>
+</li>
+</ul>
 </div>
 <div class="section" id="exercise-5">
 <h3>Exercise 5<a class="headerlink" href="#exercise-5" title="Permalink to this headline">¶</a></h3>
