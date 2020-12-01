@@ -1,0 +1,325 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Using psql &#8212; My Jupyter Book</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">My Jupyter Book</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mastering-postgresql.html">
+   Mastering Postgresql
+  </a>
+ </li>
+</ul>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_dml_or_crud_operations.html">
+   DML or CRUD Operations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_writing_basic_sql_queries.html">
+   Writing Basic SQL Queries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_creating_tables_and_indexes.html">
+   Creating Tables and Indexes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05_partitioning_tables_and_indexes.html">
+   Partitioning Tables and Indexes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06_predefined_functions.html">
+   Pre-Defined Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07_writing_advanced_sql_queries.html">
+   Writing Advanced SQL Queries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../08_query_performance_tuning.html">
+   Query Performance Tuning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mastering_postgresql_exercises.html">
+   Exercises - Mastering Postgresql
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/01_getting_started/03_using_psql.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/01_getting_started/03_using_psql.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="using-psql">
+<h1>Using psql<a class="headerlink" href="#using-psql" title="Permalink to this headline">¶</a></h1>
+<p>Let us understand how to use <code class="docutils literal notranslate"><span class="pre">psql</span></code> utility to perform database operations.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/-VjEtYxLZ4s?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+</div></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">psql</span></code> is command line utility to connect to the Postgres database server. It is typically used for the following by advanced Database users:</p>
+<ul>
+<li><p>Manage Databases</p></li>
+<li><p>Manage Tables</p></li>
+<li><p>Load data into tables for testing purposes</p></li>
+</ul>
+</li>
+<li><p>We need to have at least Postgres Client installed on the server from which you want to use psql to connect to Postgres Server.</p></li>
+<li><p>If you are on the server where <strong>Postgres Database Server</strong> is installed, <code class="docutils literal notranslate"><span class="pre">psql</span></code> will be automatically available.</p></li>
+<li><p>We can run <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">-u</span> <span class="pre">postgres</span> <span class="pre">psql</span> <span class="pre">-U</span> <span class="pre">postgres</span></code> from the server provided you have sudo permissions on the server. Otherwise we need to go with <code class="docutils literal notranslate"><span class="pre">psql</span> <span class="pre">-U</span> <span class="pre">postgres</span> <span class="pre">-W</span></code> which will prompt for the password.</p></li>
+<li><p><strong>postgres</strong> is the super user for the postgres server and hence typically developers will not have access to it in non development environments.</p></li>
+<li><p>As a developer, we can use following command to connect to a database setup on postgres server using user credentials.</p></li>
+</ul>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>psql  -h &lt;host_ip_or_dns_alias&gt; -d &lt;db_name&gt; -U &lt;user_name&gt; -W
+
+<span class="c1"># Here is the example to connect to itversity_sms_db using itversity_sms_user</span>
+psql -h localhost -p <span class="m">5432</span> -d itversity_sms_db -U itversity_sms_user -W
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>We typically use <code class="docutils literal notranslate"><span class="pre">psql</span></code> to troubleshoot the issues in non development servers. IDEs such as <strong>SQL Alchemy</strong> might be better for regular usage as part of development and unit testing process.</p></li>
+<li><p>For this course, we will be primarily using Jupyter based environment for practice.</p></li>
+<li><p>However, we will go through some of the important commands to get comfortable with <code class="docutils literal notranslate"><span class="pre">psql</span></code>.</p>
+<ul>
+<li><p>Listing Databases - <code class="docutils literal notranslate"><span class="pre">\l</span></code></p></li>
+<li><p>Switching to a Database - <code class="docutils literal notranslate"><span class="pre">\c</span> <span class="pre">&lt;DATABASE_NAME&gt;</span></code></p></li>
+<li><p>Get help for <code class="docutils literal notranslate"><span class="pre">psql</span></code> - <code class="docutils literal notranslate"><span class="pre">\?</span></code></p></li>
+<li><p>Listing tables - <code class="docutils literal notranslate"><span class="pre">\d</span></code></p></li>
+<li><p>Create table - <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">TABLE</span> <span class="pre">t</span> <span class="pre">(i</span> <span class="pre">SERIAL</span> <span class="pre">PRIMARY</span> <span class="pre">KEY)</span></code></p></li>
+<li><p>Get details related to a table - <code class="docutils literal notranslate"><span class="pre">\d</span> <span class="pre">&lt;table_name&gt;</span></code></p></li>
+<li><p>Running Scripts - <code class="docutils literal notranslate"><span class="pre">\i</span> <span class="pre">&lt;SCRIPT_PATH&gt;</span></code></p></li>
+<li><p>You will go through some of the commands over a period of time.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./01_getting_started"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>
