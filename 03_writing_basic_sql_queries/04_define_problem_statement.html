@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Connecting to Database &#8212; My Jupyter Book</title>
+    <title>Define Problem Statement – Daily Product Revenue &#8212; My Jupyter Book</title>
     
   <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -55,8 +55,6 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Using psql" href="03_using_psql.html" />
-    <link rel="prev" title="Getting Started" href="01_getting_started.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -94,58 +92,11 @@
   </a>
  </li>
 </ul>
-<ul class="current nav sidenav_l1">
- <li class="toctree-l1 current active">
-  <a class="reference internal" href="01_getting_started.html">
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_getting_started/01_getting_started.html">
    Getting Started
   </a>
-  <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Connecting to Database
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="03_using_psql.html">
-     Using psql
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="04_setup_postgres_using_docker.html">
-     Setup Postgres using Docker
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="05_setup_sql_workbench.html">
-     Setup SQL Workbench
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="06_sql_workbench_and_postgres.html">
-     SQL Workbench and Postgres
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="07_sql_workbench_features.html">
-     SQL Workbench Features
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="08_data_loading_utilities.html">
-     Data Loading Utilities
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="09_loading_data_postgres_in_docker.html">
-     Loading Data - Docker
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="10_exercise_loading_data.html">
-     Exercise - Loading Data
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../02_dml_or_crud_operations/02_dml_or_crud_operations.html">
@@ -153,7 +104,7 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../03_writing_basic_sql_queries/03_writing_basic_sql_queries.html">
+  <a class="reference internal" href="03_writing_basic_sql_queries.html">
    Writing Basic SQL Queries
   </a>
  </li>
@@ -224,7 +175,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/01_getting_started/02_connecting_to_database.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/03_writing_basic_sql_queries/04_define_problem_statement.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -249,7 +200,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/01_getting_started/02_connecting_to_database.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/03_writing_basic_sql_queries/04_define_problem_statement.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -273,47 +224,63 @@
         
               <div>
                 
-  <div class="section" id="connecting-to-database">
-<h1>Connecting to Database<a class="headerlink" href="#connecting-to-database" title="Permalink to this headline">¶</a></h1>
-<p>We will be using JupyterHub based environment to master Postgresql. Let us go through the steps involved to get started using JupyterHub environment.</p>
+  <div class="section" id="define-problem-statement-daily-product-revenue">
+<h1>Define Problem Statement – Daily Product Revenue<a class="headerlink" href="#define-problem-statement-daily-product-revenue" title="Permalink to this headline">¶</a></h1>
+<p>Let us try to get daily product revenue using retail tables.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/mSszF9ycHgA?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/fkFaPYWfjv4?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
 </div></div>
 </div>
 <ul class="simple">
-<li><p>We will use Python Kernel with sql magic command and for that we need to first load the sql extension.</p></li>
-<li><p>Create environment variable <code class="docutils literal notranslate"><span class="pre">DATABASE_URL</span></code> using SQL Alchemy format.</p></li>
-<li><p>Write a simple query to get data from information schema table to validate database connectivity.</p></li>
-<li><p>Here is the information you can leverage to connect to the database.</p>
+<li><p>daily is derived from orders.order_date.</p></li>
+<li><p>product has to be derived from products.product_name.</p></li>
+<li><p>revenue has to be derived from order_items.order_item_subtotal.</p></li>
+<li><p>We need to join all the 3 tables, then group by order_date, product_id as well as product_name to get revenue using order_item_subtotal.</p></li>
+<li><p>Get Daily Product Revenue using products, orders and order_items data set.</p></li>
+<li><p>We have following fields in <strong>orders</strong>.</p>
 <ul>
-<li><p><strong>User Name:</strong> YOUR_OS_USER_sms_user</p></li>
-<li><p><strong>Database Name:</strong> YOUR_OS_USER_sms_db</p></li>
-<li><p><strong>Password:</strong> Your lab password provided by us</p></li>
+<li><p>order_id</p></li>
+<li><p>order_date</p></li>
+<li><p>order_customer_id</p></li>
+<li><p>order_status</p></li>
 </ul>
 </li>
+<li><p>We have following fields in <strong>order_items</strong>.</p>
+<ul>
+<li><p>order_item_id</p></li>
+<li><p>order_item_order_id</p></li>
+<li><p>order_item_product_id</p></li>
+<li><p>order_item_quantity</p></li>
+<li><p>order_item_subtotal</p></li>
+<li><p>order_item_product_price</p></li>
 </ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_sms_user:sms_password@localhost:5432/itversity_sms_db
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT * FROM information_schema.tables LIMIT 10
-</pre></div>
-</div>
-</div>
-</div>
+</li>
+<li><p>We have following fields in <strong>products</strong></p>
+<ul>
+<li><p>product_id</p></li>
+<li><p>product_category_id</p></li>
+<li><p>product_name</p></li>
+<li><p>product_description</p></li>
+<li><p>product_price</p></li>
+<li><p>product_image</p></li>
+</ul>
+</li>
+<li><p>We have one to many relationship between orders and order_items.</p></li>
+<li><p><strong>orders.order_id</strong> is <strong>primary key</strong> and <strong>order_items.order_item_order_id</strong> is foreign key to <strong>orders.order_id</strong>.</p></li>
+<li><p>We have one to many relationship between products and order_items.</p></li>
+<li><p><strong>products.product_id</strong> is <strong>primary key</strong> and <strong>order_items.order_item_product_id</strong> is foreign key to <strong>products.product_id</strong></p></li>
+<li><p>By the end of this module we will explore all standard transformations and get daily product revenue using following fields.</p>
+<ul>
+<li><p><strong>orders.order_date</strong></p></li>
+<li><p><strong>order_items.order_item_product_id</strong></p></li>
+<li><p><strong>products.product_name</strong></p></li>
+<li><p><strong>order_items.order_item_subtotal</strong> (aggregated using date and product_id).</p></li>
+</ul>
+</li>
+<li><p>We will consider only <strong>COMPLETE</strong> or <strong>CLOSED</strong> orders.</p></li>
+<li><p>As there can be more than one product names with different ids, we have to include product_id as part of the key using which we will group the data.</p></li>
+</ul>
 </div>
 
     <script type="text/x-thebe-config">
@@ -329,7 +296,7 @@
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./01_getting_started"
+            path: "./03_writing_basic_sql_queries"
         },
         predefinedOutput: true
     }
@@ -344,8 +311,6 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="01_getting_started.html" title="previous page">Getting Started</a>
-    <a class='right-next' id="next-link" href="03_using_psql.html" title="next page">Using psql</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

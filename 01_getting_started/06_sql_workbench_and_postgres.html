@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Connecting to Database &#8212; My Jupyter Book</title>
+    <title>SQL Workbench and Postgres &#8212; My Jupyter Book</title>
     
   <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -55,8 +55,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Using psql" href="03_using_psql.html" />
-    <link rel="prev" title="Getting Started" href="01_getting_started.html" />
+    <link rel="next" title="SQL Workbench Features" href="07_sql_workbench_features.html" />
+    <link rel="prev" title="Setup SQL Workbench" href="05_setup_sql_workbench.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -100,8 +100,8 @@
    Getting Started
   </a>
   <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="02_connecting_to_database.html">
      Connecting to Database
     </a>
    </li>
@@ -120,8 +120,8 @@
      Setup SQL Workbench
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="06_sql_workbench_and_postgres.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      SQL Workbench and Postgres
     </a>
    </li>
@@ -224,7 +224,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/01_getting_started/02_connecting_to_database.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/01_getting_started/06_sql_workbench_and_postgres.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -249,7 +249,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/01_getting_started/02_connecting_to_database.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/01_getting_started/06_sql_workbench_and_postgres.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -266,6 +266,25 @@
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#connecting-to-postgres">
+   Connecting to Postgres
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#postgres-on-docker">
+   Postgres on Docker
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
     </div>
 </div>
     <div id="main-content" class="row">
@@ -273,46 +292,57 @@
         
               <div>
                 
-  <div class="section" id="connecting-to-database">
-<h1>Connecting to Database<a class="headerlink" href="#connecting-to-database" title="Permalink to this headline">¶</a></h1>
-<p>We will be using JupyterHub based environment to master Postgresql. Let us go through the steps involved to get started using JupyterHub environment.</p>
+  <div class="section" id="sql-workbench-and-postgres">
+<h1>SQL Workbench and Postgres<a class="headerlink" href="#sql-workbench-and-postgres" title="Permalink to this headline">¶</a></h1>
+<p>Let us connect to Postgres Database using SQL Workbench.</p>
+<ul class="simple">
+<li><p>Download the JDBC Driver</p></li>
+<li><p>Get the database connectivity information</p></li>
+<li><p>Configure the connection using SQL Workbench</p></li>
+<li><p>Validate the connection and save the profile</p></li>
+</ul>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/mSszF9ycHgA?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/IRRoAphUJmw?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
 </div></div>
 </div>
+<div class="section" id="connecting-to-postgres">
+<h2>Connecting to Postgres<a class="headerlink" href="#connecting-to-postgres" title="Permalink to this headline">¶</a></h2>
+<p>Here are the steps to connect to Postgres running on your PC or remote machine without Docker.</p>
 <ul class="simple">
-<li><p>We will use Python Kernel with sql magic command and for that we need to first load the sql extension.</p></li>
-<li><p>Create environment variable <code class="docutils literal notranslate"><span class="pre">DATABASE_URL</span></code> using SQL Alchemy format.</p></li>
-<li><p>Write a simple query to get data from information schema table to validate database connectivity.</p></li>
-<li><p>Here is the information you can leverage to connect to the database.</p>
+<li><p>We are trying to connect to Postgres Database that is running as part of remote machine or on your PC.</p></li>
+<li><p>We typically use ODBC or JDBC to connect to a Database from remote machines (our PC).</p></li>
+<li><p>Here are the pre-requisites to connect to a Database.</p>
 <ul>
-<li><p><strong>User Name:</strong> YOUR_OS_USER_sms_user</p></li>
-<li><p><strong>Database Name:</strong> YOUR_OS_USER_sms_db</p></li>
-<li><p><strong>Password:</strong> Your lab password provided by us</p></li>
+<li><p>Make sure 5432 port is opened as part of the firewalls.</p></li>
+<li><p>If you have telnet configured on your system on which SQL Workbench is installed, make sure to validate by running telnet command using ip or DNS Alias and port number 5432.</p></li>
+<li><p>Ensure that you have downloaded right JDBC Driver for Postgres.</p></li>
+<li><p>Make sure to have right credentials (username and password).</p></li>
+<li><p>Ensure that you have database created on which the user have permissions.</p></li>
 </ul>
 </li>
+<li><p>Once you have all the information required along with JDBC jar, ensure to save the information as part of the profile. You can also validate before saving the details by using <strong>Test</strong> option.</p></li>
 </ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
-</pre></div>
 </div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_sms_user:sms_password@localhost:5432/itversity_sms_db
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT * FROM information_schema.tables LIMIT 10
-</pre></div>
-</div>
-</div>
+<div class="section" id="postgres-on-docker">
+<h2>Postgres on Docker<a class="headerlink" href="#postgres-on-docker" title="Permalink to this headline">¶</a></h2>
+<p>Here are the steps to connect to Postgres running as part of Docker container.</p>
+<ul class="simple">
+<li><p>We are trying to connect to Postgres Database that is running as part of Docker container running in a Ubuntu 18.04 VM provisioned from GCP.</p></li>
+<li><p>We have published Postgres database port to port 5433 on Ubuntu 18.04 VM.</p></li>
+<li><p>We typically use ODBC or JDBC to connect to a Database from remote machines (our PC).</p></li>
+<li><p>Here are the pre-requisites to connect to a Database on GCP.</p>
+<ul>
+<li><p>Make sure 5432 port is opened as part of the firewalls.</p></li>
+<li><p>If you have telnet configured on your system on which SQL Workbench is installed, make sure to validate by running telnet command using ip or DNS Alias and port number 5433.</p></li>
+<li><p>Ensure that you have downloaded right JDBC Driver for Postgres.</p></li>
+<li><p>Make sure to have right credentials (username and password).</p></li>
+<li><p>Ensure that you have database created on which the user have permissions.</p></li>
+</ul>
+</li>
+<li><p>You can validate credentials and permissions to the database by installing postgres client on Ubuntu 18.04 VM and then by connecting to the database using the credentials.</p></li>
+<li><p>Once you have all the information required along with JDBC jar, ensure to save the information as part of the profile. You can also validate before saving the details by using <strong>Test</strong> option.</p></li>
+</ul>
 </div>
 </div>
 
@@ -344,8 +374,8 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="01_getting_started.html" title="previous page">Getting Started</a>
-    <a class='right-next' id="next-link" href="03_using_psql.html" title="next page">Using psql</a>
+    <a class='left-prev' id="prev-link" href="05_setup_sql_workbench.html" title="previous page">Setup SQL Workbench</a>
+    <a class='right-next' id="next-link" href="07_sql_workbench_features.html" title="next page">SQL Workbench Features</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

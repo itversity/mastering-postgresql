@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Connecting to Database &#8212; My Jupyter Book</title>
+    <title>SQL Workbench Features &#8212; My Jupyter Book</title>
     
   <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -55,8 +55,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Using psql" href="03_using_psql.html" />
-    <link rel="prev" title="Getting Started" href="01_getting_started.html" />
+    <link rel="next" title="Data Loading Utilities" href="08_data_loading_utilities.html" />
+    <link rel="prev" title="SQL Workbench and Postgres" href="06_sql_workbench_and_postgres.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -100,8 +100,8 @@
    Getting Started
   </a>
   <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="02_connecting_to_database.html">
      Connecting to Database
     </a>
    </li>
@@ -125,8 +125,8 @@
      SQL Workbench and Postgres
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="07_sql_workbench_features.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      SQL Workbench Features
     </a>
    </li>
@@ -224,7 +224,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/01_getting_started/02_connecting_to_database.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/01_getting_started/07_sql_workbench_features.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -249,7 +249,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/01_getting_started/02_connecting_to_database.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/01_getting_started/07_sql_workbench_features.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -273,47 +273,31 @@
         
               <div>
                 
-  <div class="section" id="connecting-to-database">
-<h1>Connecting to Database<a class="headerlink" href="#connecting-to-database" title="Permalink to this headline">¶</a></h1>
-<p>We will be using JupyterHub based environment to master Postgresql. Let us go through the steps involved to get started using JupyterHub environment.</p>
+  <div class="section" id="sql-workbench-features">
+<h1>SQL Workbench Features<a class="headerlink" href="#sql-workbench-features" title="Permalink to this headline">¶</a></h1>
+<p>Here are some of the key features, you have to familiar with related to SQL Workbench.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/mSszF9ycHgA?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/7vPJ7TKNQE4?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
 </div></div>
 </div>
 <ul class="simple">
-<li><p>We will use Python Kernel with sql magic command and for that we need to first load the sql extension.</p></li>
-<li><p>Create environment variable <code class="docutils literal notranslate"><span class="pre">DATABASE_URL</span></code> using SQL Alchemy format.</p></li>
-<li><p>Write a simple query to get data from information schema table to validate database connectivity.</p></li>
-<li><p>Here is the information you can leverage to connect to the database.</p>
-<ul>
-<li><p><strong>User Name:</strong> YOUR_OS_USER_sms_user</p></li>
-<li><p><strong>Database Name:</strong> YOUR_OS_USER_sms_db</p></li>
-<li><p><strong>Password:</strong> Your lab password provided by us</p></li>
+<li><p>Ability to connect to different RDBMS, Data Warehouse and MPP Database servers such as Postgres, MySQL, Oracle, Redshift etc.</p></li>
+<li><p>Saving profiles to connect to multiple databases.</p></li>
+<li><p>Ability to access data dictionary or information schema using wizards to validate tables, columns, sequences, indexes, constraints etc.</p></li>
+<li><p>Generate scripts out of existing data.</p></li>
+<li><p>Ability to manage database objects with out writing any commands. We can drop tables, indexes, sequences etc by right clicking and then selecting drop option.</p></li>
+<li><p>Develop SQL files and preserve them for future usage.</p></li>
 </ul>
-</li>
+<p>Almost all leading IDEs provide all these features in similar fashion.</p>
+<p><strong>Usage Scenarios</strong></p>
+<p>Here are <strong>some of the usage scenarios</strong> for database IDEs such as SQL Workbench as part of day to day responsibilities.</p>
+<ul class="simple">
+<li><p>Developers for generating and validating data as part of unit testing.</p></li>
+<li><p>Testers to validate data for their test cases.</p></li>
+<li><p>Business Analysts and Data Analysts to run ad hoc queries to understand the data better.</p></li>
+<li><p>Developers to troubleshoot data related to production issues using read only accounts.</p></li>
 </ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_sms_user:sms_password@localhost:5432/itversity_sms_db
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT * FROM information_schema.tables LIMIT 10
-</pre></div>
-</div>
-</div>
-</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -344,8 +328,8 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="01_getting_started.html" title="previous page">Getting Started</a>
-    <a class='right-next' id="next-link" href="03_using_psql.html" title="next page">Using psql</a>
+    <a class='left-prev' id="prev-link" href="06_sql_workbench_and_postgres.html" title="previous page">SQL Workbench and Postgres</a>
+    <a class='right-next' id="next-link" href="08_data_loading_utilities.html" title="next page">Data Loading Utilities</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

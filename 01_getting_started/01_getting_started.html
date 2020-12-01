@@ -110,11 +110,76 @@
      Using psql
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04_setup_postgres_using_docker.html">
+     Setup Postgres using Docker
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05_setup_sql_workbench.html">
+     Setup SQL Workbench
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06_sql_workbench_and_postgres.html">
+     SQL Workbench and Postgres
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="07_sql_workbench_features.html">
+     SQL Workbench Features
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08_data_loading_utilities.html">
+     Data Loading Utilities
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="09_loading_data_postgres_in_docker.html">
+     Loading Data - Docker
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="10_exercise_loading_data.html">
+     Exercise - Loading Data
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../02_dml_or_crud_operations.html">
+  <a class="reference internal" href="../02_dml_or_crud_operations/02_dml_or_crud_operations.html">
    DML or CRUD Operations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_writing_basic_sql_queries/03_writing_basic_sql_queries.html">
+   Writing Basic SQL Queries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_creating_tables_and_indexes/04_creating_tables_and_indexes.html">
+   Creating Tables and Indexes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05_partitioning_tables_and_indexes/05_partitioning_tables_and_indexes.html">
+   Partitioning Tables and Indexes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06_predefined_functions/06_predefined_functions.html">
+   Pre-Defined Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07_writing_advanced_sql_queries/07_writing_advanced_sql_queries.html">
+   Writing Advanced SQL Queries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mastering_postgresql_exercises.html">
+   Exercises - Mastering Postgresql
   </a>
  </li>
 </ul>
@@ -201,69 +266,6 @@
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
-        </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#setup-postgres-using-docker">
-   Setup Postgres using Docker
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#setup-sql-workbench">
-   Setup SQL Workbench
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#sql-workbench-and-postgres">
-   SQL Workbench and Postgres
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#connecting-to-postgres">
-     Connecting to Postgres
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#postgres-on-docker">
-     Postgres on Docker
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#sql-workbench-features">
-   SQL Workbench Features
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#data-loading-utilities">
-   Data Loading Utilities
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#loading-data">
-     Loading Data
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#loading-data-docker">
-   Loading Data - Docker
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercise-loading-data">
-   Exercise - Loading Data
-  </a>
- </li>
-</ul>
-
-        </nav>
-        
     </div>
 </div>
     <div id="main-content" class="row">
@@ -294,428 +296,7 @@
 <li><p>How to load data into tables using Database native utilities?</p></li>
 <li><p>Exercise to ensure our understanding related to loading data into the tables using database native utilities.</p></li>
 </ul>
-<div class="section" id="setup-postgres-using-docker">
-<h2>Setup Postgres using Docker<a class="headerlink" href="#setup-postgres-using-docker" title="Permalink to this headline">¶</a></h2>
-<p>In some cases you might want to have postgres setup on your machine. Let us understand how we can setup Postgres using Docker.</p>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/VF4oAET-GwE?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
-</div></div>
-</div>
-<ul class="simple">
-<li><p>If you are using our labs, the database will be pre-created by us with all the right permissions.</p></li>
-<li><p>If you are using Windows or Mac, ensure that you have installed Docker Desktop.</p></li>
-<li><p>If you are using Ubuntu based desktop, make sure to setup Docker.</p></li>
-<li><p>Here are the steps that can be used to setup Postgres database using Docker.</p>
-<ul>
-<li><p>Pull the postgres image using <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">pull</span></code></p></li>
-<li><p>Create the container using <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">create</span></code>.</p></li>
-<li><p>Start the container using <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">start</span></code>.</p></li>
-<li><p>Alternatively we can use <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span></code> which will pull, create and start the container.</p></li>
-<li><p>Use <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">logs</span></code> or <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">logs</span> <span class="pre">-f</span></code> to review the logs to ensure Postgres Server is up and running.</p></li>
-</ul>
-</li>
-</ul>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>docker pull postgres
-
-docker container create <span class="se">\</span>
-    --name itv_pg <span class="se">\</span>
-    -p <span class="m">5433</span>:5432 <span class="se">\</span>
-    -h itv_pg <span class="se">\</span>
-    -e <span class="nv">POSTGRES_PASSWORD</span><span class="o">=</span>itversity <span class="se">\</span>
-    postgres
-
-docker start itv_pg
-
-docker logs itv_pg
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>You can connect to Postgres Database setup using Docker with <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">exec</span></code>.</p></li>
-</ul>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>docker <span class="nb">exec</span> <span class="se">\</span>
-    -it itv_pg <span class="se">\</span>
-    psql -U postgres
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>You can also connecto to Postgres directly with out using <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">exec</span></code>.</p></li>
-</ul>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>psql -h localhost <span class="se">\</span>
-    -p <span class="m">5433</span> <span class="se">\</span>
-    -d postgres <span class="se">\</span>
-    -U postgres <span class="se">\</span>
-    -W
-</pre></div>
-</div>
-</div>
-<div class="section" id="setup-sql-workbench">
-<h2>Setup SQL Workbench<a class="headerlink" href="#setup-sql-workbench" title="Permalink to this headline">¶</a></h2>
-<p>Let us understand how to setup and use SQL Workbench.</p>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/HafnO2hryP0?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
-</div></div>
-</div>
-<p><strong>Why SQL Workbench</strong></p>
-<p>Let us see the details why we might have to use SQL Workbench.</p>
-<ul class="simple">
-<li><p>Using Database CLIs such as psql for postgres, mysql etc can be cumbersome for those who are not comfortable with command line interfaces.</p></li>
-<li><p>Database IDEs such as SQL Workbench will provide required features to run queries against databases with out worrying to much about underlying data dictionaries.</p></li>
-<li><p>SQL Workbench provide required features to review databases and objects with out writing queries or running database specific commands.</p></li>
-<li><p>Also Database IDEs provide capabilities to preserve the scripts we develop.</p></li>
-</ul>
-<blockquote>
-<div><p><strong>In short Database IDEs such as SQL Workbench improves productivity.</strong></p>
-</div></blockquote>
-<p><strong>Alternative IDEs</strong></p>
-<p>There are several IDEs in the market.</p>
-<ul class="simple">
-<li><p>TOAD</p></li>
-<li><p>SQL Developer for Oracle</p></li>
-<li><p>MySQL Workbench
-and many others</p></li>
-</ul>
-<p><strong>Install SQL Workbench</strong></p>
-<p>Here are the instructions to setup SQL Workbench.</p>
-<ul class="simple">
-<li><p>Download SQL Workbench (typically zip file)</p></li>
-<li><p>Unzip and launch</p></li>
-</ul>
-<p>Once installed we need to perform below steps which will be covered in detail as part of next topic.</p>
-<ul class="simple">
-<li><p>Download JDBC driver for the database we would like to connect.</p></li>
-<li><p>Get the database connectivity information and connect to the database.</p></li>
-</ul>
-</div>
-<div class="section" id="sql-workbench-and-postgres">
-<h2>SQL Workbench and Postgres<a class="headerlink" href="#sql-workbench-and-postgres" title="Permalink to this headline">¶</a></h2>
-<p>Let us connect to Postgres Database using SQL Workbench.</p>
-<ul class="simple">
-<li><p>Download the JDBC Driver</p></li>
-<li><p>Get the database connectivity information</p></li>
-<li><p>Configure the connection using SQL Workbench</p></li>
-<li><p>Validate the connection and save the profile</p></li>
-</ul>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/IRRoAphUJmw?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
-</div></div>
-</div>
-<div class="section" id="connecting-to-postgres">
-<h3>Connecting to Postgres<a class="headerlink" href="#connecting-to-postgres" title="Permalink to this headline">¶</a></h3>
-<p>Here are the steps to connect to Postgres running on your PC or remote machine without Docker.</p>
-<ul class="simple">
-<li><p>We are trying to connect to Postgres Database that is running as part of remote machine or on your PC.</p></li>
-<li><p>We typically use ODBC or JDBC to connect to a Database from remote machines (our PC).</p></li>
-<li><p>Here are the pre-requisites to connect to a Database.</p>
-<ul>
-<li><p>Make sure 5432 port is opened as part of the firewalls.</p></li>
-<li><p>If you have telnet configured on your system on which SQL Workbench is installed, make sure to validate by running telnet command using ip or DNS Alias and port number 5432.</p></li>
-<li><p>Ensure that you have downloaded right JDBC Driver for Postgres.</p></li>
-<li><p>Make sure to have right credentials (username and password).</p></li>
-<li><p>Ensure that you have database created on which the user have permissions.</p></li>
-</ul>
-</li>
-<li><p>Once you have all the information required along with JDBC jar, ensure to save the information as part of the profile. You can also validate before saving the details by using <strong>Test</strong> option.</p></li>
-</ul>
-</div>
-<div class="section" id="postgres-on-docker">
-<h3>Postgres on Docker<a class="headerlink" href="#postgres-on-docker" title="Permalink to this headline">¶</a></h3>
-<p>Here are the steps to connect to Postgres running as part of Docker container.</p>
-<ul class="simple">
-<li><p>We are trying to connect to Postgres Database that is running as part of Docker container running in a Ubuntu 18.04 VM provisioned from GCP.</p></li>
-<li><p>We have published Postgres database port to port 5433 on Ubuntu 18.04 VM.</p></li>
-<li><p>We typically use ODBC or JDBC to connect to a Database from remote machines (our PC).</p></li>
-<li><p>Here are the pre-requisites to connect to a Database on GCP.</p>
-<ul>
-<li><p>Make sure 5432 port is opened as part of the firewalls.</p></li>
-<li><p>If you have telnet configured on your system on which SQL Workbench is installed, make sure to validate by running telnet command using ip or DNS Alias and port number 5433.</p></li>
-<li><p>Ensure that you have downloaded right JDBC Driver for Postgres.</p></li>
-<li><p>Make sure to have right credentials (username and password).</p></li>
-<li><p>Ensure that you have database created on which the user have permissions.</p></li>
-</ul>
-</li>
-<li><p>You can validate credentials and permissions to the database by installing postgres client on Ubuntu 18.04 VM and then by connecting to the database using the credentials.</p></li>
-<li><p>Once you have all the information required along with JDBC jar, ensure to save the information as part of the profile. You can also validate before saving the details by using <strong>Test</strong> option.</p></li>
-</ul>
-</div>
-</div>
-<div class="section" id="sql-workbench-features">
-<h2>SQL Workbench Features<a class="headerlink" href="#sql-workbench-features" title="Permalink to this headline">¶</a></h2>
-<p>Here are some of the key features, you have to familiar with related to SQL Workbench.</p>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/7vPJ7TKNQE4?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
-</div></div>
-</div>
-<ul class="simple">
-<li><p>Ability to connect to different RDBMS, Data Warehouse and MPP Database servers such as Postgres, MySQL, Oracle, Redshift etc.</p></li>
-<li><p>Saving profiles to connect to multiple databases.</p></li>
-<li><p>Ability to access data dictionary or information schema using wizards to validate tables, columns, sequences, indexes, constraints etc.</p></li>
-<li><p>Generate scripts out of existing data.</p></li>
-<li><p>Ability to manage database objects with out writing any commands. We can drop tables, indexes, sequences etc by right clicking and then selecting drop option.</p></li>
-<li><p>Develop SQL files and preserve them for future usage.</p></li>
-</ul>
-<p>Almost all leading IDEs provide all these features in similar fashion.</p>
-<p><strong>Usage Scenarios</strong></p>
-<p>Here are <strong>some of the usage scenarios</strong> for database IDEs such as SQL Workbench as part of day to day responsibilities.</p>
-<ul class="simple">
-<li><p>Developers for generating and validating data as part of unit testing.</p></li>
-<li><p>Testers to validate data for their test cases.</p></li>
-<li><p>Business Analysts and Data Analysts to run ad hoc queries to understand the data better.</p></li>
-<li><p>Developers to troubleshoot data related to production issues using read only accounts.</p></li>
-</ul>
-</div>
-<div class="section" id="data-loading-utilities">
-<h2>Data Loading Utilities<a class="headerlink" href="#data-loading-utilities" title="Permalink to this headline">¶</a></h2>
-<p>Let us understand how we can load the data into databases using utilities provided.</p>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/4DkygKkrS3g?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
-</div></div>
-</div>
-<ul class="simple">
-<li><p>Most of the databases provide data loading utilities.</p></li>
-<li><p>One of the most common way of getting data into database tables is by using data loading utilities provided by the underlying datatabase technology.</p></li>
-<li><p>We can load delimited files into database using these utilities.</p></li>
-<li><p>Here are the steps we can follow to load the delimited data into the table.</p>
-<ul>
-<li><p>Make sure files are available on the server from which we are trying to load.</p></li>
-<li><p>Ensure the database and table are created for the data to be loaded.</p></li>
-<li><p>Run relevant command to load the data into the table.</p></li>
-<li><p>Make sure to validate by running queries.</p></li>
-</ul>
-</li>
-<li><p>Let us see a demo by loading a sample file into the table in Postgres database.</p></li>
-</ul>
-<div class="section" id="loading-data">
-<h3>Loading Data<a class="headerlink" href="#loading-data" title="Permalink to this headline">¶</a></h3>
-<p>We can use COPY Command using <code class="docutils literal notranslate"><span class="pre">psql</span></code> to copy the data into the table.</p>
-<ul class="simple">
-<li><p>Make sure database is created along with the user with right permissions. Also the user who want to use <code class="docutils literal notranslate"><span class="pre">COPY</span></code> command need to have <strong>pg_read_server_files</strong> role assigned.</p></li>
-<li><p>Create the file with sample data. In this case data is added to <strong>users.csv</strong> under <strong>/data/sms_db</strong></p></li>
-</ul>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>user_first_name,user_last_name,user_email_id,user_role,created_dt
-Gordan,Bradock,gbradock0@barnesandnoble.com,A,2020-01-10
-Tobe,Lyness,tlyness1@paginegialle.it,U,2020-02-10
-Addie,Mesias,amesias2@twitpic.com,U,2020-03-05
-Corene,Kohrsen,ckohrsen3@buzzfeed.com,U,2020-04-15
-Darill,Halsall,dhalsall4@intel.com,U,2020-10-10
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>Connect to Database.</p></li>
-</ul>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>psql -U itversity_sms_user <span class="se">\</span>
-  -h localhost <span class="se">\</span>
-  -p <span class="m">5432</span> <span class="se">\</span>
-  -d itversity_sms_db <span class="se">\</span>
-  -W
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>Create the <code class="docutils literal notranslate"><span class="pre">users</span></code> table.</p></li>
-</ul>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">users</span> <span class="p">(</span>
-    <span class="n">user_id</span> <span class="nb">SERIAL</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
-    <span class="n">user_first_name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
-    <span class="n">user_last_name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
-    <span class="n">user_email_id</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
-    <span class="n">user_email_validated</span> <span class="nb">BOOLEAN</span> <span class="k">DEFAULT</span> <span class="k">FALSE</span><span class="p">,</span>
-    <span class="n">user_password</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">200</span><span class="p">),</span>
-    <span class="n">user_role</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;U&#39;</span><span class="p">,</span> <span class="c1">--U and A</span>
-    <span class="n">is_active</span> <span class="nb">BOOLEAN</span> <span class="k">DEFAULT</span> <span class="k">FALSE</span><span class="p">,</span>
-    <span class="n">created_dt</span> <span class="nb">DATE</span> <span class="k">DEFAULT</span> <span class="k">CURRENT_DATE</span>
-<span class="p">);</span>
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>Use copy command to load the data</p></li>
-</ul>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>COPY users<span class="o">(</span>user_first_name, user_last_name, 
-    user_email_id, user_role, created_dt
-<span class="o">)</span> FROM <span class="s1">&#39;/data/sms_db/users.csv&#39;</span>
-DELIMITER <span class="s1">&#39;,&#39;</span>
-CSV HEADER<span class="p">;</span>
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>Validate by running queries</p></li>
-</ul>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">users</span><span class="p">;</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="loading-data-docker">
-<h2>Loading Data - Docker<a class="headerlink" href="#loading-data-docker" title="Permalink to this headline">¶</a></h2>
-<p>Let us understand how you can take care of loading data into Postgres Database running using Docker Container.</p>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/BUvelySsHDU?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
-</div></div>
-</div>
-<ul class="simple">
-<li><p>Make sure database is created along with the user with right permissions. Also the user who want to use <code class="docutils literal notranslate"><span class="pre">COPY</span></code> command need to have <strong>pg_read_server_files</strong> role assigned.</p>
-<ul>
-<li><p>Create file with sample data</p></li>
-<li><p>Copy file into Docker container</p></li>
-<li><p>Connect to Database</p></li>
-<li><p>Create the table</p></li>
-<li><p>Run <code class="docutils literal notranslate"><span class="pre">COPY</span></code> Command to copy the data.</p></li>
-</ul>
-</li>
-</ul>
-<p><strong>Prepare Data</strong></p>
-<p>We need to create file with sample data and copy the files into the container.</p>
-<ul class="simple">
-<li><p>Sample File
-In this case data is added to users.csv under <strong>~/sms_db</strong>.</p></li>
-</ul>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>user_first_name,user_last_name,user_email_id,user_role,created_dt
-Gordan,Bradock,gbradock0@barnesandnoble.com,A,2020-01-10
-Tobe,Lyness,tlyness1@paginegialle.it,U,2020-02-10
-Addie,Mesias,amesias2@twitpic.com,U,2020-03-05
-Corene,Kohrsen,ckohrsen3@buzzfeed.com,U,2020-04-15
-Darill,Halsall,dhalsall4@intel.com,U,2020-10-10
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>Copy data</p></li>
-</ul>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>docker cp ~/sms_db/users.csv itv_pg:/tmp
-</pre></div>
-</div>
-<p><strong>Create Database</strong></p>
-<p>Here are the steps to create database.</p>
-<ul class="simple">
-<li><p>Connect to database as super user <strong>postgres</strong></p></li>
-</ul>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>docker <span class="nb">exec</span> -it itv_pg psql -U postgres
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>Create the database with right permissions.</p></li>
-</ul>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">DATABASE</span> <span class="n">itversity_sms_db</span><span class="p">;</span>
-<span class="k">CREATE</span> <span class="k">USER</span> <span class="n">itversity_sms_user</span> <span class="k">WITH</span> <span class="n">PASSWORD</span> <span class="s1">&#39;sms_password&#39;</span><span class="p">;</span>
-<span class="k">GRANT</span> <span class="k">ALL</span> <span class="k">ON</span> <span class="k">DATABASE</span> <span class="n">itversity_sms_db</span> <span class="k">TO</span> <span class="n">itversity_sms_user</span><span class="p">;</span>
-<span class="k">GRANT</span> <span class="n">pg_read_server_files</span> <span class="k">TO</span> <span class="n">itversity_sms_user</span><span class="p">;</span>
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>Exit using <code class="docutils literal notranslate"><span class="pre">\q</span></code></p></li>
-</ul>
-<p><strong>Connect to Database</strong></p>
-<p>Use this command to connect to the newly created database.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>psql -U itversity_sms_user <span class="se">\</span>
-  -h localhost <span class="se">\</span>
-  -p <span class="m">5433</span> <span class="se">\</span>
-  -d itversity_sms_db <span class="se">\</span>
-  -W
-</pre></div>
-</div>
-<p><strong>Create Table</strong></p>
-<p>Here is the script to create the table.</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">users</span> <span class="p">(</span>
-    <span class="n">user_id</span> <span class="nb">SERIAL</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
-    <span class="n">user_first_name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
-    <span class="n">user_last_name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
-    <span class="n">user_email_id</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
-    <span class="n">user_email_validated</span> <span class="nb">BOOLEAN</span> <span class="k">DEFAULT</span> <span class="k">FALSE</span><span class="p">,</span>
-    <span class="n">user_password</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">200</span><span class="p">),</span>
-    <span class="n">user_role</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;U&#39;</span><span class="p">,</span> <span class="c1">--U and A</span>
-    <span class="n">is_active</span> <span class="nb">BOOLEAN</span> <span class="k">DEFAULT</span> <span class="k">FALSE</span><span class="p">,</span>
-    <span class="n">created_dt</span> <span class="nb">DATE</span> <span class="k">DEFAULT</span> <span class="k">CURRENT_DATE</span>
-<span class="p">);</span>
-</pre></div>
-</div>
-<p><strong>Load Data</strong></p>
-<p>Here are the steps to load and validate the data using <code class="docutils literal notranslate"><span class="pre">psql</span></code>.</p>
-<ul class="simple">
-<li><p>Load data using <code class="docutils literal notranslate"><span class="pre">COPY</span></code> Command</p></li>
-</ul>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>COPY users<span class="o">(</span>user_first_name, user_last_name, 
-    user_email_id, user_role, created_dt
-<span class="o">)</span> FROM <span class="s1">&#39;/tmp/users.csv&#39;</span>
-DELIMITER <span class="s1">&#39;,&#39;</span>
-CSV HEADER<span class="p">;</span>
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>Validate by running queries</p></li>
-</ul>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">users</span><span class="p">;</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="exercise-loading-data">
-<h2>Exercise - Loading Data<a class="headerlink" href="#exercise-loading-data" title="Permalink to this headline">¶</a></h2>
-<p>As part of this exercise, you need to take care of loading data using <code class="docutils literal notranslate"><span class="pre">COPY</span></code> Command.</p>
-<ul class="simple">
-<li><p>You can connect to the database using following details in the environment provided by us.</p>
-<ul>
-<li><p>Host: localhost</p></li>
-<li><p>Port: 5342</p></li>
-<li><p>Database Name: YOUR_OS_USER_hr_db</p></li>
-<li><p>User Name: YOUR_OS_USER_hr_user</p></li>
-<li><p>Password: YOUR_OS_USER_PASSWORD (provided by us).</p></li>
-</ul>
-</li>
-<li><p>If you are using your own environment, make sure to create database for storing HR Data.</p>
-<ul>
-<li><p>Database Name: hr_db</p></li>
-<li><p>User Name: hr_user</p></li>
-<li><p>You can create user with password of your choice.</p></li>
-</ul>
-</li>
-</ul>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">DATABASE</span> <span class="n">hr_db</span><span class="p">;</span>
-<span class="k">CREATE</span> <span class="k">USER</span> <span class="n">hr_user</span> <span class="k">WITH</span> <span class="n">PASSWORD</span> <span class="s1">&#39;hr_password&#39;</span><span class="p">;</span>
-<span class="k">GRANT</span> <span class="k">ALL</span> <span class="k">ON</span> <span class="k">DATABASE</span> <span class="n">hr_db</span> <span class="k">TO</span> <span class="n">hr_user</span><span class="p">;</span>
-<span class="k">GRANT</span> <span class="n">pg_read_server_files</span> <span class="k">TO</span> <span class="n">hr_user</span><span class="p">;</span>
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>Create table using this script.</p></li>
-</ul>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">employees</span>
-   <span class="p">(</span> <span class="n">employee_id</span> <span class="nb">INTEGER</span>
-   <span class="p">,</span> <span class="n">first_name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
-   <span class="p">,</span> <span class="n">last_name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span>
-   <span class="p">,</span> <span class="n">email</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span>
-   <span class="p">,</span> <span class="n">phone_number</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
-   <span class="p">,</span> <span class="n">hire_date</span> <span class="nb">DATE</span>
-   <span class="p">,</span> <span class="n">job_id</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-   <span class="p">,</span> <span class="n">salary</span> <span class="nb">NUMERIC</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
-   <span class="p">,</span> <span class="n">commission_pct</span> <span class="nb">NUMERIC</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
-   <span class="p">,</span> <span class="n">manager_id</span> <span class="nb">INTEGER</span>
-   <span class="p">,</span> <span class="n">department_id</span> <span class="nb">INTEGER</span>
-   <span class="p">)</span> <span class="p">;</span>
-<span class="k">CREATE</span> <span class="k">UNIQUE</span> <span class="k">INDEX</span> <span class="n">emp_emp_id_pk</span>
-         <span class="k">ON</span> <span class="n">employees</span> <span class="p">(</span><span class="n">employee_id</span><span class="p">)</span> <span class="p">;</span>
-<span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">employees</span> <span class="k">ADD</span>
-   <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">employee_id</span><span class="p">);</span>
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>Understand data.</p>
-<ul>
-<li><p>Check for delimiters (record as well as field).</p></li>
-<li><p>Check whether header exists or not.</p></li>
-<li><p>Ensure number of fields for the table and data being loaded are same or not.</p></li>
-</ul>
-</li>
-<li><p>Load data into the table using <code class="docutils literal notranslate"><span class="pre">COPY</span></code> Command. The file is under <code class="docutils literal notranslate"><span class="pre">/data/hr_db/employees</span></code></p></li>
-<li><p>Validate by running these queries. You can also use SQL Workbench to run the queries to validate whether data is loaded successfully or not.</p></li>
-</ul>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">employees</span> <span class="k">LIMIT</span> <span class="mi">10</span><span class="p">;</span>
-<span class="k">SELECT</span> <span class="k">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">employees</span><span class="p">;</span>
-</pre></div>
-</div>
 <div class="toctree-wrapper compound">
-</div>
 </div>
 </div>
 

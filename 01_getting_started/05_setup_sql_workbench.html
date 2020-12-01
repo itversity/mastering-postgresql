@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Connecting to Database &#8212; My Jupyter Book</title>
+    <title>Setup SQL Workbench &#8212; My Jupyter Book</title>
     
   <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -55,8 +55,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Using psql" href="03_using_psql.html" />
-    <link rel="prev" title="Getting Started" href="01_getting_started.html" />
+    <link rel="next" title="SQL Workbench and Postgres" href="06_sql_workbench_and_postgres.html" />
+    <link rel="prev" title="Setup Postgres using Docker" href="04_setup_postgres_using_docker.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -100,8 +100,8 @@
    Getting Started
   </a>
   <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="02_connecting_to_database.html">
      Connecting to Database
     </a>
    </li>
@@ -115,8 +115,8 @@
      Setup Postgres using Docker
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="05_setup_sql_workbench.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Setup SQL Workbench
     </a>
    </li>
@@ -224,7 +224,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/01_getting_started/02_connecting_to_database.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/01_getting_started/05_setup_sql_workbench.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -249,7 +249,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/01_getting_started/02_connecting_to_database.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/01_getting_started/05_setup_sql_workbench.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -273,47 +273,44 @@
         
               <div>
                 
-  <div class="section" id="connecting-to-database">
-<h1>Connecting to Database<a class="headerlink" href="#connecting-to-database" title="Permalink to this headline">¶</a></h1>
-<p>We will be using JupyterHub based environment to master Postgresql. Let us go through the steps involved to get started using JupyterHub environment.</p>
+  <div class="section" id="setup-sql-workbench">
+<h1>Setup SQL Workbench<a class="headerlink" href="#setup-sql-workbench" title="Permalink to this headline">¶</a></h1>
+<p>Let us understand how to setup and use SQL Workbench.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/mSszF9ycHgA?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/HafnO2hryP0?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
 </div></div>
 </div>
+<p><strong>Why SQL Workbench</strong></p>
+<p>Let us see the details why we might have to use SQL Workbench.</p>
 <ul class="simple">
-<li><p>We will use Python Kernel with sql magic command and for that we need to first load the sql extension.</p></li>
-<li><p>Create environment variable <code class="docutils literal notranslate"><span class="pre">DATABASE_URL</span></code> using SQL Alchemy format.</p></li>
-<li><p>Write a simple query to get data from information schema table to validate database connectivity.</p></li>
-<li><p>Here is the information you can leverage to connect to the database.</p>
-<ul>
-<li><p><strong>User Name:</strong> YOUR_OS_USER_sms_user</p></li>
-<li><p><strong>Database Name:</strong> YOUR_OS_USER_sms_db</p></li>
-<li><p><strong>Password:</strong> Your lab password provided by us</p></li>
+<li><p>Using Database CLIs such as psql for postgres, mysql etc can be cumbersome for those who are not comfortable with command line interfaces.</p></li>
+<li><p>Database IDEs such as SQL Workbench will provide required features to run queries against databases with out worrying to much about underlying data dictionaries.</p></li>
+<li><p>SQL Workbench provide required features to review databases and objects with out writing queries or running database specific commands.</p></li>
+<li><p>Also Database IDEs provide capabilities to preserve the scripts we develop.</p></li>
 </ul>
-</li>
+<blockquote>
+<div><p><strong>In short Database IDEs such as SQL Workbench improves productivity.</strong></p>
+</div></blockquote>
+<p><strong>Alternative IDEs</strong></p>
+<p>There are several IDEs in the market.</p>
+<ul class="simple">
+<li><p>TOAD</p></li>
+<li><p>SQL Developer for Oracle</p></li>
+<li><p>MySQL Workbench
+and many others</p></li>
 </ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_sms_user:sms_password@localhost:5432/itversity_sms_db
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT * FROM information_schema.tables LIMIT 10
-</pre></div>
-</div>
-</div>
-</div>
+<p><strong>Install SQL Workbench</strong></p>
+<p>Here are the instructions to setup SQL Workbench.</p>
+<ul class="simple">
+<li><p>Download SQL Workbench (typically zip file)</p></li>
+<li><p>Unzip and launch</p></li>
+</ul>
+<p>Once installed we need to perform below steps which will be covered in detail as part of next topic.</p>
+<ul class="simple">
+<li><p>Download JDBC driver for the database we would like to connect.</p></li>
+<li><p>Get the database connectivity information and connect to the database.</p></li>
+</ul>
 </div>
 
     <script type="text/x-thebe-config">
@@ -344,8 +341,8 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="01_getting_started.html" title="previous page">Getting Started</a>
-    <a class='right-next' id="next-link" href="03_using_psql.html" title="next page">Using psql</a>
+    <a class='left-prev' id="prev-link" href="04_setup_postgres_using_docker.html" title="previous page">Setup Postgres using Docker</a>
+    <a class='right-next' id="next-link" href="06_sql_workbench_and_postgres.html" title="next page">SQL Workbench and Postgres</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
