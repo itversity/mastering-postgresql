@@ -13,6 +13,7 @@
     - file: 01_getting_started/10_exercise_loading_data
 
 - file: 02_dml_or_crud_operations/01_dml_or_crud_operations
+  sections:
     - file: 02_dml_or_crud_operations/02_normalization_principles
     - file: 02_dml_or_crud_operations/03_tables_as_relations
     - file: 02_dml_or_crud_operations/04_overview_of_database_operations
