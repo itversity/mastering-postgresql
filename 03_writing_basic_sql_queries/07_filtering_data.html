@@ -1,0 +1,1501 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Filtering Data &#8212; My Jupyter Book</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Joining Tables – Inner" href="08_joining_tables_inner.html" />
+    <link rel="prev" title="Selecting or Projecting Data" href="06_selecting_or_projecting_data.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">My Jupyter Book</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mastering-postgresql.html">
+   Mastering Postgresql
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_getting_started/01_getting_started.html">
+   Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_dml_or_crud_operations/01_dml_or_crud_operations.html">
+   DML or CRUD Operations
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="01_writing_basic_sql_queries.html">
+   Writing Basic SQL Queries
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="02_standard_transformations.html">
+     Standard Transformations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03_overview_of_data_model.html">
+     Overview of Data Model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04_define_problem_statement.html">
+     Define Problem Statement – Daily Product Revenue
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05_preparing_tables.html">
+     Preparing Tables
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06_selecting_or_projecting_data.html">
+     Selecting or Projecting Data
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Filtering Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08_joining_tables_inner.html">
+     Joining Tables – Inner
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="09_joining_tables_outer.html">
+     Joining Tables - Outer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="10_performing_aggregations.html">
+     Performing Aggregations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="11_sorting_data.html">
+     Sorting Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="12_solution_daily_product_revenue.html">
+     Solution – Daily Product Revenue
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="13_exercises_basic_sql_queries.html">
+     Exercises - Basic SQL Queries
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/03_writing_basic_sql_queries/07_filtering_data.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/03_writing_basic_sql_queries/07_filtering_data.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="filtering-data">
+<h1>Filtering Data<a class="headerlink" href="#filtering-data" title="Permalink to this headline">¶</a></h1>
+<p>Let us understand how we can filter the data as part of our queries.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/2DrLVbXd0Jo?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+</div></div>
+</div>
+<ul class="simple">
+<li><p>We use <code class="docutils literal notranslate"><span class="pre">WHERE</span></code> clause to filter the data.</p></li>
+<li><p>All comparison operators such as <code class="docutils literal notranslate"><span class="pre">=</span></code>, <code class="docutils literal notranslate"><span class="pre">!=</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code> etc can be used to compare a column or expression or literal with another column or expression or literal.</p></li>
+<li><p>We can use operators such as <code class="docutils literal notranslate"><span class="pre">LIKE</span></code> with <code class="docutils literal notranslate"><span class="pre">%</span></code> or <code class="docutils literal notranslate"><span class="pre">~</span></code> with regular expressions for pattern matching.</p></li>
+<li><p>Boolean <code class="docutils literal notranslate"><span class="pre">OR</span></code> and <code class="docutils literal notranslate"><span class="pre">AND</span></code> can be performed when we want to apply multiple conditions.</p>
+<ul>
+<li><p>Get all orders with order_status equals to COMPLETE or CLOSED. We can also use IN operator.</p></li>
+<li><p>Get all orders from month 2014 January with order_status equals to COMPLETE or CLOSED</p></li>
+</ul>
+</li>
+<li><p>We can also use <code class="docutils literal notranslate"><span class="pre">BETWEEN</span></code> along with <code class="docutils literal notranslate"><span class="pre">AND</span></code> to compare a column or expression against range of values.</p></li>
+<li><p>We need to use <code class="docutils literal notranslate"><span class="pre">IS</span> <span class="pre">NULL</span></code> and <code class="docutils literal notranslate"><span class="pre">IS</span> <span class="pre">NOT</span> <span class="pre">NULL</span></code> to compare against null values.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The sql extension is already loaded. To reload it, use:
+  %reload_ext sql
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env: DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span> 
+
+SELECT * FROM orders 
+WHERE order_status = &#39;COMPLETE&#39; 
+LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_id</th>
+        <th>order_date</th>
+        <th>order_customer_id</th>
+        <th>order_status</th>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>12111</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>11318</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>7130</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>4530</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>15</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>2568</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>17</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>2667</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>22</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>333</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>26</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>7562</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>28</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>656</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>32</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>3960</td>
+        <td>COMPLETE</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT count(1) FROM orders
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>count</th>
+    </tr>
+    <tr>
+        <td>68883</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span> 
+
+SELECT count(1) 
+FROM orders
+WHERE order_status = &#39;COMPLETE&#39;
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>count</th>
+    </tr>
+    <tr>
+        <td>22899</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span> 
+
+SELECT DISTINCT order_status
+FROM orders
+WHERE order_status = &#39;COMPLETE&#39;
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_status</th>
+    </tr>
+    <tr>
+        <td>COMPLETE</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT DISTINCT order_status
+FROM orders
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+9 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_status</th>
+    </tr>
+    <tr>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>ON_HOLD</td>
+    </tr>
+    <tr>
+        <td>PENDING_PAYMENT</td>
+    </tr>
+    <tr>
+        <td>PENDING</td>
+    </tr>
+    <tr>
+        <td>CLOSED</td>
+    </tr>
+    <tr>
+        <td>CANCELED</td>
+    </tr>
+    <tr>
+        <td>PROCESSING</td>
+    </tr>
+    <tr>
+        <td>PAYMENT_REVIEW</td>
+    </tr>
+    <tr>
+        <td>SUSPECTED_FRAUD</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span> 
+
+SELECT * FROM orders 
+WHERE order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;) 
+LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_id</th>
+        <th>order_date</th>
+        <th>order_customer_id</th>
+        <th>order_status</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>11599</td>
+        <td>CLOSED</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>12111</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>8827</td>
+        <td>CLOSED</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>11318</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>7130</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>4530</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>12</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>1837</td>
+        <td>CLOSED</td>
+    </tr>
+    <tr>
+        <td>15</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>2568</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>17</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>2667</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>18</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>1205</td>
+        <td>CLOSED</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT count(1) FROM orders 
+WHERE order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>count</th>
+    </tr>
+    <tr>
+        <td>30455</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span> 
+
+SELECT count(1) FROM orders 
+WHERE order_status = &#39;COMPLETE&#39; OR order_status = &#39;CLOSED&#39;
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>count</th>
+    </tr>
+    <tr>
+        <td>30455</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT * FROM orders
+WHERE order_date = &#39;2014-01-01&#39;
+LIMIT 3
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+3 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_id</th>
+        <th>order_date</th>
+        <th>order_customer_id</th>
+        <th>order_status</th>
+    </tr>
+    <tr>
+        <td>25876</td>
+        <td>2014-01-01 00:00:00</td>
+        <td>3414</td>
+        <td>PENDING_PAYMENT</td>
+    </tr>
+    <tr>
+        <td>25877</td>
+        <td>2014-01-01 00:00:00</td>
+        <td>5549</td>
+        <td>PENDING_PAYMENT</td>
+    </tr>
+    <tr>
+        <td>25878</td>
+        <td>2014-01-01 00:00:00</td>
+        <td>9084</td>
+        <td>PENDING</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This query will not work as LIKE cannot be used to compare against columns with date data type</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT * FROM orders
+WHERE order_date LIKE &#39;2014-01%&#39;
+LIMIT 3
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+(psycopg2.errors.UndefinedFunction) operator does not exist: timestamp without time zone ~~ unknown
+LINE 2: WHERE order_date LIKE &#39;2014-01%&#39;
+                         ^
+HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
+
+[SQL: SELECT * FROM orders
+WHERE order_date LIKE &#39;2014-01%%&#39;
+LIMIT 3]
+(Background on this error at: http://sqlalche.me/e/13/f405)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT * FROM orders 
+WHERE order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)
+    AND to_char(order_date, &#39;yyyy-MM-dd&#39;) LIKE &#39;2014-01%&#39;
+LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_id</th>
+        <th>order_date</th>
+        <th>order_customer_id</th>
+        <th>order_status</th>
+    </tr>
+    <tr>
+        <td>25882</td>
+        <td>2014-01-01 00:00:00</td>
+        <td>4598</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>25888</td>
+        <td>2014-01-01 00:00:00</td>
+        <td>6735</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>25889</td>
+        <td>2014-01-01 00:00:00</td>
+        <td>10045</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>25891</td>
+        <td>2014-01-01 00:00:00</td>
+        <td>3037</td>
+        <td>CLOSED</td>
+    </tr>
+    <tr>
+        <td>25895</td>
+        <td>2014-01-01 00:00:00</td>
+        <td>1044</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>25897</td>
+        <td>2014-01-01 00:00:00</td>
+        <td>6405</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>25898</td>
+        <td>2014-01-01 00:00:00</td>
+        <td>3950</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>25899</td>
+        <td>2014-01-01 00:00:00</td>
+        <td>8068</td>
+        <td>CLOSED</td>
+    </tr>
+    <tr>
+        <td>25900</td>
+        <td>2014-01-01 00:00:00</td>
+        <td>2382</td>
+        <td>CLOSED</td>
+    </tr>
+    <tr>
+        <td>25901</td>
+        <td>2014-01-01 00:00:00</td>
+        <td>3099</td>
+        <td>COMPLETE</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT count(1) FROM orders 
+WHERE order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)
+    AND to_char(order_date, &#39;yyyy-MM-dd&#39;) LIKE &#39;2014-01%&#39;
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>count</th>
+    </tr>
+    <tr>
+        <td>2544</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT * FROM orders 
+WHERE order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)
+    AND to_char(order_date, &#39;yyyy-MM&#39;) = &#39;2014-01&#39;
+LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_id</th>
+        <th>order_date</th>
+        <th>order_customer_id</th>
+        <th>order_status</th>
+    </tr>
+    <tr>
+        <td>25882</td>
+        <td>2014-01-01 00:00:00</td>
+        <td>4598</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>25888</td>
+        <td>2014-01-01 00:00:00</td>
+        <td>6735</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>25889</td>
+        <td>2014-01-01 00:00:00</td>
+        <td>10045</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>25891</td>
+        <td>2014-01-01 00:00:00</td>
+        <td>3037</td>
+        <td>CLOSED</td>
+    </tr>
+    <tr>
+        <td>25895</td>
+        <td>2014-01-01 00:00:00</td>
+        <td>1044</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>25897</td>
+        <td>2014-01-01 00:00:00</td>
+        <td>6405</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>25898</td>
+        <td>2014-01-01 00:00:00</td>
+        <td>3950</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>25899</td>
+        <td>2014-01-01 00:00:00</td>
+        <td>8068</td>
+        <td>CLOSED</td>
+    </tr>
+    <tr>
+        <td>25900</td>
+        <td>2014-01-01 00:00:00</td>
+        <td>2382</td>
+        <td>CLOSED</td>
+    </tr>
+    <tr>
+        <td>25901</td>
+        <td>2014-01-01 00:00:00</td>
+        <td>3099</td>
+        <td>COMPLETE</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT count(1) FROM orders 
+WHERE order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)
+    AND to_char(order_date, &#39;yyyy-MM&#39;) = &#39;2014-01&#39;
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>count</th>
+    </tr>
+    <tr>
+        <td>2544</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT count(1) FROM orders 
+WHERE order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)
+    AND to_char(order_date, &#39;yyyy-MM-dd&#39;) ~ &#39;2014-01&#39;
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>count</th>
+    </tr>
+    <tr>
+        <td>2544</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT count(1), min(order_date), max(order_date), count(DISTINCT order_date) 
+FROM orders 
+WHERE order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)
+    AND order_date BETWEEN &#39;2014-01-01&#39; AND &#39;2014-03-31&#39;
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>count</th>
+        <th>min</th>
+        <th>max</th>
+        <th>count_1</th>
+    </tr>
+    <tr>
+        <td>7594</td>
+        <td>2014-01-01 00:00:00</td>
+        <td>2014-03-31 00:00:00</td>
+        <td>89</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT DISTINCT order_date
+FROM orders
+WHERE to_char(order_date, &#39;yyyy-MM&#39;) LIKE &#39;2014-03%&#39;
+ORDER BY order_date
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+30 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_date</th>
+    </tr>
+    <tr>
+        <td>2014-03-01 00:00:00</td>
+    </tr>
+    <tr>
+        <td>2014-03-02 00:00:00</td>
+    </tr>
+    <tr>
+        <td>2014-03-03 00:00:00</td>
+    </tr>
+    <tr>
+        <td>2014-03-04 00:00:00</td>
+    </tr>
+    <tr>
+        <td>2014-03-05 00:00:00</td>
+    </tr>
+    <tr>
+        <td>2014-03-06 00:00:00</td>
+    </tr>
+    <tr>
+        <td>2014-03-07 00:00:00</td>
+    </tr>
+    <tr>
+        <td>2014-03-08 00:00:00</td>
+    </tr>
+    <tr>
+        <td>2014-03-10 00:00:00</td>
+    </tr>
+    <tr>
+        <td>2014-03-11 00:00:00</td>
+    </tr>
+    <tr>
+        <td>2014-03-12 00:00:00</td>
+    </tr>
+    <tr>
+        <td>2014-03-13 00:00:00</td>
+    </tr>
+    <tr>
+        <td>2014-03-14 00:00:00</td>
+    </tr>
+    <tr>
+        <td>2014-03-15 00:00:00</td>
+    </tr>
+    <tr>
+        <td>2014-03-16 00:00:00</td>
+    </tr>
+    <tr>
+        <td>2014-03-17 00:00:00</td>
+    </tr>
+    <tr>
+        <td>2014-03-18 00:00:00</td>
+    </tr>
+    <tr>
+        <td>2014-03-19 00:00:00</td>
+    </tr>
+    <tr>
+        <td>2014-03-20 00:00:00</td>
+    </tr>
+    <tr>
+        <td>2014-03-21 00:00:00</td>
+    </tr>
+    <tr>
+        <td>2014-03-22 00:00:00</td>
+    </tr>
+    <tr>
+        <td>2014-03-23 00:00:00</td>
+    </tr>
+    <tr>
+        <td>2014-03-24 00:00:00</td>
+    </tr>
+    <tr>
+        <td>2014-03-25 00:00:00</td>
+    </tr>
+    <tr>
+        <td>2014-03-26 00:00:00</td>
+    </tr>
+    <tr>
+        <td>2014-03-27 00:00:00</td>
+    </tr>
+    <tr>
+        <td>2014-03-28 00:00:00</td>
+    </tr>
+    <tr>
+        <td>2014-03-29 00:00:00</td>
+    </tr>
+    <tr>
+        <td>2014-03-30 00:00:00</td>
+    </tr>
+    <tr>
+        <td>2014-03-31 00:00:00</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+DROP TABLE IF EXISTS users
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+CREATE TABLE users (
+    user_id SERIAL PRIMARY KEY,
+    user_first_name VARCHAR(30) NOT NULL,
+    user_last_name VARCHAR(30) NOT NULL,
+    user_email_id VARCHAR(50) NOT NULL,
+    user_email_validated BOOLEAN DEFAULT FALSE,
+    user_password VARCHAR(200),
+    user_role VARCHAR(1) NOT NULL DEFAULT &#39;U&#39;, --U and A
+    is_active BOOLEAN DEFAULT FALSE,
+    create_ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    last_updated_ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+INSERT INTO users (user_first_name, user_last_name, user_email_id)
+VALUES (&#39;Donald&#39;, &#39;Duck&#39;, &#39;donald@duck.com&#39;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+INSERT INTO users (user_first_name, user_last_name, user_email_id, user_role, is_active)
+VALUES (&#39;Mickey&#39;, &#39;Mouse&#39;, &#39;mickey@mouse.com&#39;, &#39;U&#39;, true)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+INSERT INTO users 
+    (user_first_name, user_last_name, user_email_id, user_password, user_role, is_active) 
+VALUES 
+    (&#39;Gordan&#39;, &#39;Bradock&#39;, &#39;gbradock0@barnesandnoble.com&#39;, &#39;h9LAz7p7ub&#39;, &#39;U&#39;, true),
+    (&#39;Tobe&#39;, &#39;Lyness&#39;, &#39;tlyness1@paginegialle.it&#39;, &#39;oEofndp&#39;, &#39;U&#39;, true),
+    (&#39;Addie&#39;, &#39;Mesias&#39;, &#39;amesias2@twitpic.com&#39;, &#39;ih7Y69u56&#39;, &#39;U&#39;, true)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+3 rows affected.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT * FROM users
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+5 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>user_id</th>
+        <th>user_first_name</th>
+        <th>user_last_name</th>
+        <th>user_email_id</th>
+        <th>user_email_validated</th>
+        <th>user_password</th>
+        <th>user_role</th>
+        <th>is_active</th>
+        <th>create_ts</th>
+        <th>last_updated_ts</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>Donald</td>
+        <td>Duck</td>
+        <td>donald@duck.com</td>
+        <td>False</td>
+        <td>None</td>
+        <td>U</td>
+        <td>False</td>
+        <td>2020-11-14 15:38:53.352984</td>
+        <td>2020-11-14 15:38:53.352984</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Mickey</td>
+        <td>Mouse</td>
+        <td>mickey@mouse.com</td>
+        <td>False</td>
+        <td>None</td>
+        <td>U</td>
+        <td>True</td>
+        <td>2020-11-14 15:38:54.369402</td>
+        <td>2020-11-14 15:38:54.369402</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>Gordan</td>
+        <td>Bradock</td>
+        <td>gbradock0@barnesandnoble.com</td>
+        <td>False</td>
+        <td>h9LAz7p7ub</td>
+        <td>U</td>
+        <td>True</td>
+        <td>2020-11-14 15:38:55.260250</td>
+        <td>2020-11-14 15:38:55.260250</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>Tobe</td>
+        <td>Lyness</td>
+        <td>tlyness1@paginegialle.it</td>
+        <td>False</td>
+        <td>oEofndp</td>
+        <td>U</td>
+        <td>True</td>
+        <td>2020-11-14 15:38:55.260250</td>
+        <td>2020-11-14 15:38:55.260250</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>Addie</td>
+        <td>Mesias</td>
+        <td>amesias2@twitpic.com</td>
+        <td>False</td>
+        <td>ih7Y69u56</td>
+        <td>U</td>
+        <td>True</td>
+        <td>2020-11-14 15:38:55.260250</td>
+        <td>2020-11-14 15:38:55.260250</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This will not return any thing and not the correct way to compare against NULL.
+NULL is specially treated by databases and it is not same as empty string.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT * FROM users
+WHERE user_password = NULL
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+0 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>user_id</th>
+        <th>user_first_name</th>
+        <th>user_last_name</th>
+        <th>user_email_id</th>
+        <th>user_email_validated</th>
+        <th>user_password</th>
+        <th>user_role</th>
+        <th>is_active</th>
+        <th>create_ts</th>
+        <th>last_updated_ts</th>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT * FROM users
+WHERE user_password IS NULL
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+2 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>user_id</th>
+        <th>user_first_name</th>
+        <th>user_last_name</th>
+        <th>user_email_id</th>
+        <th>user_email_validated</th>
+        <th>user_password</th>
+        <th>user_role</th>
+        <th>is_active</th>
+        <th>create_ts</th>
+        <th>last_updated_ts</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>Donald</td>
+        <td>Duck</td>
+        <td>donald@duck.com</td>
+        <td>False</td>
+        <td>None</td>
+        <td>U</td>
+        <td>False</td>
+        <td>2020-11-14 15:38:53.352984</td>
+        <td>2020-11-14 15:38:53.352984</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Mickey</td>
+        <td>Mouse</td>
+        <td>mickey@mouse.com</td>
+        <td>False</td>
+        <td>None</td>
+        <td>U</td>
+        <td>True</td>
+        <td>2020-11-14 15:38:54.369402</td>
+        <td>2020-11-14 15:38:54.369402</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT * FROM users
+WHERE user_password IS NOT NULL
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+3 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>user_id</th>
+        <th>user_first_name</th>
+        <th>user_last_name</th>
+        <th>user_email_id</th>
+        <th>user_email_validated</th>
+        <th>user_password</th>
+        <th>user_role</th>
+        <th>is_active</th>
+        <th>create_ts</th>
+        <th>last_updated_ts</th>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>Gordan</td>
+        <td>Bradock</td>
+        <td>gbradock0@barnesandnoble.com</td>
+        <td>False</td>
+        <td>h9LAz7p7ub</td>
+        <td>U</td>
+        <td>True</td>
+        <td>2020-11-14 15:38:55.260250</td>
+        <td>2020-11-14 15:38:55.260250</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>Tobe</td>
+        <td>Lyness</td>
+        <td>tlyness1@paginegialle.it</td>
+        <td>False</td>
+        <td>oEofndp</td>
+        <td>U</td>
+        <td>True</td>
+        <td>2020-11-14 15:38:55.260250</td>
+        <td>2020-11-14 15:38:55.260250</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>Addie</td>
+        <td>Mesias</td>
+        <td>amesias2@twitpic.com</td>
+        <td>False</td>
+        <td>ih7Y69u56</td>
+        <td>U</td>
+        <td>True</td>
+        <td>2020-11-14 15:38:55.260250</td>
+        <td>2020-11-14 15:38:55.260250</td>
+    </tr>
+</table></div></div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./03_writing_basic_sql_queries"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="06_selecting_or_projecting_data.html" title="previous page">Selecting or Projecting Data</a>
+    <a class='right-next' id="next-link" href="08_joining_tables_inner.html" title="next page">Joining Tables – Inner</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

@@ -1,0 +1,829 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Joining Tables - Outer &#8212; My Jupyter Book</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Performing Aggregations" href="10_performing_aggregations.html" />
+    <link rel="prev" title="Joining Tables – Inner" href="08_joining_tables_inner.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">My Jupyter Book</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mastering-postgresql.html">
+   Mastering Postgresql
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_getting_started/01_getting_started.html">
+   Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_dml_or_crud_operations/01_dml_or_crud_operations.html">
+   DML or CRUD Operations
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="01_writing_basic_sql_queries.html">
+   Writing Basic SQL Queries
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="02_standard_transformations.html">
+     Standard Transformations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03_overview_of_data_model.html">
+     Overview of Data Model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04_define_problem_statement.html">
+     Define Problem Statement – Daily Product Revenue
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05_preparing_tables.html">
+     Preparing Tables
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06_selecting_or_projecting_data.html">
+     Selecting or Projecting Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="07_filtering_data.html">
+     Filtering Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08_joining_tables_inner.html">
+     Joining Tables – Inner
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Joining Tables - Outer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="10_performing_aggregations.html">
+     Performing Aggregations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="11_sorting_data.html">
+     Sorting Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="12_solution_daily_product_revenue.html">
+     Solution – Daily Product Revenue
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="13_exercises_basic_sql_queries.html">
+     Exercises - Basic SQL Queries
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/03_writing_basic_sql_queries/09_joining_tables_outer.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/03_writing_basic_sql_queries/09_joining_tables_outer.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="joining-tables-outer">
+<h1>Joining Tables - Outer<a class="headerlink" href="#joining-tables-outer" title="Permalink to this headline">¶</a></h1>
+<p>Let us understand how to perform outer joins using SQL. There are 3 different types of outer joins.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/U050biNag4w?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+</div></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">LEFT</span> <span class="pre">OUTER</span> <span class="pre">JOIN</span></code> (default) - Get all the records from both the datasets which satisfies JOIN condition along with those records which are in the left side table but not in the right side table.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RIGHT</span> <span class="pre">OUTER</span> <span class="pre">JOIN</span></code> - Get all the records from both the datasets which satisfies JOIN condition along with those records which are in the right side table but not in the left side table.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FULL</span> <span class="pre">OUTER</span> <span class="pre">JOIN</span></code> - left union right</p></li>
+<li><p>When we perform the outer join (lets say left outer join), we will see this.</p>
+<ul>
+<li><p>Get all the values from both the tables when join condition satisfies.</p></li>
+<li><p>If there are rows on left side table for which there are no corresponding values in right side table, all the projected column values for right side table will be null.</p></li>
+</ul>
+</li>
+<li><p>Here are some of the examples for outer join.</p>
+<ul>
+<li><p>Get all the orders where there are no corresponding order items.</p></li>
+<li><p>Get all the order items where there are no corresponding orders.</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The sql extension is already loaded. To reload it, use:
+  %reload_ext sql
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env: DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT o.order_id,
+    o.order_date,
+    o.order_status,
+    oi.order_item_order_id,
+    oi.order_item_subtotal
+FROM orders o LEFT OUTER JOIN order_items oi
+    ON o.order_id = oi.order_item_order_id
+ORDER BY o.order_id
+LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_id</th>
+        <th>order_date</th>
+        <th>order_status</th>
+        <th>order_item_order_id</th>
+        <th>order_item_subtotal</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>CLOSED</td>
+        <td>1</td>
+        <td>299.98</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>PENDING_PAYMENT</td>
+        <td>2</td>
+        <td>129.99</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>PENDING_PAYMENT</td>
+        <td>2</td>
+        <td>250.0</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>PENDING_PAYMENT</td>
+        <td>2</td>
+        <td>199.99</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>COMPLETE</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>CLOSED</td>
+        <td>4</td>
+        <td>199.92</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>CLOSED</td>
+        <td>4</td>
+        <td>150.0</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>CLOSED</td>
+        <td>4</td>
+        <td>299.95</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>CLOSED</td>
+        <td>4</td>
+        <td>49.98</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>COMPLETE</td>
+        <td>5</td>
+        <td>299.98</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT count(1)
+FROM orders o LEFT OUTER JOIN order_items oi
+    ON o.order_id = oi.order_item_order_id
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>count</th>
+    </tr>
+    <tr>
+        <td>183650</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT count(1)
+FROM orders o JOIN order_items oi
+    ON o.order_id = oi.order_item_order_id
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>count</th>
+    </tr>
+    <tr>
+        <td>172198</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT o.order_id,
+    o.order_date,
+    o.order_status,
+    oi.order_item_order_id,
+    oi.order_item_subtotal
+FROM orders o LEFT OUTER JOIN order_items oi
+    ON o.order_id = oi.order_item_order_id
+WHERE oi.order_item_order_id IS NULL
+ORDER BY o.order_id
+LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_id</th>
+        <th>order_date</th>
+        <th>order_status</th>
+        <th>order_item_order_id</th>
+        <th>order_item_subtotal</th>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>COMPLETE</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>COMPLETE</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>22</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>COMPLETE</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>26</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>COMPLETE</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>32</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>COMPLETE</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>40</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>PENDING_PAYMENT</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>47</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>PENDING_PAYMENT</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>53</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>PROCESSING</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>54</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>PENDING_PAYMENT</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>55</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>PENDING</td>
+        <td>None</td>
+        <td>None</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT count(1)
+FROM orders o LEFT OUTER JOIN order_items oi
+    ON o.order_id = oi.order_item_order_id
+WHERE oi.order_item_order_id IS NULL
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>count</th>
+    </tr>
+    <tr>
+        <td>11452</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT count(1)
+FROM orders o LEFT OUTER JOIN order_items oi
+    ON o.order_id = oi.order_item_order_id
+WHERE oi.order_item_order_id IS NULL
+    AND o.order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>count</th>
+    </tr>
+    <tr>
+        <td>5189</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT o.order_id,
+    o.order_date,
+    o.order_status,
+    oi.order_item_order_id,
+    oi.order_item_subtotal
+FROM orders o RIGHT OUTER JOIN order_items oi
+    ON o.order_id = oi.order_item_order_id
+LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_id</th>
+        <th>order_date</th>
+        <th>order_status</th>
+        <th>order_item_order_id</th>
+        <th>order_item_subtotal</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>CLOSED</td>
+        <td>1</td>
+        <td>299.98</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>PENDING_PAYMENT</td>
+        <td>2</td>
+        <td>199.99</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>PENDING_PAYMENT</td>
+        <td>2</td>
+        <td>250.0</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>PENDING_PAYMENT</td>
+        <td>2</td>
+        <td>129.99</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>CLOSED</td>
+        <td>4</td>
+        <td>49.98</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>CLOSED</td>
+        <td>4</td>
+        <td>299.95</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>CLOSED</td>
+        <td>4</td>
+        <td>150.0</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>CLOSED</td>
+        <td>4</td>
+        <td>199.92</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>COMPLETE</td>
+        <td>5</td>
+        <td>299.98</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>COMPLETE</td>
+        <td>5</td>
+        <td>299.95</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT count(1)
+FROM orders o RIGHT OUTER JOIN order_items oi
+    ON o.order_id = oi.order_item_order_id
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>count</th>
+    </tr>
+    <tr>
+        <td>172198</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT o.order_id,
+    o.order_date,
+    o.order_status,
+    oi.order_item_order_id,
+    oi.order_item_subtotal
+FROM orders o RIGHT OUTER JOIN order_items oi
+    ON o.order_id = oi.order_item_order_id
+WHERE o.order_id IS NULL
+LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+0 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_id</th>
+        <th>order_date</th>
+        <th>order_status</th>
+        <th>order_item_order_id</th>
+        <th>order_item_subtotal</th>
+    </tr>
+</table></div></div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./03_writing_basic_sql_queries"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="08_joining_tables_inner.html" title="previous page">Joining Tables – Inner</a>
+    <a class='right-next' id="next-link" href="10_performing_aggregations.html" title="next page">Performing Aggregations</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

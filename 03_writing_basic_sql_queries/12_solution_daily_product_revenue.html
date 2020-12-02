@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Standard Transformations &#8212; My Jupyter Book</title>
+    <title>Solution – Daily Product Revenue &#8212; My Jupyter Book</title>
     
   <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -55,8 +55,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Overview of Data Model" href="03_overview_of_data_model.html" />
-    <link rel="prev" title="Writing Basic SQL Queries" href="01_writing_basic_sql_queries.html" />
+    <link rel="next" title="Exercises - Basic SQL Queries" href="13_exercises_basic_sql_queries.html" />
+    <link rel="prev" title="Sorting Data" href="11_sorting_data.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -110,8 +110,8 @@
    Writing Basic SQL Queries
   </a>
   <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="02_standard_transformations.html">
      Standard Transformations
     </a>
    </li>
@@ -160,8 +160,8 @@
      Sorting Data
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="12_solution_daily_product_revenue.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Solution – Daily Product Revenue
     </a>
    </li>
@@ -214,7 +214,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/03_writing_basic_sql_queries/02_standard_transformations.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/03_writing_basic_sql_queries/12_solution_daily_product_revenue.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -239,7 +239,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/03_writing_basic_sql_queries/02_standard_transformations.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/03_writing_basic_sql_queries/12_solution_daily_product_revenue.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -263,22 +263,285 @@
         
               <div>
                 
-  <div class="section" id="standard-transformations">
-<h1>Standard Transformations<a class="headerlink" href="#standard-transformations" title="Permalink to this headline">¶</a></h1>
-<p>Here are some of the transformations we typically perform on regular basis.</p>
+  <div class="section" id="solution-daily-product-revenue">
+<h1>Solution – Daily Product Revenue<a class="headerlink" href="#solution-daily-product-revenue" title="Permalink to this headline">¶</a></h1>
+<p>Let us review the Final Solution for our problem statement <strong>daily_product_revenue</strong>.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/Y8krusDetoQ?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/Gx56dPQX4C4?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
 </div></div>
 </div>
 <ul class="simple">
-<li><p>Projection of data</p></li>
-<li><p>Filtering data</p></li>
-<li><p>Performing Aggregations</p></li>
-<li><p>Joins</p></li>
-<li><p>Sorting</p></li>
-<li><p>Ranking (will be covered as part of advanced queries)</p></li>
+<li><p>Prepare tables</p>
+<ul>
+<li><p>Create tables</p></li>
+<li><p>Load the data into tables</p></li>
 </ul>
+</li>
+<li><p>We need to project the fields which we are interested in. We need to have <strong>product_id</strong> as well as <strong>product_name</strong> as there can be products with same name and can result in incorrect output.</p>
+<ul>
+<li><p>order_date</p></li>
+<li><p>order_item_product_id</p></li>
+<li><p>product_name</p></li>
+<li><p>product_revenue</p></li>
+</ul>
+</li>
+<li><p>As we have fields from multiple tables, we need to perform join after which we have to filter for COMPLETE or CLOSED orders.</p></li>
+<li><p>We have to group the data by order_date and order_item_product_id, then we have to perform aggregation on order_item_subtotal to get product_revenue.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The sql extension is already loaded. To reload it, use:
+  %reload_ext sql
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env: DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT o.order_date,
+    oi.order_item_product_id,
+    p.product_name,
+    round(sum(oi.order_item_subtotal::numeric), 2) AS product_revenue
+FROM orders o 
+    JOIN order_items oi
+        ON o.order_id = oi.order_item_order_id
+    JOIN products p
+        ON p.product_id = oi.order_item_product_id
+WHERE o.order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)
+GROUP BY o.order_date,
+    oi.order_item_product_id,
+    p.product_name
+LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_date</th>
+        <th>order_item_product_id</th>
+        <th>product_name</th>
+        <th>product_revenue</th>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>24</td>
+        <td>Elevation Training Mask 2.0</td>
+        <td>319.96</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>93</td>
+        <td>Under Armour Men&#x27;s Tech II T-Shirt</td>
+        <td>74.97</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>134</td>
+        <td>Nike Women&#x27;s Legend V-Neck T-Shirt</td>
+        <td>100.00</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>191</td>
+        <td>Nike Men&#x27;s Free 5.0+ Running Shoe</td>
+        <td>5099.49</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>226</td>
+        <td>Bowflex SelectTech 1090 Dumbbells</td>
+        <td>599.99</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>365</td>
+        <td>Perfect Fitness Perfect Rip Deck</td>
+        <td>3359.44</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>403</td>
+        <td>Nike Men&#x27;s CJ Elite 2 TD Football Cleat</td>
+        <td>1949.85</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>502</td>
+        <td>Nike Men&#x27;s Dri-FIT Victory Golf Polo</td>
+        <td>1650.00</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>572</td>
+        <td>TYR Boys&#x27; Team Digi Jammer</td>
+        <td>119.97</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>625</td>
+        <td>Nike Men&#x27;s Kobe IX Elite Low Basketball Shoe</td>
+        <td>199.99</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT o.order_date,
+    oi.order_item_product_id,
+    p.product_name,
+    round(sum(oi.order_item_subtotal::numeric), 2) AS product_revenue
+FROM orders o 
+    JOIN order_items oi
+        ON o.order_id = oi.order_item_order_id
+    JOIN products p
+        ON p.product_id = oi.order_item_product_id
+WHERE o.order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)
+GROUP BY o.order_date,
+    oi.order_item_product_id,
+    p.product_name
+ORDER BY o.order_date,
+    product_revenue DESC
+LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_date</th>
+        <th>order_item_product_id</th>
+        <th>product_name</th>
+        <th>product_revenue</th>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>1004</td>
+        <td>Field &amp; Stream Sportsman 16 Gun Fire Safe</td>
+        <td>5599.72</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>191</td>
+        <td>Nike Men&#x27;s Free 5.0+ Running Shoe</td>
+        <td>5099.49</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>957</td>
+        <td>Diamondback Women&#x27;s Serene Classic Comfort Bi</td>
+        <td>4499.70</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>365</td>
+        <td>Perfect Fitness Perfect Rip Deck</td>
+        <td>3359.44</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>1073</td>
+        <td>Pelican Sunstream 100 Kayak</td>
+        <td>2999.85</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>1014</td>
+        <td>O&#x27;Brien Men&#x27;s Neoprene Life Vest</td>
+        <td>2798.88</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>403</td>
+        <td>Nike Men&#x27;s CJ Elite 2 TD Football Cleat</td>
+        <td>1949.85</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>502</td>
+        <td>Nike Men&#x27;s Dri-FIT Victory Golf Polo</td>
+        <td>1650.00</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>627</td>
+        <td>Under Armour Girls&#x27; Toddler Spine Surge Runni</td>
+        <td>1079.73</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>226</td>
+        <td>Bowflex SelectTech 1090 Dumbbells</td>
+        <td>599.99</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT count(1) FROM (
+    SELECT o.order_date,
+        oi.order_item_product_id,
+        p.product_name,
+        round(sum(oi.order_item_subtotal::numeric), 2) AS product_revenue
+    FROM orders o 
+        JOIN order_items oi
+            ON o.order_id = oi.order_item_order_id
+        JOIN products p
+            ON p.product_id = oi.order_item_product_id
+    WHERE o.order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)
+    GROUP BY o.order_date,
+        oi.order_item_product_id,
+        p.product_name
+) q
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>count</th>
+    </tr>
+    <tr>
+        <td>9120</td>
+    </tr>
+</table></div></div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -309,8 +572,8 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="01_writing_basic_sql_queries.html" title="previous page">Writing Basic SQL Queries</a>
-    <a class='right-next' id="next-link" href="03_overview_of_data_model.html" title="next page">Overview of Data Model</a>
+    <a class='left-prev' id="prev-link" href="11_sorting_data.html" title="previous page">Sorting Data</a>
+    <a class='right-next' id="next-link" href="13_exercises_basic_sql_queries.html" title="next page">Exercises - Basic SQL Queries</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

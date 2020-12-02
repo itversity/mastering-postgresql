@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Connecting to Database &#8212; My Jupyter Book</title>
+    <title>Writing Basic SQL Queries &#8212; My Jupyter Book</title>
     
   <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -55,8 +55,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Using psql" href="03_using_psql.html" />
-    <link rel="prev" title="Getting Started" href="01_getting_started.html" />
+    <link rel="next" title="Standard Transformations" href="02_standard_transformations.html" />
+    <link rel="prev" title="Exercises - Database Operations" href="../02_dml_or_crud_operations/11_exercises_database_operations.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -95,67 +95,82 @@
  </li>
 </ul>
 <ul class="current nav sidenav_l1">
- <li class="toctree-l1 current active">
-  <a class="reference internal" href="01_getting_started.html">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_getting_started/01_getting_started.html">
    Getting Started
   </a>
-  <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Connecting to Database
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="03_using_psql.html">
-     Using psql
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="04_setup_postgres_using_docker.html">
-     Setup Postgres using Docker
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="05_setup_sql_workbench.html">
-     Setup SQL Workbench
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="06_sql_workbench_and_postgres.html">
-     SQL Workbench and Postgres
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="07_sql_workbench_features.html">
-     SQL Workbench Features
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="08_data_loading_utilities.html">
-     Data Loading Utilities
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="09_loading_data_postgres_in_docker.html">
-     Loading Data - Docker
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="10_exercise_loading_data.html">
-     Exercise - Loading Data
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../02_dml_or_crud_operations/01_dml_or_crud_operations.html">
    DML or CRUD Operations
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../03_writing_basic_sql_queries/01_writing_basic_sql_queries.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Writing Basic SQL Queries
   </a>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02_standard_transformations.html">
+     Standard Transformations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03_overview_of_data_model.html">
+     Overview of Data Model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04_define_problem_statement.html">
+     Define Problem Statement – Daily Product Revenue
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05_preparing_tables.html">
+     Preparing Tables
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06_selecting_or_projecting_data.html">
+     Selecting or Projecting Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="07_filtering_data.html">
+     Filtering Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08_joining_tables_inner.html">
+     Joining Tables – Inner
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="09_joining_tables_outer.html">
+     Joining Tables - Outer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="10_performing_aggregations.html">
+     Performing Aggregations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="11_sorting_data.html">
+     Sorting Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="12_solution_daily_product_revenue.html">
+     Solution – Daily Product Revenue
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="13_exercises_basic_sql_queries.html">
+     Exercises - Basic SQL Queries
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -199,7 +214,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/01_getting_started/02_connecting_to_database.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/03_writing_basic_sql_queries/01_writing_basic_sql_queries.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -224,7 +239,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/01_getting_started/02_connecting_to_database.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/03_writing_basic_sql_queries/01_writing_basic_sql_queries.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -248,46 +263,32 @@
         
               <div>
                 
-  <div class="section" id="connecting-to-database">
-<h1>Connecting to Database<a class="headerlink" href="#connecting-to-database" title="Permalink to this headline">¶</a></h1>
-<p>We will be using JupyterHub based environment to master Postgresql. Let us go through the steps involved to get started using JupyterHub environment.</p>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/mSszF9ycHgA?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
-</div></div>
-</div>
+  <div class="section" id="writing-basic-sql-queries">
+<h1>Writing Basic SQL Queries<a class="headerlink" href="#writing-basic-sql-queries" title="Permalink to this headline">¶</a></h1>
+<p>As part of this section we will primarily focus on writing basic queries.</p>
 <ul class="simple">
-<li><p>We will use Python Kernel with sql magic command and for that we need to first load the sql extension.</p></li>
-<li><p>Create environment variable <code class="docutils literal notranslate"><span class="pre">DATABASE_URL</span></code> using SQL Alchemy format.</p></li>
-<li><p>Write a simple query to get data from information schema table to validate database connectivity.</p></li>
-<li><p>Here is the information you can leverage to connect to the database.</p>
-<ul>
-<li><p><strong>User Name:</strong> YOUR_OS_USER_sms_user</p></li>
-<li><p><strong>Database Name:</strong> YOUR_OS_USER_sms_db</p></li>
-<li><p><strong>Password:</strong> Your lab password provided by us</p></li>
+<li><p>Standard Transformations</p></li>
+<li><p>Overview of Data Model</p></li>
+<li><p>Define Problem Statement – Daily Product Revenue</p></li>
+<li><p>Preparing Tables</p></li>
+<li><p>Selecting or Projecting Data</p></li>
+<li><p>Filtering Data</p></li>
+<li><p>Joining Tables – Inner</p></li>
+<li><p>Joining Tables – Outer</p></li>
+<li><p>Performing Aggregations</p></li>
+<li><p>Sorting Data</p></li>
+<li><p>Solution – Daily Product Revenue</p></li>
 </ul>
-</li>
+<p>Here are the key objectives for this section</p>
+<ul class="simple">
+<li><p>What are different standard transformations and how they are implemented using Basic SQL?</p></li>
+<li><p>Understand the data model using which basic SQL features are explored?</p></li>
+<li><p>Setup the database, tables and load the data quickly</p></li>
+<li><p>How we typically select or project the data, filter the data, join data from multiple tables, compute metrics using aggregate functions, sort the data etc?</p></li>
+<li><p>While exploring basic SQL queries, we will define a problem statement and come up with a solution at the end.</p></li>
+<li><p>Self evaluate whether one understood all the key aspects of writing basic SQL queries using exercises at the end.</p></li>
 </ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_sms_user:sms_password@localhost:5432/itversity_sms_db
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT * FROM information_schema.tables LIMIT 10
-</pre></div>
-</div>
-</div>
+<div class="toctree-wrapper compound">
 </div>
 </div>
 
@@ -304,7 +305,7 @@
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./01_getting_started"
+            path: "./03_writing_basic_sql_queries"
         },
         predefinedOutput: true
     }
@@ -319,8 +320,8 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="01_getting_started.html" title="previous page">Getting Started</a>
-    <a class='right-next' id="next-link" href="03_using_psql.html" title="next page">Using psql</a>
+    <a class='left-prev' id="prev-link" href="../02_dml_or_crud_operations/11_exercises_database_operations.html" title="previous page">Exercises - Database Operations</a>
+    <a class='right-next' id="next-link" href="02_standard_transformations.html" title="next page">Standard Transformations</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

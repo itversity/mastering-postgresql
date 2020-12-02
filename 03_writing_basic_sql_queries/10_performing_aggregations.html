@@ -1,0 +1,1189 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Performing Aggregations &#8212; My Jupyter Book</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Sorting Data" href="11_sorting_data.html" />
+    <link rel="prev" title="Joining Tables - Outer" href="09_joining_tables_outer.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">My Jupyter Book</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mastering-postgresql.html">
+   Mastering Postgresql
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_getting_started/01_getting_started.html">
+   Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_dml_or_crud_operations/01_dml_or_crud_operations.html">
+   DML or CRUD Operations
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="01_writing_basic_sql_queries.html">
+   Writing Basic SQL Queries
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="02_standard_transformations.html">
+     Standard Transformations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03_overview_of_data_model.html">
+     Overview of Data Model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04_define_problem_statement.html">
+     Define Problem Statement – Daily Product Revenue
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05_preparing_tables.html">
+     Preparing Tables
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06_selecting_or_projecting_data.html">
+     Selecting or Projecting Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="07_filtering_data.html">
+     Filtering Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08_joining_tables_inner.html">
+     Joining Tables – Inner
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="09_joining_tables_outer.html">
+     Joining Tables - Outer
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Performing Aggregations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="11_sorting_data.html">
+     Sorting Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="12_solution_daily_product_revenue.html">
+     Solution – Daily Product Revenue
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="13_exercises_basic_sql_queries.html">
+     Exercises - Basic SQL Queries
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/03_writing_basic_sql_queries/10_performing_aggregations.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/03_writing_basic_sql_queries/10_performing_aggregations.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="performing-aggregations">
+<h1>Performing Aggregations<a class="headerlink" href="#performing-aggregations" title="Permalink to this headline">¶</a></h1>
+<p>Let us understand how to aggregate the data.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/mIPF0ENiKiE?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+</div></div>
+</div>
+<ul class="simple">
+<li><p>We can perform global aggregations as well as aggregations by key.</p></li>
+<li><p>Global Aggregations</p>
+<ul>
+<li><p>Get total number of orders.</p></li>
+<li><p>Get revenue for a given order id.</p></li>
+<li><p>Get number of records with order_status either COMPLETED or CLOSED.</p></li>
+</ul>
+</li>
+<li><p>Aggregations by key - using <code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span></code></p>
+<ul>
+<li><p>Get number of orders by date or status.</p></li>
+<li><p>Get revenue for each order_id.</p></li>
+<li><p>Get daily product revenue (using order date and product id as keys).</p></li>
+</ul>
+</li>
+<li><p>We can also use <code class="docutils literal notranslate"><span class="pre">HAVING</span></code> clause to apply filtering on top of aggregated data.</p>
+<ul>
+<li><p>Get daily product revenue where revenue is greater than $500 (using order date and product id as keys).</p></li>
+</ul>
+</li>
+<li><p>Rules while using <code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span></code>.</p>
+<ul>
+<li><p>We can have the columns which are specified as part of <code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span></code> in <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> clause.</p></li>
+<li><p>On top of those, we can have derived columns using aggregate functions.</p></li>
+<li><p>We cannot have any other columns that are not used as part of <code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span></code> or derived column using non aggregate functions.</p></li>
+<li><p>We will not be able to use aggregate functions or aliases used in the select clause as part of the where clause.</p></li>
+<li><p>If we want to filter based on aggregated results, then we can leverage <code class="docutils literal notranslate"><span class="pre">HAVING</span></code> on top of <code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span></code> (specifying <code class="docutils literal notranslate"><span class="pre">WHERE</span></code> is not an option)</p></li>
+</ul>
+</li>
+<li><p>Typical query execution - FROM -&gt; WHERE -&gt; GROUP BY -&gt; SELECT</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The sql extension is already loaded. To reload it, use:
+  %reload_ext sql
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env: DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT count(order_id) FROM orders
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>count</th>
+    </tr>
+    <tr>
+        <td>68883</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT count(DISTINCT order_date) FROM orders
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>count</th>
+    </tr>
+    <tr>
+        <td>364</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT *
+FROM order_items 
+WHERE order_item_order_id = 2
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+3 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_item_id</th>
+        <th>order_item_order_id</th>
+        <th>order_item_product_id</th>
+        <th>order_item_quantity</th>
+        <th>order_item_subtotal</th>
+        <th>order_item_product_price</th>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>2</td>
+        <td>1073</td>
+        <td>1</td>
+        <td>199.99</td>
+        <td>199.99</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>2</td>
+        <td>502</td>
+        <td>5</td>
+        <td>250.0</td>
+        <td>50.0</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>2</td>
+        <td>403</td>
+        <td>1</td>
+        <td>129.99</td>
+        <td>129.99</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT round(sum(order_item_subtotal::numeric), 2) AS order_revenue
+FROM order_items 
+WHERE order_item_order_id = 2
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_revenue</th>
+    </tr>
+    <tr>
+        <td>579.98</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT count(1) 
+FROM orders
+WHERE order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>count</th>
+    </tr>
+    <tr>
+        <td>30455</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT order_date,
+    count(1)
+FROM orders
+GROUP BY order_date
+ORDER BY order_date
+LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_date</th>
+        <th>count</th>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>143</td>
+    </tr>
+    <tr>
+        <td>2013-07-26 00:00:00</td>
+        <td>269</td>
+    </tr>
+    <tr>
+        <td>2013-07-27 00:00:00</td>
+        <td>202</td>
+    </tr>
+    <tr>
+        <td>2013-07-28 00:00:00</td>
+        <td>187</td>
+    </tr>
+    <tr>
+        <td>2013-07-29 00:00:00</td>
+        <td>253</td>
+    </tr>
+    <tr>
+        <td>2013-07-30 00:00:00</td>
+        <td>227</td>
+    </tr>
+    <tr>
+        <td>2013-07-31 00:00:00</td>
+        <td>252</td>
+    </tr>
+    <tr>
+        <td>2013-08-01 00:00:00</td>
+        <td>246</td>
+    </tr>
+    <tr>
+        <td>2013-08-02 00:00:00</td>
+        <td>224</td>
+    </tr>
+    <tr>
+        <td>2013-08-03 00:00:00</td>
+        <td>183</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT order_status,
+    count(1) AS status_count
+FROM orders
+GROUP BY order_status
+ORDER BY order_status
+LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+9 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_status</th>
+        <th>status_count</th>
+    </tr>
+    <tr>
+        <td>CANCELED</td>
+        <td>1428</td>
+    </tr>
+    <tr>
+        <td>CLOSED</td>
+        <td>7556</td>
+    </tr>
+    <tr>
+        <td>COMPLETE</td>
+        <td>22899</td>
+    </tr>
+    <tr>
+        <td>ON_HOLD</td>
+        <td>3798</td>
+    </tr>
+    <tr>
+        <td>PAYMENT_REVIEW</td>
+        <td>729</td>
+    </tr>
+    <tr>
+        <td>PENDING</td>
+        <td>7610</td>
+    </tr>
+    <tr>
+        <td>PENDING_PAYMENT</td>
+        <td>15030</td>
+    </tr>
+    <tr>
+        <td>PROCESSING</td>
+        <td>8275</td>
+    </tr>
+    <tr>
+        <td>SUSPECTED_FRAUD</td>
+        <td>1558</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT order_item_order_id,
+    sum(order_item_subtotal) AS order_revenue
+FROM order_items
+GROUP BY order_item_order_id 
+LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_item_order_id</th>
+        <th>order_revenue</th>
+    </tr>
+    <tr>
+        <td>44127</td>
+        <td>179.97</td>
+    </tr>
+    <tr>
+        <td>26264</td>
+        <td>334.96000000000004</td>
+    </tr>
+    <tr>
+        <td>37876</td>
+        <td>699.97</td>
+    </tr>
+    <tr>
+        <td>55864</td>
+        <td>600.94</td>
+    </tr>
+    <tr>
+        <td>31789</td>
+        <td>129.99</td>
+    </tr>
+    <tr>
+        <td>56903</td>
+        <td>479.97</td>
+    </tr>
+    <tr>
+        <td>40694</td>
+        <td>1129.75</td>
+    </tr>
+    <tr>
+        <td>48663</td>
+        <td>969.9200000000001</td>
+    </tr>
+    <tr>
+        <td>47216</td>
+        <td>1219.89</td>
+    </tr>
+    <tr>
+        <td>37922</td>
+        <td>1029.9</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="admonition error">
+<p class="admonition-title">Error</p>
+<p>This query using <code class="docutils literal notranslate"><span class="pre">round</span></code> will fail as <code class="docutils literal notranslate"><span class="pre">sum(order_item_subtotal)</span></code> will not return the data accepted by <code class="docutils literal notranslate"><span class="pre">round</span></code>. We have to convert the data type of <code class="docutils literal notranslate"><span class="pre">sum(order_item_subtotal)</span></code> to <code class="docutils literal notranslate"><span class="pre">numeric</span></code>.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT order_item_order_id,
+    round(sum(order_item_subtotal), 2) AS order_revenue
+FROM order_items
+GROUP BY order_item_order_id 
+LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+(psycopg2.errors.UndefinedFunction) function round(double precision, integer) does not exist
+LINE 1: SELECT order_item_order_id, round(sum(order_item_subtotal), ...
+                                    ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+
+[SQL: SELECT order_item_order_id, round(sum(order_item_subtotal), 2) AS order_revenue
+FROM order_items
+GROUP BY order_item_order_id 
+LIMIT 10]
+(Background on this error at: http://sqlalche.me/e/13/f405)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT order_item_order_id,
+    round(sum(order_item_subtotal)::numeric, 2) AS order_revenue
+FROM order_items
+GROUP BY order_item_order_id 
+LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_item_order_id</th>
+        <th>order_revenue</th>
+    </tr>
+    <tr>
+        <td>44127</td>
+        <td>179.97</td>
+    </tr>
+    <tr>
+        <td>26264</td>
+        <td>334.96</td>
+    </tr>
+    <tr>
+        <td>37876</td>
+        <td>699.97</td>
+    </tr>
+    <tr>
+        <td>55864</td>
+        <td>600.94</td>
+    </tr>
+    <tr>
+        <td>31789</td>
+        <td>129.99</td>
+    </tr>
+    <tr>
+        <td>56903</td>
+        <td>479.97</td>
+    </tr>
+    <tr>
+        <td>40694</td>
+        <td>1129.75</td>
+    </tr>
+    <tr>
+        <td>48663</td>
+        <td>969.92</td>
+    </tr>
+    <tr>
+        <td>47216</td>
+        <td>1219.89</td>
+    </tr>
+    <tr>
+        <td>37922</td>
+        <td>1029.90</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT o.order_date,
+    oi.order_item_product_id,
+    round(sum(oi.order_item_subtotal::numeric), 2) AS revenue
+FROM orders o JOIN order_items oi
+    ON o.order_id = oi.order_item_order_id
+WHERE o.order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)
+GROUP BY o.order_date,
+    oi.order_item_product_id
+LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_date</th>
+        <th>order_item_product_id</th>
+        <th>revenue</th>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>24</td>
+        <td>319.96</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>93</td>
+        <td>74.97</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>134</td>
+        <td>100.00</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>191</td>
+        <td>5099.49</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>226</td>
+        <td>599.99</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>365</td>
+        <td>3359.44</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>403</td>
+        <td>1949.85</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>502</td>
+        <td>1650.00</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>572</td>
+        <td>119.97</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>625</td>
+        <td>199.99</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We cannot use the aliases in select clause in <code class="docutils literal notranslate"><span class="pre">WHERE</span></code>. In this case <strong>revenue</strong> cannot be used in <code class="docutils literal notranslate"><span class="pre">WHERE</span></code> clause.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT o.order_date,
+    oi.order_item_product_id,
+    round(sum(oi.order_item_subtotal::numeric), 2) AS revenue
+FROM orders o JOIN order_items oi
+    ON o.order_id = oi.order_item_order_id
+WHERE o.order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)
+    AND revenue &gt;= 500
+GROUP BY o.order_date,
+    oi.order_item_product_id
+LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+(psycopg2.errors.UndefinedColumn) column &quot;revenue&quot; does not exist
+LINE 5:     AND revenue &gt;= 500
+                ^
+
+[SQL: SELECT o.order_date, oi.order_item_product_id, round(sum(oi.order_item_subtotal::numeric), 2) AS revenue
+FROM orders o JOIN order_items oi
+    ON o.order_id = oi.order_item_order_id
+WHERE o.order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)
+    AND revenue &gt;= 500
+GROUP BY o.order_date,
+    oi.order_item_product_id
+LIMIT 10]
+(Background on this error at: http://sqlalche.me/e/13/f405)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We cannot use aggregate functions in <code class="docutils literal notranslate"><span class="pre">WHERE</span></code> clause.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT o.order_date,
+    oi.order_item_product_id,
+    round(sum(oi.order_item_subtotal::numeric), 2) AS revenue
+FROM orders o JOIN order_items oi
+    ON o.order_id = oi.order_item_order_id
+WHERE o.order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)
+    AND round(sum(oi.order_item_subtotal::numeric), 2) &gt;= 500
+GROUP BY o.order_date,
+    oi.order_item_product_id
+LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+(psycopg2.errors.GroupingError) aggregate functions are not allowed in WHERE
+LINE 5:     AND round(sum(oi.order_item_subtotal::numeric), 2) &gt;= 50...
+                      ^
+
+[SQL: SELECT o.order_date, oi.order_item_product_id, round(sum(oi.order_item_subtotal::numeric), 2) AS revenue
+FROM orders o JOIN order_items oi
+    ON o.order_id = oi.order_item_order_id
+WHERE o.order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)
+    AND round(sum(oi.order_item_subtotal::numeric), 2) &gt;= 500
+GROUP BY o.order_date,
+    oi.order_item_product_id
+LIMIT 10]
+(Background on this error at: http://sqlalche.me/e/13/f405)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT o.order_date,
+    oi.order_item_product_id,
+    round(sum(oi.order_item_subtotal::numeric), 2) AS revenue
+FROM orders o JOIN order_items oi
+    ON o.order_id = oi.order_item_order_id
+WHERE o.order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)
+GROUP BY o.order_date, 
+    oi.order_item_product_id
+HAVING round(sum(oi.order_item_subtotal::numeric), 2) &gt;= 500
+ORDER BY o.order_date, revenue DESC
+LIMIT 25
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+25 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_date</th>
+        <th>order_item_product_id</th>
+        <th>revenue</th>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>1004</td>
+        <td>5599.72</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>191</td>
+        <td>5099.49</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>957</td>
+        <td>4499.70</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>365</td>
+        <td>3359.44</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>1073</td>
+        <td>2999.85</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>1014</td>
+        <td>2798.88</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>403</td>
+        <td>1949.85</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>502</td>
+        <td>1650.00</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>627</td>
+        <td>1079.73</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>226</td>
+        <td>599.99</td>
+    </tr>
+    <tr>
+        <td>2013-07-26 00:00:00</td>
+        <td>1004</td>
+        <td>10799.46</td>
+    </tr>
+    <tr>
+        <td>2013-07-26 00:00:00</td>
+        <td>365</td>
+        <td>7978.67</td>
+    </tr>
+    <tr>
+        <td>2013-07-26 00:00:00</td>
+        <td>957</td>
+        <td>6899.54</td>
+    </tr>
+    <tr>
+        <td>2013-07-26 00:00:00</td>
+        <td>191</td>
+        <td>6799.32</td>
+    </tr>
+    <tr>
+        <td>2013-07-26 00:00:00</td>
+        <td>1014</td>
+        <td>4798.08</td>
+    </tr>
+    <tr>
+        <td>2013-07-26 00:00:00</td>
+        <td>502</td>
+        <td>4250.00</td>
+    </tr>
+    <tr>
+        <td>2013-07-26 00:00:00</td>
+        <td>1073</td>
+        <td>3999.80</td>
+    </tr>
+    <tr>
+        <td>2013-07-26 00:00:00</td>
+        <td>403</td>
+        <td>3249.75</td>
+    </tr>
+    <tr>
+        <td>2013-07-26 00:00:00</td>
+        <td>627</td>
+        <td>3039.24</td>
+    </tr>
+    <tr>
+        <td>2013-07-27 00:00:00</td>
+        <td>1004</td>
+        <td>9599.52</td>
+    </tr>
+    <tr>
+        <td>2013-07-27 00:00:00</td>
+        <td>191</td>
+        <td>5999.40</td>
+    </tr>
+    <tr>
+        <td>2013-07-27 00:00:00</td>
+        <td>957</td>
+        <td>5699.62</td>
+    </tr>
+    <tr>
+        <td>2013-07-27 00:00:00</td>
+        <td>1073</td>
+        <td>5399.73</td>
+    </tr>
+    <tr>
+        <td>2013-07-27 00:00:00</td>
+        <td>365</td>
+        <td>5099.15</td>
+    </tr>
+    <tr>
+        <td>2013-07-27 00:00:00</td>
+        <td>502</td>
+        <td>5050.00</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT count(1) FROM (
+    SELECT o.order_date,
+        oi.order_item_product_id,
+        round(sum(oi.order_item_subtotal::numeric), 2) AS revenue
+    FROM orders o JOIN order_items oi
+        ON o.order_id = oi.order_item_order_id
+    WHERE o.order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)
+    GROUP BY o.order_date, 
+        oi.order_item_product_id
+) q
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>count</th>
+    </tr>
+    <tr>
+        <td>9120</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT count(1) FROM (
+    SELECT o.order_date,
+        oi.order_item_product_id,
+        round(sum(oi.order_item_subtotal::numeric), 2) AS revenue
+    FROM orders o JOIN order_items oi
+        ON o.order_id = oi.order_item_order_id
+    WHERE o.order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)
+    GROUP BY o.order_date, 
+        oi.order_item_product_id
+    HAVING round(sum(oi.order_item_subtotal::numeric), 2) &gt;= 500
+) q
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>count</th>
+    </tr>
+    <tr>
+        <td>3339</td>
+    </tr>
+</table></div></div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./03_writing_basic_sql_queries"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="09_joining_tables_outer.html" title="previous page">Joining Tables - Outer</a>
+    <a class='right-next' id="next-link" href="11_sorting_data.html" title="next page">Sorting Data</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>
