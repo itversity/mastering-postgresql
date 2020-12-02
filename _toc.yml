@@ -12,18 +12,14 @@
     - file: 01_getting_started/09_loading_data_postgres_in_docker
     - file: 01_getting_started/10_exercise_loading_data
 
-- file: 02_dml_or_crud_operations/02_dml_or_crud_operations
-
-- file: 03_writing_basic_sql_queries/03_writing_basic_sql_queries
-
-- file: 04_creating_tables_and_indexes/04_creating_tables_and_indexes
-
-- file: 05_partitioning_tables_and_indexes/05_partitioning_tables_and_indexes
-
-- file: 06_predefined_functions/06_predefined_functions
-
-- file: 07_writing_advanced_sql_queries/07_writing_advanced_sql_queries
-
-- file: 08_query_performance_tuning
-
-- file: mastering_postgresql_exercises
+- file: 02_dml_or_crud_operations/01_dml_or_crud_operations
+    - file: 02_dml_or_crud_operations/02_normalization_principles
+    - file: 02_dml_or_crud_operations/03_tables_as_relations
+    - file: 02_dml_or_crud_operations/04_overview_of_database_operations
+    - file: 02_dml_or_crud_operations/05_crud_operations
+    - file: 02_dml_or_crud_operations/06_creating_table
+    - file: 02_dml_or_crud_operations/07_inserting_data
+    - file: 02_dml_or_crud_operations/08_updating_data
+    - file: 02_dml_or_crud_operations/09_deleting_data
+    - file: 02_dml_or_crud_operations/10_overview_of_transactions
+    - file: 02_dml_or_crud_operations/11_exercises_database_operations
