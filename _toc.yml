@@ -39,3 +39,17 @@
     - file: 03_writing_basic_sql_queries/11_sorting_data
     - file: 03_writing_basic_sql_queries/12_solution_daily_product_revenue
     - file: 03_writing_basic_sql_queries/13_exercises_basic_sql_queries
+
+- file: 04_creating_tables_and_indexes/01_creating_tables_and_indexes
+  sections:
+    - file: 04_creating_tables_and_indexes/02_data_definition_language
+    - file: 04_creating_tables_and_indexes/03_overview_of_data_types
+    - file: 04_creating_tables_and_indexes/04_define_problem_statement
+    - file: 04_creating_tables_and_indexes/05_different_types_of_constraints
+    - file: 04_creating_tables_and_indexes/06_managing_constraints
+    - file: 04_creating_tables_and_indexes/07_indexes_on_tables
+    - file: 04_creating_tables_and_indexes/08_indexes_for_constraints
+    - file: 04_creating_tables_and_indexes/09_overview_of_sequences
+    - file: 04_creating_tables_and_indexes/10_truncating_tables
+    - file: 04_creating_tables_and_indexes/11_dropping_tables
+    - file: 04_creating_tables_and_indexes/12_exercises_managing_db_objects
