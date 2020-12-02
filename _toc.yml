@@ -24,3 +24,18 @@
     - file: 02_dml_or_crud_operations/09_deleting_data
     - file: 02_dml_or_crud_operations/10_overview_of_transactions
     - file: 02_dml_or_crud_operations/11_exercises_database_operations
+    
+- file: 03_writing_basic_sql_queries/01_writing_basic_sql_queries
+  sections:
+    - file: 03_writing_basic_sql_queries/02_standard_transformations
+    - file: 03_writing_basic_sql_queries/03_overview_of_data_model
+    - file: 03_writing_basic_sql_queries/04_define_problem_statement
+    - file: 03_writing_basic_sql_queries/05_preparing_tables
+    - file: 03_writing_basic_sql_queries/06_selecting_or_projecting_data
+    - file: 03_writing_basic_sql_queries/07_filtering_data
+    - file: 03_writing_basic_sql_queries/08_joining_tables_inner
+    - file: 03_writing_basic_sql_queries/09_joining_tables_outer
+    - file: 03_writing_basic_sql_queries/10_performing_aggregations
+    - file: 03_writing_basic_sql_queries/11_sorting_data
+    - file: 03_writing_basic_sql_queries/12_solution_daily_product_revenue
+    - file: 03_writing_basic_sql_queries/13_exercises_basic_sql_queries
