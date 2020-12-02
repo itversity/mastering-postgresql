@@ -68,3 +68,14 @@
     - file: 05_partitioning_tables_and_indexes/11_usage_scenarios
     - file: 05_partitioning_tables_and_indexes/12_sub_partitioning
     - file: 05_partitioning_tables_and_indexes/13_exercises_partitioning_tables
+    
+- file: 06_predefined_functions/01_predefined_functions
+  sections:
+    - file: 06_predefined_functions/02_overview_of_predefined_functions
+    - file: 06_predefined_functions/03_string_manipulation_functions
+    - file: 06_predefined_functions/04_date_manipulation_functions
+    - file: 06_predefined_functions/05_overview_of_numeric_functions
+    - file: 06_predefined_functions/06_data_type_conversion
+    - file: 06_predefined_functions/07_handling_null_values
+    - file: 06_predefined_functions/08_using_case_and_when
+    - file: 06_predefined_functions/09_exercises_predefined_functions
