@@ -1,0 +1,1091 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Creating Table &#8212; My Jupyter Book</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Inserting Data" href="07_inserting_data.html" />
+    <link rel="prev" title="CRUD Operations" href="05_crud_operations.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">My Jupyter Book</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mastering-postgresql.html">
+   Mastering Postgresql
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_getting_started/01_getting_started.html">
+   Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="01_dml_or_crud_operations.html">
+   DML or CRUD Operations
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="02_normalization_principles.html">
+     Normalization Principles
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03_tables_as_relations.html">
+     Tables as Relations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04_overview_of_database_operations.html">
+     Database Operations - Overview
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05_crud_operations.html">
+     CRUD Operations
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Creating Table
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="07_inserting_data.html">
+     Inserting Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08_updating_data.html">
+     Updating Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="09_deleting_data.html">
+     Deleting Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="10_overview_of_transactions.html">
+     Overview of Transactions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="11_exercises_database_operations.html">
+     Exercises - Database Operations
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/02_dml_or_crud_operations/06_creating_table.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/02_dml_or_crud_operations/06_creating_table.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="creating-table">
+<h1>Creating Table<a class="headerlink" href="#creating-table" title="Permalink to this headline">¶</a></h1>
+<p>Before getting into action with respect to basic DML and queries or CRUD operations, we need to prepare tables.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/Ejuzd4QQsHg?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+</div></div>
+</div>
+<p>At this time we have not covered DDL yet. All database operations related to managing tables come under DDL.</p>
+<p>For now, let’s just create the table by copy pasting below <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">TABLE</span></code> statement. We will get into concepts as part of the subsequent sections.</p>
+<ul class="simple">
+<li><p>Connect to the database.</p></li>
+<li><p>Create the table.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_sms_user:sms_password@localhost:5432/itversity_sms_db
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env: DATABASE_URL=postgresql://itversity_sms_user:sms_password@localhost:5432/itversity_sms_db
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span> 
+
+SELECT * FROM information_schema.tables 
+WHERE table_catalog = &#39;itversity_sms_db&#39; AND table_schema = &#39;public&#39;
+LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>table_catalog</th>
+        <th>table_schema</th>
+        <th>table_name</th>
+        <th>table_type</th>
+        <th>self_referencing_column_name</th>
+        <th>reference_generation</th>
+        <th>user_defined_type_catalog</th>
+        <th>user_defined_type_schema</th>
+        <th>user_defined_type_name</th>
+        <th>is_insertable_into</th>
+        <th>is_typed</th>
+        <th>commit_action</th>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>courses</td>
+        <td>BASE TABLE</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>NO</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users</td>
+        <td>BASE TABLE</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>NO</td>
+        <td>None</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+DROP TABLE IF EXISTS users;
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span> 
+
+SELECT * FROM information_schema.tables 
+WHERE table_catalog = &#39;itversity_sms_db&#39; AND table_schema = &#39;public&#39;
+LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>table_catalog</th>
+        <th>table_schema</th>
+        <th>table_name</th>
+        <th>table_type</th>
+        <th>self_referencing_column_name</th>
+        <th>reference_generation</th>
+        <th>user_defined_type_catalog</th>
+        <th>user_defined_type_schema</th>
+        <th>user_defined_type_name</th>
+        <th>is_insertable_into</th>
+        <th>is_typed</th>
+        <th>commit_action</th>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>courses</td>
+        <td>BASE TABLE</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>NO</td>
+        <td>None</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+CREATE TABLE users (
+    user_id SERIAL PRIMARY KEY,
+    user_first_name VARCHAR(30) NOT NULL,
+    user_last_name VARCHAR(30) NOT NULL,
+    user_email_id VARCHAR(50) NOT NULL,
+    user_email_validated BOOLEAN DEFAULT FALSE,
+    user_password VARCHAR(200),
+    user_role VARCHAR(1) NOT NULL DEFAULT &#39;U&#39;, --U and A
+    is_active BOOLEAN DEFAULT FALSE,
+    create_ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    last_updated_ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Let us validate the objects that are created in the underlying database. We can either run query against <strong>information_schema</strong> or use Database Explorer in <strong>SQL Workbench</strong> or even <code class="docutils literal notranslate"><span class="pre">psql</span></code>.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span> 
+
+SELECT * FROM information_schema.tables 
+WHERE table_catalog = &#39;itversity_sms_db&#39; AND table_schema = &#39;public&#39;
+LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>table_catalog</th>
+        <th>table_schema</th>
+        <th>table_name</th>
+        <th>table_type</th>
+        <th>self_referencing_column_name</th>
+        <th>reference_generation</th>
+        <th>user_defined_type_catalog</th>
+        <th>user_defined_type_schema</th>
+        <th>user_defined_type_name</th>
+        <th>is_insertable_into</th>
+        <th>is_typed</th>
+        <th>commit_action</th>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users</td>
+        <td>BASE TABLE</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>NO</td>
+        <td>None</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span> 
+
+SELECT * FROM information_schema.columns 
+WHERE table_name = &#39;users&#39;
+LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>table_catalog</th>
+        <th>table_schema</th>
+        <th>table_name</th>
+        <th>column_name</th>
+        <th>ordinal_position</th>
+        <th>column_default</th>
+        <th>is_nullable</th>
+        <th>data_type</th>
+        <th>character_maximum_length</th>
+        <th>character_octet_length</th>
+        <th>numeric_precision</th>
+        <th>numeric_precision_radix</th>
+        <th>numeric_scale</th>
+        <th>datetime_precision</th>
+        <th>interval_type</th>
+        <th>interval_precision</th>
+        <th>character_set_catalog</th>
+        <th>character_set_schema</th>
+        <th>character_set_name</th>
+        <th>collation_catalog</th>
+        <th>collation_schema</th>
+        <th>collation_name</th>
+        <th>domain_catalog</th>
+        <th>domain_schema</th>
+        <th>domain_name</th>
+        <th>udt_catalog</th>
+        <th>udt_schema</th>
+        <th>udt_name</th>
+        <th>scope_catalog</th>
+        <th>scope_schema</th>
+        <th>scope_name</th>
+        <th>maximum_cardinality</th>
+        <th>dtd_identifier</th>
+        <th>is_self_referencing</th>
+        <th>is_identity</th>
+        <th>identity_generation</th>
+        <th>identity_start</th>
+        <th>identity_increment</th>
+        <th>identity_maximum</th>
+        <th>identity_minimum</th>
+        <th>identity_cycle</th>
+        <th>is_generated</th>
+        <th>generation_expression</th>
+        <th>is_updatable</th>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users</td>
+        <td>user_id</td>
+        <td>1</td>
+        <td>nextval(&#x27;users_user_id_seq&#x27;::regclass)</td>
+        <td>NO</td>
+        <td>integer</td>
+        <td>None</td>
+        <td>None</td>
+        <td>32</td>
+        <td>2</td>
+        <td>0</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_sms_db</td>
+        <td>pg_catalog</td>
+        <td>int4</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>1</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>NEVER</td>
+        <td>None</td>
+        <td>YES</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users</td>
+        <td>user_first_name</td>
+        <td>2</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>character varying</td>
+        <td>30</td>
+        <td>120</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_sms_db</td>
+        <td>pg_catalog</td>
+        <td>varchar</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>2</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>NEVER</td>
+        <td>None</td>
+        <td>YES</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users</td>
+        <td>user_last_name</td>
+        <td>3</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>character varying</td>
+        <td>30</td>
+        <td>120</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_sms_db</td>
+        <td>pg_catalog</td>
+        <td>varchar</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>3</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>NEVER</td>
+        <td>None</td>
+        <td>YES</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users</td>
+        <td>user_email_id</td>
+        <td>4</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>character varying</td>
+        <td>50</td>
+        <td>200</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_sms_db</td>
+        <td>pg_catalog</td>
+        <td>varchar</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>4</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>NEVER</td>
+        <td>None</td>
+        <td>YES</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users</td>
+        <td>user_email_validated</td>
+        <td>5</td>
+        <td>false</td>
+        <td>YES</td>
+        <td>boolean</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_sms_db</td>
+        <td>pg_catalog</td>
+        <td>bool</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>5</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>NEVER</td>
+        <td>None</td>
+        <td>YES</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users</td>
+        <td>user_password</td>
+        <td>6</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>character varying</td>
+        <td>200</td>
+        <td>800</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_sms_db</td>
+        <td>pg_catalog</td>
+        <td>varchar</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>6</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>NEVER</td>
+        <td>None</td>
+        <td>YES</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users</td>
+        <td>user_role</td>
+        <td>7</td>
+        <td>&#x27;U&#x27;::character varying</td>
+        <td>NO</td>
+        <td>character varying</td>
+        <td>1</td>
+        <td>4</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_sms_db</td>
+        <td>pg_catalog</td>
+        <td>varchar</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>7</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>NEVER</td>
+        <td>None</td>
+        <td>YES</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users</td>
+        <td>is_active</td>
+        <td>8</td>
+        <td>false</td>
+        <td>YES</td>
+        <td>boolean</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_sms_db</td>
+        <td>pg_catalog</td>
+        <td>bool</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>8</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>NEVER</td>
+        <td>None</td>
+        <td>YES</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users</td>
+        <td>create_ts</td>
+        <td>9</td>
+        <td>CURRENT_TIMESTAMP</td>
+        <td>YES</td>
+        <td>timestamp without time zone</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>6</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_sms_db</td>
+        <td>pg_catalog</td>
+        <td>timestamp</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>9</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>NEVER</td>
+        <td>None</td>
+        <td>YES</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users</td>
+        <td>last_updated_ts</td>
+        <td>10</td>
+        <td>CURRENT_TIMESTAMP</td>
+        <td>YES</td>
+        <td>timestamp without time zone</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>6</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>itversity_sms_db</td>
+        <td>pg_catalog</td>
+        <td>timestamp</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>10</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>NO</td>
+        <td>NEVER</td>
+        <td>None</td>
+        <td>YES</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT * FROM users
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+0 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>user_id</th>
+        <th>user_first_name</th>
+        <th>user_last_name</th>
+        <th>user_email_id</th>
+        <th>user_email_validated</th>
+        <th>user_password</th>
+        <th>user_role</th>
+        <th>is_active</th>
+        <th>create_ts</th>
+        <th>last_updated_ts</th>
+    </tr>
+</table></div></div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./02_dml_or_crud_operations"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="05_crud_operations.html" title="previous page">CRUD Operations</a>
+    <a class='right-next' id="next-link" href="07_inserting_data.html" title="next page">Inserting Data</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

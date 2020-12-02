@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Data Loading Utilities &#8212; My Jupyter Book</title>
+    <title>DML or CRUD Operations &#8212; My Jupyter Book</title>
     
   <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -55,8 +55,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Loading Data - Docker" href="09_loading_data_postgres_in_docker.html" />
-    <link rel="prev" title="SQL Workbench Features" href="07_sql_workbench_features.html" />
+    <link rel="next" title="Normalization Principles" href="02_normalization_principles.html" />
+    <link rel="prev" title="Exercise - Loading Data" href="../01_getting_started/10_exercise_loading_data.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -95,62 +95,67 @@
  </li>
 </ul>
 <ul class="current nav sidenav_l1">
- <li class="toctree-l1 current active">
-  <a class="reference internal" href="01_getting_started.html">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_getting_started/01_getting_started.html">
    Getting Started
   </a>
-  <ul class="current">
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   DML or CRUD Operations
+  </a>
+  <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="02_connecting_to_database.html">
-     Connecting to Database
+    <a class="reference internal" href="02_normalization_principles.html">
+     Normalization Principles
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="03_using_psql.html">
-     Using psql
+    <a class="reference internal" href="03_tables_as_relations.html">
+     Tables as Relations
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="04_setup_postgres_using_docker.html">
-     Setup Postgres using Docker
+    <a class="reference internal" href="04_overview_of_database_operations.html">
+     Database Operations - Overview
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="05_setup_sql_workbench.html">
-     Setup SQL Workbench
+    <a class="reference internal" href="05_crud_operations.html">
+     CRUD Operations
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="06_sql_workbench_and_postgres.html">
-     SQL Workbench and Postgres
+    <a class="reference internal" href="06_creating_table.html">
+     Creating Table
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="07_sql_workbench_features.html">
-     SQL Workbench Features
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Data Loading Utilities
+    <a class="reference internal" href="07_inserting_data.html">
+     Inserting Data
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="09_loading_data_postgres_in_docker.html">
-     Loading Data - Docker
+    <a class="reference internal" href="08_updating_data.html">
+     Updating Data
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="10_exercise_loading_data.html">
-     Exercise - Loading Data
+    <a class="reference internal" href="09_deleting_data.html">
+     Deleting Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="10_overview_of_transactions.html">
+     Overview of Transactions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="11_exercises_database_operations.html">
+     Exercises - Database Operations
     </a>
    </li>
   </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../02_dml_or_crud_operations/01_dml_or_crud_operations.html">
-   DML or CRUD Operations
-  </a>
  </li>
 </ul>
 
@@ -194,7 +199,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/01_getting_started/08_data_loading_utilities.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/02_dml_or_crud_operations/01_dml_or_crud_operations.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -219,7 +224,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/01_getting_started/08_data_loading_utilities.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/02_dml_or_crud_operations/01_dml_or_crud_operations.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -236,20 +241,6 @@
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
-        </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#loading-data">
-   Loading Data
-  </a>
- </li>
-</ul>
-
-        </nav>
-        
     </div>
 </div>
     <div id="main-content" class="row">
@@ -257,85 +248,32 @@
         
               <div>
                 
-  <div class="section" id="data-loading-utilities">
-<h1>Data Loading Utilities<a class="headerlink" href="#data-loading-utilities" title="Permalink to this headline">¶</a></h1>
-<p>Let us understand how we can load the data into databases using utilities provided.</p>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/4DkygKkrS3g?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
-</div></div>
-</div>
+  <div class="section" id="dml-or-crud-operations">
+<h1>DML or CRUD Operations<a class="headerlink" href="#dml-or-crud-operations" title="Permalink to this headline">¶</a></h1>
+<p>Let us understand how to perform CRUD operations using Postgresql.</p>
 <ul class="simple">
-<li><p>Most of the databases provide data loading utilities.</p></li>
-<li><p>One of the most common way of getting data into database tables is by using data loading utilities provided by the underlying datatabase technology.</p></li>
-<li><p>We can load delimited files into database using these utilities.</p></li>
-<li><p>Here are the steps we can follow to load the delimited data into the table.</p>
-<ul>
-<li><p>Make sure files are available on the server from which we are trying to load.</p></li>
-<li><p>Ensure the database and table are created for the data to be loaded.</p></li>
-<li><p>Run relevant command to load the data into the table.</p></li>
-<li><p>Make sure to validate by running queries.</p></li>
+<li><p>Normalization Principles</p></li>
+<li><p>Tables as Relations</p></li>
+<li><p>Database Operations - Overview</p></li>
+<li><p>CRUD Operations</p></li>
+<li><p>Creating Table</p></li>
+<li><p>Inserting Data</p></li>
+<li><p>Updating Data</p></li>
+<li><p>Deleting Data</p></li>
+<li><p>Overview of Transactions</p></li>
+<li><p>Exercise - Database Operations</p></li>
 </ul>
-</li>
-<li><p>Let us see a demo by loading a sample file into the table in Postgres database.</p></li>
-</ul>
-<div class="section" id="loading-data">
-<h2>Loading Data<a class="headerlink" href="#loading-data" title="Permalink to this headline">¶</a></h2>
-<p>We can use COPY Command using <code class="docutils literal notranslate"><span class="pre">psql</span></code> to copy the data into the table.</p>
+<p>Here are the key objectives of this section.</p>
 <ul class="simple">
-<li><p>Make sure database is created along with the user with right permissions. Also the user who want to use <code class="docutils literal notranslate"><span class="pre">COPY</span></code> command need to have <strong>pg_read_server_files</strong> role assigned.</p></li>
-<li><p>Create the file with sample data. In this case data is added to <strong>users.csv</strong> under <strong>/data/sms_db</strong></p></li>
+<li><p>What are the different types of Database Operations?</p></li>
+<li><p>How DML is related to CRUD Operations?</p></li>
+<li><p>How to insert new records into table?</p></li>
+<li><p>How to update existing data in a table?</p></li>
+<li><p>How the data is typically deleted from a table?</p></li>
+<li><p>You will also get a brief overview about Database Operations?</p></li>
+<li><p>Self evaluate whether you gain enough skills related to performing CRUD or DML operations or not using exercieses</p></li>
 </ul>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>user_first_name,user_last_name,user_email_id,user_role,created_dt
-Gordan,Bradock,gbradock0@barnesandnoble.com,A,2020-01-10
-Tobe,Lyness,tlyness1@paginegialle.it,U,2020-02-10
-Addie,Mesias,amesias2@twitpic.com,U,2020-03-05
-Corene,Kohrsen,ckohrsen3@buzzfeed.com,U,2020-04-15
-Darill,Halsall,dhalsall4@intel.com,U,2020-10-10
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>Connect to Database.</p></li>
-</ul>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>psql -U itversity_sms_user <span class="se">\</span>
-  -h localhost <span class="se">\</span>
-  -p <span class="m">5432</span> <span class="se">\</span>
-  -d itversity_sms_db <span class="se">\</span>
-  -W
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>Create the <code class="docutils literal notranslate"><span class="pre">users</span></code> table.</p></li>
-</ul>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">users</span> <span class="p">(</span>
-    <span class="n">user_id</span> <span class="nb">SERIAL</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
-    <span class="n">user_first_name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
-    <span class="n">user_last_name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
-    <span class="n">user_email_id</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
-    <span class="n">user_email_validated</span> <span class="nb">BOOLEAN</span> <span class="k">DEFAULT</span> <span class="k">FALSE</span><span class="p">,</span>
-    <span class="n">user_password</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">200</span><span class="p">),</span>
-    <span class="n">user_role</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;U&#39;</span><span class="p">,</span> <span class="c1">--U and A</span>
-    <span class="n">is_active</span> <span class="nb">BOOLEAN</span> <span class="k">DEFAULT</span> <span class="k">FALSE</span><span class="p">,</span>
-    <span class="n">created_dt</span> <span class="nb">DATE</span> <span class="k">DEFAULT</span> <span class="k">CURRENT_DATE</span>
-<span class="p">);</span>
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>Use copy command to load the data</p></li>
-</ul>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>COPY users<span class="o">(</span>user_first_name, user_last_name, 
-    user_email_id, user_role, created_dt
-<span class="o">)</span> FROM <span class="s1">&#39;/data/sms_db/users.csv&#39;</span>
-DELIMITER <span class="s1">&#39;,&#39;</span>
-CSV HEADER<span class="p">;</span>
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>Validate by running queries</p></li>
-</ul>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">users</span><span class="p">;</span>
-</pre></div>
-</div>
+<div class="toctree-wrapper compound">
 </div>
 </div>
 
@@ -352,7 +290,7 @@ CSV HEADER<span class="p">;</span>
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./01_getting_started"
+            path: "./02_dml_or_crud_operations"
         },
         predefinedOutput: true
     }
@@ -367,8 +305,8 @@ CSV HEADER<span class="p">;</span>
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="07_sql_workbench_features.html" title="previous page">SQL Workbench Features</a>
-    <a class='right-next' id="next-link" href="09_loading_data_postgres_in_docker.html" title="next page">Loading Data - Docker</a>
+    <a class='left-prev' id="prev-link" href="../01_getting_started/10_exercise_loading_data.html" title="previous page">Exercise - Loading Data</a>
+    <a class='right-next' id="next-link" href="02_normalization_principles.html" title="next page">Normalization Principles</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
