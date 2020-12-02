@@ -53,3 +53,18 @@
     - file: 04_creating_tables_and_indexes/10_truncating_tables
     - file: 04_creating_tables_and_indexes/11_dropping_tables
     - file: 04_creating_tables_and_indexes/12_exercises_managing_db_objects
+
+- file: 05_partitioning_tables_and_indexes/01_partitioning_tables_and_indexes
+  sections:
+    - file: 05_partitioning_tables_and_indexes/02_overview_of_partitioning
+    - file: 05_partitioning_tables_and_indexes/03_list_partitioning
+    - file: 05_partitioning_tables_and_indexes/04_managing_partitions_list
+    - file: 05_partitioning_tables_and_indexes/05_manipulating_data
+    - file: 05_partitioning_tables_and_indexes/06_range_partitioning
+    - file: 05_partitioning_tables_and_indexes/07_managing_partitions_range
+    - file: 05_partitioning_tables_and_indexes/08_repartitioning_range
+    - file: 05_partitioning_tables_and_indexes/09_hash_partitioning
+    - file: 05_partitioning_tables_and_indexes/10_managing_partitions_hash
+    - file: 05_partitioning_tables_and_indexes/11_usage_scenarios
+    - file: 05_partitioning_tables_and_indexes/12_sub_partitioning
+    - file: 05_partitioning_tables_and_indexes/13_exercises_partitioning_tables
