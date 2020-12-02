@@ -79,3 +79,33 @@
     - file: 06_predefined_functions/07_handling_null_values
     - file: 06_predefined_functions/08_using_case_and_when
     - file: 06_predefined_functions/09_exercises_predefined_functions
+
+- file: 07_writing_advanced_sql_queries/01_writing_advanced_sql_queries
+  sections:
+    - file: 07_writing_advanced_sql_queries/02_overview_of_views
+    - file: 07_writing_advanced_sql_queries/03_named_queries_using_with_clause
+    - file: 07_writing_advanced_sql_queries/04_overview_of_sub_queries
+    - file: 07_writing_advanced_sql_queries/05_create_table_as_select
+    - file: 07_writing_advanced_sql_queries/06_advanced_dml_operations
+    - file: 07_writing_advanced_sql_queries/07_merging_or_upserting_data
+    - file: 07_writing_advanced_sql_queries/08_pivoting_rows_into_columns
+    - file: 07_writing_advanced_sql_queries/09_overview_of_analytic_functions
+    - file: 07_writing_advanced_sql_queries/10_analytic_functions_aggregations
+    - file: 07_writing_advanced_sql_queries/11_cumulative_or_moving_aggregations
+    - file: 07_writing_advanced_sql_queries/12_analytic_functions_windowing
+    - file: 07_writing_advanced_sql_queries/13_analytic_functions_ranking
+    - file: 07_writing_advanced_sql_queries/14_analytic_funcions_filtering
+    - file: 07_writing_advanced_sql_queries/15_ranking_and_filtering_recap
+    - file: 07_writing_advanced_sql_queries/16_exercises_analytic_functions
+    
+- file: 08_query_performance_tuning/01_query_performance_tuning
+  sections:
+    - file: 08_query_performance_tuning/02_preparing_database
+    - file: 08_query_performance_tuning/03_interpreting_explain_plans
+    - file: 08_query_performance_tuning/04_overview_of_cost_based_optimizer
+    - file: 08_query_performance_tuning/05_performance_tuning_using_indexes
+    - file: 08_query_performance_tuning/06_criteria_for_indexing
+    - file: 08_query_performance_tuning/07_criteria_for_partitioning
+    - file: 08_query_performance_tuning/08_writing_queries_partition_pruning
+    - file: 08_query_performance_tuning/09_overview_of_query_hints
+    - file: 08_query_performance_tuning/10_exercises_tuning_queries
