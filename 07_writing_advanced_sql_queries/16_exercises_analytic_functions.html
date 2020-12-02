@@ -1,0 +1,1043 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercises - Analytics Functions &#8212; My Jupyter Book</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Query Performance Tuning" href="../08_query_performance_tuning/01_query_performance_tuning.html" />
+    <link rel="prev" title="Ranking and Filtering - Recap" href="15_ranking_and_filtering_recap.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">My Jupyter Book</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mastering-postgresql.html">
+   Mastering Postgresql
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_getting_started/01_getting_started.html">
+   Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_dml_or_crud_operations/01_dml_or_crud_operations.html">
+   DML or CRUD Operations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_writing_basic_sql_queries/01_writing_basic_sql_queries.html">
+   Writing Basic SQL Queries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_creating_tables_and_indexes/01_creating_tables_and_indexes.html">
+   Creating Tables and Indexes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05_partitioning_tables_and_indexes/01_partitioning_tables_and_indexes.html">
+   Partitioning Tables and Indexes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06_predefined_functions/01_predefined_functions.html">
+   Pre-Defined Functions
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="01_writing_advanced_sql_queries.html">
+   Writing Advanced SQL Queries
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="02_overview_of_views.html">
+     Overview of Views
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03_named_queries_using_with_clause.html">
+     Named Queries - Using WITH Clause
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04_overview_of_sub_queries.html">
+     Overview of Sub Queries
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05_create_table_as_select.html">
+     CTAS - Create Table as Select
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06_advanced_dml_operations.html">
+     Advanced DML Operations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="07_merging_or_upserting_data.html">
+     Merging or Upserting Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08_pivoting_rows_into_columns.html">
+     Pivoting Rows into Columns
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="09_overview_of_analytic_functions.html">
+     Overview of Analytic Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="10_analytic_functions_aggregations.html">
+     Analytic Functions – Aggregations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="11_cumulative_or_moving_aggregations.html">
+     Cumulative or Moving Aggregations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="12_analytic_functions_windowing.html">
+     Analytic Functions – Windowing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="13_analytic_functions_ranking.html">
+     Analytic Functions – Ranking
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="14_analytic_funcions_filtering.html">
+     Analytic Functions - Filtering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="15_ranking_and_filtering_recap.html">
+     Ranking and Filtering - Recap
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Exercises - Analytics Functions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../08_query_performance_tuning/01_query_performance_tuning.html">
+   Query Performance Tuning
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/07_writing_advanced_sql_queries/16_exercises_analytic_functions.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/07_writing_advanced_sql_queries/16_exercises_analytic_functions.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prepare-hr-database">
+   Prepare HR Database
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-1">
+   Exercise 1
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-2">
+   Exercise 2
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-3">
+   Exercise 3
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-4">
+   Exercise 4
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-5">
+   Exercise 5
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="exercises-analytics-functions">
+<h1>Exercises - Analytics Functions<a class="headerlink" href="#exercises-analytics-functions" title="Permalink to this headline">¶</a></h1>
+<p>Let us take care of the exercises related to analytics functions. We will be using HR database for the same.</p>
+<ul class="simple">
+<li><p>Get all the employees who is making more than average salary with in each department.</p></li>
+<li><p>Get cumulative salary for one of the department along with department name.</p></li>
+<li><p>Get top 3 paid employees with in each department by salary (use dense_rank)</p></li>
+<li><p>Get top 3 products sold in the month of 2014 January by revenue.</p></li>
+<li><p>Get top 3 products in each category sold in the month of 2014 January by revenue.</p></li>
+</ul>
+<div class="section" id="prepare-hr-database">
+<h2>Prepare HR Database<a class="headerlink" href="#prepare-hr-database" title="Permalink to this headline">¶</a></h2>
+<p>Here are the steps to prepare HR database.</p>
+<ul class="simple">
+<li><p>Connect to HR DB using <code class="docutils literal notranslate"><span class="pre">psql</span></code> or SQL Workbench. Here is the sample <code class="docutils literal notranslate"><span class="pre">psql</span></code> command.</p></li>
+</ul>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>psql -h localhost <span class="se">\</span>
+    -p <span class="m">5432</span> <span class="se">\</span>
+    -d itversity_hr_db <span class="se">\</span>
+    -U itversity_hr_user <span class="se">\</span>
+    -W
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Run scripts to create tables and load the data. You can also drop the tables if they already exists.</p></li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span>\i /data/hr_db/drop_tables_pg.sql
+\i /data/hr_db/create_tables_pg.sql
+\i /data/hr_db/load_tables_pg.sql
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Validate to ensure that data is available in the tables by running these queries.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight- notranslate"><div class="highlight"><pre><span></span>%load_ext sql
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight- notranslate"><div class="highlight"><pre><span></span>%env DATABASE_URL=postgresql://itversity_hr_user:hr_password@localhost:5432/itversity_hr_db
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight- notranslate"><div class="highlight"><pre><span></span>%sql SELECT * FROM employees LIMIT 10
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight- notranslate"><div class="highlight"><pre><span></span>%%sql 
+
+SELECT * FROM departments 
+ORDER BY manager_id NULLS LAST
+LIMIT 10
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise-1">
+<h2>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h2>
+<p>Get all the employees who is making more than average salary with in each department.</p>
+<ul class="simple">
+<li><p>Use HR database employees and department tables for this problem.</p></li>
+<li><p>Compute average salary expense for each department and get those employee details who are making more salary than average salary.</p></li>
+<li><p>Make sure average salary expense per department is rounded off to 2 decimals.</p></li>
+<li><p>Output should contain employee_id, department_name, salary and avg_salary_expense (derived field).</p></li>
+<li><p>Data should be sorted in ascending order by department_id and descending order by salary.</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>employee_id</p></th>
+<th class="head"><p>department_name</p></th>
+<th class="head"><p>salary</p></th>
+<th class="head"><p>avg_salary_expense</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>201</p></td>
+<td><p>Marketing</p></td>
+<td><p>13000.00</p></td>
+<td><p>9500.00</p></td>
+</tr>
+<tr class="row-odd"><td><p>114</p></td>
+<td><p>Purchasing</p></td>
+<td><p>11000.00</p></td>
+<td><p>4150.00</p></td>
+</tr>
+<tr class="row-even"><td><p>121</p></td>
+<td><p>Shipping</p></td>
+<td><p>8200.00</p></td>
+<td><p>3475.56</p></td>
+</tr>
+<tr class="row-odd"><td><p>120</p></td>
+<td><p>Shipping</p></td>
+<td><p>8000.00</p></td>
+<td><p>3475.56</p></td>
+</tr>
+<tr class="row-even"><td><p>122</p></td>
+<td><p>Shipping</p></td>
+<td><p>7900.00</p></td>
+<td><p>3475.56</p></td>
+</tr>
+<tr class="row-odd"><td><p>123</p></td>
+<td><p>Shipping</p></td>
+<td><p>6500.00</p></td>
+<td><p>3475.56</p></td>
+</tr>
+<tr class="row-even"><td><p>124</p></td>
+<td><p>Shipping</p></td>
+<td><p>5800.00</p></td>
+<td><p>3475.56</p></td>
+</tr>
+<tr class="row-odd"><td><p>184</p></td>
+<td><p>Shipping</p></td>
+<td><p>4200.00</p></td>
+<td><p>3475.56</p></td>
+</tr>
+<tr class="row-even"><td><p>185</p></td>
+<td><p>Shipping</p></td>
+<td><p>4100.00</p></td>
+<td><p>3475.56</p></td>
+</tr>
+<tr class="row-odd"><td><p>192</p></td>
+<td><p>Shipping</p></td>
+<td><p>4000.00</p></td>
+<td><p>3475.56</p></td>
+</tr>
+<tr class="row-even"><td><p>193</p></td>
+<td><p>Shipping</p></td>
+<td><p>3900.00</p></td>
+<td><p>3475.56</p></td>
+</tr>
+<tr class="row-odd"><td><p>188</p></td>
+<td><p>Shipping</p></td>
+<td><p>3800.00</p></td>
+<td><p>3475.56</p></td>
+</tr>
+<tr class="row-even"><td><p>137</p></td>
+<td><p>Shipping</p></td>
+<td><p>3600.00</p></td>
+<td><p>3475.56</p></td>
+</tr>
+<tr class="row-odd"><td><p>189</p></td>
+<td><p>Shipping</p></td>
+<td><p>3600.00</p></td>
+<td><p>3475.56</p></td>
+</tr>
+<tr class="row-even"><td><p>141</p></td>
+<td><p>Shipping</p></td>
+<td><p>3500.00</p></td>
+<td><p>3475.56</p></td>
+</tr>
+<tr class="row-odd"><td><p>103</p></td>
+<td><p>IT</p></td>
+<td><p>9000.00</p></td>
+<td><p>5760.00</p></td>
+</tr>
+<tr class="row-even"><td><p>104</p></td>
+<td><p>IT</p></td>
+<td><p>6000.00</p></td>
+<td><p>5760.00</p></td>
+</tr>
+<tr class="row-odd"><td><p>145</p></td>
+<td><p>Sales</p></td>
+<td><p>14000.00</p></td>
+<td><p>8955.88</p></td>
+</tr>
+<tr class="row-even"><td><p>146</p></td>
+<td><p>Sales</p></td>
+<td><p>13500.00</p></td>
+<td><p>8955.88</p></td>
+</tr>
+<tr class="row-odd"><td><p>147</p></td>
+<td><p>Sales</p></td>
+<td><p>12000.00</p></td>
+<td><p>8955.88</p></td>
+</tr>
+<tr class="row-even"><td><p>168</p></td>
+<td><p>Sales</p></td>
+<td><p>11500.00</p></td>
+<td><p>8955.88</p></td>
+</tr>
+<tr class="row-odd"><td><p>148</p></td>
+<td><p>Sales</p></td>
+<td><p>11000.00</p></td>
+<td><p>8955.88</p></td>
+</tr>
+<tr class="row-even"><td><p>174</p></td>
+<td><p>Sales</p></td>
+<td><p>11000.00</p></td>
+<td><p>8955.88</p></td>
+</tr>
+<tr class="row-odd"><td><p>149</p></td>
+<td><p>Sales</p></td>
+<td><p>10500.00</p></td>
+<td><p>8955.88</p></td>
+</tr>
+<tr class="row-even"><td><p>162</p></td>
+<td><p>Sales</p></td>
+<td><p>10500.00</p></td>
+<td><p>8955.88</p></td>
+</tr>
+<tr class="row-odd"><td><p>156</p></td>
+<td><p>Sales</p></td>
+<td><p>10000.00</p></td>
+<td><p>8955.88</p></td>
+</tr>
+<tr class="row-even"><td><p>150</p></td>
+<td><p>Sales</p></td>
+<td><p>10000.00</p></td>
+<td><p>8955.88</p></td>
+</tr>
+<tr class="row-odd"><td><p>169</p></td>
+<td><p>Sales</p></td>
+<td><p>10000.00</p></td>
+<td><p>8955.88</p></td>
+</tr>
+<tr class="row-even"><td><p>170</p></td>
+<td><p>Sales</p></td>
+<td><p>9600.00</p></td>
+<td><p>8955.88</p></td>
+</tr>
+<tr class="row-odd"><td><p>163</p></td>
+<td><p>Sales</p></td>
+<td><p>9500.00</p></td>
+<td><p>8955.88</p></td>
+</tr>
+<tr class="row-even"><td><p>151</p></td>
+<td><p>Sales</p></td>
+<td><p>9500.00</p></td>
+<td><p>8955.88</p></td>
+</tr>
+<tr class="row-odd"><td><p>157</p></td>
+<td><p>Sales</p></td>
+<td><p>9500.00</p></td>
+<td><p>8955.88</p></td>
+</tr>
+<tr class="row-even"><td><p>158</p></td>
+<td><p>Sales</p></td>
+<td><p>9000.00</p></td>
+<td><p>8955.88</p></td>
+</tr>
+<tr class="row-odd"><td><p>152</p></td>
+<td><p>Sales</p></td>
+<td><p>9000.00</p></td>
+<td><p>8955.88</p></td>
+</tr>
+<tr class="row-even"><td><p>100</p></td>
+<td><p>Executive</p></td>
+<td><p>24000.00</p></td>
+<td><p>19333.33</p></td>
+</tr>
+<tr class="row-odd"><td><p>108</p></td>
+<td><p>Finance</p></td>
+<td><p>12000.00</p></td>
+<td><p>8600.00</p></td>
+</tr>
+<tr class="row-even"><td><p>109</p></td>
+<td><p>Finance</p></td>
+<td><p>9000.00</p></td>
+<td><p>8600.00</p></td>
+</tr>
+<tr class="row-odd"><td><p>205</p></td>
+<td><p>Accounting</p></td>
+<td><p>12000.00</p></td>
+<td><p>10150.00</p></td>
+</tr>
+</tbody>
+</table>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight- notranslate"><div class="highlight"><pre><span></span>%load_ext sql
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight- notranslate"><div class="highlight"><pre><span></span>%env DATABASE_URL=postgresql://itversity_hr_user:hr_password@localhost:5432/itversity_hr_db
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise-2">
+<h2>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this headline">¶</a></h2>
+<p>Get cumulative salary with in each department for Finance and IT department along with department name.</p>
+<ul class="simple">
+<li><p>Use HR database employees and department tables for this problem.</p></li>
+<li><p>Compute cumulative salary expense for <strong>Finance</strong> as well as <strong>IT</strong> departments with in respective departments.</p></li>
+<li><p>Make sure cumulative salary expense per department is rounded off to 2 decimals.</p></li>
+<li><p>Output should contain employee_id, department_name, salary and cum_salary_expense (derived field).</p></li>
+<li><p>Data should be sorted in ascending order by department_name and then salary.</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>employee_id</p></th>
+<th class="head"><p>department_name</p></th>
+<th class="head"><p>salary</p></th>
+<th class="head"><p>cum_salary_expense</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>113</p></td>
+<td><p>Finance</p></td>
+<td><p>6900.00</p></td>
+<td><p>6900.00</p></td>
+</tr>
+<tr class="row-odd"><td><p>111</p></td>
+<td><p>Finance</p></td>
+<td><p>7700.00</p></td>
+<td><p>14600.00</p></td>
+</tr>
+<tr class="row-even"><td><p>112</p></td>
+<td><p>Finance</p></td>
+<td><p>7800.00</p></td>
+<td><p>22400.00</p></td>
+</tr>
+<tr class="row-odd"><td><p>110</p></td>
+<td><p>Finance</p></td>
+<td><p>8200.00</p></td>
+<td><p>30600.00</p></td>
+</tr>
+<tr class="row-even"><td><p>109</p></td>
+<td><p>Finance</p></td>
+<td><p>9000.00</p></td>
+<td><p>39600.00</p></td>
+</tr>
+<tr class="row-odd"><td><p>108</p></td>
+<td><p>Finance</p></td>
+<td><p>12000.00</p></td>
+<td><p>51600.00</p></td>
+</tr>
+<tr class="row-even"><td><p>107</p></td>
+<td><p>IT</p></td>
+<td><p>4200.00</p></td>
+<td><p>4200.00</p></td>
+</tr>
+<tr class="row-odd"><td><p>106</p></td>
+<td><p>IT</p></td>
+<td><p>4800.00</p></td>
+<td><p>9000.00</p></td>
+</tr>
+<tr class="row-even"><td><p>105</p></td>
+<td><p>IT</p></td>
+<td><p>4800.00</p></td>
+<td><p>13800.00</p></td>
+</tr>
+<tr class="row-odd"><td><p>104</p></td>
+<td><p>IT</p></td>
+<td><p>6000.00</p></td>
+<td><p>19800.00</p></td>
+</tr>
+<tr class="row-even"><td><p>103</p></td>
+<td><p>IT</p></td>
+<td><p>9000.00</p></td>
+<td><p>28800.00</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="exercise-3">
+<h2>Exercise 3<a class="headerlink" href="#exercise-3" title="Permalink to this headline">¶</a></h2>
+<p>Get top 3 paid employees with in each department by salary (use dense_rank)</p>
+<ul class="simple">
+<li><p>Use HR database employees and department tables for this problem.</p></li>
+<li><p>Highest paid employee should be ranked first.</p></li>
+<li><p>Output should contain employee_id, department_id, department_name, salary and employee_rank (derived field).</p></li>
+<li><p>Data should be sorted in ascending order by department_id in ascending order and then salary in descending order.</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>employee_id</p></th>
+<th class="head"><p>department_id</p></th>
+<th class="head"><p>department_name</p></th>
+<th class="head"><p>salary</p></th>
+<th class="head"><p>employee_rank</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>200</p></td>
+<td><p>10</p></td>
+<td><p>Administration</p></td>
+<td><p>4400.00</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>201</p></td>
+<td><p>20</p></td>
+<td><p>Marketing</p></td>
+<td><p>13000.00</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>202</p></td>
+<td><p>20</p></td>
+<td><p>Marketing</p></td>
+<td><p>6000.00</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p>114</p></td>
+<td><p>30</p></td>
+<td><p>Purchasing</p></td>
+<td><p>11000.00</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>115</p></td>
+<td><p>30</p></td>
+<td><p>Purchasing</p></td>
+<td><p>3100.00</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p>116</p></td>
+<td><p>30</p></td>
+<td><p>Purchasing</p></td>
+<td><p>2900.00</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-even"><td><p>203</p></td>
+<td><p>40</p></td>
+<td><p>Human Resources</p></td>
+<td><p>6500.00</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>121</p></td>
+<td><p>50</p></td>
+<td><p>Shipping</p></td>
+<td><p>8200.00</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>120</p></td>
+<td><p>50</p></td>
+<td><p>Shipping</p></td>
+<td><p>8000.00</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p>122</p></td>
+<td><p>50</p></td>
+<td><p>Shipping</p></td>
+<td><p>7900.00</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-even"><td><p>103</p></td>
+<td><p>60</p></td>
+<td><p>IT</p></td>
+<td><p>9000.00</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>104</p></td>
+<td><p>60</p></td>
+<td><p>IT</p></td>
+<td><p>6000.00</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-even"><td><p>105</p></td>
+<td><p>60</p></td>
+<td><p>IT</p></td>
+<td><p>4800.00</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-odd"><td><p>106</p></td>
+<td><p>60</p></td>
+<td><p>IT</p></td>
+<td><p>4800.00</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-even"><td><p>204</p></td>
+<td><p>70</p></td>
+<td><p>Public Relations</p></td>
+<td><p>10000.00</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>145</p></td>
+<td><p>80</p></td>
+<td><p>Sales</p></td>
+<td><p>14000.00</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>146</p></td>
+<td><p>80</p></td>
+<td><p>Sales</p></td>
+<td><p>13500.00</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p>147</p></td>
+<td><p>80</p></td>
+<td><p>Sales</p></td>
+<td><p>12000.00</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-even"><td><p>100</p></td>
+<td><p>90</p></td>
+<td><p>Executive</p></td>
+<td><p>24000.00</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>101</p></td>
+<td><p>90</p></td>
+<td><p>Executive</p></td>
+<td><p>17000.00</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-even"><td><p>102</p></td>
+<td><p>90</p></td>
+<td><p>Executive</p></td>
+<td><p>17000.00</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p>108</p></td>
+<td><p>100</p></td>
+<td><p>Finance</p></td>
+<td><p>12000.00</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>109</p></td>
+<td><p>100</p></td>
+<td><p>Finance</p></td>
+<td><p>9000.00</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p>110</p></td>
+<td><p>100</p></td>
+<td><p>Finance</p></td>
+<td><p>8200.00</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-even"><td><p>205</p></td>
+<td><p>110</p></td>
+<td><p>Accounting</p></td>
+<td><p>12000.00</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>206</p></td>
+<td><p>110</p></td>
+<td><p>Accounting</p></td>
+<td><p>8300.00</p></td>
+<td><p>2</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="exercise-4">
+<h2>Exercise 4<a class="headerlink" href="#exercise-4" title="Permalink to this headline">¶</a></h2>
+<p>Get top 3 products sold in the month of 2014 January by revenue.</p>
+<ul class="simple">
+<li><p>Use retail database tables such as orders, order_items and products.</p></li>
+<li><p>Highest revenue generating product should come at top.</p></li>
+<li><p>Output should contain product_id, product_name, revenue, product_rank. <strong>revenue</strong> and <strong>product_rank</strong> are derived fields.</p></li>
+<li><p>Data should be sorted in descending order by revenue.</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>product_id</p></th>
+<th class="head"><p>product_name</p></th>
+<th class="head"><p>revenue</p></th>
+<th class="head"><p>product_rank</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1004</p></td>
+<td><p>Field &amp; Stream Sportsman 16 Gun Fire Safe</p></td>
+<td><p>250787.46</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>365</p></td>
+<td><p>Perfect Fitness Perfect Rip Deck</p></td>
+<td><p>151474.75</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-even"><td><p>957</p></td>
+<td><p>Diamondback Women’s Serene Classic Comfort Bi</p></td>
+<td><p>148190.12</p></td>
+<td><p>3</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="exercise-5">
+<h2>Exercise 5<a class="headerlink" href="#exercise-5" title="Permalink to this headline">¶</a></h2>
+<p>Get top 3 products sold in the month of 2014 January under selected categories by revenue. The categories are <strong>Cardio Equipment</strong> and <strong>Strength Training</strong>.</p>
+<ul class="simple">
+<li><p>Use retail database tables such as orders, order_items, products as well as categories.</p></li>
+<li><p>Highest revenue generating product should come at top.</p></li>
+<li><p>Output should contain category_id, category_name, product_id, product_name, revenue, product_rank. revenue and product_rank are derived fields.</p></li>
+<li><p>Data should be sorted in ascending order by category_id and descending order by revenue.</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>category_id</p></th>
+<th class="head"><p>category_name</p></th>
+<th class="head"><p>product_id</p></th>
+<th class="head"><p>product_name</p></th>
+<th class="head"><p>revenue</p></th>
+<th class="head"><p>product_rank</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>9</p></td>
+<td><p>Cardio Equipment</p></td>
+<td><p>191</p></td>
+<td><p>Nike Men’s Free 5.0+ Running Shoe</p></td>
+<td><p>132286.77</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>9</p></td>
+<td><p>Cardio Equipment</p></td>
+<td><p>172</p></td>
+<td><p>Nike Women’s Tempo Shorts</p></td>
+<td><p>870.00</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-even"><td><p>10</p></td>
+<td><p>Strength Training</p></td>
+<td><p>208</p></td>
+<td><p>SOLE E35 Elliptical</p></td>
+<td><p>1999.99</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>10</p></td>
+<td><p>Strength Training</p></td>
+<td><p>203</p></td>
+<td><p>GoPro HERO3+ Black Edition Camera</p></td>
+<td><p>1199.97</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-even"><td><p>10</p></td>
+<td><p>Strength Training</p></td>
+<td><p>216</p></td>
+<td><p>Yakima DoubleDown Ace Hitch Mount 4-Bike Rack</p></td>
+<td><p>189.00</p></td>
+<td><p>3</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: ""
+        },
+        kernelOptions: {
+            kernelName: "",
+            path: "./07_writing_advanced_sql_queries"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = ''</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="15_ranking_and_filtering_recap.html" title="previous page">Ranking and Filtering - Recap</a>
+    <a class='right-next' id="next-link" href="../08_query_performance_tuning/01_query_performance_tuning.html" title="next page">Query Performance Tuning</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

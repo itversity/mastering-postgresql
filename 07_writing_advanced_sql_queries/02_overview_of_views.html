@@ -1,0 +1,979 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Overview of Views &#8212; My Jupyter Book</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Named Queries - Using WITH Clause" href="03_named_queries_using_with_clause.html" />
+    <link rel="prev" title="Writing Advanced SQL Queries" href="01_writing_advanced_sql_queries.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">My Jupyter Book</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mastering-postgresql.html">
+   Mastering Postgresql
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_getting_started/01_getting_started.html">
+   Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_dml_or_crud_operations/01_dml_or_crud_operations.html">
+   DML or CRUD Operations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_writing_basic_sql_queries/01_writing_basic_sql_queries.html">
+   Writing Basic SQL Queries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_creating_tables_and_indexes/01_creating_tables_and_indexes.html">
+   Creating Tables and Indexes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05_partitioning_tables_and_indexes/01_partitioning_tables_and_indexes.html">
+   Partitioning Tables and Indexes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06_predefined_functions/01_predefined_functions.html">
+   Pre-Defined Functions
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="01_writing_advanced_sql_queries.html">
+   Writing Advanced SQL Queries
+  </a>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Overview of Views
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03_named_queries_using_with_clause.html">
+     Named Queries - Using WITH Clause
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04_overview_of_sub_queries.html">
+     Overview of Sub Queries
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05_create_table_as_select.html">
+     CTAS - Create Table as Select
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06_advanced_dml_operations.html">
+     Advanced DML Operations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="07_merging_or_upserting_data.html">
+     Merging or Upserting Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08_pivoting_rows_into_columns.html">
+     Pivoting Rows into Columns
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="09_overview_of_analytic_functions.html">
+     Overview of Analytic Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="10_analytic_functions_aggregations.html">
+     Analytic Functions – Aggregations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="11_cumulative_or_moving_aggregations.html">
+     Cumulative or Moving Aggregations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="12_analytic_functions_windowing.html">
+     Analytic Functions – Windowing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="13_analytic_functions_ranking.html">
+     Analytic Functions – Ranking
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="14_analytic_funcions_filtering.html">
+     Analytic Functions - Filtering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="15_ranking_and_filtering_recap.html">
+     Ranking and Filtering - Recap
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="16_exercises_analytic_functions.html">
+     Exercises - Analytics Functions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../08_query_performance_tuning/01_query_performance_tuning.html">
+   Query Performance Tuning
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/07_writing_advanced_sql_queries/02_overview_of_views.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/07_writing_advanced_sql_queries/02_overview_of_views.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="overview-of-views">
+<h1>Overview of Views<a class="headerlink" href="#overview-of-views" title="Permalink to this headline">¶</a></h1>
+<p>Here are the details related to views.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/MTfKsGcmwjA?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+</div></div>
+</div>
+<ul class="simple">
+<li><p>View is nothing but a named query. We typically create views for most commonly used queries.</p></li>
+<li><p>Unlike tables, views does not physically store the data and when ever we write a query against view it will fetch the data from underlying tables defined as part of the views.</p></li>
+<li><p>We can perform DML operations over the tables via views with restrictions (for example, we cannot perform DML operations on views with joins, group by etc).</p></li>
+<li><p>Views that can be used to perform DML operations on underlying tables are called as <strong>updatable views</strong></p></li>
+<li><p>Views can be used to provide restricted permissions on tables for DML Operations. However, it is not used these days.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight- notranslate"><div class="highlight"><pre><span></span>%load_ext sql
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight- notranslate"><div class="highlight"><pre><span></span>%env DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env: DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight- notranslate"><div class="highlight"><pre><span></span>%%sql
+
+CREATE OR REPLACE VIEW orders_v
+AS
+SELECT * FROM orders
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight- notranslate"><div class="highlight"><pre><span></span>%%sql
+
+CREATE VIEW orders_v
+AS
+SELECT * FROM orders
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+(psycopg2.errors.DuplicateTable) relation &quot;orders_v&quot; already exists
+
+[SQL: CREATE VIEW orders_v AS
+SELECT * FROM orders]
+(Background on this error at: http://sqlalche.me/e/13/f405)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight- notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT * FROM information_schema.tables
+WHERE table_name ~ &#39;orders&#39;
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+2 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>table_catalog</th>
+        <th>table_schema</th>
+        <th>table_name</th>
+        <th>table_type</th>
+        <th>self_referencing_column_name</th>
+        <th>reference_generation</th>
+        <th>user_defined_type_catalog</th>
+        <th>user_defined_type_schema</th>
+        <th>user_defined_type_name</th>
+        <th>is_insertable_into</th>
+        <th>is_typed</th>
+        <th>commit_action</th>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>public</td>
+        <td>orders</td>
+        <td>BASE TABLE</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>NO</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>public</td>
+        <td>orders_v</td>
+        <td>VIEW</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td>YES</td>
+        <td>NO</td>
+        <td>None</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight- notranslate"><div class="highlight"><pre><span></span>%%sql
+
+UPDATE orders_v
+SET order_status = lower(order_status)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+68883 rows affected.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight- notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT * FROM orders LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_id</th>
+        <th>order_date</th>
+        <th>order_customer_id</th>
+        <th>order_status</th>
+    </tr>
+    <tr>
+        <td>122</td>
+        <td>2013-07-26 00:00:00</td>
+        <td>2071</td>
+        <td>processing</td>
+    </tr>
+    <tr>
+        <td>123</td>
+        <td>2013-07-26 00:00:00</td>
+        <td>3695</td>
+        <td>pending_payment</td>
+    </tr>
+    <tr>
+        <td>124</td>
+        <td>2013-07-26 00:00:00</td>
+        <td>2374</td>
+        <td>complete</td>
+    </tr>
+    <tr>
+        <td>125</td>
+        <td>2013-07-26 00:00:00</td>
+        <td>4611</td>
+        <td>pending_payment</td>
+    </tr>
+    <tr>
+        <td>126</td>
+        <td>2013-07-26 00:00:00</td>
+        <td>610</td>
+        <td>complete</td>
+    </tr>
+    <tr>
+        <td>127</td>
+        <td>2013-07-26 00:00:00</td>
+        <td>5261</td>
+        <td>pending_payment</td>
+    </tr>
+    <tr>
+        <td>128</td>
+        <td>2013-07-26 00:00:00</td>
+        <td>2772</td>
+        <td>pending_payment</td>
+    </tr>
+    <tr>
+        <td>129</td>
+        <td>2013-07-26 00:00:00</td>
+        <td>9937</td>
+        <td>closed</td>
+    </tr>
+    <tr>
+        <td>130</td>
+        <td>2013-07-26 00:00:00</td>
+        <td>7509</td>
+        <td>pending_payment</td>
+    </tr>
+    <tr>
+        <td>131</td>
+        <td>2013-07-26 00:00:00</td>
+        <td>10072</td>
+        <td>processing</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight- notranslate"><div class="highlight"><pre><span></span>%%sql
+
+UPDATE orders_v
+SET order_status = upper(order_status)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+68883 rows affected.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight- notranslate"><div class="highlight"><pre><span></span>%%sql
+
+CREATE OR REPLACE VIEW order_details_v
+AS
+SELECT * FROM orders o
+    JOIN order_items oi
+        ON o.order_id = oi.order_item_order_id
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight- notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT * FROM order_details_v LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_id</th>
+        <th>order_date</th>
+        <th>order_customer_id</th>
+        <th>order_status</th>
+        <th>order_item_id</th>
+        <th>order_item_order_id</th>
+        <th>order_item_product_id</th>
+        <th>order_item_quantity</th>
+        <th>order_item_subtotal</th>
+        <th>order_item_product_price</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>11599</td>
+        <td>CLOSED</td>
+        <td>1</td>
+        <td>1</td>
+        <td>957</td>
+        <td>1</td>
+        <td>299.98</td>
+        <td>299.98</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>256</td>
+        <td>PENDING_PAYMENT</td>
+        <td>2</td>
+        <td>2</td>
+        <td>1073</td>
+        <td>1</td>
+        <td>199.99</td>
+        <td>199.99</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>256</td>
+        <td>PENDING_PAYMENT</td>
+        <td>3</td>
+        <td>2</td>
+        <td>502</td>
+        <td>5</td>
+        <td>250.0</td>
+        <td>50.0</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>256</td>
+        <td>PENDING_PAYMENT</td>
+        <td>4</td>
+        <td>2</td>
+        <td>403</td>
+        <td>1</td>
+        <td>129.99</td>
+        <td>129.99</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>8827</td>
+        <td>CLOSED</td>
+        <td>5</td>
+        <td>4</td>
+        <td>897</td>
+        <td>2</td>
+        <td>49.98</td>
+        <td>24.99</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>8827</td>
+        <td>CLOSED</td>
+        <td>6</td>
+        <td>4</td>
+        <td>365</td>
+        <td>5</td>
+        <td>299.95</td>
+        <td>59.99</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>8827</td>
+        <td>CLOSED</td>
+        <td>7</td>
+        <td>4</td>
+        <td>502</td>
+        <td>3</td>
+        <td>150.0</td>
+        <td>50.0</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>8827</td>
+        <td>CLOSED</td>
+        <td>8</td>
+        <td>4</td>
+        <td>1014</td>
+        <td>4</td>
+        <td>199.92</td>
+        <td>49.98</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>11318</td>
+        <td>COMPLETE</td>
+        <td>9</td>
+        <td>5</td>
+        <td>957</td>
+        <td>1</td>
+        <td>299.98</td>
+        <td>299.98</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>11318</td>
+        <td>COMPLETE</td>
+        <td>10</td>
+        <td>5</td>
+        <td>365</td>
+        <td>5</td>
+        <td>299.95</td>
+        <td>59.99</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight- notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT count(1) FROM order_details_v
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>count</th>
+    </tr>
+    <tr>
+        <td>172198</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight- notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT order_date,
+    order_item_product_id,
+    round(sum(order_item_subtotal)::numeric, 2) AS revenue
+FROM order_details_v 
+GROUP BY order_date,
+    order_item_product_id
+ORDER BY order_date,
+    revenue DESC
+LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_date</th>
+        <th>order_item_product_id</th>
+        <th>revenue</th>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>1004</td>
+        <td>10799.46</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>957</td>
+        <td>9599.36</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>191</td>
+        <td>8499.15</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>365</td>
+        <td>7558.74</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>1073</td>
+        <td>6999.65</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>1014</td>
+        <td>6397.44</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>403</td>
+        <td>5589.57</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>502</td>
+        <td>5100.00</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>627</td>
+        <td>2879.28</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>226</td>
+        <td>599.99</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight- notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT * FROM order_details_v
+WHERE order_id = 2
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+3 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_id</th>
+        <th>order_date</th>
+        <th>order_customer_id</th>
+        <th>order_status</th>
+        <th>order_item_id</th>
+        <th>order_item_order_id</th>
+        <th>order_item_product_id</th>
+        <th>order_item_quantity</th>
+        <th>order_item_subtotal</th>
+        <th>order_item_product_price</th>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>256</td>
+        <td>PENDING_PAYMENT</td>
+        <td>2</td>
+        <td>2</td>
+        <td>1073</td>
+        <td>1</td>
+        <td>199.99</td>
+        <td>199.99</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>256</td>
+        <td>PENDING_PAYMENT</td>
+        <td>3</td>
+        <td>2</td>
+        <td>502</td>
+        <td>5</td>
+        <td>250.0</td>
+        <td>50.0</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>256</td>
+        <td>PENDING_PAYMENT</td>
+        <td>4</td>
+        <td>2</td>
+        <td>403</td>
+        <td>1</td>
+        <td>129.99</td>
+        <td>129.99</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We cannot directly update data in tables via views when the view is defined with joins. Even operations such as <code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span></code> or <code class="docutils literal notranslate"><span class="pre">ORDER</span> <span class="pre">BY</span></code> etc will make views not updatable by default.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight- notranslate"><div class="highlight"><pre><span></span>%%sql
+
+UPDATE order_details_v
+SET
+    order_status = &#39;pending_payment&#39;
+WHERE order_id = 2
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+(psycopg2.errors.ObjectNotInPrerequisiteState) cannot update view &quot;order_details_v&quot;
+DETAIL:  Views that do not select from a single table or view are not automatically updatable.
+HINT:  To enable updating the view, provide an INSTEAD OF UPDATE trigger or an unconditional ON UPDATE DO INSTEAD rule.
+
+[SQL: UPDATE order_details_v SET order_status = &#39;pending_payment&#39;
+WHERE order_id = 2]
+(Background on this error at: http://sqlalche.me/e/13/e3q8)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: ""
+        },
+        kernelOptions: {
+            kernelName: "",
+            path: "./07_writing_advanced_sql_queries"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = ''</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="01_writing_advanced_sql_queries.html" title="previous page">Writing Advanced SQL Queries</a>
+    <a class='right-next' id="next-link" href="03_named_queries_using_with_clause.html" title="next page">Named Queries - Using WITH Clause</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

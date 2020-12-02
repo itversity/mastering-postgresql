@@ -1,0 +1,1129 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Analytic Functions - Filtering &#8212; My Jupyter Book</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Ranking and Filtering - Recap" href="15_ranking_and_filtering_recap.html" />
+    <link rel="prev" title="Analytic Functions – Ranking" href="13_analytic_functions_ranking.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">My Jupyter Book</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mastering-postgresql.html">
+   Mastering Postgresql
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_getting_started/01_getting_started.html">
+   Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_dml_or_crud_operations/01_dml_or_crud_operations.html">
+   DML or CRUD Operations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_writing_basic_sql_queries/01_writing_basic_sql_queries.html">
+   Writing Basic SQL Queries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_creating_tables_and_indexes/01_creating_tables_and_indexes.html">
+   Creating Tables and Indexes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05_partitioning_tables_and_indexes/01_partitioning_tables_and_indexes.html">
+   Partitioning Tables and Indexes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06_predefined_functions/01_predefined_functions.html">
+   Pre-Defined Functions
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="01_writing_advanced_sql_queries.html">
+   Writing Advanced SQL Queries
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="02_overview_of_views.html">
+     Overview of Views
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03_named_queries_using_with_clause.html">
+     Named Queries - Using WITH Clause
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04_overview_of_sub_queries.html">
+     Overview of Sub Queries
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05_create_table_as_select.html">
+     CTAS - Create Table as Select
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06_advanced_dml_operations.html">
+     Advanced DML Operations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="07_merging_or_upserting_data.html">
+     Merging or Upserting Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08_pivoting_rows_into_columns.html">
+     Pivoting Rows into Columns
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="09_overview_of_analytic_functions.html">
+     Overview of Analytic Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="10_analytic_functions_aggregations.html">
+     Analytic Functions – Aggregations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="11_cumulative_or_moving_aggregations.html">
+     Cumulative or Moving Aggregations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="12_analytic_functions_windowing.html">
+     Analytic Functions – Windowing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="13_analytic_functions_ranking.html">
+     Analytic Functions – Ranking
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Analytic Functions - Filtering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="15_ranking_and_filtering_recap.html">
+     Ranking and Filtering - Recap
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="16_exercises_analytic_functions.html">
+     Exercises - Analytics Functions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../08_query_performance_tuning/01_query_performance_tuning.html">
+   Query Performance Tuning
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/07_writing_advanced_sql_queries/14_analytic_funcions_filtering.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/07_writing_advanced_sql_queries/14_analytic_funcions_filtering.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#order-of-execution-of-sql">
+   Order of execution of SQL
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview-of-sub-queries">
+   Overview of Sub Queries
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#filtering-analytic-function-results">
+   Filtering - Analytic Function Results
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="analytic-functions-filtering">
+<h1>Analytic Functions - Filtering<a class="headerlink" href="#analytic-functions-filtering" title="Permalink to this headline">¶</a></h1>
+<p>Let us go through the solution for getting top 5 daily products based up on the revenue. In that process we will understand how to apply filtering on top of the derived values using analytic functions.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/hp0cmesr8i8?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight- notranslate"><div class="highlight"><pre><span></span>%load_ext sql
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The sql extension is already loaded. To reload it, use:
+  %reload_ext sql
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight- notranslate"><div class="highlight"><pre><span></span>%env DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env: DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="order-of-execution-of-sql">
+<h2>Order of execution of SQL<a class="headerlink" href="#order-of-execution-of-sql" title="Permalink to this headline">¶</a></h2>
+<p>Let us review the order of execution of SQL. First let us review the order of writing the query.</p>
+<ol class="simple">
+<li><p><strong>SELECT</strong></p></li>
+<li><p><strong>FROM</strong></p></li>
+<li><p><strong>JOIN</strong> or <strong>OUTER JOIN</strong> with <strong>ON</strong></p></li>
+<li><p><strong>WHERE</strong></p></li>
+<li><p><strong>GROUP BY</strong> and optionally <strong>HAVING</strong></p></li>
+<li><p><strong>ORDER BY</strong></p></li>
+</ol>
+<p>Let us come up with a query which will compute daily revenue using COMPLETE or CLOSED orders and also sorted by order_date.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight- notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT o.order_date,
+    round(sum(oi.order_item_subtotal)::numeric, 2) AS revenue
+FROM orders o JOIN order_items oi
+ON o.order_id = oi.order_item_order_id
+WHERE o.order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)
+GROUP BY o.order_date
+ORDER BY o.order_date
+LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_date</th>
+        <th>revenue</th>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>31547.23</td>
+    </tr>
+    <tr>
+        <td>2013-07-26 00:00:00</td>
+        <td>54713.23</td>
+    </tr>
+    <tr>
+        <td>2013-07-27 00:00:00</td>
+        <td>48411.48</td>
+    </tr>
+    <tr>
+        <td>2013-07-28 00:00:00</td>
+        <td>35672.03</td>
+    </tr>
+    <tr>
+        <td>2013-07-29 00:00:00</td>
+        <td>54579.70</td>
+    </tr>
+    <tr>
+        <td>2013-07-30 00:00:00</td>
+        <td>49329.29</td>
+    </tr>
+    <tr>
+        <td>2013-07-31 00:00:00</td>
+        <td>59212.49</td>
+    </tr>
+    <tr>
+        <td>2013-08-01 00:00:00</td>
+        <td>49160.08</td>
+    </tr>
+    <tr>
+        <td>2013-08-02 00:00:00</td>
+        <td>50688.58</td>
+    </tr>
+    <tr>
+        <td>2013-08-03 00:00:00</td>
+        <td>43416.74</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight- notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT o.order_date,
+    round(sum(oi.order_item_subtotal)::numeric, 2) AS revenue
+FROM orders o JOIN order_items oi
+ON o.order_id = oi.order_item_order_id
+WHERE o.order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)
+GROUP BY o.order_date
+    HAVING round(sum(oi.order_item_subtotal)::numeric, 2) &gt;= 50000
+ORDER BY order_date
+LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_date</th>
+        <th>revenue</th>
+    </tr>
+    <tr>
+        <td>2013-07-26 00:00:00</td>
+        <td>54713.23</td>
+    </tr>
+    <tr>
+        <td>2013-07-29 00:00:00</td>
+        <td>54579.70</td>
+    </tr>
+    <tr>
+        <td>2013-07-31 00:00:00</td>
+        <td>59212.49</td>
+    </tr>
+    <tr>
+        <td>2013-08-02 00:00:00</td>
+        <td>50688.58</td>
+    </tr>
+    <tr>
+        <td>2013-08-06 00:00:00</td>
+        <td>57843.89</td>
+    </tr>
+    <tr>
+        <td>2013-08-12 00:00:00</td>
+        <td>59014.74</td>
+    </tr>
+    <tr>
+        <td>2013-08-17 00:00:00</td>
+        <td>63226.83</td>
+    </tr>
+    <tr>
+        <td>2013-08-24 00:00:00</td>
+        <td>52650.15</td>
+    </tr>
+    <tr>
+        <td>2013-09-05 00:00:00</td>
+        <td>59942.43</td>
+    </tr>
+    <tr>
+        <td>2013-09-06 00:00:00</td>
+        <td>61976.10</td>
+    </tr>
+</table></div></div>
+</div>
+<p>However order of execution is typically as follows.</p>
+<ol class="simple">
+<li><p><strong>FROM</strong></p></li>
+<li><p><strong>JOIN</strong> or <strong>OUTER JOIN</strong> with <strong>ON</strong></p></li>
+<li><p><strong>WHERE</strong></p></li>
+<li><p><strong>GROUP BY</strong> and optionally <strong>HAVING</strong></p></li>
+<li><p><strong>SELECT</strong></p></li>
+<li><p><strong>ORDER BY</strong></p></li>
+</ol>
+<p>As <strong>SELECT</strong> is executed before <strong>ORDER BY</strong> clause, we will not be able to refer the aliases defined in <strong>SELECT</strong> caluse in other clauses except for <strong>ORDER BY</strong> in most of the traditional databases including Postgresql.</p>
+<div class="admonition error">
+<p class="admonition-title">Error</p>
+<p>This will fail as revenue which is an alias defined in <strong>SELECT</strong> cannot be used in <strong>WHERE</strong>.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight- notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT o.order_date,
+    round(sum(oi.order_item_subtotal)::numeric, 2) AS revenue
+FROM orders o JOIN order_items oi
+ON o.order_id = oi.order_item_order_id
+WHERE o.order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)
+    AND revenue &gt;= 50000
+GROUP BY o.order_date
+ORDER BY order_date
+LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+(psycopg2.errors.UndefinedColumn) column &quot;revenue&quot; does not exist
+LINE 5:     AND revenue &gt;= 50000
+                ^
+
+[SQL: SELECT o.order_date, round(sum(oi.order_item_subtotal)::numeric, 2) AS revenue
+FROM orders o JOIN order_items oi
+ON o.order_id = oi.order_item_order_id
+WHERE o.order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)
+    AND revenue &gt;= 50000
+GROUP BY o.order_date
+ORDER BY order_date
+LIMIT 10]
+(Background on this error at: http://sqlalche.me/e/13/f405)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This will also fail as we cannot use aggregate functions in <code class="docutils literal notranslate"><span class="pre">WHERE</span></code> clause.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight- notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT o.order_date,
+    round(sum(oi.order_item_subtotal)::numeric, 2) AS revenue
+FROM orders o JOIN order_items oi
+ON o.order_id = oi.order_item_order_id
+WHERE o.order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)
+    AND round(sum(oi.order_item_subtotal)::numeric, 2) &gt;= 50000
+GROUP BY o.order_date
+ORDER BY order_date
+LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+(psycopg2.errors.GroupingError) aggregate functions are not allowed in WHERE
+LINE 5:     AND round(sum(oi.order_item_subtotal)::numeric, 2) &gt;= 50...
+                      ^
+
+[SQL: SELECT o.order_date, round(sum(oi.order_item_subtotal)::numeric, 2) AS revenue
+FROM orders o JOIN order_items oi
+ON o.order_id = oi.order_item_order_id
+WHERE o.order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)
+    AND round(sum(oi.order_item_subtotal)::numeric, 2) &gt;= 50000
+GROUP BY o.order_date
+ORDER BY order_date
+LIMIT 10]
+(Background on this error at: http://sqlalche.me/e/13/f405)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight- notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT o.order_date,
+    round(sum(oi.order_item_subtotal)::numeric, 2) AS revenue
+FROM orders o JOIN order_items oi
+ON o.order_id = oi.order_item_order_id
+WHERE o.order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)
+GROUP BY o.order_date
+ORDER BY order_date,
+    revenue DESC
+LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_date</th>
+        <th>revenue</th>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>31547.23</td>
+    </tr>
+    <tr>
+        <td>2013-07-26 00:00:00</td>
+        <td>54713.23</td>
+    </tr>
+    <tr>
+        <td>2013-07-27 00:00:00</td>
+        <td>48411.48</td>
+    </tr>
+    <tr>
+        <td>2013-07-28 00:00:00</td>
+        <td>35672.03</td>
+    </tr>
+    <tr>
+        <td>2013-07-29 00:00:00</td>
+        <td>54579.70</td>
+    </tr>
+    <tr>
+        <td>2013-07-30 00:00:00</td>
+        <td>49329.29</td>
+    </tr>
+    <tr>
+        <td>2013-07-31 00:00:00</td>
+        <td>59212.49</td>
+    </tr>
+    <tr>
+        <td>2013-08-01 00:00:00</td>
+        <td>49160.08</td>
+    </tr>
+    <tr>
+        <td>2013-08-02 00:00:00</td>
+        <td>50688.58</td>
+    </tr>
+    <tr>
+        <td>2013-08-03 00:00:00</td>
+        <td>43416.74</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight- notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT o.order_date,
+    round(sum(oi.order_item_subtotal)::numeric, 2) AS revenue
+FROM orders o JOIN order_items oi
+ON o.order_id = oi.order_item_order_id
+WHERE o.order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)
+GROUP BY o.order_date
+    HAVING round(sum(oi.order_item_subtotal)::numeric, 2) &gt;= 50000
+ORDER BY order_date
+LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_date</th>
+        <th>revenue</th>
+    </tr>
+    <tr>
+        <td>2013-07-26 00:00:00</td>
+        <td>54713.23</td>
+    </tr>
+    <tr>
+        <td>2013-07-29 00:00:00</td>
+        <td>54579.70</td>
+    </tr>
+    <tr>
+        <td>2013-07-31 00:00:00</td>
+        <td>59212.49</td>
+    </tr>
+    <tr>
+        <td>2013-08-02 00:00:00</td>
+        <td>50688.58</td>
+    </tr>
+    <tr>
+        <td>2013-08-06 00:00:00</td>
+        <td>57843.89</td>
+    </tr>
+    <tr>
+        <td>2013-08-12 00:00:00</td>
+        <td>59014.74</td>
+    </tr>
+    <tr>
+        <td>2013-08-17 00:00:00</td>
+        <td>63226.83</td>
+    </tr>
+    <tr>
+        <td>2013-08-24 00:00:00</td>
+        <td>52650.15</td>
+    </tr>
+    <tr>
+        <td>2013-09-05 00:00:00</td>
+        <td>59942.43</td>
+    </tr>
+    <tr>
+        <td>2013-09-06 00:00:00</td>
+        <td>61976.10</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="admonition error">
+<p class="admonition-title">Error</p>
+<p>This one will also fail as we are trying to use alias <code class="docutils literal notranslate"><span class="pre">drnk</span></code> from <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> clause in <code class="docutils literal notranslate"><span class="pre">WHERE</span></code> clause.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight- notranslate"><div class="highlight"><pre><span></span>%%sql
+
+
+SELECT t.*,
+dense_rank() OVER (
+  PARTITION BY order_date
+  ORDER BY revenue DESC
+) AS drnk
+FROM daily_product_revenue t
+WHERE drnk &lt;= 5
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+(psycopg2.errors.UndefinedColumn) column &quot;drnk&quot; does not exist
+LINE 6: WHERE drnk &lt;= 5
+              ^
+
+[SQL: SELECT t.*, dense_rank() OVER (
+  PARTITION BY order_date
+  ORDER BY revenue DESC
+) AS drnk
+FROM daily_product_revenue t
+WHERE drnk &lt;= 5]
+(Background on this error at: http://sqlalche.me/e/13/f405)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="overview-of-sub-queries">
+<h2>Overview of Sub Queries<a class="headerlink" href="#overview-of-sub-queries" title="Permalink to this headline">¶</a></h2>
+<p>Let us recap about Sub Queries.</p>
+<ul class="simple">
+<li><p>We typically have Sub Queries in <strong>FROM</strong> Clause.</p></li>
+<li><p>We need to provide alias to the Sub Queries in <strong>FROM</strong> Clause in Postgresql.</p></li>
+<li><p>We use sub queries quite often over queries using Analytics/Windowing Functions</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight- notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT * FROM (SELECT current_date) AS q
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>current_date</th>
+    </tr>
+    <tr>
+        <td>2020-12-01</td>
+    </tr>
+</table></div></div>
+</div>
+<p>Let us see few more examples with respect to Sub Queries.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight- notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT * FROM (
+  SELECT order_date, count(1) AS order_count
+  FROM orders
+  GROUP BY order_date
+) AS q
+ORDER BY order_date
+LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_date</th>
+        <th>order_count</th>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>143</td>
+    </tr>
+    <tr>
+        <td>2013-07-26 00:00:00</td>
+        <td>269</td>
+    </tr>
+    <tr>
+        <td>2013-07-27 00:00:00</td>
+        <td>202</td>
+    </tr>
+    <tr>
+        <td>2013-07-28 00:00:00</td>
+        <td>187</td>
+    </tr>
+    <tr>
+        <td>2013-07-29 00:00:00</td>
+        <td>253</td>
+    </tr>
+    <tr>
+        <td>2013-07-30 00:00:00</td>
+        <td>227</td>
+    </tr>
+    <tr>
+        <td>2013-07-31 00:00:00</td>
+        <td>252</td>
+    </tr>
+    <tr>
+        <td>2013-08-01 00:00:00</td>
+        <td>246</td>
+    </tr>
+    <tr>
+        <td>2013-08-02 00:00:00</td>
+        <td>224</td>
+    </tr>
+    <tr>
+        <td>2013-08-03 00:00:00</td>
+        <td>183</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight- notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT * FROM (
+  SELECT order_date, count(1) AS order_count
+  FROM orders
+  GROUP BY order_date
+) q
+WHERE q.order_count &gt; 150
+ORDER BY order_date
+LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_date</th>
+        <th>order_count</th>
+    </tr>
+    <tr>
+        <td>2013-07-26 00:00:00</td>
+        <td>269</td>
+    </tr>
+    <tr>
+        <td>2013-07-27 00:00:00</td>
+        <td>202</td>
+    </tr>
+    <tr>
+        <td>2013-07-28 00:00:00</td>
+        <td>187</td>
+    </tr>
+    <tr>
+        <td>2013-07-29 00:00:00</td>
+        <td>253</td>
+    </tr>
+    <tr>
+        <td>2013-07-30 00:00:00</td>
+        <td>227</td>
+    </tr>
+    <tr>
+        <td>2013-07-31 00:00:00</td>
+        <td>252</td>
+    </tr>
+    <tr>
+        <td>2013-08-01 00:00:00</td>
+        <td>246</td>
+    </tr>
+    <tr>
+        <td>2013-08-02 00:00:00</td>
+        <td>224</td>
+    </tr>
+    <tr>
+        <td>2013-08-03 00:00:00</td>
+        <td>183</td>
+    </tr>
+    <tr>
+        <td>2013-08-04 00:00:00</td>
+        <td>187</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Above query is an example for sub queries. We can achieve using HAVING clause (no need to have sub query to filter)</p>
+</div>
+</div>
+<div class="section" id="filtering-analytic-function-results">
+<h2>Filtering - Analytic Function Results<a class="headerlink" href="#filtering-analytic-function-results" title="Permalink to this headline">¶</a></h2>
+<p>Let us understand how to filter on top of results of Analytic Functions.</p>
+<ul class="simple">
+<li><p>We can use Analytic Functions only in <strong>SELECT</strong> Clause.</p></li>
+<li><p>If we have to filter based on Analytic Function results, then we need to use Sub Queries.</p></li>
+<li><p>Once the query is added as subquery, we can apply filter using aliases of the Analytic Functions.</p></li>
+</ul>
+<p>Here is the example where we can filter data based on Analytic Functions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight- notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT t.*,
+dense_rank() OVER (
+  PARTITION BY order_date
+  ORDER BY revenue DESC
+) AS drnk
+FROM daily_product_revenue t
+WHERE drnk &lt;= 5
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+(psycopg2.errors.UndefinedColumn) column &quot;drnk&quot; does not exist
+LINE 6: WHERE drnk &lt;= 5
+              ^
+
+[SQL: SELECT t.*, dense_rank() OVER (
+  PARTITION BY order_date
+  ORDER BY revenue DESC
+) AS drnk
+FROM daily_product_revenue t
+WHERE drnk &lt;= 5]
+(Background on this error at: http://sqlalche.me/e/13/f405)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight- notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT * FROM (
+  SELECT t.*,
+    dense_rank() OVER (
+      PARTITION BY order_date
+      ORDER BY revenue DESC
+    ) AS drnk
+  FROM daily_product_revenue t
+) q
+WHERE q.drnk &lt;= 5
+ORDER BY q.order_date, q.revenue DESC
+LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_date</th>
+        <th>order_item_product_id</th>
+        <th>revenue</th>
+        <th>drnk</th>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>1004</td>
+        <td>5599.72</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>191</td>
+        <td>5099.49</td>
+        <td>2</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>957</td>
+        <td>4499.70</td>
+        <td>3</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>365</td>
+        <td>3359.44</td>
+        <td>4</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>1073</td>
+        <td>2999.85</td>
+        <td>5</td>
+    </tr>
+    <tr>
+        <td>2013-07-26 00:00:00</td>
+        <td>1004</td>
+        <td>10799.46</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>2013-07-26 00:00:00</td>
+        <td>365</td>
+        <td>7978.67</td>
+        <td>2</td>
+    </tr>
+    <tr>
+        <td>2013-07-26 00:00:00</td>
+        <td>957</td>
+        <td>6899.54</td>
+        <td>3</td>
+    </tr>
+    <tr>
+        <td>2013-07-26 00:00:00</td>
+        <td>191</td>
+        <td>6799.32</td>
+        <td>4</td>
+    </tr>
+    <tr>
+        <td>2013-07-26 00:00:00</td>
+        <td>1014</td>
+        <td>4798.08</td>
+        <td>5</td>
+    </tr>
+</table></div></div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: ""
+        },
+        kernelOptions: {
+            kernelName: "",
+            path: "./07_writing_advanced_sql_queries"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = ''</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="13_analytic_functions_ranking.html" title="previous page">Analytic Functions – Ranking</a>
+    <a class='right-next' id="next-link" href="15_ranking_and_filtering_recap.html" title="next page">Ranking and Filtering - Recap</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

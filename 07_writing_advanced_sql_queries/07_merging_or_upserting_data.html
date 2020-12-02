@@ -1,0 +1,1029 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Merging or Upserting Data &#8212; My Jupyter Book</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Pivoting Rows into Columns" href="08_pivoting_rows_into_columns.html" />
+    <link rel="prev" title="Advanced DML Operations" href="06_advanced_dml_operations.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">My Jupyter Book</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mastering-postgresql.html">
+   Mastering Postgresql
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_getting_started/01_getting_started.html">
+   Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_dml_or_crud_operations/01_dml_or_crud_operations.html">
+   DML or CRUD Operations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_writing_basic_sql_queries/01_writing_basic_sql_queries.html">
+   Writing Basic SQL Queries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_creating_tables_and_indexes/01_creating_tables_and_indexes.html">
+   Creating Tables and Indexes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05_partitioning_tables_and_indexes/01_partitioning_tables_and_indexes.html">
+   Partitioning Tables and Indexes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06_predefined_functions/01_predefined_functions.html">
+   Pre-Defined Functions
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="01_writing_advanced_sql_queries.html">
+   Writing Advanced SQL Queries
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="02_overview_of_views.html">
+     Overview of Views
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03_named_queries_using_with_clause.html">
+     Named Queries - Using WITH Clause
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04_overview_of_sub_queries.html">
+     Overview of Sub Queries
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05_create_table_as_select.html">
+     CTAS - Create Table as Select
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06_advanced_dml_operations.html">
+     Advanced DML Operations
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Merging or Upserting Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08_pivoting_rows_into_columns.html">
+     Pivoting Rows into Columns
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="09_overview_of_analytic_functions.html">
+     Overview of Analytic Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="10_analytic_functions_aggregations.html">
+     Analytic Functions – Aggregations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="11_cumulative_or_moving_aggregations.html">
+     Cumulative or Moving Aggregations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="12_analytic_functions_windowing.html">
+     Analytic Functions – Windowing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="13_analytic_functions_ranking.html">
+     Analytic Functions – Ranking
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="14_analytic_funcions_filtering.html">
+     Analytic Functions - Filtering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="15_ranking_and_filtering_recap.html">
+     Ranking and Filtering - Recap
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="16_exercises_analytic_functions.html">
+     Exercises - Analytics Functions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../08_query_performance_tuning/01_query_performance_tuning.html">
+   Query Performance Tuning
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/07_writing_advanced_sql_queries/07_merging_or_upserting_data.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/07_writing_advanced_sql_queries/07_merging_or_upserting_data.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="merging-or-upserting-data">
+<h1>Merging or Upserting Data<a class="headerlink" href="#merging-or-upserting-data" title="Permalink to this headline">¶</a></h1>
+<p>At times we need to merge or upsert the data (update existing records and insert new records)</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/24N2OTRm560?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+</div></div>
+</div>
+<ul class="simple">
+<li><p>One of the way to achieve merge or upsert is to develop 2 statements - one to update and other to insert.</p></li>
+<li><p>The queries in both the statements (update and insert) should return mutually exclusive results.</p></li>
+<li><p>Even though the statements can be executed in any order, updating first and then inserting perform better in most of the cases (as update have to deal with lesser number of records with this approach)</p></li>
+<li><p>We can also take care of merge or upsert using <code class="docutils literal notranslate"><span class="pre">INSERT</span></code> with <code class="docutils literal notranslate"><span class="pre">ON</span> <span class="pre">CONFLICT</span> <span class="pre">(columns)</span> <span class="pre">DO</span> <span class="pre">UPDATE</span></code>.</p></li>
+<li><p>Postgres does not have either <code class="docutils literal notranslate"><span class="pre">MERGE</span></code> or <code class="docutils literal notranslate"><span class="pre">UPSERT</span></code> as part of the SQL syntax.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The sql extension is already loaded. To reload it, use:
+  %reload_ext sql
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env: DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> DROP TABLE IF EXISTS customer_order_metrics_dly
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+CREATE TABLE customer_order_metrics_dly (
+    customer_id INT,
+    order_date DATE,
+    order_count INT,
+    order_revenue FLOAT
+)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+ALTER TABLE customer_order_metrics_dly
+    ADD PRIMARY KEY (customer_id, order_date)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Let us go through the 2 statement approach. Here we are inserting data for the month of August 2013.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+INSERT INTO customer_order_metrics_dly
+SELECT o.order_customer_id,
+    o.order_date,
+    count(1) order_count,
+    NULL
+FROM orders o 
+    JOIN order_items oi
+        ON o.order_id = oi.order_item_order_id
+WHERE o.order_date BETWEEN &#39;2013-08-01&#39; AND &#39;2013-08-31&#39;
+GROUP BY o.order_customer_id,
+    o.order_date
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+4708 rows affected.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Now we want to merge data into the table using 2013 August to 2013 October. As we are using 2 statement approach, first we should update and then we should insert</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+UPDATE customer_order_metrics_dly comd
+SET 
+    (order_count, order_revenue) = (
+        SELECT count(1),
+            round(sum(oi.order_item_subtotal)::numeric, 2)
+        FROM orders o 
+            JOIN order_items oi
+                ON o.order_id = oi.order_item_order_id
+        WHERE o.order_date BETWEEN &#39;2013-08-01&#39; AND &#39;2013-10-31&#39;
+            AND o.order_customer_id = comd.customer_id
+            AND o.order_date = comd.order_date
+        GROUP BY o.order_customer_id,
+            o.order_date
+    )
+WHERE comd.order_date BETWEEN &#39;2013-08-01&#39; AND &#39;2013-10-31&#39;
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+4708 rows affected.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT * FROM customer_order_metrics_dly
+ORDER BY order_date, customer_id
+LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>customer_id</th>
+        <th>order_date</th>
+        <th>order_count</th>
+        <th>order_revenue</th>
+    </tr>
+    <tr>
+        <td>34</td>
+        <td>2013-08-01</td>
+        <td>4</td>
+        <td>789.92</td>
+    </tr>
+    <tr>
+        <td>109</td>
+        <td>2013-08-01</td>
+        <td>3</td>
+        <td>799.9</td>
+    </tr>
+    <tr>
+        <td>174</td>
+        <td>2013-08-01</td>
+        <td>5</td>
+        <td>654.89</td>
+    </tr>
+    <tr>
+        <td>267</td>
+        <td>2013-08-01</td>
+        <td>4</td>
+        <td>559.97</td>
+    </tr>
+    <tr>
+        <td>478</td>
+        <td>2013-08-01</td>
+        <td>5</td>
+        <td>729.9</td>
+    </tr>
+    <tr>
+        <td>553</td>
+        <td>2013-08-01</td>
+        <td>2</td>
+        <td>399.9</td>
+    </tr>
+    <tr>
+        <td>692</td>
+        <td>2013-08-01</td>
+        <td>2</td>
+        <td>479.92</td>
+    </tr>
+    <tr>
+        <td>696</td>
+        <td>2013-08-01</td>
+        <td>2</td>
+        <td>649.88</td>
+    </tr>
+    <tr>
+        <td>800</td>
+        <td>2013-08-01</td>
+        <td>5</td>
+        <td>609.95</td>
+    </tr>
+    <tr>
+        <td>835</td>
+        <td>2013-08-01</td>
+        <td>5</td>
+        <td>589.9</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT to_char(order_date, &#39;yyyy-MM&#39;), count(1) FROM customer_order_metrics_dly
+GROUP BY to_char(order_date, &#39;yyyy-MM&#39;)
+LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>to_char</th>
+        <th>count</th>
+    </tr>
+    <tr>
+        <td>2013-08</td>
+        <td>4708</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+INSERT INTO customer_order_metrics_dly
+SELECT o.order_customer_id AS customer_id,
+    o.order_date,
+    count(1) order_count,
+    round(sum(order_item_subtotal)::numeric, 2)
+FROM orders o 
+    JOIN order_items oi
+        ON o.order_id = oi.order_item_order_id
+WHERE o.order_date BETWEEN &#39;2013-08-01&#39; AND &#39;2013-10-31&#39;
+    AND NOT EXISTS (
+        SELECT 1 FROM customer_order_metrics_dly codm
+        WHERE o.order_customer_id = codm.customer_id
+            AND o.order_date = codm.order_date
+    )
+GROUP BY o.order_customer_id,
+    o.order_date
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+9265 rows affected.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT * FROM customer_order_metrics_dly
+WHERE order_date::varchar ~ &#39;2013-09&#39;
+ORDER BY order_date, customer_id
+LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>customer_id</th>
+        <th>order_date</th>
+        <th>order_count</th>
+        <th>order_revenue</th>
+    </tr>
+    <tr>
+        <td>19</td>
+        <td>2013-09-01</td>
+        <td>5</td>
+        <td>839.92</td>
+    </tr>
+    <tr>
+        <td>95</td>
+        <td>2013-09-01</td>
+        <td>5</td>
+        <td>969.85</td>
+    </tr>
+    <tr>
+        <td>136</td>
+        <td>2013-09-01</td>
+        <td>4</td>
+        <td>639.94</td>
+    </tr>
+    <tr>
+        <td>247</td>
+        <td>2013-09-01</td>
+        <td>2</td>
+        <td>639.94</td>
+    </tr>
+    <tr>
+        <td>383</td>
+        <td>2013-09-01</td>
+        <td>5</td>
+        <td>729.9</td>
+    </tr>
+    <tr>
+        <td>437</td>
+        <td>2013-09-01</td>
+        <td>4</td>
+        <td>829.97</td>
+    </tr>
+    <tr>
+        <td>543</td>
+        <td>2013-09-01</td>
+        <td>4</td>
+        <td>1489.83</td>
+    </tr>
+    <tr>
+        <td>601</td>
+        <td>2013-09-01</td>
+        <td>2</td>
+        <td>159.99</td>
+    </tr>
+    <tr>
+        <td>689</td>
+        <td>2013-09-01</td>
+        <td>2</td>
+        <td>419.96</td>
+    </tr>
+    <tr>
+        <td>842</td>
+        <td>2013-09-01</td>
+        <td>4</td>
+        <td>954.87</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT to_char(order_date, &#39;yyyy-MM&#39;), count(1) FROM customer_order_metrics_dly
+GROUP BY to_char(order_date, &#39;yyyy-MM&#39;)
+LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+3 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>to_char</th>
+        <th>count</th>
+    </tr>
+    <tr>
+        <td>2013-08</td>
+        <td>4708</td>
+    </tr>
+    <tr>
+        <td>2013-10</td>
+        <td>4417</td>
+    </tr>
+    <tr>
+        <td>2013-09</td>
+        <td>4848</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Let us see how we can upsert or merge the data using <code class="docutils literal notranslate"><span class="pre">INSERT</span></code> with <code class="docutils literal notranslate"><span class="pre">ON</span> <span class="pre">CONFLICT</span> <span class="pre">(columns)</span> <span class="pre">DO</span> <span class="pre">UPDATE</span></code>. We will first insert data for the month of August 2013 and then upsert or merge for the months of August 2013 to October 2013.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> TRUNCATE TABLE customer_order_metrics_dly
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+INSERT INTO customer_order_metrics_dly
+SELECT o.order_customer_id,
+    o.order_date,
+    count(1) order_count,
+    NULL
+FROM orders o 
+    JOIN order_items oi
+        ON o.order_id = oi.order_item_order_id
+WHERE o.order_date BETWEEN &#39;2013-08-01&#39; AND &#39;2013-08-31&#39;
+GROUP BY o.order_customer_id,
+    o.order_date
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+4708 rows affected.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We need to have unique or primary key constraint on the columns specified as part of <code class="docutils literal notranslate"><span class="pre">ON</span> <span class="pre">CONFLICT</span></code> clause.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+ALTER TABLE customer_order_metrics_dly DROP CONSTRAINT customer_order_metrics_dly_pkey
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+ALTER TABLE customer_order_metrics_dly
+    ADD PRIMARY KEY (customer_id, order_date)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+INSERT INTO customer_order_metrics_dly
+SELECT o.order_customer_id,
+    o.order_date,
+    count(1) order_count,
+    round(sum(order_item_subtotal)::numeric, 2) AS order_revenue
+FROM orders o 
+    JOIN order_items oi
+        ON o.order_id = oi.order_item_order_id
+WHERE o.order_date BETWEEN &#39;2013-08-01&#39; AND &#39;2013-10-31&#39;
+GROUP BY o.order_customer_id,
+    o.order_date
+ON CONFLICT (customer_id, order_date) DO UPDATE SET
+    order_count = EXCLUDED.order_count,
+    order_revenue = EXCLUDED.order_revenue
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+13973 rows affected.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT * FROM customer_order_metrics_dly
+WHERE order_date::varchar ~ &#39;2013-09&#39;
+ORDER BY order_date, customer_id
+LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>customer_id</th>
+        <th>order_date</th>
+        <th>order_count</th>
+        <th>order_revenue</th>
+    </tr>
+    <tr>
+        <td>19</td>
+        <td>2013-09-01</td>
+        <td>5</td>
+        <td>839.92</td>
+    </tr>
+    <tr>
+        <td>95</td>
+        <td>2013-09-01</td>
+        <td>5</td>
+        <td>969.85</td>
+    </tr>
+    <tr>
+        <td>136</td>
+        <td>2013-09-01</td>
+        <td>4</td>
+        <td>639.94</td>
+    </tr>
+    <tr>
+        <td>247</td>
+        <td>2013-09-01</td>
+        <td>2</td>
+        <td>639.94</td>
+    </tr>
+    <tr>
+        <td>383</td>
+        <td>2013-09-01</td>
+        <td>5</td>
+        <td>729.9</td>
+    </tr>
+    <tr>
+        <td>437</td>
+        <td>2013-09-01</td>
+        <td>4</td>
+        <td>829.97</td>
+    </tr>
+    <tr>
+        <td>543</td>
+        <td>2013-09-01</td>
+        <td>4</td>
+        <td>1489.83</td>
+    </tr>
+    <tr>
+        <td>601</td>
+        <td>2013-09-01</td>
+        <td>2</td>
+        <td>159.99</td>
+    </tr>
+    <tr>
+        <td>689</td>
+        <td>2013-09-01</td>
+        <td>2</td>
+        <td>419.96</td>
+    </tr>
+    <tr>
+        <td>842</td>
+        <td>2013-09-01</td>
+        <td>4</td>
+        <td>954.87</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT to_char(order_date, &#39;yyyy-MM&#39;), count(1) FROM customer_order_metrics_dly
+GROUP BY to_char(order_date, &#39;yyyy-MM&#39;)
+LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+3 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>to_char</th>
+        <th>count</th>
+    </tr>
+    <tr>
+        <td>2013-08</td>
+        <td>4708</td>
+    </tr>
+    <tr>
+        <td>2013-10</td>
+        <td>4417</td>
+    </tr>
+    <tr>
+        <td>2013-09</td>
+        <td>4848</td>
+    </tr>
+</table></div></div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./07_writing_advanced_sql_queries"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="06_advanced_dml_operations.html" title="previous page">Advanced DML Operations</a>
+    <a class='right-next' id="next-link" href="08_pivoting_rows_into_columns.html" title="next page">Pivoting Rows into Columns</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

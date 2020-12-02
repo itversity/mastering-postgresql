@@ -1,0 +1,1249 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Analytic Functions – Aggregations &#8212; My Jupyter Book</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Cumulative or Moving Aggregations" href="11_cumulative_or_moving_aggregations.html" />
+    <link rel="prev" title="Overview of Analytic Functions" href="09_overview_of_analytic_functions.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">My Jupyter Book</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mastering-postgresql.html">
+   Mastering Postgresql
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_getting_started/01_getting_started.html">
+   Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_dml_or_crud_operations/01_dml_or_crud_operations.html">
+   DML or CRUD Operations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_writing_basic_sql_queries/01_writing_basic_sql_queries.html">
+   Writing Basic SQL Queries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_creating_tables_and_indexes/01_creating_tables_and_indexes.html">
+   Creating Tables and Indexes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05_partitioning_tables_and_indexes/01_partitioning_tables_and_indexes.html">
+   Partitioning Tables and Indexes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06_predefined_functions/01_predefined_functions.html">
+   Pre-Defined Functions
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="01_writing_advanced_sql_queries.html">
+   Writing Advanced SQL Queries
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="02_overview_of_views.html">
+     Overview of Views
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03_named_queries_using_with_clause.html">
+     Named Queries - Using WITH Clause
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04_overview_of_sub_queries.html">
+     Overview of Sub Queries
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05_create_table_as_select.html">
+     CTAS - Create Table as Select
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06_advanced_dml_operations.html">
+     Advanced DML Operations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="07_merging_or_upserting_data.html">
+     Merging or Upserting Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08_pivoting_rows_into_columns.html">
+     Pivoting Rows into Columns
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="09_overview_of_analytic_functions.html">
+     Overview of Analytic Functions
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Analytic Functions – Aggregations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="11_cumulative_or_moving_aggregations.html">
+     Cumulative or Moving Aggregations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="12_analytic_functions_windowing.html">
+     Analytic Functions – Windowing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="13_analytic_functions_ranking.html">
+     Analytic Functions – Ranking
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="14_analytic_funcions_filtering.html">
+     Analytic Functions - Filtering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="15_ranking_and_filtering_recap.html">
+     Ranking and Filtering - Recap
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="16_exercises_analytic_functions.html">
+     Exercises - Analytics Functions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../08_query_performance_tuning/01_query_performance_tuning.html">
+   Query Performance Tuning
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/07_writing_advanced_sql_queries/10_analytic_functions_aggregations.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/07_writing_advanced_sql_queries/10_analytic_functions_aggregations.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="analytic-functions-aggregations">
+<h1>Analytic Functions – Aggregations<a class="headerlink" href="#analytic-functions-aggregations" title="Permalink to this headline">¶</a></h1>
+<p>Let us see how we can perform aggregations with in a partition or group using Windowing/Analytics Functions.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/ZrOXdVk-d0s?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+</div></div>
+</div>
+<ul class="simple">
+<li><p>For simple aggregations where we have to get grouping key and aggregated results we can use <strong>GROUP BY</strong>.</p></li>
+<li><p>If we want to get the raw data along with aggregated results, then using <strong>GROUP BY</strong> is not possible or overly complicated.</p></li>
+<li><p>Using aggregate functions with <strong>OVER</strong> Clause not only simplifies the process of writing query, but also better with respect to performance.</p></li>
+<li><p>Let us take an example of getting employee salary percentage when compared to department salary expense.</p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you are using Jupyter based environment make sure to restart the kernel, as the session might have been already connected with retail database.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_hr_user:hr_password@localhost:5432/itversity_hr_db
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env: DATABASE_URL=postgresql://itversity_hr_user:hr_password@localhost:5432/itversity_hr_db
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT employee_id, department_id, salary 
+FROM employees 
+ORDER BY department_id, salary
+LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>employee_id</th>
+        <th>department_id</th>
+        <th>salary</th>
+    </tr>
+    <tr>
+        <td>200</td>
+        <td>10</td>
+        <td>4400.00</td>
+    </tr>
+    <tr>
+        <td>202</td>
+        <td>20</td>
+        <td>6000.00</td>
+    </tr>
+    <tr>
+        <td>201</td>
+        <td>20</td>
+        <td>13000.00</td>
+    </tr>
+    <tr>
+        <td>119</td>
+        <td>30</td>
+        <td>2500.00</td>
+    </tr>
+    <tr>
+        <td>118</td>
+        <td>30</td>
+        <td>2600.00</td>
+    </tr>
+    <tr>
+        <td>117</td>
+        <td>30</td>
+        <td>2800.00</td>
+    </tr>
+    <tr>
+        <td>116</td>
+        <td>30</td>
+        <td>2900.00</td>
+    </tr>
+    <tr>
+        <td>115</td>
+        <td>30</td>
+        <td>3100.00</td>
+    </tr>
+    <tr>
+        <td>114</td>
+        <td>30</td>
+        <td>11000.00</td>
+    </tr>
+    <tr>
+        <td>203</td>
+        <td>40</td>
+        <td>6500.00</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Let us write the query using <code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span></code> approach.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT department_id,
+    sum(salary) AS department_salary_expense
+FROM employees
+GROUP BY department_id
+ORDER BY department_id
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_hr_user:***@localhost:5432/itversity_hr_db
+12 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>department_id</th>
+        <th>department_salary_expense</th>
+    </tr>
+    <tr>
+        <td>10</td>
+        <td>4400.00</td>
+    </tr>
+    <tr>
+        <td>20</td>
+        <td>19000.00</td>
+    </tr>
+    <tr>
+        <td>30</td>
+        <td>24900.00</td>
+    </tr>
+    <tr>
+        <td>40</td>
+        <td>6500.00</td>
+    </tr>
+    <tr>
+        <td>50</td>
+        <td>156400.00</td>
+    </tr>
+    <tr>
+        <td>60</td>
+        <td>28800.00</td>
+    </tr>
+    <tr>
+        <td>70</td>
+        <td>10000.00</td>
+    </tr>
+    <tr>
+        <td>80</td>
+        <td>304500.00</td>
+    </tr>
+    <tr>
+        <td>90</td>
+        <td>58000.00</td>
+    </tr>
+    <tr>
+        <td>100</td>
+        <td>51600.00</td>
+    </tr>
+    <tr>
+        <td>110</td>
+        <td>20300.00</td>
+    </tr>
+    <tr>
+        <td>None</td>
+        <td>7000.00</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT e.employee_id, e.department_id, e.salary,
+    ae.department_salary_expense,
+    ae.avg_salary_expense
+FROM employees e JOIN (
+    SELECT department_id, 
+        sum(salary) AS department_salary_expense,
+        round(avg(salary)::numeric, 2) AS avg_salary_expense
+    FROM employees
+    GROUP BY department_id
+) ae
+ON e.department_id = ae.department_id
+ORDER BY department_id, salary
+LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_hr_user:***@localhost:5432/itversity_hr_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>employee_id</th>
+        <th>department_id</th>
+        <th>salary</th>
+        <th>department_salary_expense</th>
+        <th>avg_salary_expense</th>
+    </tr>
+    <tr>
+        <td>200</td>
+        <td>10</td>
+        <td>4400.00</td>
+        <td>4400.00</td>
+        <td>4400.00</td>
+    </tr>
+    <tr>
+        <td>202</td>
+        <td>20</td>
+        <td>6000.00</td>
+        <td>19000.00</td>
+        <td>9500.00</td>
+    </tr>
+    <tr>
+        <td>201</td>
+        <td>20</td>
+        <td>13000.00</td>
+        <td>19000.00</td>
+        <td>9500.00</td>
+    </tr>
+    <tr>
+        <td>119</td>
+        <td>30</td>
+        <td>2500.00</td>
+        <td>24900.00</td>
+        <td>4150.00</td>
+    </tr>
+    <tr>
+        <td>118</td>
+        <td>30</td>
+        <td>2600.00</td>
+        <td>24900.00</td>
+        <td>4150.00</td>
+    </tr>
+    <tr>
+        <td>117</td>
+        <td>30</td>
+        <td>2800.00</td>
+        <td>24900.00</td>
+        <td>4150.00</td>
+    </tr>
+    <tr>
+        <td>116</td>
+        <td>30</td>
+        <td>2900.00</td>
+        <td>24900.00</td>
+        <td>4150.00</td>
+    </tr>
+    <tr>
+        <td>115</td>
+        <td>30</td>
+        <td>3100.00</td>
+        <td>24900.00</td>
+        <td>4150.00</td>
+    </tr>
+    <tr>
+        <td>114</td>
+        <td>30</td>
+        <td>11000.00</td>
+        <td>24900.00</td>
+        <td>4150.00</td>
+    </tr>
+    <tr>
+        <td>203</td>
+        <td>40</td>
+        <td>6500.00</td>
+        <td>6500.00</td>
+        <td>6500.00</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT e.employee_id, e.department_id, e.salary,
+    ae.department_salary_expense,
+    ae.avg_salary_expense,
+    round(e.salary/ae.department_salary_expense * 100, 2) pct_salary
+FROM employees e JOIN (
+    SELECT department_id, 
+        sum(salary) AS department_salary_expense,
+        round(avg(salary)::numeric, 2) AS avg_salary_expense
+    FROM employees
+    GROUP BY department_id
+) ae
+ON e.department_id = ae.department_id
+ORDER BY department_id, salary
+LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_hr_user:***@localhost:5432/itversity_hr_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>employee_id</th>
+        <th>department_id</th>
+        <th>salary</th>
+        <th>department_salary_expense</th>
+        <th>avg_salary_expense</th>
+        <th>pct_salary</th>
+    </tr>
+    <tr>
+        <td>200</td>
+        <td>10</td>
+        <td>4400.00</td>
+        <td>4400.00</td>
+        <td>4400.00</td>
+        <td>100.00</td>
+    </tr>
+    <tr>
+        <td>202</td>
+        <td>20</td>
+        <td>6000.00</td>
+        <td>19000.00</td>
+        <td>9500.00</td>
+        <td>31.58</td>
+    </tr>
+    <tr>
+        <td>201</td>
+        <td>20</td>
+        <td>13000.00</td>
+        <td>19000.00</td>
+        <td>9500.00</td>
+        <td>68.42</td>
+    </tr>
+    <tr>
+        <td>119</td>
+        <td>30</td>
+        <td>2500.00</td>
+        <td>24900.00</td>
+        <td>4150.00</td>
+        <td>10.04</td>
+    </tr>
+    <tr>
+        <td>118</td>
+        <td>30</td>
+        <td>2600.00</td>
+        <td>24900.00</td>
+        <td>4150.00</td>
+        <td>10.44</td>
+    </tr>
+    <tr>
+        <td>117</td>
+        <td>30</td>
+        <td>2800.00</td>
+        <td>24900.00</td>
+        <td>4150.00</td>
+        <td>11.24</td>
+    </tr>
+    <tr>
+        <td>116</td>
+        <td>30</td>
+        <td>2900.00</td>
+        <td>24900.00</td>
+        <td>4150.00</td>
+        <td>11.65</td>
+    </tr>
+    <tr>
+        <td>115</td>
+        <td>30</td>
+        <td>3100.00</td>
+        <td>24900.00</td>
+        <td>4150.00</td>
+        <td>12.45</td>
+    </tr>
+    <tr>
+        <td>114</td>
+        <td>30</td>
+        <td>11000.00</td>
+        <td>24900.00</td>
+        <td>4150.00</td>
+        <td>44.18</td>
+    </tr>
+    <tr>
+        <td>203</td>
+        <td>40</td>
+        <td>6500.00</td>
+        <td>6500.00</td>
+        <td>6500.00</td>
+        <td>100.00</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Let us see how we can get it using Analytics/Windowing Functions.</p>
+</div>
+<ul class="simple">
+<li><p>We can use all standard aggregate functions such as <code class="docutils literal notranslate"><span class="pre">count</span></code>, <code class="docutils literal notranslate"><span class="pre">sum</span></code>, <code class="docutils literal notranslate"><span class="pre">min</span></code>, <code class="docutils literal notranslate"><span class="pre">max</span></code>, <code class="docutils literal notranslate"><span class="pre">avg</span></code> etc.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT e.employee_id, e.department_id, e.salary,
+    sum(e.salary) OVER (
+        PARTITION BY e.department_id
+    ) AS department_salary_expense
+FROM employees e
+ORDER BY e.department_id
+LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_hr_user:***@localhost:5432/itversity_hr_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>employee_id</th>
+        <th>department_id</th>
+        <th>salary</th>
+        <th>department_salary_expense</th>
+    </tr>
+    <tr>
+        <td>200</td>
+        <td>10</td>
+        <td>4400.00</td>
+        <td>4400.00</td>
+    </tr>
+    <tr>
+        <td>201</td>
+        <td>20</td>
+        <td>13000.00</td>
+        <td>19000.00</td>
+    </tr>
+    <tr>
+        <td>202</td>
+        <td>20</td>
+        <td>6000.00</td>
+        <td>19000.00</td>
+    </tr>
+    <tr>
+        <td>114</td>
+        <td>30</td>
+        <td>11000.00</td>
+        <td>24900.00</td>
+    </tr>
+    <tr>
+        <td>115</td>
+        <td>30</td>
+        <td>3100.00</td>
+        <td>24900.00</td>
+    </tr>
+    <tr>
+        <td>116</td>
+        <td>30</td>
+        <td>2900.00</td>
+        <td>24900.00</td>
+    </tr>
+    <tr>
+        <td>117</td>
+        <td>30</td>
+        <td>2800.00</td>
+        <td>24900.00</td>
+    </tr>
+    <tr>
+        <td>118</td>
+        <td>30</td>
+        <td>2600.00</td>
+        <td>24900.00</td>
+    </tr>
+    <tr>
+        <td>119</td>
+        <td>30</td>
+        <td>2500.00</td>
+        <td>24900.00</td>
+    </tr>
+    <tr>
+        <td>203</td>
+        <td>40</td>
+        <td>6500.00</td>
+        <td>6500.00</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT e.employee_id, e.department_id, e.salary,
+    sum(e.salary) OVER (
+        PARTITION BY e.department_id
+    ) AS department_salary_expense,
+    round(e.salary / sum(e.salary) OVER (
+        PARTITION BY e.department_id
+    ) * 100, 2) AS pct_salary
+FROM employees e
+ORDER BY e.department_id,
+    e.salary
+LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_hr_user:***@localhost:5432/itversity_hr_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>employee_id</th>
+        <th>department_id</th>
+        <th>salary</th>
+        <th>department_salary_expense</th>
+        <th>pct_salary</th>
+    </tr>
+    <tr>
+        <td>200</td>
+        <td>10</td>
+        <td>4400.00</td>
+        <td>4400.00</td>
+        <td>100.00</td>
+    </tr>
+    <tr>
+        <td>202</td>
+        <td>20</td>
+        <td>6000.00</td>
+        <td>19000.00</td>
+        <td>31.58</td>
+    </tr>
+    <tr>
+        <td>201</td>
+        <td>20</td>
+        <td>13000.00</td>
+        <td>19000.00</td>
+        <td>68.42</td>
+    </tr>
+    <tr>
+        <td>119</td>
+        <td>30</td>
+        <td>2500.00</td>
+        <td>24900.00</td>
+        <td>10.04</td>
+    </tr>
+    <tr>
+        <td>118</td>
+        <td>30</td>
+        <td>2600.00</td>
+        <td>24900.00</td>
+        <td>10.44</td>
+    </tr>
+    <tr>
+        <td>117</td>
+        <td>30</td>
+        <td>2800.00</td>
+        <td>24900.00</td>
+        <td>11.24</td>
+    </tr>
+    <tr>
+        <td>116</td>
+        <td>30</td>
+        <td>2900.00</td>
+        <td>24900.00</td>
+        <td>11.65</td>
+    </tr>
+    <tr>
+        <td>115</td>
+        <td>30</td>
+        <td>3100.00</td>
+        <td>24900.00</td>
+        <td>12.45</td>
+    </tr>
+    <tr>
+        <td>114</td>
+        <td>30</td>
+        <td>11000.00</td>
+        <td>24900.00</td>
+        <td>44.18</td>
+    </tr>
+    <tr>
+        <td>203</td>
+        <td>40</td>
+        <td>6500.00</td>
+        <td>6500.00</td>
+        <td>100.00</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT e.employee_id, e.department_id, e.salary,
+    sum(e.salary) OVER (
+        PARTITION BY e.department_id
+    ) AS sum_sal_expense,
+    round(avg(e.salary) OVER (
+        PARTITION BY e.department_id
+    ), 2) AS avg_sal_expense,
+    min(e.salary) OVER (
+        PARTITION BY e.department_id
+    ) AS min_sal_expense,
+    max(e.salary) OVER (
+        PARTITION BY e.department_id
+    ) AS max_sal_expense,
+    count(e.salary) OVER (
+        PARTITION BY e.department_id
+    ) AS cnt_sal_expense
+FROM employees e
+ORDER BY e.department_id,
+    e.salary
+LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_hr_user:***@localhost:5432/itversity_hr_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>employee_id</th>
+        <th>department_id</th>
+        <th>salary</th>
+        <th>sum_sal_expense</th>
+        <th>avg_sal_expense</th>
+        <th>min_sal_expense</th>
+        <th>max_sal_expense</th>
+        <th>cnt_sal_expense</th>
+    </tr>
+    <tr>
+        <td>200</td>
+        <td>10</td>
+        <td>4400.00</td>
+        <td>4400.00</td>
+        <td>4400.00</td>
+        <td>4400.00</td>
+        <td>4400.00</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>202</td>
+        <td>20</td>
+        <td>6000.00</td>
+        <td>19000.00</td>
+        <td>9500.00</td>
+        <td>6000.00</td>
+        <td>13000.00</td>
+        <td>2</td>
+    </tr>
+    <tr>
+        <td>201</td>
+        <td>20</td>
+        <td>13000.00</td>
+        <td>19000.00</td>
+        <td>9500.00</td>
+        <td>6000.00</td>
+        <td>13000.00</td>
+        <td>2</td>
+    </tr>
+    <tr>
+        <td>119</td>
+        <td>30</td>
+        <td>2500.00</td>
+        <td>24900.00</td>
+        <td>4150.00</td>
+        <td>2500.00</td>
+        <td>11000.00</td>
+        <td>6</td>
+    </tr>
+    <tr>
+        <td>118</td>
+        <td>30</td>
+        <td>2600.00</td>
+        <td>24900.00</td>
+        <td>4150.00</td>
+        <td>2500.00</td>
+        <td>11000.00</td>
+        <td>6</td>
+    </tr>
+    <tr>
+        <td>117</td>
+        <td>30</td>
+        <td>2800.00</td>
+        <td>24900.00</td>
+        <td>4150.00</td>
+        <td>2500.00</td>
+        <td>11000.00</td>
+        <td>6</td>
+    </tr>
+    <tr>
+        <td>116</td>
+        <td>30</td>
+        <td>2900.00</td>
+        <td>24900.00</td>
+        <td>4150.00</td>
+        <td>2500.00</td>
+        <td>11000.00</td>
+        <td>6</td>
+    </tr>
+    <tr>
+        <td>115</td>
+        <td>30</td>
+        <td>3100.00</td>
+        <td>24900.00</td>
+        <td>4150.00</td>
+        <td>2500.00</td>
+        <td>11000.00</td>
+        <td>6</td>
+    </tr>
+    <tr>
+        <td>114</td>
+        <td>30</td>
+        <td>11000.00</td>
+        <td>24900.00</td>
+        <td>4150.00</td>
+        <td>2500.00</td>
+        <td>11000.00</td>
+        <td>6</td>
+    </tr>
+    <tr>
+        <td>203</td>
+        <td>40</td>
+        <td>6500.00</td>
+        <td>6500.00</td>
+        <td>6500.00</td>
+        <td>6500.00</td>
+        <td>6500.00</td>
+        <td>1</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you are using Jupyter based environment make sure to restart the kernel, as the session might have been already connected with hr database.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env: DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT
+    order_date,
+    order_item_product_id,
+    revenue,
+    sum(revenue) OVER (PARTITION BY order_date) AS sum_revenue,
+    min(revenue) OVER (PARTITION BY order_date) AS min_revenue,
+    max(revenue) OVER (PARTITION BY order_date) AS max_revenue
+FROM daily_product_revenue
+ORDER BY order_date,
+    revenue DESC
+LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_date</th>
+        <th>order_item_product_id</th>
+        <th>revenue</th>
+        <th>sum_revenue</th>
+        <th>min_revenue</th>
+        <th>max_revenue</th>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>1004</td>
+        <td>5599.72</td>
+        <td>31547.23</td>
+        <td>49.98</td>
+        <td>5599.72</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>191</td>
+        <td>5099.49</td>
+        <td>31547.23</td>
+        <td>49.98</td>
+        <td>5599.72</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>957</td>
+        <td>4499.70</td>
+        <td>31547.23</td>
+        <td>49.98</td>
+        <td>5599.72</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>365</td>
+        <td>3359.44</td>
+        <td>31547.23</td>
+        <td>49.98</td>
+        <td>5599.72</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>1073</td>
+        <td>2999.85</td>
+        <td>31547.23</td>
+        <td>49.98</td>
+        <td>5599.72</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>1014</td>
+        <td>2798.88</td>
+        <td>31547.23</td>
+        <td>49.98</td>
+        <td>5599.72</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>403</td>
+        <td>1949.85</td>
+        <td>31547.23</td>
+        <td>49.98</td>
+        <td>5599.72</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>502</td>
+        <td>1650.00</td>
+        <td>31547.23</td>
+        <td>49.98</td>
+        <td>5599.72</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>627</td>
+        <td>1079.73</td>
+        <td>31547.23</td>
+        <td>49.98</td>
+        <td>5599.72</td>
+    </tr>
+    <tr>
+        <td>2013-07-25 00:00:00</td>
+        <td>226</td>
+        <td>599.99</td>
+        <td>31547.23</td>
+        <td>49.98</td>
+        <td>5599.72</td>
+    </tr>
+</table></div></div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./07_writing_advanced_sql_queries"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="09_overview_of_analytic_functions.html" title="previous page">Overview of Analytic Functions</a>
+    <a class='right-next' id="next-link" href="11_cumulative_or_moving_aggregations.html" title="next page">Cumulative or Moving Aggregations</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

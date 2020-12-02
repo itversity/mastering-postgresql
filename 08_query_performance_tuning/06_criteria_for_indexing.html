@@ -1,0 +1,707 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Criteria for Indexing &#8212; My Jupyter Book</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Criteria for Partitioning" href="07_criteria_for_partitioning.html" />
+    <link rel="prev" title="Performance Tuning using Indexes" href="05_performance_tuning_using_indexes.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">My Jupyter Book</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mastering-postgresql.html">
+   Mastering Postgresql
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_getting_started/01_getting_started.html">
+   Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_dml_or_crud_operations/01_dml_or_crud_operations.html">
+   DML or CRUD Operations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_writing_basic_sql_queries/01_writing_basic_sql_queries.html">
+   Writing Basic SQL Queries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_creating_tables_and_indexes/01_creating_tables_and_indexes.html">
+   Creating Tables and Indexes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05_partitioning_tables_and_indexes/01_partitioning_tables_and_indexes.html">
+   Partitioning Tables and Indexes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06_predefined_functions/01_predefined_functions.html">
+   Pre-Defined Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07_writing_advanced_sql_queries/01_writing_advanced_sql_queries.html">
+   Writing Advanced SQL Queries
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="01_query_performance_tuning.html">
+   Query Performance Tuning
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="02_preparing_database.html">
+     Preparing Database
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03_interpreting_explain_plans.html">
+     Interpreting Explain Plans
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04_overview_of_cost_based_optimizer.html">
+     Overview of Cost Based Optimizer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05_performance_tuning_using_indexes.html">
+     Performance Tuning using Indexes
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Criteria for Indexing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="07_criteria_for_partitioning.html">
+     Criteria for Partitioning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08_writing_queries_partition_pruning.html">
+     Writing Queries – Partition Pruning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="09_overview_of_query_hints.html">
+     Overview of Query Hints
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="10_exercises_tuning_queries.html">
+     Exercises - Tuning Queries
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/08_query_performance_tuning/06_criteria_for_indexing.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/08_query_performance_tuning/06_criteria_for_indexing.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="criteria-for-indexing">
+<h1>Criteria for Indexing<a class="headerlink" href="#criteria-for-indexing" title="Permalink to this headline">¶</a></h1>
+<p>Let us go through some of the criteria to create indexes on tables.</p>
+<ul class="simple">
+<li><p>Indexes are required to enforce constraints such as Primary Key, Unique etc. Indexes will be automatically created, when we define a column(s) Primary Key or Unique.</p></li>
+<li><p>Too many indexes on a given table, can slow down the performance of inserts, updates and deletes on that table. Hence, you need to make sure to strike right balance by creating indexes only when they are required.</p></li>
+<li><p>Thorough analysis need to be done about how the queries will hit the table from the application.</p></li>
+<li><p>We might have to create indexes on foreign key columns of the child table.</p></li>
+<li><p>When we have tables with multiple parents, we need to be due diligent about how the index should be created.</p>
+<ul>
+<li><p>Shall we create 2 indexes?</p></li>
+<li><p>Shall we create 1 index with both the columns pointing to 2 tables?</p></li>
+<li><p>If we want to create 1 index with both the columns what should be the order?</p></li>
+</ul>
+</li>
+<li><p>Here are some of the scenarios from the application perspective based upon which we can consider creating indexes.</p>
+<ul>
+<li><p>Customer checking all his orders.</p>
+<ul>
+<li><p>We need to get the data from orders using customer id and hence we need to add index on <strong>orders.order_customer_id</strong>.</p></li>
+</ul>
+</li>
+<li><p>Customer checking order details for a given order which include order_item_subtotal as well as product names.</p>
+<ul>
+<li><p>We need to join <strong>orders</strong>, <strong>order_items</strong> as well as <strong>products</strong>.</p></li>
+<li><p><strong>order_items</strong> is child table for both <strong>orders</strong> and <strong>products</strong>.</p></li>
+<li><p>We can create composite index on <strong>order_items.order_item_order_id</strong> and <strong>order_items.order_item_product_id</strong>.</p></li>
+</ul>
+</li>
+<li><p>Customer care executive to check <strong>all the order details placed by customer using at least first 3 characters of customer’s first name</strong>.</p>
+<ul>
+<li><p>We can consider creating index on <strong>customers.customer_fname</strong> using upper or lower. You can also consider adding <strong>customer_id</strong> to the index along with customer_fname.</p></li>
+<li><p>Also to get all the order details for a given customer, we have to ensure that there is an index on <strong>orders.order_customer_id</strong>.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+DROP INDEX order_items_order_id_idx
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT min(customer_id), max(customer_id), count(1)
+FROM customers
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">psycopg2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+
+<span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randrange</span>
+<span class="n">connection</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
+    <span class="n">host</span><span class="o">=</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
+    <span class="n">port</span><span class="o">=</span><span class="s1">&#39;5432&#39;</span><span class="p">,</span>
+    <span class="n">database</span><span class="o">=</span><span class="s1">&#39;itversity_retail_db&#39;</span><span class="p">,</span>
+    <span class="n">user</span><span class="o">=</span><span class="s1">&#39;itversity_retail_user&#39;</span><span class="p">,</span>
+    <span class="n">password</span><span class="o">=</span><span class="s1">&#39;retail_password&#39;</span>
+<span class="p">)</span>
+<span class="n">cursor</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+<span class="n">query</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;SELECT count(1) </span>
+<span class="s1">FROM orders o</span>
+<span class="s1">WHERE order_customer_id = </span><span class="si">%s</span><span class="s1"></span>
+<span class="s1">&#39;&#39;&#39;</span>
+<span class="n">ctr</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">ctr</span> <span class="o">==</span> <span class="mi">2000</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="n">customer_id</span> <span class="o">=</span> <span class="n">randrange</span><span class="p">(</span><span class="mi">10950</span><span class="p">,</span> <span class="mi">12435</span><span class="p">)</span>
+    <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="p">(</span><span class="n">customer_id</span><span class="p">,))</span>
+    <span class="n">ctr</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="n">cursor</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">connection</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+CREATE INDEX orders_customer_id_idx
+ON orders(order_customer_id)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+
+<span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randrange</span>
+<span class="n">connection</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
+    <span class="n">host</span><span class="o">=</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
+    <span class="n">port</span><span class="o">=</span><span class="s1">&#39;5432&#39;</span><span class="p">,</span>
+    <span class="n">database</span><span class="o">=</span><span class="s1">&#39;itversity_retail_db&#39;</span><span class="p">,</span>
+    <span class="n">user</span><span class="o">=</span><span class="s1">&#39;itversity_retail_user&#39;</span><span class="p">,</span>
+    <span class="n">password</span><span class="o">=</span><span class="s1">&#39;retail_password&#39;</span>
+<span class="p">)</span>
+<span class="n">cursor</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+<span class="n">query</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;SELECT count(1) </span>
+<span class="s1">FROM orders o</span>
+<span class="s1">WHERE order_customer_id = </span><span class="si">%s</span><span class="s1"></span>
+<span class="s1">&#39;&#39;&#39;</span>
+<span class="n">ctr</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">ctr</span> <span class="o">==</span> <span class="mi">2000</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="n">customer_id</span> <span class="o">=</span> <span class="n">randrange</span><span class="p">(</span><span class="mi">10950</span><span class="p">,</span> <span class="mi">12435</span><span class="p">)</span>
+    <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="p">(</span><span class="n">customer_id</span><span class="p">,))</span>
+    <span class="n">ctr</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="n">cursor</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">connection</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+
+<span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randrange</span>
+<span class="n">connection</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
+    <span class="n">host</span><span class="o">=</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
+    <span class="n">port</span><span class="o">=</span><span class="s1">&#39;5432&#39;</span><span class="p">,</span>
+    <span class="n">database</span><span class="o">=</span><span class="s1">&#39;itversity_retail_db&#39;</span><span class="p">,</span>
+    <span class="n">user</span><span class="o">=</span><span class="s1">&#39;itversity_retail_user&#39;</span><span class="p">,</span>
+    <span class="n">password</span><span class="o">=</span><span class="s1">&#39;retail_password&#39;</span>
+<span class="p">)</span>
+<span class="n">cursor</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+<span class="n">query</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;SELECT count(1) </span>
+<span class="s1">FROM orders o</span>
+<span class="s1">    JOIN order_items oi</span>
+<span class="s1">        ON o.order_id = oi.order_item_order_id</span>
+<span class="s1">    JOIN products p</span>
+<span class="s1">        ON p.product_id = oi.order_item_product_id</span>
+<span class="s1">WHERE order_id = </span><span class="si">%s</span><span class="s1"></span>
+<span class="s1">&#39;&#39;&#39;</span>
+<span class="n">ctr</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">ctr</span> <span class="o">==</span> <span class="mi">2000</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="n">order_id</span> <span class="o">=</span> <span class="n">randrange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">68883</span><span class="p">)</span>
+    <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="p">(</span><span class="n">order_id</span><span class="p">,))</span>
+    <span class="n">ctr</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="n">cursor</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">connection</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+CREATE INDEX order_items_oid_pid_idx 
+ON order_items(order_item_order_id, order_item_product_id);
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+
+<span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randrange</span>
+<span class="n">connection</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
+    <span class="n">host</span><span class="o">=</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
+    <span class="n">port</span><span class="o">=</span><span class="s1">&#39;5432&#39;</span><span class="p">,</span>
+    <span class="n">database</span><span class="o">=</span><span class="s1">&#39;itversity_retail_db&#39;</span><span class="p">,</span>
+    <span class="n">user</span><span class="o">=</span><span class="s1">&#39;itversity_retail_user&#39;</span><span class="p">,</span>
+    <span class="n">password</span><span class="o">=</span><span class="s1">&#39;retail_password&#39;</span>
+<span class="p">)</span>
+<span class="n">cursor</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+<span class="n">query</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;SELECT count(1) </span>
+<span class="s1">FROM orders o</span>
+<span class="s1">    JOIN order_items oi</span>
+<span class="s1">        ON o.order_id = oi.order_item_order_id</span>
+<span class="s1">    JOIN products p</span>
+<span class="s1">        ON p.product_id = oi.order_item_product_id</span>
+<span class="s1">WHERE order_id = </span><span class="si">%s</span><span class="s1"></span>
+<span class="s1">&#39;&#39;&#39;</span>
+<span class="n">ctr</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">ctr</span> <span class="o">==</span> <span class="mi">2000</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="n">order_id</span> <span class="o">=</span> <span class="n">randrange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">68883</span><span class="p">)</span>
+    <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="p">(</span><span class="n">order_id</span><span class="p">,))</span>
+    <span class="n">ctr</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="n">cursor</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">connection</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As our products table only have handful of records there will not be significant difference in performance between the 2 approaches.</p>
+<ul class="simple">
+<li><p>Index on order_items.order_item_order_id</p></li>
+<li><p>Index on order_items.order_item_order_id, order_items.order_item_product_id</p></li>
+</ul>
+<p>Howeever if you create index using product id as driving field then the performance will not be as good as above 2 approaches.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+DROP INDEX order_items_oid_pid_idx
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+CREATE INDEX order_items_pid_oid_idx 
+ON order_items(order_item_product_id, order_item_order_id);
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+
+<span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randrange</span>
+<span class="n">connection</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
+    <span class="n">host</span><span class="o">=</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
+    <span class="n">port</span><span class="o">=</span><span class="s1">&#39;5432&#39;</span><span class="p">,</span>
+    <span class="n">database</span><span class="o">=</span><span class="s1">&#39;itversity_retail_db&#39;</span><span class="p">,</span>
+    <span class="n">user</span><span class="o">=</span><span class="s1">&#39;itversity_retail_user&#39;</span><span class="p">,</span>
+    <span class="n">password</span><span class="o">=</span><span class="s1">&#39;retail_password&#39;</span>
+<span class="p">)</span>
+<span class="n">cursor</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+<span class="n">query</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;SELECT count(1) </span>
+<span class="s1">FROM orders o</span>
+<span class="s1">    JOIN order_items oi</span>
+<span class="s1">        ON o.order_id = oi.order_item_order_id</span>
+<span class="s1">    JOIN products p</span>
+<span class="s1">        ON p.product_id = oi.order_item_product_id</span>
+<span class="s1">WHERE order_id = </span><span class="si">%s</span><span class="s1"></span>
+<span class="s1">&#39;&#39;&#39;</span>
+<span class="n">ctr</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">ctr</span> <span class="o">==</span> <span class="mi">2000</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="n">order_id</span> <span class="o">=</span> <span class="n">randrange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">68883</span><span class="p">)</span>
+    <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="p">(</span><span class="n">order_id</span><span class="p">,))</span>
+    <span class="n">ctr</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="n">cursor</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">connection</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Here are the indexes to tune the performance of comparing with at least first 3 characters of customer first name.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+DROP INDEX IF EXISTS orders_customer_id_idx
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+DROP INDEX IF EXISTS customers_customer_fname_idx
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Explain plan for query with out indexes.</p></li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">EXPLAIN</span>
+<span class="k">SELECT</span> <span class="o">*</span> 
+<span class="k">FROM</span> <span class="n">orders</span> <span class="n">o</span> <span class="k">JOIN</span> <span class="n">customers</span> <span class="k">c</span>
+    <span class="k">ON</span> <span class="n">o</span><span class="p">.</span><span class="n">order_customer_id</span> <span class="o">=</span> <span class="k">c</span><span class="p">.</span><span class="n">customer_id</span>
+<span class="k">WHERE</span> <span class="k">upper</span><span class="p">(</span><span class="k">c</span><span class="p">.</span><span class="n">customer_fname</span><span class="p">)</span> <span class="o">=</span> <span class="k">upper</span><span class="p">(</span><span class="s1">&#39;mar&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                               QUERY PLAN
+-------------------------------------------------------------------------
+ Hash Join  (cost=42.38..1437.09 rows=40 width=99)
+   Hash Cond: (o.order_customer_id = c.customer_id)
+   -&gt;  Seq Scan on orders o  (cost=0.00..1213.83 rows=68883 width=26)
+   -&gt;  Hash  (cost=42.29..42.29 rows=7 width=73)
+         -&gt;  Seq Scan on customers c  (cost=0.00..42.29 rows=7 width=73)
+               Filter: (upper((customer_fname)::text) = &#39;MAR&#39;::text)
+(6 rows)
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+CREATE INDEX customers_customer_fname_idx
+ON customers(upper(customer_fname))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+CREATE INDEX orders_customer_id_idx
+ON orders(order_customer_id)
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Explain plan for query with indexes. Check the cost, it is significantly low when compared to the plan generated for the same query with out indexes.</p></li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">EXPLAIN</span>
+<span class="k">SELECT</span> <span class="o">*</span> 
+<span class="k">FROM</span> <span class="n">orders</span> <span class="n">o</span> <span class="k">JOIN</span> <span class="n">customers</span> <span class="k">c</span>
+    <span class="k">ON</span> <span class="n">o</span><span class="p">.</span><span class="n">order_customer_id</span> <span class="o">=</span> <span class="k">c</span><span class="p">.</span><span class="n">customer_id</span>
+<span class="k">WHERE</span> <span class="k">upper</span><span class="p">(</span><span class="k">c</span><span class="p">.</span><span class="n">customer_fname</span><span class="p">)</span> <span class="o">=</span> <span class="k">upper</span><span class="p">(</span><span class="s1">&#39;mar&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                                           QUERY PLAN
+-------------------------------------------------------------------------------------------------
+ Nested Loop  (cost=8.67..204.43 rows=40 width=99)
+   -&gt;  Bitmap Heap Scan on customers c  (cost=4.33..18.58 rows=7 width=73)
+         Recheck Cond: (upper((customer_fname)::text) = &#39;MAR&#39;::text)
+         -&gt;  Bitmap Index Scan on customers_customer_fname_idx  (cost=0.00..4.33 rows=7 width=0)
+               Index Cond: (upper((customer_fname)::text) = &#39;MAR&#39;::text)
+   -&gt;  Bitmap Heap Scan on orders o  (cost=4.34..26.49 rows=6 width=26)
+         Recheck Cond: (order_customer_id = c.customer_id)
+         -&gt;  Bitmap Index Scan on orders_customer_id_idx  (cost=0.00..4.34 rows=6 width=0)
+               Index Cond: (order_customer_id = c.customer_id)
+(9 rows)
+</pre></div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./08_query_performance_tuning"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="05_performance_tuning_using_indexes.html" title="previous page">Performance Tuning using Indexes</a>
+    <a class='right-next' id="next-link" href="07_criteria_for_partitioning.html" title="next page">Criteria for Partitioning</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>
