@@ -1,0 +1,1336 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Repartitioning - Range &#8212; My Jupyter Book</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Hash Partitioning" href="09_hash_partitioning.html" />
+    <link rel="prev" title="Managing Partitions - Range" href="07_managing_partitions_range.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">My Jupyter Book</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mastering-postgresql.html">
+   Mastering Postgresql
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_getting_started/01_getting_started.html">
+   Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_dml_or_crud_operations/01_dml_or_crud_operations.html">
+   DML or CRUD Operations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_writing_basic_sql_queries/01_writing_basic_sql_queries.html">
+   Writing Basic SQL Queries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_creating_tables_and_indexes/01_creating_tables_and_indexes.html">
+   Creating Tables and Indexes
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="01_partitioning_tables_and_indexes.html">
+   Partitioning Tables and Indexes
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="02_overview_of_partitioning.html">
+     Overview of Partitioning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03_list_partitioning.html">
+     List Partitioning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04_managing_partitions_list.html">
+     Managing Partitions - List
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05_manipulating_data.html">
+     Manipulating Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06_range_partitioning.html">
+     Range Partitioning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="07_managing_partitions_range.html">
+     Managing Partitions - Range
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Repartitioning - Range
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="09_hash_partitioning.html">
+     Hash Partitioning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="10_managing_partitions_hash.html">
+     Managing Partitions - Hash
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="11_usage_scenarios.html">
+     Usage Scenarios
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="12_sub_partitioning.html">
+     Sub Partitioning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="13_exercises_partitioning_tables.html">
+     Exercises - Partitioning Tables
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/05_partitioning_tables_and_indexes/08_repartitioning_range.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/05_partitioning_tables_and_indexes/08_repartitioning_range.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="repartitioning-range">
+<h1>Repartitioning - Range<a class="headerlink" href="#repartitioning-range" title="Permalink to this headline">¶</a></h1>
+<p>Let us understand how we can repartition the existing partitioned table.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/QgVo5IRryCg?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+</div></div>
+</div>
+<ul class="simple">
+<li><p>We will use <strong>users_range_part</strong> table. It is originally partitioned for each year.</p></li>
+<li><p>Now we would like to partition for each month.</p></li>
+<li><p>Here are the steps that are involved in repartitioning from year to month.</p>
+<ul>
+<li><p>Detach all yearly partitions from <strong>users_range_part</strong>.</p></li>
+<li><p>Add new partitions for each month.</p></li>
+<li><p>Load data from detached partitions into the table with new partitions for each month.</p></li>
+<li><p>Validate to ensure that all the data is copied.</p></li>
+<li><p>Drop all the detached partitions.</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The sql extension is already loaded. To reload it, use:
+  %reload_ext sql
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_sms_user:sms_password@localhost:5432/itversity_sms_db
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env: DATABASE_URL=postgresql://itversity_sms_user:sms_password@localhost:5432/itversity_sms_db
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Detach all yearly partitions</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+ALTER TABLE users_range_part
+    DETACH PARTITION users_range_part_2016
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+ALTER TABLE users_range_part
+    DETACH PARTITION users_range_part_2017
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+ALTER TABLE users_range_part
+    DETACH PARTITION users_range_part_2018
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+ALTER TABLE users_range_part
+    DETACH PARTITION users_range_part_2019
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+ALTER TABLE users_range_part
+    DETACH PARTITION users_range_part_2020
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Add new partitions for every month between 2016 January and 2020 December.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install psycopg2
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: psycopg2 in /opt/anaconda3/envs/beakerx/lib/python3.6/site-packages (2.8.6)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">pandas.tseries.offsets</span> <span class="kn">import</span> <span class="n">MonthBegin</span><span class="p">,</span> <span class="n">MonthEnd</span>
+
+<span class="n">months</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="s1">&#39;1/1/2016&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;3/31/2016&#39;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;1M&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">month</span> <span class="ow">in</span> <span class="n">months</span><span class="p">:</span>
+    <span class="n">begin_date</span> <span class="o">=</span> <span class="n">month</span> <span class="o">-</span> <span class="n">MonthBegin</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">end_date</span> <span class="o">=</span> <span class="n">month</span> <span class="o">+</span> <span class="n">MonthEnd</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">month</span><span class="p">)[:</span><span class="mi">7</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">begin_date</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">end_date</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>201601:2016-01-01:2016-01-31
+201602:2016-02-01:2016-02-29
+201603:2016-03-01:2016-03-31
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">psycopg2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">pandas.tseries.offsets</span> <span class="kn">import</span> <span class="n">MonthBegin</span><span class="p">,</span> <span class="n">MonthEnd</span>
+
+<span class="n">months</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="s1">&#39;1/1/2016&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;12/31/2020&#39;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;1M&#39;</span><span class="p">)</span>
+
+<span class="n">connection</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
+    <span class="n">host</span><span class="o">=</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
+    <span class="n">port</span><span class="o">=</span><span class="s1">&#39;5432&#39;</span><span class="p">,</span>
+    <span class="n">database</span><span class="o">=</span><span class="s1">&#39;itversity_sms_db&#39;</span><span class="p">,</span>
+    <span class="n">user</span><span class="o">=</span><span class="s1">&#39;itversity_sms_user&#39;</span><span class="p">,</span>
+    <span class="n">password</span><span class="o">=</span><span class="s1">&#39;sms_password&#39;</span>
+<span class="p">)</span>
+<span class="n">cursor</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+<span class="n">table_name</span> <span class="o">=</span> <span class="s1">&#39;users_range_part&#39;</span>
+<span class="n">query</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">CREATE TABLE </span><span class="si">{table_name}</span><span class="s1">_</span><span class="si">{yyyymm}</span><span class="s1"></span>
+<span class="s1">PARTITION OF </span><span class="si">{table_name}</span><span class="s1"></span>
+<span class="s1">FOR VALUES FROM (&#39;</span><span class="si">{begin_date}</span><span class="s1">&#39;) TO (&#39;</span><span class="si">{end_date}</span><span class="s1">&#39;)</span>
+<span class="s1">&#39;&#39;&#39;</span>
+<span class="k">for</span> <span class="n">month</span> <span class="ow">in</span> <span class="n">months</span><span class="p">:</span>
+    <span class="n">begin_date</span> <span class="o">=</span> <span class="n">month</span> <span class="o">-</span> <span class="n">MonthBegin</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">end_date</span> <span class="o">=</span> <span class="n">month</span> <span class="o">+</span> <span class="n">MonthEnd</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Adding partition for </span><span class="si">{</span><span class="n">begin_date</span><span class="si">}</span><span class="s1"> and </span><span class="si">{</span><span class="n">end_date</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+        <span class="n">query</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">table_name</span><span class="o">=</span><span class="n">table_name</span><span class="p">,</span>
+            <span class="n">yyyymm</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">month</span><span class="p">)[:</span><span class="mi">7</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span>
+            <span class="n">begin_date</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">begin_date</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
+            <span class="n">end_date</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">end_date</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="p">),</span> <span class="p">()</span>
+    <span class="p">)</span>
+<span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+<span class="n">cursor</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">connection</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Adding partition for 2016-01-01 00:00:00 and 2016-01-31 00:00:00
+Adding partition for 2016-02-01 00:00:00 and 2016-02-29 00:00:00
+Adding partition for 2016-03-01 00:00:00 and 2016-03-31 00:00:00
+Adding partition for 2016-04-01 00:00:00 and 2016-04-30 00:00:00
+Adding partition for 2016-05-01 00:00:00 and 2016-05-31 00:00:00
+Adding partition for 2016-06-01 00:00:00 and 2016-06-30 00:00:00
+Adding partition for 2016-07-01 00:00:00 and 2016-07-31 00:00:00
+Adding partition for 2016-08-01 00:00:00 and 2016-08-31 00:00:00
+Adding partition for 2016-09-01 00:00:00 and 2016-09-30 00:00:00
+Adding partition for 2016-10-01 00:00:00 and 2016-10-31 00:00:00
+Adding partition for 2016-11-01 00:00:00 and 2016-11-30 00:00:00
+Adding partition for 2016-12-01 00:00:00 and 2016-12-31 00:00:00
+Adding partition for 2017-01-01 00:00:00 and 2017-01-31 00:00:00
+Adding partition for 2017-02-01 00:00:00 and 2017-02-28 00:00:00
+Adding partition for 2017-03-01 00:00:00 and 2017-03-31 00:00:00
+Adding partition for 2017-04-01 00:00:00 and 2017-04-30 00:00:00
+Adding partition for 2017-05-01 00:00:00 and 2017-05-31 00:00:00
+Adding partition for 2017-06-01 00:00:00 and 2017-06-30 00:00:00
+Adding partition for 2017-07-01 00:00:00 and 2017-07-31 00:00:00
+Adding partition for 2017-08-01 00:00:00 and 2017-08-31 00:00:00
+Adding partition for 2017-09-01 00:00:00 and 2017-09-30 00:00:00
+Adding partition for 2017-10-01 00:00:00 and 2017-10-31 00:00:00
+Adding partition for 2017-11-01 00:00:00 and 2017-11-30 00:00:00
+Adding partition for 2017-12-01 00:00:00 and 2017-12-31 00:00:00
+Adding partition for 2018-01-01 00:00:00 and 2018-01-31 00:00:00
+Adding partition for 2018-02-01 00:00:00 and 2018-02-28 00:00:00
+Adding partition for 2018-03-01 00:00:00 and 2018-03-31 00:00:00
+Adding partition for 2018-04-01 00:00:00 and 2018-04-30 00:00:00
+Adding partition for 2018-05-01 00:00:00 and 2018-05-31 00:00:00
+Adding partition for 2018-06-01 00:00:00 and 2018-06-30 00:00:00
+Adding partition for 2018-07-01 00:00:00 and 2018-07-31 00:00:00
+Adding partition for 2018-08-01 00:00:00 and 2018-08-31 00:00:00
+Adding partition for 2018-09-01 00:00:00 and 2018-09-30 00:00:00
+Adding partition for 2018-10-01 00:00:00 and 2018-10-31 00:00:00
+Adding partition for 2018-11-01 00:00:00 and 2018-11-30 00:00:00
+Adding partition for 2018-12-01 00:00:00 and 2018-12-31 00:00:00
+Adding partition for 2019-01-01 00:00:00 and 2019-01-31 00:00:00
+Adding partition for 2019-02-01 00:00:00 and 2019-02-28 00:00:00
+Adding partition for 2019-03-01 00:00:00 and 2019-03-31 00:00:00
+Adding partition for 2019-04-01 00:00:00 and 2019-04-30 00:00:00
+Adding partition for 2019-05-01 00:00:00 and 2019-05-31 00:00:00
+Adding partition for 2019-06-01 00:00:00 and 2019-06-30 00:00:00
+Adding partition for 2019-07-01 00:00:00 and 2019-07-31 00:00:00
+Adding partition for 2019-08-01 00:00:00 and 2019-08-31 00:00:00
+Adding partition for 2019-09-01 00:00:00 and 2019-09-30 00:00:00
+Adding partition for 2019-10-01 00:00:00 and 2019-10-31 00:00:00
+Adding partition for 2019-11-01 00:00:00 and 2019-11-30 00:00:00
+Adding partition for 2019-12-01 00:00:00 and 2019-12-31 00:00:00
+Adding partition for 2020-01-01 00:00:00 and 2020-01-31 00:00:00
+Adding partition for 2020-02-01 00:00:00 and 2020-02-29 00:00:00
+Adding partition for 2020-03-01 00:00:00 and 2020-03-31 00:00:00
+Adding partition for 2020-04-01 00:00:00 and 2020-04-30 00:00:00
+Adding partition for 2020-05-01 00:00:00 and 2020-05-31 00:00:00
+Adding partition for 2020-06-01 00:00:00 and 2020-06-30 00:00:00
+Adding partition for 2020-07-01 00:00:00 and 2020-07-31 00:00:00
+Adding partition for 2020-08-01 00:00:00 and 2020-08-31 00:00:00
+Adding partition for 2020-09-01 00:00:00 and 2020-09-30 00:00:00
+Adding partition for 2020-10-01 00:00:00 and 2020-10-31 00:00:00
+Adding partition for 2020-11-01 00:00:00 and 2020-11-30 00:00:00
+Adding partition for 2020-12-01 00:00:00 and 2020-12-31 00:00:00
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Load data from detached yearly partitions into monthly partitioned table.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+INSERT INTO users_range_part
+SELECT * FROM users_range_part_2016
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+0 rows affected.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+INSERT INTO users_range_part
+SELECT * FROM users_range_part_2017
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+INSERT INTO users_range_part
+SELECT * FROM users_range_part_2018
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+INSERT INTO users_range_part
+SELECT * FROM users_range_part_2019
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+INSERT INTO users_range_part
+SELECT * FROM users_range_part_2020
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+0 rows affected.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT * FROM users_range_part
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+3 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>user_id</th>
+        <th>user_first_name</th>
+        <th>user_last_name</th>
+        <th>user_email_id</th>
+        <th>user_email_validated</th>
+        <th>user_password</th>
+        <th>user_role</th>
+        <th>is_active</th>
+        <th>created_dt</th>
+        <th>last_updated_ts</th>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>Mickey</td>
+        <td>Mouse</td>
+        <td>mickey@mouse.com</td>
+        <td>False</td>
+        <td>None</td>
+        <td>U</td>
+        <td>False</td>
+        <td>2017-06-22</td>
+        <td>2020-11-24 12:12:27.094936</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>Scott</td>
+        <td>Tiger</td>
+        <td>scott@tiger.com</td>
+        <td>False</td>
+        <td>None</td>
+        <td>U</td>
+        <td>False</td>
+        <td>2018-10-01</td>
+        <td>2020-11-24 12:12:27.094936</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Donald</td>
+        <td>Duck</td>
+        <td>donald@duck.com</td>
+        <td>False</td>
+        <td>None</td>
+        <td>U</td>
+        <td>False</td>
+        <td>2019-02-10</td>
+        <td>2020-11-24 12:12:27.094936</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT * FROM users_range_part_201706
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>user_id</th>
+        <th>user_first_name</th>
+        <th>user_last_name</th>
+        <th>user_email_id</th>
+        <th>user_email_validated</th>
+        <th>user_password</th>
+        <th>user_role</th>
+        <th>is_active</th>
+        <th>created_dt</th>
+        <th>last_updated_ts</th>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>Mickey</td>
+        <td>Mouse</td>
+        <td>mickey@mouse.com</td>
+        <td>False</td>
+        <td>None</td>
+        <td>U</td>
+        <td>False</td>
+        <td>2017-06-22</td>
+        <td>2020-11-24 12:12:27.094936</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT * FROM users_range_part_201810
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>user_id</th>
+        <th>user_first_name</th>
+        <th>user_last_name</th>
+        <th>user_email_id</th>
+        <th>user_email_validated</th>
+        <th>user_password</th>
+        <th>user_role</th>
+        <th>is_active</th>
+        <th>created_dt</th>
+        <th>last_updated_ts</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>Scott</td>
+        <td>Tiger</td>
+        <td>scott@tiger.com</td>
+        <td>False</td>
+        <td>None</td>
+        <td>U</td>
+        <td>False</td>
+        <td>2018-10-01</td>
+        <td>2020-11-24 12:12:27.094936</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT * FROM users_range_part_201902
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>user_id</th>
+        <th>user_first_name</th>
+        <th>user_last_name</th>
+        <th>user_email_id</th>
+        <th>user_email_validated</th>
+        <th>user_password</th>
+        <th>user_role</th>
+        <th>is_active</th>
+        <th>created_dt</th>
+        <th>last_updated_ts</th>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Donald</td>
+        <td>Duck</td>
+        <td>donald@duck.com</td>
+        <td>False</td>
+        <td>None</td>
+        <td>U</td>
+        <td>False</td>
+        <td>2019-02-10</td>
+        <td>2020-11-24 12:12:27.094936</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As we are able to see the data in the monthly partitioned table, we can drop the tables which are created earlier using yearly partitioning strategy.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+DROP TABLE users_range_part_2016
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+DROP TABLE users_range_part_2017
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+DROP TABLE users_range_part_2018
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+DROP TABLE users_range_part_2019
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+DROP TABLE users_range_part_2020
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT table_catalog, 
+    table_schema, 
+    table_name FROM information_schema.tables
+WHERE table_name ~ &#39;users_range_part_&#39;
+ORDER BY table_name
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+61 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>table_catalog</th>
+        <th>table_schema</th>
+        <th>table_name</th>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users_range_part_201601</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users_range_part_201602</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users_range_part_201603</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users_range_part_201604</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users_range_part_201605</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users_range_part_201606</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users_range_part_201607</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users_range_part_201608</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users_range_part_201609</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users_range_part_201610</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users_range_part_201611</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users_range_part_201612</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users_range_part_201701</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users_range_part_201702</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users_range_part_201703</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users_range_part_201704</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users_range_part_201705</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users_range_part_201706</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users_range_part_201707</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users_range_part_201708</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users_range_part_201709</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users_range_part_201710</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users_range_part_201711</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users_range_part_201712</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users_range_part_201801</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users_range_part_201802</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users_range_part_201803</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users_range_part_201804</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users_range_part_201805</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users_range_part_201806</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users_range_part_201807</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users_range_part_201808</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users_range_part_201809</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users_range_part_201810</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users_range_part_201811</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users_range_part_201812</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users_range_part_201901</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users_range_part_201902</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users_range_part_201903</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users_range_part_201904</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users_range_part_201905</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users_range_part_201906</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users_range_part_201907</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users_range_part_201908</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users_range_part_201909</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users_range_part_201910</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users_range_part_201911</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users_range_part_201912</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users_range_part_202001</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users_range_part_202002</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users_range_part_202003</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users_range_part_202004</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users_range_part_202005</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users_range_part_202006</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users_range_part_202007</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users_range_part_202008</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users_range_part_202009</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users_range_part_202010</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users_range_part_202011</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users_range_part_202012</td>
+    </tr>
+    <tr>
+        <td>itversity_sms_db</td>
+        <td>public</td>
+        <td>users_range_part_default</td>
+    </tr>
+</table></div></div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./05_partitioning_tables_and_indexes"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="07_managing_partitions_range.html" title="previous page">Managing Partitions - Range</a>
+    <a class='right-next' id="next-link" href="09_hash_partitioning.html" title="next page">Hash Partitioning</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>
