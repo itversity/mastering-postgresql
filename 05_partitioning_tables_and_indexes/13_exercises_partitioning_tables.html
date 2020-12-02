@@ -55,6 +55,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Pre-Defined Functions" href="../06_predefined_functions/01_predefined_functions.html" />
     <link rel="prev" title="Sub Partitioning" href="12_sub_partitioning.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -181,6 +182,11 @@
    </li>
   </ul>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06_predefined_functions/01_predefined_functions.html">
+   Pre-Defined Functions
+  </a>
+ </li>
 </ul>
 
 </nav>
@@ -294,13 +300,38 @@
   <div class="section" id="exercises-partitioning-tables">
 <h1>Exercises - Partitioning Tables<a class="headerlink" href="#exercises-partitioning-tables" title="Permalink to this headline">¶</a></h1>
 <p>Here is the exercise to get comfort with partitioning. We will be using range partitioning.</p>
-<ul class="simple">
-<li><p>Use retail database. Make sure <strong>orders</strong> table already exists.</p></li>
-</ul>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/uAkrpaJmbx0?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
 </div></div>
+</div>
+<ul class="simple">
+<li><p>Use retail database. Make sure <strong>orders</strong> table already exists.</p></li>
+<li><p>You can reset the database by running these commands.</p></li>
+<li><p>Connect to retail database.</p></li>
+</ul>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>psql -U itversity_retail_user <span class="se">\</span>
+  -h localhost <span class="se">\</span>
+  -p <span class="m">5432</span> <span class="se">\</span>
+  -d itversity_retail_db <span class="se">\</span>
+  -W
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Run these commands or scripts to reset the tables. It will take care of recreating <strong>orders</strong> table.</p></li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span>DROP TABLE IF EXISTS order_items;
+DROP TABLE IF EXISTS orders;
+DROP TABLE IF EXISTS customers;
+DROP TABLE IF EXISTS products;
+DROP TABLE IF EXISTS categories;
+DROP TABLE IF EXISTS departments;
+
+
+\i /data/retail_db/create_db_tables_pg.sql
+
+\i /data/retail_db/load_db_tables_pg.sql
+</pre></div>
 </div>
 <div class="section" id="exercise-1">
 <h2>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h2>
@@ -354,6 +385,7 @@
     <div class='prev-next-bottom'>
         
     <a class='left-prev' id="prev-link" href="12_sub_partitioning.html" title="previous page">Sub Partitioning</a>
+    <a class='right-next' id="next-link" href="../06_predefined_functions/01_predefined_functions.html" title="next page">Pre-Defined Functions</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

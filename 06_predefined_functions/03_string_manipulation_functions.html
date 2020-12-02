@@ -1,0 +1,2421 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>String Manipulation Functions &#8212; My Jupyter Book</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Date Manipulation Functions" href="04_date_manipulation_functions.html" />
+    <link rel="prev" title="Overview of Pre-Defined Functions" href="02_overview_of_predefined_functions.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">My Jupyter Book</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mastering-postgresql.html">
+   Mastering Postgresql
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_getting_started/01_getting_started.html">
+   Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_dml_or_crud_operations/01_dml_or_crud_operations.html">
+   DML or CRUD Operations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_writing_basic_sql_queries/01_writing_basic_sql_queries.html">
+   Writing Basic SQL Queries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_creating_tables_and_indexes/01_creating_tables_and_indexes.html">
+   Creating Tables and Indexes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05_partitioning_tables_and_indexes/01_partitioning_tables_and_indexes.html">
+   Partitioning Tables and Indexes
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="01_predefined_functions.html">
+   Pre-Defined Functions
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="02_overview_of_predefined_functions.html">
+     Overview of Pre-Defined Functions
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     String Manipulation Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04_date_manipulation_functions.html">
+     Date Manipulation Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05_overview_of_numeric_functions.html">
+     Overview of Numeric Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06_data_type_conversion.html">
+     Data Type Conversion
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="07_handling_null_values.html">
+     Handling NULL Values
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08_using_case_and_when.html">
+     Using CASE and WHEN
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="09_exercises_predefined_functions.html">
+     Exercises - Pre-Defined Functions
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/06_predefined_functions/03_string_manipulation_functions.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/06_predefined_functions/03_string_manipulation_functions.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#case-conversion-and-length">
+   Case Conversion and Length
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#extracting-data-substr-and-split-part">
+   Extracting Data - substr and split_part
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-position-or-strpos">
+   Using position or strpos
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#trimming-and-padding-functions">
+   Trimming and Padding Functions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reverse-and-concatenating-multiple-strings">
+   Reverse and Concatenating multiple strings
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#string-replacement">
+   String Replacement
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="string-manipulation-functions">
+<h1>String Manipulation Functions<a class="headerlink" href="#string-manipulation-functions" title="Permalink to this headline">¶</a></h1>
+<p>We use string manipulation functions quite extensively. Here are some of the important functions which we typically use.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/26Rzech3L-4?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+</div></div>
+</div>
+<ul class="simple">
+<li><p>Case Conversion - <code class="docutils literal notranslate"><span class="pre">lower</span></code>, <code class="docutils literal notranslate"><span class="pre">upper</span></code>, <code class="docutils literal notranslate"><span class="pre">initcap</span></code></p></li>
+<li><p>Getting size of the column value - <code class="docutils literal notranslate"><span class="pre">length</span></code></p></li>
+<li><p>Extracting Data - <code class="docutils literal notranslate"><span class="pre">substr</span></code> and <code class="docutils literal notranslate"><span class="pre">split_part</span></code></p></li>
+<li><p>Trimming and Padding functions - <code class="docutils literal notranslate"><span class="pre">trim</span></code>, <code class="docutils literal notranslate"><span class="pre">rtrim</span></code>, <code class="docutils literal notranslate"><span class="pre">ltrim</span></code>, <code class="docutils literal notranslate"><span class="pre">rpad</span></code> and <code class="docutils literal notranslate"><span class="pre">lpad</span></code></p></li>
+<li><p>Reversing strings - <code class="docutils literal notranslate"><span class="pre">reverse</span></code></p></li>
+<li><p>Concatenating multiple strings <code class="docutils literal notranslate"><span class="pre">concat</span></code> and <code class="docutils literal notranslate"><span class="pre">concat_ws</span></code></p></li>
+</ul>
+<div class="section" id="case-conversion-and-length">
+<h2>Case Conversion and Length<a class="headerlink" href="#case-conversion-and-length" title="Permalink to this headline">¶</a></h2>
+<p>Let us understand how to perform case conversion of a string and also get length of a string.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/EaoNmYVbozQ?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The sql extension is already loaded. To reload it, use:
+  %reload_ext sql
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env: DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Case Conversion Functions - <code class="docutils literal notranslate"><span class="pre">lower</span></code>, <code class="docutils literal notranslate"><span class="pre">upper</span></code>, <code class="docutils literal notranslate"><span class="pre">initcap</span></code></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT lower(&#39;hEllo wOrlD&#39;) AS lower_result,
+    upper(&#39;hEllo wOrlD&#39;) AS upper_result,
+    initcap(&#39;hEllo wOrlD&#39;) AS initcap_result
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>lower_result</th>
+        <th>upper_result</th>
+        <th>initcap_result</th>
+    </tr>
+    <tr>
+        <td>hello world</td>
+        <td>HELLO WORLD</td>
+        <td>Hello World</td>
+    </tr>
+</table></div></div>
+</div>
+<ul class="simple">
+<li><p>Getting length - <code class="docutils literal notranslate"><span class="pre">length</span></code></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT length(&#39;hEllo wOrlD&#39;) AS result
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>result</th>
+    </tr>
+    <tr>
+        <td>11</td>
+    </tr>
+</table></div></div>
+</div>
+<p>Let us see how to use these functions on top of the table. We will use orders table which was loaded as part of last section.</p>
+<ul class="simple">
+<li><p>order_status for all the orders is in upper case and we will convert every thing to lower case.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT * FROM orders LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_id</th>
+        <th>order_date</th>
+        <th>order_customer_id</th>
+        <th>order_status</th>
+    </tr>
+    <tr>
+        <td>1021</td>
+        <td>2013-07-30 00:00:00</td>
+        <td>10118</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>4068</td>
+        <td>2013-08-17 00:00:00</td>
+        <td>12293</td>
+        <td>PENDING</td>
+    </tr>
+    <tr>
+        <td>5881</td>
+        <td>2013-08-30 00:00:00</td>
+        <td>3715</td>
+        <td>CLOSED</td>
+    </tr>
+    <tr>
+        <td>7564</td>
+        <td>2013-09-09 00:00:00</td>
+        <td>8648</td>
+        <td>CLOSED</td>
+    </tr>
+    <tr>
+        <td>8766</td>
+        <td>2013-09-18 00:00:00</td>
+        <td>855</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>8926</td>
+        <td>2013-09-19 00:00:00</td>
+        <td>10517</td>
+        <td>ON_HOLD</td>
+    </tr>
+    <tr>
+        <td>9290</td>
+        <td>2013-09-21 00:00:00</td>
+        <td>11879</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>9793</td>
+        <td>2013-09-24 00:00:00</td>
+        <td>9809</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>9816</td>
+        <td>2013-09-24 00:00:00</td>
+        <td>1753</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>14047</td>
+        <td>2013-10-20 00:00:00</td>
+        <td>6473</td>
+        <td>CLOSED</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT order_id, order_date, order_customer_id,
+    lower(order_status) AS order_status,
+    length(order_status) AS order_status_length
+FROM orders LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_id</th>
+        <th>order_date</th>
+        <th>order_customer_id</th>
+        <th>order_status</th>
+        <th>order_status_length</th>
+    </tr>
+    <tr>
+        <td>1021</td>
+        <td>2013-07-30 00:00:00</td>
+        <td>10118</td>
+        <td>complete</td>
+        <td>8</td>
+    </tr>
+    <tr>
+        <td>4068</td>
+        <td>2013-08-17 00:00:00</td>
+        <td>12293</td>
+        <td>pending</td>
+        <td>7</td>
+    </tr>
+    <tr>
+        <td>5881</td>
+        <td>2013-08-30 00:00:00</td>
+        <td>3715</td>
+        <td>closed</td>
+        <td>6</td>
+    </tr>
+    <tr>
+        <td>7564</td>
+        <td>2013-09-09 00:00:00</td>
+        <td>8648</td>
+        <td>closed</td>
+        <td>6</td>
+    </tr>
+    <tr>
+        <td>8766</td>
+        <td>2013-09-18 00:00:00</td>
+        <td>855</td>
+        <td>complete</td>
+        <td>8</td>
+    </tr>
+    <tr>
+        <td>8926</td>
+        <td>2013-09-19 00:00:00</td>
+        <td>10517</td>
+        <td>on_hold</td>
+        <td>7</td>
+    </tr>
+    <tr>
+        <td>9290</td>
+        <td>2013-09-21 00:00:00</td>
+        <td>11879</td>
+        <td>complete</td>
+        <td>8</td>
+    </tr>
+    <tr>
+        <td>9793</td>
+        <td>2013-09-24 00:00:00</td>
+        <td>9809</td>
+        <td>complete</td>
+        <td>8</td>
+    </tr>
+    <tr>
+        <td>9816</td>
+        <td>2013-09-24 00:00:00</td>
+        <td>1753</td>
+        <td>complete</td>
+        <td>8</td>
+    </tr>
+    <tr>
+        <td>14047</td>
+        <td>2013-10-20 00:00:00</td>
+        <td>6473</td>
+        <td>closed</td>
+        <td>6</td>
+    </tr>
+</table></div></div>
+</div>
+</div>
+<div class="section" id="extracting-data-substr-and-split-part">
+<h2>Extracting Data - substr and split_part<a class="headerlink" href="#extracting-data-substr-and-split-part" title="Permalink to this headline">¶</a></h2>
+<p>Let us understand how to extract data from strings using <code class="docutils literal notranslate"><span class="pre">substr</span></code>/<code class="docutils literal notranslate"><span class="pre">substring</span></code> as well as <code class="docutils literal notranslate"><span class="pre">split_part</span></code>.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/3sYE9ajirDQ?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The sql extension is already loaded. To reload it, use:
+  %reload_ext sql
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env: DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>We can extract sub string from main string using <code class="docutils literal notranslate"><span class="pre">substr</span></code> or <code class="docutils literal notranslate"><span class="pre">substring</span></code> position and length.</p></li>
+<li><p>For example, get first 4 characters from date to get year or get last 4 characters from fixed length unique id.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">substring</span></code> have broader options (regular expression) and also can be used with different styles (using keywords such as <code class="docutils literal notranslate"><span class="pre">FROM</span></code>, <code class="docutils literal notranslate"><span class="pre">FOR</span></code>).</p></li>
+<li><p>Unlike in other relational databases, we cannot pass negative integers to <code class="docutils literal notranslate"><span class="pre">substr</span></code> or <code class="docutils literal notranslate"><span class="pre">substring</span></code> to get the information from right. We need to use functions like <code class="docutils literal notranslate"><span class="pre">right</span></code> instead.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT substr(&#39;2013-07-25 00:00:00.0&#39;, 1, 4) AS result
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>result</th>
+    </tr>
+    <tr>
+        <td>2013</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT substring(&#39;2013-07-25 00:00:00.0&#39;, 1, 4) AS result
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>result</th>
+    </tr>
+    <tr>
+        <td>2013</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT substring(&#39;2013-07-25 00:00:00.0&#39; FROM 1 FOR 4) AS result
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>result</th>
+    </tr>
+    <tr>
+        <td>2013</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT substring(&#39;2013-07-25 00:00:00.0&#39;, 6, 2) AS result
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>result</th>
+    </tr>
+    <tr>
+        <td>07</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT substring(&#39;2013-07-25 00:00:00.0&#39;, 9, 2) AS result
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>result</th>
+    </tr>
+    <tr>
+        <td>25</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT substring(&#39;2013-07-25 00:00:00.0&#39; from 12) AS result
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>result</th>
+    </tr>
+    <tr>
+        <td>00:00:00.0</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT substr(&#39;2013-07-25 00:00:00.0&#39;, 12) AS result
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>result</th>
+    </tr>
+    <tr>
+        <td>00:00:00.0</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT right(&#39;123 456 7890&#39;, 4) AS result
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>result</th>
+    </tr>
+    <tr>
+        <td>7890</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT left(&#39;123 456 7890&#39;, 3) AS result
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>result</th>
+    </tr>
+    <tr>
+        <td>123</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We can also use combination of <code class="docutils literal notranslate"><span class="pre">substring</span></code> and <code class="docutils literal notranslate"><span class="pre">length</span></code> like below to get last 4 digits or characters from a string.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT substring(&#39;123 456 7890&#39; FROM length(&#39;123 456 7890&#39;) - 4) AS result
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>result</th>
+    </tr>
+    <tr>
+        <td> 7890</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT substring(&#39;123 456 7890&#39; FROM &#39;....$&#39;) AS result
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>result</th>
+    </tr>
+    <tr>
+        <td>7890</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Getting first 3 characters or digits as well as last 4 characters or digits using <code class="docutils literal notranslate"><span class="pre">substring</span></code>. However, this works only when the strings are of fixed length.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+WITH unique_ids AS (
+    SELECT &#39;241-80-7115&#39; AS unique_id UNION
+    SELECT &#39;694-30-6851&#39; UNION
+    SELECT &#39;586-92-5361&#39; UNION
+    SELECT &#39;884-65-284&#39; UNION
+    SELECT &#39;876-99-585&#39; UNION
+    SELECT &#39;831-59-5593&#39; UNION
+    SELECT &#39;399-88-3617&#39; UNION
+    SELECT &#39;733-17-4217&#39; UNION
+    SELECT &#39;873-68-9778&#39; UNION
+    SELECT &#39;48&#39;
+) SELECT unique_id,
+    substring(unique_id FROM 1 FOR 3) AS unique_id_first3,
+    substring(unique_id FROM &#39;....$&#39;) AS unique_id_last4
+FROM unique_ids
+ORDER BY unique_id
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>unique_id</th>
+        <th>unique_id_first3</th>
+        <th>unique_id_last4</th>
+    </tr>
+    <tr>
+        <td>241-80-7115</td>
+        <td>241</td>
+        <td>7115</td>
+    </tr>
+    <tr>
+        <td>399-88-3617</td>
+        <td>399</td>
+        <td>3617</td>
+    </tr>
+    <tr>
+        <td>48</td>
+        <td>48</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>586-92-5361</td>
+        <td>586</td>
+        <td>5361</td>
+    </tr>
+    <tr>
+        <td>694-30-6851</td>
+        <td>694</td>
+        <td>6851</td>
+    </tr>
+    <tr>
+        <td>733-17-4217</td>
+        <td>733</td>
+        <td>4217</td>
+    </tr>
+    <tr>
+        <td>831-59-5593</td>
+        <td>831</td>
+        <td>5593</td>
+    </tr>
+    <tr>
+        <td>873-68-9778</td>
+        <td>873</td>
+        <td>9778</td>
+    </tr>
+    <tr>
+        <td>876-99-585</td>
+        <td>876</td>
+        <td>-585</td>
+    </tr>
+    <tr>
+        <td>884-65-284</td>
+        <td>884</td>
+        <td>-284</td>
+    </tr>
+</table></div></div>
+</div>
+<ul class="simple">
+<li><p>Let us see how we can extract date part from order_date of orders.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT * FROM orders LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_id</th>
+        <th>order_date</th>
+        <th>order_customer_id</th>
+        <th>order_status</th>
+    </tr>
+    <tr>
+        <td>1021</td>
+        <td>2013-07-30 00:00:00</td>
+        <td>10118</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>4068</td>
+        <td>2013-08-17 00:00:00</td>
+        <td>12293</td>
+        <td>PENDING</td>
+    </tr>
+    <tr>
+        <td>5881</td>
+        <td>2013-08-30 00:00:00</td>
+        <td>3715</td>
+        <td>CLOSED</td>
+    </tr>
+    <tr>
+        <td>7564</td>
+        <td>2013-09-09 00:00:00</td>
+        <td>8648</td>
+        <td>CLOSED</td>
+    </tr>
+    <tr>
+        <td>8766</td>
+        <td>2013-09-18 00:00:00</td>
+        <td>855</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>8926</td>
+        <td>2013-09-19 00:00:00</td>
+        <td>10517</td>
+        <td>ON_HOLD</td>
+    </tr>
+    <tr>
+        <td>9290</td>
+        <td>2013-09-21 00:00:00</td>
+        <td>11879</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>9793</td>
+        <td>2013-09-24 00:00:00</td>
+        <td>9809</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>9816</td>
+        <td>2013-09-24 00:00:00</td>
+        <td>1753</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>14047</td>
+        <td>2013-10-20 00:00:00</td>
+        <td>6473</td>
+        <td>CLOSED</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT order_id,
+    substr(order_date::varchar, 1, 10) AS order_date, 
+    order_customer_id, 
+    order_status
+FROM orders
+LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_id</th>
+        <th>order_date</th>
+        <th>order_customer_id</th>
+        <th>order_status</th>
+    </tr>
+    <tr>
+        <td>1021</td>
+        <td>2013-07-30</td>
+        <td>10118</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>4068</td>
+        <td>2013-08-17</td>
+        <td>12293</td>
+        <td>PENDING</td>
+    </tr>
+    <tr>
+        <td>5881</td>
+        <td>2013-08-30</td>
+        <td>3715</td>
+        <td>CLOSED</td>
+    </tr>
+    <tr>
+        <td>7564</td>
+        <td>2013-09-09</td>
+        <td>8648</td>
+        <td>CLOSED</td>
+    </tr>
+    <tr>
+        <td>8766</td>
+        <td>2013-09-18</td>
+        <td>855</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>8926</td>
+        <td>2013-09-19</td>
+        <td>10517</td>
+        <td>ON_HOLD</td>
+    </tr>
+    <tr>
+        <td>9290</td>
+        <td>2013-09-21</td>
+        <td>11879</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>9793</td>
+        <td>2013-09-24</td>
+        <td>9809</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>9816</td>
+        <td>2013-09-24</td>
+        <td>1753</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>14047</td>
+        <td>2013-10-20</td>
+        <td>6473</td>
+        <td>CLOSED</td>
+    </tr>
+</table></div></div>
+</div>
+<p>Let us understand how to extract the information from the string where there is a delimiter.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">split_part</span></code> can be used to split a string using delimiter and extract the information.</p></li>
+<li><p>If there is no data in a given position after splitting, it will be represented as empty string <strong>‘’</strong>.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT split_part(&#39;2013-07-25&#39;, &#39;-&#39;, 1) AS result
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>result</th>
+    </tr>
+    <tr>
+        <td>2013</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+WITH addresses AS (
+    SELECT &#39;593 Fair Oaks Pass, Frankfort, Kentucky, 40618&#39; AS address UNION
+    SELECT &#39;, Vancouver, Washington, 98687&#39; UNION
+    SELECT &#39;83047 Glacier Hill Circle, Sacramento, California, 94237&#39; UNION
+    SELECT &#39;935 Columbus Junction, Cincinnati, Ohio, 45213&#39; UNION
+    SELECT &#39;03010 Nevada Crossing, El Paso, Texas, 88579&#39; UNION
+    SELECT &#39;9 Dunning Circle, , Arizona, 85271&#39; UNION
+    SELECT &#39;96 Fair Oaks Way, Decatur, Illinois, 62525&#39; UNION
+    SELECT &#39;999 Caliangt Avenue, Greenville, South Carolina, 29615&#39; UNION
+    SELECT &#39;2 Saint Paul Trail, Bridgeport, , 06673&#39; UNION
+    SELECT &#39;3 Reindahl Center, Ogden, Utah&#39;
+) SELECT split_part(address, &#39;, &#39;, 1) street,
+    split_part(address, &#39;, &#39;, 2) city,
+    split_part(address, &#39;, &#39;, 3) state,
+    split_part(address, &#39;, &#39;, 4) postal_code
+FROM addresses
+ORDER BY postal_code
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>street</th>
+        <th>city</th>
+        <th>state</th>
+        <th>postal_code</th>
+    </tr>
+    <tr>
+        <td>3 Reindahl Center</td>
+        <td>Ogden</td>
+        <td>Utah</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>2 Saint Paul Trail</td>
+        <td>Bridgeport</td>
+        <td></td>
+        <td>06673</td>
+    </tr>
+    <tr>
+        <td>999 Caliangt Avenue</td>
+        <td>Greenville</td>
+        <td>South Carolina</td>
+        <td>29615</td>
+    </tr>
+    <tr>
+        <td>593 Fair Oaks Pass</td>
+        <td>Frankfort</td>
+        <td>Kentucky</td>
+        <td>40618</td>
+    </tr>
+    <tr>
+        <td>935 Columbus Junction</td>
+        <td>Cincinnati</td>
+        <td>Ohio</td>
+        <td>45213</td>
+    </tr>
+    <tr>
+        <td>96 Fair Oaks Way</td>
+        <td>Decatur</td>
+        <td>Illinois</td>
+        <td>62525</td>
+    </tr>
+    <tr>
+        <td>9 Dunning Circle</td>
+        <td></td>
+        <td>Arizona</td>
+        <td>85271</td>
+    </tr>
+    <tr>
+        <td>03010 Nevada Crossing</td>
+        <td>El Paso</td>
+        <td>Texas</td>
+        <td>88579</td>
+    </tr>
+    <tr>
+        <td>83047 Glacier Hill Circle</td>
+        <td>Sacramento</td>
+        <td>California</td>
+        <td>94237</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>Vancouver</td>
+        <td>Washington</td>
+        <td>98687</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+WITH addresses AS (
+    SELECT &#39;593 Fair Oaks Pass, Frankfort, Kentucky, 40618&#39; AS address UNION
+    SELECT &#39;, Vancouver, Washington, 98687&#39; UNION
+    SELECT &#39;83047 Glacier Hill Circle, Sacramento, California, 94237&#39; UNION
+    SELECT &#39;935 Columbus Junction, Cincinnati, Ohio, 45213&#39; UNION
+    SELECT &#39;03010 Nevada Crossing, El Paso, Texas, 88579&#39; UNION
+    SELECT &#39;9 Dunning Circle, , Arizona, 85271&#39; UNION
+    SELECT &#39;96 Fair Oaks Way, Decatur, Illinois, 62525&#39; UNION
+    SELECT &#39;999 Caliangt Avenue, Greenville, South Carolina, 29615&#39; UNION
+    SELECT &#39;2 Saint Paul Trail, Bridgeport, , 06673&#39; UNION
+    SELECT &#39;3 Reindahl Center, Ogden, Utah&#39;
+) SELECT split_part(address, &#39;, &#39;, 1) street,
+    split_part(address, &#39;, &#39;, 2) city,
+    split_part(address, &#39;, &#39;, 3) state,
+    split_part(address, &#39;, &#39;, 4) postal_code
+FROM addresses
+WHERE split_part(address, &#39;, &#39;, 1) = &#39;&#39;
+ORDER BY postal_code
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>street</th>
+        <th>city</th>
+        <th>state</th>
+        <th>postal_code</th>
+    </tr>
+    <tr>
+        <td></td>
+        <td>Vancouver</td>
+        <td>Washington</td>
+        <td>98687</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+WITH unique_ids AS (
+    SELECT &#39;241-80-7115&#39; AS unique_id UNION
+    SELECT &#39;694-30-6851&#39; UNION
+    SELECT &#39;586-92-5361&#39; UNION
+    SELECT &#39;884-65-284&#39; UNION
+    SELECT &#39;876-99-585&#39; UNION
+    SELECT &#39;831-59-5593&#39; UNION
+    SELECT &#39;399-88-3617&#39; UNION
+    SELECT &#39;733-17-4217&#39; UNION
+    SELECT &#39;873-68-9778&#39; UNION
+    SELECT &#39;480-69-032&#39;
+) SELECT unique_id,
+    substring(unique_id FROM 1 FOR 3) AS unique_id_first3,
+    substring(unique_id FROM &#39;....$&#39;) AS unique_id_last4,
+    CASE WHEN length(split_part(unique_id, &#39;-&#39;, 3)) = 4
+        THEN split_part(unique_id, &#39;-&#39;, 3)
+        ELSE &#39;Invalid&#39;
+    END AS unique_id_last
+FROM unique_ids
+ORDER BY unique_id
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>unique_id</th>
+        <th>unique_id_first3</th>
+        <th>unique_id_last4</th>
+        <th>unique_id_last</th>
+    </tr>
+    <tr>
+        <td>241-80-7115</td>
+        <td>241</td>
+        <td>7115</td>
+        <td>7115</td>
+    </tr>
+    <tr>
+        <td>399-88-3617</td>
+        <td>399</td>
+        <td>3617</td>
+        <td>3617</td>
+    </tr>
+    <tr>
+        <td>480-69-032</td>
+        <td>480</td>
+        <td>-032</td>
+        <td>Invalid</td>
+    </tr>
+    <tr>
+        <td>586-92-5361</td>
+        <td>586</td>
+        <td>5361</td>
+        <td>5361</td>
+    </tr>
+    <tr>
+        <td>694-30-6851</td>
+        <td>694</td>
+        <td>6851</td>
+        <td>6851</td>
+    </tr>
+    <tr>
+        <td>733-17-4217</td>
+        <td>733</td>
+        <td>4217</td>
+        <td>4217</td>
+    </tr>
+    <tr>
+        <td>831-59-5593</td>
+        <td>831</td>
+        <td>5593</td>
+        <td>5593</td>
+    </tr>
+    <tr>
+        <td>873-68-9778</td>
+        <td>873</td>
+        <td>9778</td>
+        <td>9778</td>
+    </tr>
+    <tr>
+        <td>876-99-585</td>
+        <td>876</td>
+        <td>-585</td>
+        <td>Invalid</td>
+    </tr>
+    <tr>
+        <td>884-65-284</td>
+        <td>884</td>
+        <td>-284</td>
+        <td>Invalid</td>
+    </tr>
+</table></div></div>
+</div>
+</div>
+<div class="section" id="using-position-or-strpos">
+<h2>Using position or strpos<a class="headerlink" href="#using-position-or-strpos" title="Permalink to this headline">¶</a></h2>
+<p>At times we might want to get the position of a substring in a main string. For example, we might want to check whether email ids have <strong>&#64;</strong> in them. We can use functions such as <code class="docutils literal notranslate"><span class="pre">position</span></code> or <code class="docutils literal notranslate"><span class="pre">strpos</span></code>.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/E264Kq8ovCg?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span> 
+
+SELECT position(&#39;@&#39; IN &#39;it@versity.com&#39;),
+    position(&#39;@&#39; IN &#39;itversity.com&#39;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>position</th>
+        <th>position_1</th>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>0</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span> 
+
+SELECT strpos(&#39;it@versity.com&#39;, &#39;@&#39;),
+    strpos(&#39;itversity.com&#39;, &#39;@&#39;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>strpos</th>
+        <th>strpos_1</th>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>0</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+WITH email_ids AS (
+    SELECT &#39;bsellan0@yellowbook.com&#39; AS email_id UNION
+    SELECT &#39;rstelljes1@illinois.edu&#39; UNION
+    SELECT &#39;mmalarkey2@webeden.co.uk&#39; UNION
+    SELECT &#39;emussared3@redcross.org&#39; UNION
+    SELECT &#39;livashin4@bloglovin.com&#39; UNION
+    SELECT &#39;gkeach5@cbc.ca&#39; UNION
+    SELECT &#39;emasham6@xing.com&#39; UNION
+    SELECT &#39;rcobbald7@house.gov&#39; UNION
+    SELECT &#39;rdrohan8@washingtonpost.com&#39; UNION
+    SELECT &#39;aebben9@arstechnica.com&#39;
+)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+(psycopg2.errors.SyntaxError) syntax error at end of input
+LINE 12: )
+          ^
+
+[SQL: WITH email_ids AS (
+    SELECT &#39;bsellan0@yellowbook.com&#39; AS email_id UNION
+    SELECT &#39;rstelljes1@illinois.edu&#39; UNION
+    SELECT &#39;mmalarkey2@webeden.co.uk&#39; UNION
+    SELECT &#39;emussared3@redcross.org&#39; UNION
+    SELECT &#39;livashin4@bloglovin.com&#39; UNION
+    SELECT &#39;gkeach5@cbc.ca&#39; UNION
+    SELECT &#39;emasham6@xing.com&#39; UNION
+    SELECT &#39;rcobbald7@house.gov&#39; UNION
+    SELECT &#39;rdrohan8@washingtonpost.com&#39; UNION
+    SELECT &#39;aebben9@arstechnica.com&#39;
+)]
+(Background on this error at: http://sqlalche.me/e/13/f405)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="trimming-and-padding-functions">
+<h2>Trimming and Padding Functions<a class="headerlink" href="#trimming-and-padding-functions" title="Permalink to this headline">¶</a></h2>
+<p>Let us understand how to trim or remove leading and/or trailing spaces in a string.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/kFzl7c7ArXY?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The sql extension is already loaded. To reload it, use:
+  %reload_ext sql
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env: DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ltrim</span></code> is used to remove the spaces on the left side of the string.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rtrim</span></code> is used to remove the spaces on the right side of the string.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">trim</span></code> is used to remove the spaces on both sides of the string.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT ltrim(&#39;     Hello World&#39;) AS result
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>result</th>
+    </tr>
+    <tr>
+        <td>Hello World</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT rtrim(&#39;     Hello World       &#39;) AS result
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>result</th>
+    </tr>
+    <tr>
+        <td> Hello World</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT length(trim(&#39;     Hello World       &#39;)) AS result
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>result</th>
+    </tr>
+    <tr>
+        <td>11</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT ltrim(&#39;----Hello World----&#39;, &#39;-&#39;) AS result
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>result</th>
+    </tr>
+    <tr>
+        <td>Hello World----</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT rtrim(&#39;----Hello World----&#39;, &#39;-&#39;) AS result
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>result</th>
+    </tr>
+    <tr>
+        <td>----Hello World</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT trim(&#39;----Hello World----&#39;, &#39;-&#39;) AS result
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>result</th>
+    </tr>
+    <tr>
+        <td>Hello World</td>
+    </tr>
+</table></div></div>
+</div>
+<p>Let us understand how to use padding to pad characters to a string.</p>
+<ul class="simple">
+<li><p>Let us assume that there are 3 fields - year, month and date which are of type integer.</p></li>
+<li><p>If we have to concatenate all the 3 fields and create a date, we might have to pad month and date with 0.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lpad</span></code> is used more often than <code class="docutils literal notranslate"><span class="pre">rpad</span></code> especially when we try to build the date from separate columns.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT 2013 AS year, 7 AS month, 25 AS myDate
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>year</th>
+        <th>month</th>
+        <th>mydate</th>
+    </tr>
+    <tr>
+        <td>2013</td>
+        <td>7</td>
+        <td>25</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT lpad(7::varchar, 2, &#39;0&#39;) AS result
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>result</th>
+    </tr>
+    <tr>
+        <td>07</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT lpad(10::varchar, 2, &#39;0&#39;) AS result
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>result</th>
+    </tr>
+    <tr>
+        <td>10</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT lpad(100::varchar, 2, &#39;0&#39;) AS result
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>result</th>
+    </tr>
+    <tr>
+        <td>10</td>
+    </tr>
+</table></div></div>
+</div>
+</div>
+<div class="section" id="reverse-and-concatenating-multiple-strings">
+<h2>Reverse and Concatenating multiple strings<a class="headerlink" href="#reverse-and-concatenating-multiple-strings" title="Permalink to this headline">¶</a></h2>
+<p>Let us understand how to reverse a string as well as concatenate multiple strings.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/rIItK0mR-bU?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The sql extension is already loaded. To reload it, use:
+  %reload_ext sql
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env: DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>We can use <code class="docutils literal notranslate"><span class="pre">reverse</span></code> to reverse a string.</p></li>
+<li><p>We can concatenate multiple strings using <code class="docutils literal notranslate"><span class="pre">concat</span></code> and <code class="docutils literal notranslate"><span class="pre">concat_ws</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">concat_ws</span></code> is typically used if we want to have the same string between all the strings that are being concatenated.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT reverse(&#39;Hello World&#39;) AS result
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>result</th>
+    </tr>
+    <tr>
+        <td>dlroW olleH</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT concat(&#39;Hello &#39;, &#39;World&#39;) AS result
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>result</th>
+    </tr>
+    <tr>
+        <td>Hello World</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT concat(&#39;Order Status is &#39;, order_status) AS result
+FROM orders LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>result</th>
+    </tr>
+    <tr>
+        <td>Order Status is COMPLETE</td>
+    </tr>
+    <tr>
+        <td>Order Status is PENDING</td>
+    </tr>
+    <tr>
+        <td>Order Status is CLOSED</td>
+    </tr>
+    <tr>
+        <td>Order Status is CLOSED</td>
+    </tr>
+    <tr>
+        <td>Order Status is COMPLETE</td>
+    </tr>
+    <tr>
+        <td>Order Status is ON_HOLD</td>
+    </tr>
+    <tr>
+        <td>Order Status is COMPLETE</td>
+    </tr>
+    <tr>
+        <td>Order Status is COMPLETE</td>
+    </tr>
+    <tr>
+        <td>Order Status is COMPLETE</td>
+    </tr>
+    <tr>
+        <td>Order Status is CLOSED</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT * FROM (SELECT 2013 AS year, 7 AS month, 25 AS myDate) q
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>year</th>
+        <th>month</th>
+        <th>mydate</th>
+    </tr>
+    <tr>
+        <td>2013</td>
+        <td>7</td>
+        <td>25</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT concat(year, &#39;-&#39;, lpad(month::varchar, 2, &#39;0&#39;), &#39;-&#39;,
+              lpad(myDate::varchar, 2, &#39;0&#39;)) AS order_date
+FROM
+    (SELECT 2013 AS year, 7 AS month, 25 AS myDate) q
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_date</th>
+    </tr>
+    <tr>
+        <td>2013-07-25</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT concat_ws(&#39;-&#39;, year, lpad(month::varchar, 2, &#39;0&#39;),
+              lpad(myDate::varchar, 2, &#39;0&#39;)) AS order_date
+FROM
+    (SELECT 2013 AS year, 7 AS month, 25 AS myDate) q
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_date</th>
+    </tr>
+    <tr>
+        <td>2013-07-25</td>
+    </tr>
+</table></div></div>
+</div>
+</div>
+<div class="section" id="string-replacement">
+<h2>String Replacement<a class="headerlink" href="#string-replacement" title="Permalink to this headline">¶</a></h2>
+<p>Let us go through the details related to string replacement.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/otkjfS6l038?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+</div></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">replace</span></code> can be used to replace a sub string with in a string with another string.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">overlay</span></code> can be used to replace a sub string with in a string by position with another string.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">translate</span></code> can be used to replace individual characters with other characters.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The sql extension is already loaded. To reload it, use:
+  %reload_ext sql
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env: DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT replace(&#39;Hello World&#39;, &#39;alo&#39;, &#39;ello&#39;) AS result
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>result</th>
+    </tr>
+    <tr>
+        <td>Hello World</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT overlay(&#39;Halo World&#39; PLACING &#39;ello&#39; FROM 2 FOR 3) AS result
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>result</th>
+    </tr>
+    <tr>
+        <td>Hello World</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+WITH unique_ids AS (
+    SELECT &#39;241-80-7115&#39; AS unique_id UNION
+    SELECT &#39;694-30-6851&#39; UNION
+    SELECT &#39;586-92-5361&#39; UNION
+    SELECT &#39;884-65-2844&#39; UNION
+    SELECT &#39;876-99-5856&#39; UNION
+    SELECT &#39;831-59-5593&#39; UNION
+    SELECT &#39;399-88-3617&#39; UNION
+    SELECT &#39;733-17-4217&#39; UNION
+    SELECT &#39;873-68-9778&#39; UNION
+    SELECT &#39;487-21-9802&#39;
+) SELECT unique_id,
+    replace(unique_id, &#39;-&#39;, &#39; &#39;) AS unique_id_replaced,
+    translate(unique_id, &#39;-&#39;, &#39; &#39;) AS unique_id_translated,
+    overlay(unique_id PLACING &#39; &#39; FROM 4 FOR 1) AS unique_id_overlaid
+FROM unique_ids
+ORDER BY unique_id
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>unique_id</th>
+        <th>unique_id_replaced</th>
+        <th>unique_id_translated</th>
+        <th>unique_id_overlaid</th>
+    </tr>
+    <tr>
+        <td>241-80-7115</td>
+        <td>241 80 7115</td>
+        <td>241 80 7115</td>
+        <td>241 80-7115</td>
+    </tr>
+    <tr>
+        <td>399-88-3617</td>
+        <td>399 88 3617</td>
+        <td>399 88 3617</td>
+        <td>399 88-3617</td>
+    </tr>
+    <tr>
+        <td>487-21-9802</td>
+        <td>487 21 9802</td>
+        <td>487 21 9802</td>
+        <td>487 21-9802</td>
+    </tr>
+    <tr>
+        <td>586-92-5361</td>
+        <td>586 92 5361</td>
+        <td>586 92 5361</td>
+        <td>586 92-5361</td>
+    </tr>
+    <tr>
+        <td>694-30-6851</td>
+        <td>694 30 6851</td>
+        <td>694 30 6851</td>
+        <td>694 30-6851</td>
+    </tr>
+    <tr>
+        <td>733-17-4217</td>
+        <td>733 17 4217</td>
+        <td>733 17 4217</td>
+        <td>733 17-4217</td>
+    </tr>
+    <tr>
+        <td>831-59-5593</td>
+        <td>831 59 5593</td>
+        <td>831 59 5593</td>
+        <td>831 59-5593</td>
+    </tr>
+    <tr>
+        <td>873-68-9778</td>
+        <td>873 68 9778</td>
+        <td>873 68 9778</td>
+        <td>873 68-9778</td>
+    </tr>
+    <tr>
+        <td>876-99-5856</td>
+        <td>876 99 5856</td>
+        <td>876 99 5856</td>
+        <td>876 99-5856</td>
+    </tr>
+    <tr>
+        <td>884-65-2844</td>
+        <td>884 65 2844</td>
+        <td>884 65 2844</td>
+        <td>884 65-2844</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+WITH unique_ids AS (
+    SELECT &#39;241-80-7115&#39; AS unique_id UNION
+    SELECT &#39;694-30:6851&#39; UNION
+    SELECT &#39;586-92-5361&#39; UNION
+    SELECT &#39;884:65-2844&#39; UNION
+    SELECT &#39;876/99-5856&#39; UNION
+    SELECT &#39;831-59:5593&#39; UNION
+    SELECT &#39;399-88-3617&#39; UNION
+    SELECT &#39;733:17-4217&#39; UNION
+    SELECT &#39;873:68-9778&#39; UNION
+    SELECT &#39;487-21/9802&#39;
+) SELECT unique_id,
+    replace(replace(unique_id, &#39;-&#39;, &#39; &#39;), &#39;:&#39;, &#39; &#39;) AS unique_id_replaced,
+    translate(unique_id, &#39;-:/&#39;, &#39;   &#39;) AS unique_id_translated,
+    overlay(overlay(unique_id PLACING &#39; &#39; FROM 4 FOR 1) PLACING &#39; &#39; FROM 7 FOR 1) AS unique_id_overlaid
+FROM unique_ids
+ORDER BY unique_id
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>unique_id</th>
+        <th>unique_id_replaced</th>
+        <th>unique_id_translated</th>
+        <th>unique_id_overlaid</th>
+    </tr>
+    <tr>
+        <td>241-80-7115</td>
+        <td>241 80 7115</td>
+        <td>241 80 7115</td>
+        <td>241 80 7115</td>
+    </tr>
+    <tr>
+        <td>399-88-3617</td>
+        <td>399 88 3617</td>
+        <td>399 88 3617</td>
+        <td>399 88 3617</td>
+    </tr>
+    <tr>
+        <td>487-21/9802</td>
+        <td>487 21/9802</td>
+        <td>487 21 9802</td>
+        <td>487 21 9802</td>
+    </tr>
+    <tr>
+        <td>586-92-5361</td>
+        <td>586 92 5361</td>
+        <td>586 92 5361</td>
+        <td>586 92 5361</td>
+    </tr>
+    <tr>
+        <td>694-30:6851</td>
+        <td>694 30 6851</td>
+        <td>694 30 6851</td>
+        <td>694 30 6851</td>
+    </tr>
+    <tr>
+        <td>733:17-4217</td>
+        <td>733 17 4217</td>
+        <td>733 17 4217</td>
+        <td>733 17 4217</td>
+    </tr>
+    <tr>
+        <td>831-59:5593</td>
+        <td>831 59 5593</td>
+        <td>831 59 5593</td>
+        <td>831 59 5593</td>
+    </tr>
+    <tr>
+        <td>873:68-9778</td>
+        <td>873 68 9778</td>
+        <td>873 68 9778</td>
+        <td>873 68 9778</td>
+    </tr>
+    <tr>
+        <td>876/99-5856</td>
+        <td>876/99 5856</td>
+        <td>876 99 5856</td>
+        <td>876 99 5856</td>
+    </tr>
+    <tr>
+        <td>884:65-2844</td>
+        <td>884 65 2844</td>
+        <td>884 65 2844</td>
+        <td>884 65 2844</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In case of <code class="docutils literal notranslate"><span class="pre">translate</span></code>, if we do not have characters for replacement, then those will be replaced with empty string. For example, <code class="docutils literal notranslate"><span class="pre">translate('+86</span> <span class="pre">(238)</span> <span class="pre">954-9649',</span> <span class="pre">'+()</span> <span class="pre">-',</span> <span class="pre">'0')</span></code>will result in <strong>0862389549649</strong>.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT translate(&#39;+86 (238) 954-9649&#39;, &#39;+() -&#39;, &#39;0&#39;) AS result
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>result</th>
+    </tr>
+    <tr>
+        <td>0862389549649</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+WITH phone_numbers AS (
+    SELECT &#39;+86 (238) 954-9649&#39; AS phone_number UNION
+    SELECT &#39;+420 (331) 900-5807&#39; UNION
+    SELECT &#39;+1 (320) 484-4495&#39; UNION
+    SELECT &#39;+45 (238) 961-9801&#39; UNION
+    SELECT &#39;+51 (123) 545-6543&#39; UNION
+    SELECT &#39;+63 (308) 354-2560&#39; UNION
+    SELECT &#39;+86 (433) 851-1260&#39; UNION
+    SELECT &#39;+63 (332) 705-0319&#39; UNION
+    SELECT &#39;+351 (147) 359-3767&#39; UNION
+    SELECT &#39;+57 (714) 557-0468&#39;
+) SELECT phone_number, 
+    translate(phone_number, &#39;+() -&#39;, &#39;&#39;) phone_number_int
+FROM phone_numbers
+ORDER BY phone_number
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>phone_number</th>
+        <th>phone_number_int</th>
+    </tr>
+    <tr>
+        <td>+1 (320) 484-4495</td>
+        <td>13204844495</td>
+    </tr>
+    <tr>
+        <td>+351 (147) 359-3767</td>
+        <td>3511473593767</td>
+    </tr>
+    <tr>
+        <td>+420 (331) 900-5807</td>
+        <td>4203319005807</td>
+    </tr>
+    <tr>
+        <td>+45 (238) 961-9801</td>
+        <td>452389619801</td>
+    </tr>
+    <tr>
+        <td>+51 (123) 545-6543</td>
+        <td>511235456543</td>
+    </tr>
+    <tr>
+        <td>+57 (714) 557-0468</td>
+        <td>577145570468</td>
+    </tr>
+    <tr>
+        <td>+63 (308) 354-2560</td>
+        <td>633083542560</td>
+    </tr>
+    <tr>
+        <td>+63 (332) 705-0319</td>
+        <td>633327050319</td>
+    </tr>
+    <tr>
+        <td>+86 (238) 954-9649</td>
+        <td>862389549649</td>
+    </tr>
+    <tr>
+        <td>+86 (433) 851-1260</td>
+        <td>864338511260</td>
+    </tr>
+</table></div></div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./06_predefined_functions"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="02_overview_of_predefined_functions.html" title="previous page">Overview of Pre-Defined Functions</a>
+    <a class='right-next' id="next-link" href="04_date_manipulation_functions.html" title="next page">Date Manipulation Functions</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>
