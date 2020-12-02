@@ -1,0 +1,1339 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Managing Constraints &#8212; My Jupyter Book</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Indexes on Tables" href="07_indexes_on_tables.html" />
+    <link rel="prev" title="Different Types of Constraints" href="05_different_types_of_constraints.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">My Jupyter Book</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mastering-postgresql.html">
+   Mastering Postgresql
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_getting_started/01_getting_started.html">
+   Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_dml_or_crud_operations/01_dml_or_crud_operations.html">
+   DML or CRUD Operations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_writing_basic_sql_queries/01_writing_basic_sql_queries.html">
+   Writing Basic SQL Queries
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="01_creating_tables_and_indexes.html">
+   Creating Tables and Indexes
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="02_data_definition_language.html">
+     DDL – Data Definition Language
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03_overview_of_data_types.html">
+     Overview of Data Types
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05_different_types_of_constraints.html">
+     Different Types of Constraints
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Managing Constraints
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="07_indexes_on_tables.html">
+     Indexes on Tables
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08_indexes_for_constraints.html">
+     Indexes for Constraints
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="09_overview_of_sequences.html">
+     Overview of Sequences
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="10_truncating_tables.html">
+     Truncating Tables
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="11_dropping_tables.html">
+     Dropping Tables
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="12_exercises_managing_db_objects.html">
+     Exercises - Managing Database Objects
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/04_creating_tables_and_indexes/06_managing_constraints.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/04_creating_tables_and_indexes/06_managing_constraints.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="managing-constraints">
+<h1>Managing Constraints<a class="headerlink" href="#managing-constraints" title="Permalink to this headline">¶</a></h1>
+<p>Let us understand how we can manage constraints.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/cSID6e5C_O0?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+</div></div>
+</div>
+<ul class="simple">
+<li><p>We can add constraints while creating the tables or after creating the tables.</p></li>
+<li><p>Constraints such as NOT NULL, CHECK, FOREIGN KEY are automatically dropped when we drop the table.</p></li>
+<li><p>Even PRIMARY KEY and UNIQUE constraints are dropped if they are not used to enforce constraints. When PRIMARY KEY or UNIQUE constraint is referred by child table then there can be errors.</p></li>
+<li><p>We can add constraints to existing table using <code class="docutils literal notranslate"><span class="pre">ALTER</span> <span class="pre">TABLE</span></code> with <code class="docutils literal notranslate"><span class="pre">ADD</span></code>. We can specify the name using <code class="docutils literal notranslate"><span class="pre">CONSTRAINT</span></code> keyword.</p></li>
+<li><p>Constraints from the table can be dropped using <code class="docutils literal notranslate"><span class="pre">ALTER</span> <span class="pre">TABLE</span></code> with <code class="docutils literal notranslate"><span class="pre">DROP</span></code>.</p></li>
+<li><p>Let us perform tasks to understand how we can use <code class="docutils literal notranslate"><span class="pre">ALTER</span> <span class="pre">TABLE</span></code> command to add or drop the constraints.</p>
+<ul>
+<li><p>Use the prior users table with out any constraints.</p></li>
+<li><p>Add primary key constraint on user_id.</p></li>
+<li><p>Add unique constraint on user_email_id.</p></li>
+<li><p>Add not null constraints user_email_validated, user_role, created_dt, last_updated_ts</p></li>
+<li><p>Add check constraint to user_role with ‘U’ and ‘A’ as accepted values.</p></li>
+<li><p>Add new table user_logins with below columns and establish foreign key relationship with users.</p>
+<ul>
+<li><p>user_login_id - <code class="docutils literal notranslate"><span class="pre">SERIAL</span></code> and <code class="docutils literal notranslate"><span class="pre">PRIMARY</span> <span class="pre">KEY</span></code></p></li>
+<li><p>user_id - <code class="docutils literal notranslate"><span class="pre">INT</span></code></p></li>
+<li><p>user_login_time - <code class="docutils literal notranslate"><span class="pre">TIMESTAMP</span></code> defaulted to <code class="docutils literal notranslate"><span class="pre">CURRENT_TIMESTAMP</span></code></p></li>
+<li><p><strong>user_logins</strong> is child table to <strong>users</strong> with many to one relationship. Hence, create <strong>foreign key</strong> between <strong>user_logins.user_id</strong> to <strong>users.user_id</strong>.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env: DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> DROP TABLE IF EXISTS users
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> DROP SEQUENCE IF EXISTS users_user_id_seq
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+CREATE TABLE users (
+    user_id INT,
+    user_first_name VARCHAR(30) NOT NULL,
+    user_last_name VARCHAR(30) NOT NULL,
+    user_email_id VARCHAR(50) NOT NULL,
+    user_email_validated BOOLEAN,
+    user_password VARCHAR(200),
+    user_role VARCHAR(1),
+    is_active BOOLEAN,
+    created_dt DATE DEFAULT CURRENT_DATE
+)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> CREATE SEQUENCE users_user_id_seq
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> ALTER TABLE users ALTER COLUMN user_id SET DEFAULT nextval(&#39;users_user_id_seq&#39;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+ALTER TABLE users
+    ALTER COLUMN user_email_validated SET DEFAULT FALSE,
+    ALTER COLUMN is_active SET DEFAULT FALSE
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+ALTER TABLE users
+    ALTER COLUMN user_role SET DATA TYPE CHAR(1),
+    ALTER COLUMN user_role SET DEFAULT &#39;U&#39;
+    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+ALTER TABLE users
+    ADD COLUMN last_updated_ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span> 
+
+SELECT table_catalog,
+    table_name,
+    constraint_type,
+    constraint_name 
+FROM information_schema.table_constraints 
+WHERE table_name = &#39;users&#39;
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+3 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>table_catalog</th>
+        <th>table_name</th>
+        <th>constraint_type</th>
+        <th>constraint_name</th>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>users</td>
+        <td>CHECK</td>
+        <td>2200_17328_2_not_null</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>users</td>
+        <td>CHECK</td>
+        <td>2200_17328_3_not_null</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>users</td>
+        <td>CHECK</td>
+        <td>2200_17328_4_not_null</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> ALTER TABLE users ADD PRIMARY KEY (user_id)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span> 
+
+SELECT table_catalog,
+    table_name,
+    constraint_type,
+    constraint_name 
+FROM information_schema.table_constraints 
+WHERE table_name = &#39;users&#39;
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+5 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>table_catalog</th>
+        <th>table_name</th>
+        <th>constraint_type</th>
+        <th>constraint_name</th>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>users</td>
+        <td>PRIMARY KEY</td>
+        <td>users_pkey</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>users</td>
+        <td>CHECK</td>
+        <td>2200_17328_1_not_null</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>users</td>
+        <td>CHECK</td>
+        <td>2200_17328_2_not_null</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>users</td>
+        <td>CHECK</td>
+        <td>2200_17328_3_not_null</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>users</td>
+        <td>CHECK</td>
+        <td>2200_17328_4_not_null</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> ALTER TABLE users DROP CONSTRAINT users_pkey
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span> 
+
+SELECT table_catalog,
+    table_name,
+    constraint_type,
+    constraint_name 
+FROM information_schema.table_constraints 
+WHERE table_name = &#39;users&#39;
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+4 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>table_catalog</th>
+        <th>table_name</th>
+        <th>constraint_type</th>
+        <th>constraint_name</th>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>users</td>
+        <td>CHECK</td>
+        <td>2200_17328_1_not_null</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>users</td>
+        <td>CHECK</td>
+        <td>2200_17328_2_not_null</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>users</td>
+        <td>CHECK</td>
+        <td>2200_17328_3_not_null</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>users</td>
+        <td>CHECK</td>
+        <td>2200_17328_4_not_null</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> ALTER TABLE users ADD CONSTRAINT users_pk PRIMARY KEY (user_id)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span> 
+
+SELECT table_catalog,
+    table_name,
+    constraint_type,
+    constraint_name 
+FROM information_schema.table_constraints 
+WHERE table_name = &#39;users&#39;
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+5 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>table_catalog</th>
+        <th>table_name</th>
+        <th>constraint_type</th>
+        <th>constraint_name</th>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>users</td>
+        <td>PRIMARY KEY</td>
+        <td>users_pk</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>users</td>
+        <td>CHECK</td>
+        <td>2200_17328_1_not_null</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>users</td>
+        <td>CHECK</td>
+        <td>2200_17328_2_not_null</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>users</td>
+        <td>CHECK</td>
+        <td>2200_17328_3_not_null</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>users</td>
+        <td>CHECK</td>
+        <td>2200_17328_4_not_null</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> ALTER TABLE users ADD UNIQUE (user_email_id)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span> 
+
+SELECT table_catalog,
+    table_name,
+    constraint_type,
+    constraint_name 
+FROM information_schema.table_constraints 
+WHERE table_name = &#39;users&#39;
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+6 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>table_catalog</th>
+        <th>table_name</th>
+        <th>constraint_type</th>
+        <th>constraint_name</th>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>users</td>
+        <td>PRIMARY KEY</td>
+        <td>users_pk</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>users</td>
+        <td>UNIQUE</td>
+        <td>users_user_email_id_key</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>users</td>
+        <td>CHECK</td>
+        <td>2200_17328_1_not_null</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>users</td>
+        <td>CHECK</td>
+        <td>2200_17328_2_not_null</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>users</td>
+        <td>CHECK</td>
+        <td>2200_17328_3_not_null</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>users</td>
+        <td>CHECK</td>
+        <td>2200_17328_4_not_null</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+ALTER TABLE users
+    ALTER COLUMN user_email_validated SET NOT NULL, 
+    ALTER COLUMN user_role SET NOT NULL, 
+    ALTER COLUMN created_dt SET NOT NULL, 
+    ALTER COLUMN last_updated_ts SET NOT NULL
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+ALTER TABLE users
+    ADD CHECK (user_role IN (&#39;U&#39;, &#39;A&#39;) )
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span> 
+
+SELECT table_catalog,
+    table_name,
+    constraint_type,
+    constraint_name 
+FROM information_schema.table_constraints 
+WHERE table_name = &#39;users&#39;
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+11 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>table_catalog</th>
+        <th>table_name</th>
+        <th>constraint_type</th>
+        <th>constraint_name</th>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>users</td>
+        <td>PRIMARY KEY</td>
+        <td>users_pk</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>users</td>
+        <td>UNIQUE</td>
+        <td>users_user_email_id_key</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>users</td>
+        <td>CHECK</td>
+        <td>users_user_role_check</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>users</td>
+        <td>CHECK</td>
+        <td>2200_17328_1_not_null</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>users</td>
+        <td>CHECK</td>
+        <td>2200_17328_2_not_null</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>users</td>
+        <td>CHECK</td>
+        <td>2200_17328_3_not_null</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>users</td>
+        <td>CHECK</td>
+        <td>2200_17328_4_not_null</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>users</td>
+        <td>CHECK</td>
+        <td>2200_17328_5_not_null</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>users</td>
+        <td>CHECK</td>
+        <td>2200_17328_7_not_null</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>users</td>
+        <td>CHECK</td>
+        <td>2200_17328_9_not_null</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>users</td>
+        <td>CHECK</td>
+        <td>2200_17328_10_not_null</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+CREATE TABLE user_logins (
+    user_login_id SERIAL PRIMARY KEY,
+    user_id INT,
+    user_login_ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    user_ip_addr VARCHAR(20)
+)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span> 
+
+SELECT table_catalog,
+    table_name,
+    constraint_type,
+    constraint_name 
+FROM information_schema.table_constraints 
+WHERE table_name = &#39;user_logins&#39;
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+2 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>table_catalog</th>
+        <th>table_name</th>
+        <th>constraint_type</th>
+        <th>constraint_name</th>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>user_logins</td>
+        <td>PRIMARY KEY</td>
+        <td>user_logins_pkey</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>user_logins</td>
+        <td>CHECK</td>
+        <td>2200_17351_1_not_null</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+ALTER TABLE user_logins
+    ADD FOREIGN KEY (user_id)
+    REFERENCES users(user_id)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span> 
+
+SELECT table_catalog,
+    table_name,
+    constraint_type,
+    constraint_name 
+FROM information_schema.table_constraints 
+WHERE table_name = &#39;user_logins&#39;
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+3 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>table_catalog</th>
+        <th>table_name</th>
+        <th>constraint_type</th>
+        <th>constraint_name</th>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>user_logins</td>
+        <td>PRIMARY KEY</td>
+        <td>user_logins_pkey</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>user_logins</td>
+        <td>FOREIGN KEY</td>
+        <td>user_logins_user_id_fkey</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>user_logins</td>
+        <td>CHECK</td>
+        <td>2200_17351_1_not_null</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="admonition error">
+<p class="admonition-title">Error</p>
+<p>This will fail as there is a child table user_logins for users table.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+DROP TABLE users
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">DependentObjectsStillExist</span><span class="g g-Whitespace">                </span>Traceback (most recent call last)
+<span class="nn">/opt/anaconda3/envs/beakerx/lib/python3.6/site-packages/sqlalchemy/engine/base.py</span> in <span class="ni">_execute_context</span><span class="nt">(self, dialect, constructor, statement, parameters, *args)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1276</span>                     <span class="bp">self</span><span class="o">.</span><span class="n">dialect</span><span class="o">.</span><span class="n">do_execute</span><span class="p">(</span>
+<span class="ne">-&gt; </span><span class="mi">1277</span>                         <span class="n">cursor</span><span class="p">,</span> <span class="n">statement</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">context</span>
+<span class="g g-Whitespace">   </span><span class="mi">1278</span>                     <span class="p">)</span>
+
+<span class="nn">/opt/anaconda3/envs/beakerx/lib/python3.6/site-packages/sqlalchemy/engine/default.py</span> in <span class="ni">do_execute</span><span class="nt">(self, cursor, statement, parameters, context)</span>
+<span class="g g-Whitespace">    </span><span class="mi">592</span>     <span class="k">def</span> <span class="nf">do_execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cursor</span><span class="p">,</span> <span class="n">statement</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">593</span>         <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">statement</span><span class="p">,</span> <span class="n">parameters</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">594</span> 
+
+<span class="ne">DependentObjectsStillExist</span>: cannot drop table users because other objects depend on it
+<span class="ne">DETAIL</span>:  constraint user_logins_user_id_fkey on table user_logins depends on table users
+<span class="ne">HINT</span>:  Use DROP ... CASCADE to drop the dependent objects too.
+
+
+<span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
+
+<span class="ne">InternalError</span><span class="g g-Whitespace">                             </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">60</span><span class="o">-</span><span class="n">a1fbf34721c3</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">run_cell_magic</span><span class="p">(</span><span class="s1">&#39;sql&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">DROP TABLE users</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="nn">/opt/anaconda3/envs/beakerx/lib/python3.6/site-packages/IPython/core/interactiveshell.py</span> in <span class="ni">run_cell_magic</span><span class="nt">(self, magic_name, line, cell)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2369</span>             <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">builtin_trap</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">2370</span>                 <span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="n">magic_arg_s</span><span class="p">,</span> <span class="n">cell</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">2371</span>                 <span class="n">result</span> <span class="o">=</span> <span class="n">fn</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2372</span>             <span class="k">return</span> <span class="n">result</span>
+<span class="g g-Whitespace">   </span><span class="mi">2373</span> 
+
+<span class="nn">&lt;decorator-gen-135&gt;</span> in <span class="ni">execute</span><span class="nt">(self, line, cell, local_ns)</span>
+
+<span class="nn">/opt/anaconda3/envs/beakerx/lib/python3.6/site-packages/IPython/core/magic.py</span> in <span class="ni">&lt;lambda&gt;</span><span class="nt">(f, *a, **k)</span>
+<span class="g g-Whitespace">    </span><span class="mi">185</span>     <span class="c1"># but it&#39;s overkill for just that one bit of state.</span>
+<span class="g g-Whitespace">    </span><span class="mi">186</span>     <span class="k">def</span> <span class="nf">magic_deco</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">187</span>         <span class="n">call</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">f</span><span class="p">,</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">**</span><span class="n">k</span><span class="p">:</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">**</span><span class="n">k</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">188</span> 
+<span class="g g-Whitespace">    </span><span class="mi">189</span>         <span class="k">if</span> <span class="n">callable</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
+
+<span class="nn">&lt;decorator-gen-134&gt;</span> in <span class="ni">execute</span><span class="nt">(self, line, cell, local_ns)</span>
+
+<span class="nn">/opt/anaconda3/envs/beakerx/lib/python3.6/site-packages/IPython/core/magic.py</span> in <span class="ni">&lt;lambda&gt;</span><span class="nt">(f, *a, **k)</span>
+<span class="g g-Whitespace">    </span><span class="mi">185</span>     <span class="c1"># but it&#39;s overkill for just that one bit of state.</span>
+<span class="g g-Whitespace">    </span><span class="mi">186</span>     <span class="k">def</span> <span class="nf">magic_deco</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">187</span>         <span class="n">call</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">f</span><span class="p">,</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">**</span><span class="n">k</span><span class="p">:</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">**</span><span class="n">k</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">188</span> 
+<span class="g g-Whitespace">    </span><span class="mi">189</span>         <span class="k">if</span> <span class="n">callable</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
+
+<span class="nn">/opt/anaconda3/envs/beakerx/lib/python3.6/site-packages/sql/magic.py</span> in <span class="ni">execute</span><span class="nt">(self, line, cell, local_ns)</span>
+<span class="g g-Whitespace">    </span><span class="mi">215</span> 
+<span class="g g-Whitespace">    </span><span class="mi">216</span>         <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">217</span>             <span class="n">result</span> <span class="o">=</span> <span class="n">sql</span><span class="o">.</span><span class="n">run</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span> <span class="n">parsed</span><span class="p">[</span><span class="s2">&quot;sql&quot;</span><span class="p">],</span> <span class="bp">self</span><span class="p">,</span> <span class="n">user_ns</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">218</span> 
+<span class="g g-Whitespace">    </span><span class="mi">219</span>             <span class="k">if</span> <span class="p">(</span>
+
+<span class="nn">/opt/anaconda3/envs/beakerx/lib/python3.6/site-packages/sql/run.py</span> in <span class="ni">run</span><span class="nt">(conn, sql, config, user_namespace)</span>
+<span class="g g-Whitespace">    </span><span class="mi">365</span>             <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">366</span>                 <span class="n">txt</span> <span class="o">=</span> <span class="n">sqlalchemy</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">statement</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">367</span>                 <span class="n">result</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">txt</span><span class="p">,</span> <span class="n">user_namespace</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">368</span>             <span class="n">_commit</span><span class="p">(</span><span class="n">conn</span><span class="o">=</span><span class="n">conn</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">369</span>             <span class="k">if</span> <span class="n">result</span> <span class="ow">and</span> <span class="n">config</span><span class="o">.</span><span class="n">feedback</span><span class="p">:</span>
+
+<span class="nn">/opt/anaconda3/envs/beakerx/lib/python3.6/site-packages/sqlalchemy/engine/base.py</span> in <span class="ni">execute</span><span class="nt">(self, object_, *multiparams, **params)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1009</span>             <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1010</span>         <span class="k">else</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1011</span>             <span class="k">return</span> <span class="n">meth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">multiparams</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1012</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1013</span>     <span class="k">def</span> <span class="nf">_execute_function</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">multiparams</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+
+<span class="nn">/opt/anaconda3/envs/beakerx/lib/python3.6/site-packages/sqlalchemy/sql/elements.py</span> in <span class="ni">_execute_on_connection</span><span class="nt">(self, connection, multiparams, params)</span>
+<span class="g g-Whitespace">    </span><span class="mi">296</span>     <span class="k">def</span> <span class="nf">_execute_on_connection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connection</span><span class="p">,</span> <span class="n">multiparams</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">297</span>         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">supports_execution</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">298</span>             <span class="k">return</span> <span class="n">connection</span><span class="o">.</span><span class="n">_execute_clauseelement</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">multiparams</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">299</span>         <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">300</span>             <span class="k">raise</span> <span class="n">exc</span><span class="o">.</span><span class="n">ObjectNotExecutableError</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+<span class="nn">/opt/anaconda3/envs/beakerx/lib/python3.6/site-packages/sqlalchemy/engine/base.py</span> in <span class="ni">_execute_clauseelement</span><span class="nt">(self, elem, multiparams, params)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1128</span>             <span class="n">distilled_params</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1129</span>             <span class="n">compiled_sql</span><span class="p">,</span>
+<span class="ne">-&gt; </span><span class="mi">1130</span>             <span class="n">distilled_params</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1131</span>         <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1132</span>         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_has_events</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="o">.</span><span class="n">_has_events</span><span class="p">:</span>
+
+<span class="nn">/opt/anaconda3/envs/beakerx/lib/python3.6/site-packages/sqlalchemy/engine/base.py</span> in <span class="ni">_execute_context</span><span class="nt">(self, dialect, constructor, statement, parameters, *args)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1315</span>         <span class="k">except</span> <span class="ne">BaseException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1316</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_handle_dbapi_exception</span><span class="p">(</span>
+<span class="ne">-&gt; </span><span class="mi">1317</span>                 <span class="n">e</span><span class="p">,</span> <span class="n">statement</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">cursor</span><span class="p">,</span> <span class="n">context</span>
+<span class="g g-Whitespace">   </span><span class="mi">1318</span>             <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1319</span> 
+
+<span class="nn">/opt/anaconda3/envs/beakerx/lib/python3.6/site-packages/sqlalchemy/engine/base.py</span> in <span class="ni">_handle_dbapi_exception</span><span class="nt">(self, e, statement, parameters, cursor, context)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1509</span>             <span class="k">elif</span> <span class="n">should_wrap</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1510</span>                 <span class="n">util</span><span class="o">.</span><span class="n">raise_</span><span class="p">(</span>
+<span class="ne">-&gt; </span><span class="mi">1511</span>                     <span class="n">sqlalchemy_exception</span><span class="p">,</span> <span class="n">with_traceback</span><span class="o">=</span><span class="n">exc_info</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">from_</span><span class="o">=</span><span class="n">e</span>
+<span class="g g-Whitespace">   </span><span class="mi">1512</span>                 <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1513</span>             <span class="k">else</span><span class="p">:</span>
+
+<span class="nn">/opt/anaconda3/envs/beakerx/lib/python3.6/site-packages/sqlalchemy/util/compat.py</span> in <span class="ni">raise_</span><span class="nt">(***failed resolving arguments***)</span>
+<span class="g g-Whitespace">    </span><span class="mi">180</span> 
+<span class="g g-Whitespace">    </span><span class="mi">181</span>         <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">182</span>             <span class="k">raise</span> <span class="n">exception</span>
+<span class="g g-Whitespace">    </span><span class="mi">183</span>         <span class="k">finally</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">184</span>             <span class="c1"># credit to</span>
+
+<span class="nn">/opt/anaconda3/envs/beakerx/lib/python3.6/site-packages/sqlalchemy/engine/base.py</span> in <span class="ni">_execute_context</span><span class="nt">(self, dialect, constructor, statement, parameters, *args)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1275</span>                 <span class="k">if</span> <span class="ow">not</span> <span class="n">evt_handled</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1276</span>                     <span class="bp">self</span><span class="o">.</span><span class="n">dialect</span><span class="o">.</span><span class="n">do_execute</span><span class="p">(</span>
+<span class="ne">-&gt; </span><span class="mi">1277</span>                         <span class="n">cursor</span><span class="p">,</span> <span class="n">statement</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">context</span>
+<span class="g g-Whitespace">   </span><span class="mi">1278</span>                     <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1279</span> 
+
+<span class="nn">/opt/anaconda3/envs/beakerx/lib/python3.6/site-packages/sqlalchemy/engine/default.py</span> in <span class="ni">do_execute</span><span class="nt">(self, cursor, statement, parameters, context)</span>
+<span class="g g-Whitespace">    </span><span class="mi">591</span> 
+<span class="g g-Whitespace">    </span><span class="mi">592</span>     <span class="k">def</span> <span class="nf">do_execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cursor</span><span class="p">,</span> <span class="n">statement</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">593</span>         <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">statement</span><span class="p">,</span> <span class="n">parameters</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">594</span> 
+<span class="g g-Whitespace">    </span><span class="mi">595</span>     <span class="k">def</span> <span class="nf">do_execute_no_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cursor</span><span class="p">,</span> <span class="n">statement</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+<span class="ne">InternalError</span>: (psycopg2.errors.DependentObjectsStillExist) cannot drop table users because other objects depend on it
+<span class="ne">DETAIL</span>:  constraint user_logins_user_id_fkey on table user_logins depends on table users
+<span class="ne">HINT</span>:  Use DROP ... CASCADE to drop the dependent objects too.
+
+<span class="p">[</span><span class="n">SQL</span><span class="p">:</span> <span class="n">DROP</span> <span class="n">TABLE</span> <span class="n">users</span><span class="p">]</span>
+<span class="p">(</span><span class="n">Background</span> <span class="n">on</span> <span class="n">this</span> <span class="n">error</span> <span class="n">at</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">sqlalche</span><span class="o">.</span><span class="n">me</span><span class="o">/</span><span class="n">e</span><span class="o">/</span><span class="mi">13</span><span class="o">/</span><span class="mi">2</span><span class="n">j85</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can use <code class="docutils literal notranslate"><span class="pre">CASCADE</span></code> to drop foreign key constraints from child tables before dropping the table users.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+DROP TABLE users CASCADE
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span> 
+
+SELECT table_catalog,
+    table_name,
+    constraint_type,
+    constraint_name 
+FROM information_schema.table_constraints 
+WHERE table_name = &#39;user_logins&#39;
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+2 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>table_catalog</th>
+        <th>table_name</th>
+        <th>constraint_type</th>
+        <th>constraint_name</th>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>user_logins</td>
+        <td>PRIMARY KEY</td>
+        <td>user_logins_pkey</td>
+    </tr>
+    <tr>
+        <td>itversity_retail_db</td>
+        <td>user_logins</td>
+        <td>CHECK</td>
+        <td>2200_17351_1_not_null</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> DROP TABLE IF EXISTS user_logins
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./04_creating_tables_and_indexes"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="05_different_types_of_constraints.html" title="previous page">Different Types of Constraints</a>
+    <a class='right-next' id="next-link" href="07_indexes_on_tables.html" title="next page">Indexes on Tables</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

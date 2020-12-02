@@ -1,0 +1,460 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercises - Managing Database Objects &#8212; My Jupyter Book</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Dropping Tables" href="11_dropping_tables.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">My Jupyter Book</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mastering-postgresql.html">
+   Mastering Postgresql
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_getting_started/01_getting_started.html">
+   Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_dml_or_crud_operations/01_dml_or_crud_operations.html">
+   DML or CRUD Operations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_writing_basic_sql_queries/01_writing_basic_sql_queries.html">
+   Writing Basic SQL Queries
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="01_creating_tables_and_indexes.html">
+   Creating Tables and Indexes
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="02_data_definition_language.html">
+     DDL – Data Definition Language
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03_overview_of_data_types.html">
+     Overview of Data Types
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05_different_types_of_constraints.html">
+     Different Types of Constraints
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06_managing_constraints.html">
+     Managing Constraints
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="07_indexes_on_tables.html">
+     Indexes on Tables
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08_indexes_for_constraints.html">
+     Indexes for Constraints
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="09_overview_of_sequences.html">
+     Overview of Sequences
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="10_truncating_tables.html">
+     Truncating Tables
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="11_dropping_tables.html">
+     Dropping Tables
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Exercises - Managing Database Objects
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/04_creating_tables_and_indexes/12_exercises_managing_db_objects.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/04_creating_tables_and_indexes/12_exercises_managing_db_objects.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-1">
+   Exercise 1
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-2">
+   Exercise 2
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-3">
+   Exercise 3
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-4">
+   Exercise 4
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-5">
+   Exercise 5
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="exercises-managing-database-objects">
+<h1>Exercises - Managing Database Objects<a class="headerlink" href="#exercises-managing-database-objects" title="Permalink to this headline">¶</a></h1>
+<p>This exercise is primarily to assess your capabilities related to put all important DDL concepts in practice by coming up with solution for a typical data migration problem from one database (mysql) to another (postgres).</p>
+<ul class="simple">
+<li><p>Here are the high level steps for database migration from one type of database to another type of database.</p>
+<ul>
+<li><p>Extract DDL Statements from source database (MySQL).</p></li>
+<li><p>Extract the data in the form of delimited files and ship them to target database.</p></li>
+<li><p>Refactor scripts as per target database (Postgres).</p></li>
+<li><p>Create tables in the target database.</p></li>
+<li><p>Execute pre-migration steps (disable constraints, drop indexes etc).</p></li>
+<li><p>Load the data using native utilities.</p></li>
+<li><p>Execute post-migration steps (enable constraints, create or rebuild indexes, reset sequences etc).</p></li>
+<li><p>Sanity checks with basic queries.</p></li>
+<li><p>Make sure all the impacted applications are validated thoroughly.</p></li>
+</ul>
+</li>
+<li><p>We have scripts and data set available in our GitHub repository. If you are using our environment the repository is already cloned under <strong>/data/retail_db</strong>.</p></li>
+<li><p>It have scripts to create tables with primary keys. Those scripts are generated from MySQL tables and refactored for Postgres.</p>
+<ul>
+<li><p>Script to create tables: <strong>create_db_tables_pg.sql</strong></p></li>
+<li><p>Load data into tables: <strong>load_db_tables_pg.sql</strong></p></li>
+</ul>
+</li>
+<li><p>Here are the steps you need to perform to take care of this exercise.</p>
+<ul>
+<li><p>Create tables</p></li>
+<li><p>Load data</p></li>
+<li><p>All the tables have surrogate primary keys. Here are the details.</p>
+<ul>
+<li><p>orders.order_id</p></li>
+<li><p>order_items.order_item_id</p></li>
+<li><p>customers.customer_id</p></li>
+<li><p>products.product_id</p></li>
+<li><p>categories.category_id</p></li>
+<li><p>departments.department_id</p></li>
+</ul>
+</li>
+<li><p>Get the maximum value from all surrogate primary key fields.</p></li>
+<li><p>Create sequences for all surrogate primary key fields using maximum value. Make sure to use standard naming conventions for sequences.</p></li>
+<li><p>Ensure sequences are mapped to the surrogate primary key fields.</p></li>
+<li><p>Create foreign key constraints based up on this information.</p>
+<ul>
+<li><p>orders.order_customer_id to customers.customer_id</p></li>
+<li><p>order_items.order_item_order_id to orders.order_id</p></li>
+<li><p>order_items.order_item_product_id to products.product_id</p></li>
+<li><p>products.product_category_id to categories.category_id</p></li>
+<li><p>categories.category_department_id to departments.department_id</p></li>
+</ul>
+</li>
+<li><p>Insert few records in <code class="docutils literal notranslate"><span class="pre">departments</span></code> to ensure that sequence generated numbers are used for <code class="docutils literal notranslate"><span class="pre">department_id</span></code>.</p></li>
+</ul>
+</li>
+<li><p>Here are the commands to launch <code class="docutils literal notranslate"><span class="pre">psql</span></code> and run scripts to create tables as well as load data into tables.</p></li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span>psql -U itversity_retail_user \
+  -h localhost \
+  -p 5432 \
+  -d itversity_retail_db \
+  -W
+
+\i /data/retail_db/create_db_tables_pg.sql
+
+\i /data/retail_db/load_db_tables_pg.sql
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>We use this approach of creating tables, loading data and then adding constraints as well as resetting sequences for large volume data migrations from one database to another database.</p></li>
+<li><p>Here are the commands or queries you need to come up with to solve this problem.</p></li>
+</ul>
+<div class="section" id="exercise-1">
+<h2>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h2>
+<p>Queries to get maximum values from surrogate primary keys.</p>
+</div>
+<div class="section" id="exercise-2">
+<h2>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this headline">¶</a></h2>
+<p>Commands to add sequences with <code class="docutils literal notranslate"><span class="pre">START</span> <span class="pre">WITH</span></code> pointing to the maximum value for the corresponding surrogate primary key fields. Make sure to use meaningful names to sequences <strong>TABLENAME_SURROGATEFIELD_seq</strong> (example: users_user_id_seq for users.user_id)</p>
+</div>
+<div class="section" id="exercise-3">
+<h2>Exercise 3<a class="headerlink" href="#exercise-3" title="Permalink to this headline">¶</a></h2>
+<p>Commands to alter sequences to bind them to corresponding surrogate primary key fields.</p>
+</div>
+<div class="section" id="exercise-4">
+<h2>Exercise 4<a class="headerlink" href="#exercise-4" title="Permalink to this headline">¶</a></h2>
+<p>Add Foreign Key constraints to the tables.</p>
+<ul class="simple">
+<li><p>Validate if the tables have data violataing foreign key constraints (Hint: You can use left outer join to find rows in child table but not in parent table)</p></li>
+<li><p>Delete the data which violates the parent child relationship or foreign key relationship.</p></li>
+<li><p>Alter tables to add foreign keys as specified.</p></li>
+<li><p>Here are the relationships for your reference.</p>
+<ul>
+<li><p>orders.order_customer_id to customers.customer_id</p></li>
+<li><p>order_items.order_item_order_id to orders.order_id</p></li>
+<li><p>order_items.order_item_product_id to products.product_id</p></li>
+<li><p>products.product_category_id to categories.category_id</p></li>
+<li><p>categories.category_department_id to departments.department_id</p></li>
+</ul>
+</li>
+<li><p>Solution should contain the following:</p>
+<ul>
+<li><p>Queries for validation</p></li>
+<li><p>Delete statements to delete the data</p></li>
+<li><p>Commands to add foreign keys to the tables.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="exercise-5">
+<h2>Exercise 5<a class="headerlink" href="#exercise-5" title="Permalink to this headline">¶</a></h2>
+<p>Queries to validate whether constraints are created or not. You can come up with queries against <code class="docutils literal notranslate"><span class="pre">information_schema</span></code> tables such as <code class="docutils literal notranslate"><span class="pre">columns</span></code>, <code class="docutils literal notranslate"><span class="pre">sequences</span></code> etc.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./04_creating_tables_and_indexes"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="11_dropping_tables.html" title="previous page">Dropping Tables</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>
