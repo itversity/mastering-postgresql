@@ -1,4 +1,15 @@
-exclude_patterns: [_build, README.md, "**.ipynb_checkpoints"]
+title                        : Mastering SQL using Postgresql
+author                       : Durga Gadiraju
+copyright                    : "ITVersity, Inc." 
+
+repository:
+  url                        : https://github.com/itversity/mastering-postgresql
+html:
+  use_repository_button      : true
+  use_issues_button          : true
+  use_edit_page_button       : true
+
+exclude_patterns             : [_build, README.md, "**.ipynb_checkpoints"]
 
 execute:
-  execute_notebooks         : off
+  execute_notebooks          : off
