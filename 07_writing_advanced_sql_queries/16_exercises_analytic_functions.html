@@ -895,6 +895,7 @@ LIMIT 10
 <p>Get top 3 products sold in the month of 2014 January by revenue.</p>
 <ul class="simple">
 <li><p>Use retail database tables such as orders, order_items and products.</p></li>
+<li><p>Consider only those orders which are either in <strong>COMPLETE</strong> or <strong>CLOSED</strong> status.</p></li>
 <li><p>Highest revenue generating product should come at top.</p></li>
 <li><p>Output should contain product_id, product_name, revenue, product_rank. <strong>revenue</strong> and <strong>product_rank</strong> are derived fields.</p></li>
 <li><p>Data should be sorted in descending order by revenue.</p></li>
@@ -925,43 +926,13 @@ LIMIT 10
 </tr>
 </tbody>
 </table>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env: DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
-
-SELECT p.product_id,
-    p.product_name,
-    round(sum(oi.order_item_subtotal)::numeric, 2) AS revenue
-FROM orders o JOIN order_items oi
-</pre></div>
-</div>
-</div>
-</div>
 </div>
 <div class="section" id="exercise-5">
 <h2>Exercise 5<a class="headerlink" href="#exercise-5" title="Permalink to this headline">¶</a></h2>
 <p>Get top 3 products sold in the month of 2014 January under selected categories by revenue. The categories are <strong>Cardio Equipment</strong> and <strong>Strength Training</strong>.</p>
 <ul class="simple">
 <li><p>Use retail database tables such as orders, order_items, products as well as categories.</p></li>
+<li><p>Consider only those orders which are either in COMPLETE or CLOSED status.</p></li>
 <li><p>Highest revenue generating product should come at top.</p></li>
 <li><p>Output should contain category_id, category_name, product_id, product_name, revenue, product_rank. revenue and product_rank are derived fields.</p></li>
 <li><p>Data should be sorted in ascending order by category_id and descending order by revenue.</p></li>
