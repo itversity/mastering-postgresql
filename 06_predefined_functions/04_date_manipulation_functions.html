@@ -310,11 +310,6 @@
   <div class="section" id="date-manipulation-functions">
 <h1>Date Manipulation Functions<a class="headerlink" href="#date-manipulation-functions" title="Permalink to this headline">¶</a></h1>
 <p>Let us go through some of the important date manipulation functions.</p>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/7jgBUN9Mtww?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
-</div></div>
-</div>
 <ul class="simple">
 <li><p>Getting Current Date and Timestamp</p></li>
 <li><p>Date Arithmetic using <code class="docutils literal notranslate"><span class="pre">INTERVAL</span></code> and <code class="docutils literal notranslate"><span class="pre">-</span></code> operator</p></li>
@@ -325,11 +320,6 @@
 <div class="section" id="getting-current-date-and-timestamp">
 <h2>Getting Current Date and Timestamp<a class="headerlink" href="#getting-current-date-and-timestamp" title="Permalink to this headline">¶</a></h2>
 <p>Let us understand how to get the details about current or today’s date as well as current timestamp.</p>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/TD7kE_lHD4o?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
-</div></div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
@@ -441,11 +431,6 @@ SELECT substring(current_date::varchar, 1, 4) AS current_date
 <div class="section" id="date-arithmetic">
 <h2>Date Arithmetic<a class="headerlink" href="#date-arithmetic" title="Permalink to this headline">¶</a></h2>
 <p>Let us understand how to perform arithmetic on dates or timestamps.</p>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/kVUCr38f6wU?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
-</div></div>
-</div>
 <ul class="simple">
 <li><p>We can add or subtract days or months or years from date or timestamp by using special operator called as <code class="docutils literal notranslate"><span class="pre">INTERVAL</span></code>.</p></li>
 <li><p>We can also add or subtract hours, minutes, seconds etc from date or timestamp using <code class="docutils literal notranslate"><span class="pre">INTERVAL</span></code>.</p></li>
@@ -811,11 +796,6 @@ SELECT current_timestamp - &#39;2019-03-30&#39;::date AS result
 <div class="section" id="beginning-date-or-time-date-trunc">
 <h2>Beginning Date or Time - date_trunc<a class="headerlink" href="#beginning-date-or-time-date-trunc" title="Permalink to this headline">¶</a></h2>
 <p>Let us understand how to use <code class="docutils literal notranslate"><span class="pre">date_trunc</span></code> on dates or timestamps and get beginning date or time.</p>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/Gc7-5Da2jlA?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
-</div></div>
-</div>
 <ul class="simple">
 <li><p>We can use <strong>MONTH</strong> to get beginning date of the month.</p></li>
 <li><p><strong>YEAR</strong> can be used to get begining date of the year.</p></li>
@@ -959,11 +939,6 @@ SELECT date_trunc(&#39;HOUR&#39;, current_timestamp) AS hour_beginning
 <div class="section" id="extracting-information-using-to-char">
 <h2>Extracting information using to_char<a class="headerlink" href="#extracting-information-using-to-char" title="Permalink to this headline">¶</a></h2>
 <p>Let us understand how to use <code class="docutils literal notranslate"><span class="pre">to_char</span></code> to extract information from date or timestamp.</p>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/vdZhZYPESCs?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
-</div></div>
-</div>
 <p>Here is how we can get date related information such as year, month, day etc from date or timestamp.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1573,11 +1548,6 @@ SELECT to_char(current_timestamp, &#39;yyyy/MM/dd&#39;) AS current_date
 <div class="section" id="extracting-information-extract">
 <h2>Extracting information - extract<a class="headerlink" href="#extracting-information-extract" title="Permalink to this headline">¶</a></h2>
 <p>We can get year, month, day etc from date or timestamp using <code class="docutils literal notranslate"><span class="pre">extract</span></code> function. For almost all these scenarios such as getting year, month, day etc we can use <code class="docutils literal notranslate"><span class="pre">to_char</span></code> as well.</p>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/oD_BgxeW9JA?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
-</div></div>
-</div>
 <ul class="simple">
 <li><p>Let us see the usage of <code class="docutils literal notranslate"><span class="pre">extract</span></code> to get information such as year, quarter, month, week, day, hour etc.</p></li>
 <li><p>We can also use <code class="docutils literal notranslate"><span class="pre">date_part</span></code> in place of <code class="docutils literal notranslate"><span class="pre">extract</span></code>. However there is subtle difference between them with respect to the syntax.</p></li>
@@ -1941,11 +1911,6 @@ SELECT extract(milliseconds FROM current_timestamp) AS millis
 <div class="section" id="dealing-with-unix-timestamp">
 <h2>Dealing with Unix Timestamp<a class="headerlink" href="#dealing-with-unix-timestamp" title="Permalink to this headline">¶</a></h2>
 <p>Let us go through the functions that can be used to deal with Unix Timestamp.</p>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/8I7S1PuJEO0?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
-</div></div>
-</div>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">extract</span></code> with <code class="docutils literal notranslate"><span class="pre">epoch</span></code> can be used to convert Unix epoch to regular timestamp. We can also use <code class="docutils literal notranslate"><span class="pre">date_part</span></code>;</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">to_timestamp</span></code> can be used to convert timestamp to Unix epoch.</p></li>
