@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>&lt;no title&gt; &#8212; Mastering SQL using Postgresql</title>
+    <title>DML or CRUD Operations &#8212; Mastering SQL using Postgresql</title>
     
   <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -95,120 +95,72 @@
   </a>
  </li>
 </ul>
-<ul class="nav sidenav_l1">
+<ul class="current nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../01_getting_started/01_getting_started.html">
    Getting Started
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="02_normalization_principles.html">
-   Normalization Principles
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   DML or CRUD Operations
   </a>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02_normalization_principles.html">
+     Normalization Principles
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03_tables_as_relations.html">
+     Tables as Relations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04_overview_of_database_operations.html">
+     Database Operations - Overview
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05_crud_operations.html">
+     CRUD Operations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06_creating_table.html">
+     Creating Table
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="07_inserting_data.html">
+     Inserting Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08_updating_data.html">
+     Updating Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="09_deleting_data.html">
+     Deleting Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="10_overview_of_transactions.html">
+     Overview of Transactions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="11_exercises_database_operations.html">
+     Exercises - Database Operations
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="03_tables_as_relations.html">
-   Tables as Relations
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="04_overview_of_database_operations.html">
-   Database Operations - Overview
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="05_crud_operations.html">
-   CRUD Operations
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="06_creating_table.html">
-   Creating Table
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="07_inserting_data.html">
-   Inserting Data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="08_updating_data.html">
-   Updating Data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="09_deleting_data.html">
-   Deleting Data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="10_overview_of_transactions.html">
-   Overview of Transactions
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="11_exercises_database_operations.html">
-   Exercises - Database Operations
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../03_writing_basic_sql_queries/02_standard_transformations.html">
-   Standard Transformations
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../03_writing_basic_sql_queries/03_overview_of_data_model.html">
-   Overview of Data Model
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../03_writing_basic_sql_queries/04_define_problem_statement.html">
-   Define Problem Statement – Daily Product Revenue
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../03_writing_basic_sql_queries/05_preparing_tables.html">
-   Preparing Tables
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../03_writing_basic_sql_queries/06_selecting_or_projecting_data.html">
-   Selecting or Projecting Data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../03_writing_basic_sql_queries/07_filtering_data.html">
-   Filtering Data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../03_writing_basic_sql_queries/08_joining_tables_inner.html">
-   Joining Tables – Inner
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../03_writing_basic_sql_queries/09_joining_tables_outer.html">
-   Joining Tables - Outer
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../03_writing_basic_sql_queries/10_performing_aggregations.html">
-   Performing Aggregations
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../03_writing_basic_sql_queries/11_sorting_data.html">
-   Sorting Data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../03_writing_basic_sql_queries/12_solution_daily_product_revenue.html">
-   Solution – Daily Product Revenue
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../03_writing_basic_sql_queries/13_exercises_basic_sql_queries.html">
-   Exercises - Basic SQL Queries
+  <a class="reference internal" href="../03_writing_basic_sql_queries/01_writing_basic_sql_queries.html">
+   Writing Basic SQL Queries
   </a>
  </li>
  <li class="toctree-l1">
@@ -345,7 +297,9 @@
         
               <div>
                 
-  <p>Let us understand how to perform CRUD operations using Postgresql.</p>
+  <div class="section" id="dml-or-crud-operations">
+<h1>DML or CRUD Operations<a class="headerlink" href="#dml-or-crud-operations" title="Permalink to this headline">¶</a></h1>
+<p>Let us understand how to perform CRUD operations using Postgresql.</p>
 <ul class="simple">
 <li><p>Normalization Principles</p></li>
 <li><p>Tables as Relations</p></li>
@@ -369,6 +323,7 @@
 <li><p>Self evaluate whether you gain enough skills related to performing CRUD or DML operations or not using exercieses</p></li>
 </ul>
 <div class="toctree-wrapper compound">
+</div>
 </div>
 
     <script type="text/x-thebe-config">
