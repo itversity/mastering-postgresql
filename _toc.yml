@@ -44,7 +44,7 @@
   sections:
     - file: 04_creating_tables_and_indexes/02_data_definition_language
     - file: 04_creating_tables_and_indexes/03_overview_of_data_types
-    - file: 04_creating_tables_and_indexes/04_define_problem_statement
+    - file: 04_creating_tables_and_indexes/04_adding_or_modifying_columns
     - file: 04_creating_tables_and_indexes/05_different_types_of_constraints
     - file: 04_creating_tables_and_indexes/06_managing_constraints
     - file: 04_creating_tables_and_indexes/07_indexes_on_tables
