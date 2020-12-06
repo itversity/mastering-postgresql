@@ -1,0 +1,625 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Getting Started &#8212; Mastering SQL using Postgresql</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pdf.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Mastering SQL using Postgresql</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mastering-sql-using-postgresql.html">
+   Mastering SQL using Postgresql
+  </a>
+ </li>
+</ul>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mastering_postgresql_exercises.html">
+   Exercises - Mastering Postgresql
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_getting_started/01_getting_started.html">
+   Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_dml_or_crud_operations/01_dml_or_crud_operations.html">
+   DML or CRUD Operations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_writing_basic_sql_queries/01_writing_basic_sql_queries.html">
+   Writing Basic SQL Queries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_creating_tables_and_indexes/01_creating_tables_and_indexes.html">
+   Creating Tables and Indexes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05_partitioning_tables_and_indexes/01_partitioning_tables_and_indexes.html">
+   Partitioning Tables and Indexes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06_predefined_functions/01_predefined_functions.html">
+   Pre-Defined Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07_writing_advanced_sql_queries/01_writing_advanced_sql_queries.html">
+   Writing Advanced SQL Queries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../08_query_performance_tuning/01_query_performance_tuning.html">
+   Query Performance Tuning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mastering_postgresql_exercises.html">
+   Exercises - Mastering Postgresql
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Subscribe <a href="http://notifyme.itversity.com">Newsletter</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/solutions-mastering-postgresql/01_getting_started.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/itversity/mastering-postgresql"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/itversity/mastering-postgresql/issues/new?title=Issue%20on%20page%20%2Fsolutions-mastering-postgresql/01_getting_started.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/itversity/mastering-postgresql/edit/master/solutions-mastering-postgresql/01_getting_started.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/itversity/mastering-postgresql/master?urlpath=tree/solutions-mastering-postgresql/01_getting_started.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-loading-data">
+   Exercise - Loading Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#solution">
+   Solution
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="getting-started">
+<h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+<p>Here is the exercise related to getting started module.</p>
+<div class="section" id="exercise-loading-data">
+<h2>Exercise - Loading Data<a class="headerlink" href="#exercise-loading-data" title="Permalink to this headline">¶</a></h2>
+<p>As part of this exercise, you need to take care of loading data using <code class="docutils literal notranslate"><span class="pre">COPY</span></code> Command.</p>
+<ul class="simple">
+<li><p>You can connect to the database using following details in the environment provided by us.</p>
+<ul>
+<li><p>Host: localhost</p></li>
+<li><p>Port: 5342</p></li>
+<li><p>Database Name: YOUR_OS_USER_hr_db</p></li>
+<li><p>User Name: YOUR_OS_USER_hr_user</p></li>
+<li><p>Password: YOUR_OS_USER_PASSWORD (provided by us).</p></li>
+</ul>
+</li>
+<li><p>If you are using your own environment, make sure to create database for storing HR Data.</p>
+<ul>
+<li><p>Database Name: hr_db</p></li>
+<li><p>User Name: hr_user</p></li>
+<li><p>You can create user with password of your choice.</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">DATABASE</span> <span class="n">hr_db</span><span class="p">;</span>
+<span class="k">CREATE</span> <span class="k">USER</span> <span class="n">hr_user</span> <span class="k">WITH</span> <span class="n">PASSWORD</span> <span class="s1">&#39;hr_password&#39;</span><span class="p">;</span>
+<span class="k">GRANT</span> <span class="k">ALL</span> <span class="k">ON</span> <span class="k">DATABASE</span> <span class="n">hr_db</span> <span class="k">TO</span> <span class="n">hr_user</span><span class="p">;</span>
+<span class="k">GRANT</span> <span class="n">pg_read_server_files</span> <span class="k">TO</span> <span class="n">hr_user</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Create table using this script.</p></li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">employees</span>
+   <span class="p">(</span> <span class="n">employee_id</span> <span class="nb">INTEGER</span>
+   <span class="p">,</span> <span class="n">first_name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+   <span class="p">,</span> <span class="n">last_name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span>
+   <span class="p">,</span> <span class="n">email</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span>
+   <span class="p">,</span> <span class="n">phone_number</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+   <span class="p">,</span> <span class="n">hire_date</span> <span class="nb">DATE</span>
+   <span class="p">,</span> <span class="n">job_id</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+   <span class="p">,</span> <span class="n">salary</span> <span class="nb">NUMERIC</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+   <span class="p">,</span> <span class="n">commission_pct</span> <span class="nb">NUMERIC</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+   <span class="p">,</span> <span class="n">manager_id</span> <span class="nb">INTEGER</span>
+   <span class="p">,</span> <span class="n">department_id</span> <span class="nb">INTEGER</span>
+   <span class="p">)</span> <span class="p">;</span>
+<span class="k">CREATE</span> <span class="k">UNIQUE</span> <span class="k">INDEX</span> <span class="n">emp_emp_id_pk</span>
+         <span class="k">ON</span> <span class="n">employees</span> <span class="p">(</span><span class="n">employee_id</span><span class="p">)</span> <span class="p">;</span>
+<span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">employees</span> <span class="k">ADD</span>
+   <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">employee_id</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Understand data.</p>
+<ul>
+<li><p>Check for delimiters (record as well as field).</p></li>
+<li><p>Check whether header exists or not.</p></li>
+<li><p>Ensure number of fields for the table and data being loaded are same or not.</p></li>
+</ul>
+</li>
+<li><p>Load data into the table using <code class="docutils literal notranslate"><span class="pre">COPY</span></code> Command.</p></li>
+<li><p>Validate by running these queries. You can also use SQL Workbench to run the queries to validate whether data is loaded successfully or not.</p></li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">employees</span> <span class="k">LIMIT</span> <span class="mi">10</span><span class="p">;</span>
+<span class="k">SELECT</span> <span class="k">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">employees</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="solution">
+<h2>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h2>
+<p>Here is the solution for the exercise.</p>
+<ul class="simple">
+<li><p>Connect to <code class="docutils literal notranslate"><span class="pre">psql</span></code> CLI.</p></li>
+</ul>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>psql -h localhost <span class="se">\</span>
+    -p <span class="m">5432</span> <span class="se">\</span>
+    -d itversity_hr_db <span class="se">\</span>
+    -U itversity_hr_user <span class="se">\</span>
+    -W
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Make sure table is created using the script provided as part of the question.</p></li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">TRUNCATE</span> <span class="k">TABLE</span> <span class="n">employees</span><span class="p">;</span>
+
+<span class="k">COPY</span> <span class="n">employees</span><span class="p">(</span><span class="n">employee_id</span><span class="p">,</span> <span class="n">first_name</span><span class="p">,</span> <span class="n">last_name</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">phone_number</span><span class="p">,</span> <span class="n">hire_date</span><span class="p">,</span> <span class="n">job_id</span><span class="p">,</span> <span class="n">salary</span><span class="p">,</span> <span class="n">commission_pct</span><span class="p">,</span>
+<span class="n">manager_id</span><span class="p">,</span> <span class="n">department_id</span>
+<span class="p">)</span> <span class="k">FROM</span> <span class="s1">&#39;/data/hr_db/employees/part-m-00000&#39;</span>
+<span class="k">DELIMITER</span> <span class="n">E</span><span class="s1">&#39;\t&#39;</span>
+<span class="n">CSV</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_hr_user:hr_password@localhost:5432/itversity_hr_db
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env: DATABASE_URL=postgresql://itversity_hr_user:hr_password@localhost:5432/itversity_hr_db
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT * FROM employees 
+ORDER BY commission_pct NULLS LAST
+LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_hr_user:***@localhost:5432/itversity_hr_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>employee_id</th>
+        <th>first_name</th>
+        <th>last_name</th>
+        <th>email</th>
+        <th>phone_number</th>
+        <th>hire_date</th>
+        <th>job_id</th>
+        <th>salary</th>
+        <th>commission_pct</th>
+        <th>manager_id</th>
+        <th>department_id</th>
+    </tr>
+    <tr>
+        <td>165</td>
+        <td>David</td>
+        <td>Lee</td>
+        <td>DLEE</td>
+        <td>011.44.1346.529268</td>
+        <td>2000-02-23</td>
+        <td>SA_REP</td>
+        <td>6800.00</td>
+        <td>0.10</td>
+        <td>147</td>
+        <td>80</td>
+    </tr>
+    <tr>
+        <td>173</td>
+        <td>Sundita</td>
+        <td>Kumar</td>
+        <td>SKUMAR</td>
+        <td>011.44.1343.329268</td>
+        <td>2000-04-21</td>
+        <td>SA_REP</td>
+        <td>6100.00</td>
+        <td>0.10</td>
+        <td>148</td>
+        <td>80</td>
+    </tr>
+    <tr>
+        <td>164</td>
+        <td>Mattea</td>
+        <td>Marvins</td>
+        <td>MMARVINS</td>
+        <td>011.44.1346.329268</td>
+        <td>2000-01-24</td>
+        <td>SA_REP</td>
+        <td>7200.00</td>
+        <td>0.10</td>
+        <td>147</td>
+        <td>80</td>
+    </tr>
+    <tr>
+        <td>179</td>
+        <td>Charles</td>
+        <td>Johnson</td>
+        <td>CJOHNSON</td>
+        <td>011.44.1644.429262</td>
+        <td>2000-01-04</td>
+        <td>SA_REP</td>
+        <td>6200.00</td>
+        <td>0.10</td>
+        <td>149</td>
+        <td>80</td>
+    </tr>
+    <tr>
+        <td>167</td>
+        <td>Amit</td>
+        <td>Banda</td>
+        <td>ABANDA</td>
+        <td>011.44.1346.729268</td>
+        <td>2000-04-21</td>
+        <td>SA_REP</td>
+        <td>6200.00</td>
+        <td>0.10</td>
+        <td>147</td>
+        <td>80</td>
+    </tr>
+    <tr>
+        <td>166</td>
+        <td>Sundar</td>
+        <td>Ande</td>
+        <td>SANDE</td>
+        <td>011.44.1346.629268</td>
+        <td>2000-03-24</td>
+        <td>SA_REP</td>
+        <td>6400.00</td>
+        <td>0.10</td>
+        <td>147</td>
+        <td>80</td>
+    </tr>
+    <tr>
+        <td>171</td>
+        <td>William</td>
+        <td>Smith</td>
+        <td>WSMITH</td>
+        <td>011.44.1343.629268</td>
+        <td>1999-02-23</td>
+        <td>SA_REP</td>
+        <td>7400.00</td>
+        <td>0.15</td>
+        <td>148</td>
+        <td>80</td>
+    </tr>
+    <tr>
+        <td>155</td>
+        <td>Oliver</td>
+        <td>Tuvault</td>
+        <td>OTUVAULT</td>
+        <td>011.44.1344.486508</td>
+        <td>1999-11-23</td>
+        <td>SA_REP</td>
+        <td>7000.00</td>
+        <td>0.15</td>
+        <td>145</td>
+        <td>80</td>
+    </tr>
+    <tr>
+        <td>163</td>
+        <td>Danielle</td>
+        <td>Greene</td>
+        <td>DGREENE</td>
+        <td>011.44.1346.229268</td>
+        <td>1999-03-19</td>
+        <td>SA_REP</td>
+        <td>9500.00</td>
+        <td>0.15</td>
+        <td>147</td>
+        <td>80</td>
+    </tr>
+    <tr>
+        <td>172</td>
+        <td>Elizabeth</td>
+        <td>Bates</td>
+        <td>EBATES</td>
+        <td>011.44.1343.529268</td>
+        <td>1999-03-24</td>
+        <td>SA_REP</td>
+        <td>7300.00</td>
+        <td>0.15</td>
+        <td>148</td>
+        <td>80</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT count(1) FROM employees
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_hr_user:***@localhost:5432/itversity_hr_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>count</th>
+    </tr>
+    <tr>
+        <td>107</td>
+    </tr>
+</table></div></div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./solutions-mastering-postgresql"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Durga Gadiraju<br/>
+        
+            &copy; Copyright ITVersity, Inc.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

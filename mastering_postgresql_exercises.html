@@ -714,12 +714,12 @@
 <ul class="simple">
 <li><p>You can drop the existing tables.</p></li>
 </ul>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">order_items</span><span class="p">;</span>
-<span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">orders</span><span class="p">;</span>
-<span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">customers</span><span class="p">;</span>
-<span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">products</span><span class="p">;</span>
-<span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">categories</span><span class="p">;</span>
-<span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">departments</span><span class="p">;</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">DROP</span> <span class="k">TABLE</span> <span class="k">IF</span> <span class="k">EXISTS</span> <span class="n">order_items</span> <span class="k">CASCADE</span><span class="p">;</span>
+<span class="k">DROP</span> <span class="k">TABLE</span> <span class="k">IF</span> <span class="k">EXISTS</span> <span class="n">orders</span> <span class="k">CASCADE</span><span class="p">;</span>
+<span class="k">DROP</span> <span class="k">TABLE</span> <span class="k">IF</span> <span class="k">EXISTS</span> <span class="n">customers</span> <span class="k">CASCADE</span><span class="p">;</span>
+<span class="k">DROP</span> <span class="k">TABLE</span> <span class="k">IF</span> <span class="k">EXISTS</span> <span class="n">products</span> <span class="k">CASCADE</span><span class="p">;</span>
+<span class="k">DROP</span> <span class="k">TABLE</span> <span class="k">IF</span> <span class="k">EXISTS</span> <span class="n">categories</span> <span class="k">CASCADE</span><span class="p">;</span>
+<span class="k">DROP</span> <span class="k">TABLE</span> <span class="k">IF</span> <span class="k">EXISTS</span> <span class="n">departments</span> <span class="k">CASCADE</span><span class="p">;</span>
 </pre></div>
 </div>
 <ul class="simple">
@@ -870,7 +870,23 @@
 </div>
 <div class="section" id="exercise-4">
 <h3>Exercise 4<a class="headerlink" href="#exercise-4" title="Permalink to this headline">¶</a></h3>
-<p>Commands to add foreign key constraints.</p>
+<p>Add Foreign Key constraints to the tables.</p>
+<ul class="simple">
+<li><p>Validate if the tables have data violataing foreign key constraints (Hint: You can use left outer join to find rows in child table but not in parent table)</p></li>
+<li><p>Alter tables to add foreign keys as specified.</p></li>
+<li><p>Here are the relationships for your reference.</p>
+<ul>
+<li><p>orders.order_customer_id to customers.customer_id</p></li>
+<li><p>order_items.order_item_order_id to orders.order_id</p></li>
+<li><p>order_items.order_item_product_id to products.product_id</p></li>
+</ul>
+</li>
+<li><p>Solution should contain the following:</p>
+<ul>
+<li><p>Commands to add foreign keys to the tables.</p></li>
+</ul>
+</li>
+</ul>
 </div>
 <div class="section" id="exercise-5">
 <h3>Exercise 5<a class="headerlink" href="#exercise-5" title="Permalink to this headline">¶</a></h3>
@@ -1459,62 +1475,11 @@ insert into users (
 </ul>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span>\i /data/hr_db/drop_tables_pg.sql
 \i /data/hr_db/create_tables_pg.sql
-\i /data/hr_db/load_tables_pg.sql
+\i /data/hr_db/load_data_pg.sql
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>Validate to ensure that data is available in the tables by running these queries.</p></li>
-</ul>
-</div>
-<div class="section" id="prepare-retail-database">
-<h3>Prepare Retail Database<a class="headerlink" href="#prepare-retail-database" title="Permalink to this headline">¶</a></h3>
-<p>Make sure to drop and recreate the tables before taking care of the exercises related to retail database.</p>
-<ul class="simple">
-<li><p>Ensure that we have required database and user for retail data. <strong>We might provide the database as part of our labs.</strong> Here are the instructions to use <code class="docutils literal notranslate"><span class="pre">psql</span></code> for setting up the required database (if required) and tables.</p></li>
-</ul>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>psql -U postgres -h localhost -p <span class="m">5432</span> -W
-</pre></div>
-</div>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">DATABASE</span> <span class="n">itversity_retail_db</span><span class="p">;</span>
-<span class="k">CREATE</span> <span class="k">USER</span> <span class="n">itversity_retail_user</span> <span class="k">WITH</span> <span class="k">ENCRYPTED</span> <span class="n">PASSWORD</span> <span class="s1">&#39;retail_password&#39;</span><span class="p">;</span>
-<span class="k">GRANT</span> <span class="k">ALL</span> <span class="k">ON</span> <span class="k">DATABASE</span> <span class="n">itversity_retail_db</span> <span class="k">TO</span> <span class="n">itversity_retail_user</span><span class="p">;</span>
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>Create Tables using the script provided. You can either use <code class="docutils literal notranslate"><span class="pre">psql</span></code> or <strong>SQL Workbench</strong>.</p></li>
-</ul>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>psql -U itversity_retail_user <span class="se">\</span>
-  -h localhost <span class="se">\</span>
-  -p <span class="m">5432</span> <span class="se">\</span>
-  -d itversity_retail_db <span class="se">\</span>
-  -W
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>You can drop the existing tables.</p></li>
-</ul>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">order_items</span><span class="p">;</span>
-<span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">orders</span><span class="p">;</span>
-<span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">customers</span><span class="p">;</span>
-<span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">products</span><span class="p">;</span>
-<span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">categories</span><span class="p">;</span>
-<span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">departments</span><span class="p">;</span>
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>Once the tables are dropped you can run below script to create the tables for the purpose of exercises.</p></li>
-</ul>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span>\i /data/retail_db/create_db_tables_pg.sql
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>Data shall be loaded using the script provided.</p></li>
-</ul>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span>\i /data/retail_db/load_db_tables_pg.sql
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>Run queries to validate we have data in all the 3 tables.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1773,6 +1738,425 @@ LIMIT 10
         <td>Public Relations</td>
         <td>204</td>
         <td>2700</td>
+    </tr>
+</table></div></div>
+</div>
+</div>
+<div class="section" id="prepare-retail-database">
+<h3>Prepare Retail Database<a class="headerlink" href="#prepare-retail-database" title="Permalink to this headline">¶</a></h3>
+<p>Make sure to drop and recreate the tables before taking care of the exercises related to retail database.</p>
+<ul class="simple">
+<li><p>Ensure that we have required database and user for retail data. <strong>We might provide the database as part of our labs.</strong> Here are the instructions to use <code class="docutils literal notranslate"><span class="pre">psql</span></code> for setting up the required database (if required) and tables.</p></li>
+</ul>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>psql -U postgres -h localhost -p <span class="m">5432</span> -W
+</pre></div>
+</div>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">DATABASE</span> <span class="n">itversity_retail_db</span><span class="p">;</span>
+<span class="k">CREATE</span> <span class="k">USER</span> <span class="n">itversity_retail_user</span> <span class="k">WITH</span> <span class="k">ENCRYPTED</span> <span class="n">PASSWORD</span> <span class="s1">&#39;retail_password&#39;</span><span class="p">;</span>
+<span class="k">GRANT</span> <span class="k">ALL</span> <span class="k">ON</span> <span class="k">DATABASE</span> <span class="n">itversity_retail_db</span> <span class="k">TO</span> <span class="n">itversity_retail_user</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Create Tables using the script provided. You can either use <code class="docutils literal notranslate"><span class="pre">psql</span></code> or <strong>SQL Workbench</strong>.</p></li>
+</ul>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>psql -U itversity_retail_user <span class="se">\</span>
+  -h localhost <span class="se">\</span>
+  -p <span class="m">5432</span> <span class="se">\</span>
+  -d itversity_retail_db <span class="se">\</span>
+  -W
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>You can drop the existing tables.</p></li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">DROP</span> <span class="k">TABLE</span> <span class="k">IF</span> <span class="k">EXISTS</span> <span class="n">order_items</span> <span class="k">CASCADE</span><span class="p">;</span>
+<span class="k">DROP</span> <span class="k">TABLE</span> <span class="k">IF</span> <span class="k">EXISTS</span> <span class="n">orders</span> <span class="k">CASCADE</span><span class="p">;</span>
+<span class="k">DROP</span> <span class="k">TABLE</span> <span class="k">IF</span> <span class="k">EXISTS</span> <span class="n">customers</span> <span class="k">CASCADE</span><span class="p">;</span>
+<span class="k">DROP</span> <span class="k">TABLE</span> <span class="k">IF</span> <span class="k">EXISTS</span> <span class="n">products</span> <span class="k">CASCADE</span><span class="p">;</span>
+<span class="k">DROP</span> <span class="k">TABLE</span> <span class="k">IF</span> <span class="k">EXISTS</span> <span class="n">categories</span> <span class="k">CASCADE</span><span class="p">;</span>
+<span class="k">DROP</span> <span class="k">TABLE</span> <span class="k">IF</span> <span class="k">EXISTS</span> <span class="n">departments</span> <span class="k">CASCADE</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Once the tables are dropped you can run below script to create the tables for the purpose of exercises.</p></li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span>\i /data/retail_db/create_db_tables_pg.sql
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Data shall be loaded using the script provided.</p></li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span>\i /data/retail_db/load_db_tables_pg.sql
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Run queries to validate we have data in all the 3 tables.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The sql extension is already loaded. To reload it, use:
+  %reload_ext sql
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env: DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT * FROM orders LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_id</th>
+        <th>order_date</th>
+        <th>order_customer_id</th>
+        <th>order_status</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>11599</td>
+        <td>CLOSED</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>256</td>
+        <td>PENDING_PAYMENT</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>12111</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>8827</td>
+        <td>CLOSED</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>11318</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>7130</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>4530</td>
+        <td>COMPLETE</td>
+    </tr>
+    <tr>
+        <td>8</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>2911</td>
+        <td>PROCESSING</td>
+    </tr>
+    <tr>
+        <td>9</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>5657</td>
+        <td>PENDING_PAYMENT</td>
+    </tr>
+    <tr>
+        <td>10</td>
+        <td>2013-07-25 00:00:00</td>
+        <td>5648</td>
+        <td>PENDING_PAYMENT</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT count(1) FROM orders
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>count</th>
+    </tr>
+    <tr>
+        <td>68883</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT * FROM order_items LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>order_item_id</th>
+        <th>order_item_order_id</th>
+        <th>order_item_product_id</th>
+        <th>order_item_quantity</th>
+        <th>order_item_subtotal</th>
+        <th>order_item_product_price</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>1</td>
+        <td>957</td>
+        <td>1</td>
+        <td>299.98</td>
+        <td>299.98</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>2</td>
+        <td>1073</td>
+        <td>1</td>
+        <td>199.99</td>
+        <td>199.99</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>2</td>
+        <td>502</td>
+        <td>5</td>
+        <td>250.0</td>
+        <td>50.0</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>2</td>
+        <td>403</td>
+        <td>1</td>
+        <td>129.99</td>
+        <td>129.99</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>4</td>
+        <td>897</td>
+        <td>2</td>
+        <td>49.98</td>
+        <td>24.99</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>4</td>
+        <td>365</td>
+        <td>5</td>
+        <td>299.95</td>
+        <td>59.99</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>4</td>
+        <td>502</td>
+        <td>3</td>
+        <td>150.0</td>
+        <td>50.0</td>
+    </tr>
+    <tr>
+        <td>8</td>
+        <td>4</td>
+        <td>1014</td>
+        <td>4</td>
+        <td>199.92</td>
+        <td>49.98</td>
+    </tr>
+    <tr>
+        <td>9</td>
+        <td>5</td>
+        <td>957</td>
+        <td>1</td>
+        <td>299.98</td>
+        <td>299.98</td>
+    </tr>
+    <tr>
+        <td>10</td>
+        <td>5</td>
+        <td>365</td>
+        <td>5</td>
+        <td>299.95</td>
+        <td>59.99</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT count(1) FROM order_items
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>count</th>
+    </tr>
+    <tr>
+        <td>172198</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT * FROM products LIMIT 10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>product_id</th>
+        <th>product_category_id</th>
+        <th>product_name</th>
+        <th>product_description</th>
+        <th>product_price</th>
+        <th>product_image</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>2</td>
+        <td>Quest Q64 10 FT. x 10 FT. Slant Leg Instant U</td>
+        <td></td>
+        <td>59.98</td>
+        <td>http://images.acmesports.sports/Quest+Q64+10+FT.+x+10+FT.+Slant+Leg+Instant+Up+Canopy</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>2</td>
+        <td>Under Armour Men&#x27;s Highlight MC Football Clea</td>
+        <td></td>
+        <td>129.99</td>
+        <td>http://images.acmesports.sports/Under+Armour+Men%27s+Highlight+MC+Football+Cleat</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>2</td>
+        <td>Under Armour Men&#x27;s Renegade D Mid Football Cl</td>
+        <td></td>
+        <td>89.99</td>
+        <td>http://images.acmesports.sports/Under+Armour+Men%27s+Renegade+D+Mid+Football+Cleat</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>2</td>
+        <td>Under Armour Men&#x27;s Renegade D Mid Football Cl</td>
+        <td></td>
+        <td>89.99</td>
+        <td>http://images.acmesports.sports/Under+Armour+Men%27s+Renegade+D+Mid+Football+Cleat</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>2</td>
+        <td>Riddell Youth Revolution Speed Custom Footbal</td>
+        <td></td>
+        <td>199.99</td>
+        <td>http://images.acmesports.sports/Riddell+Youth+Revolution+Speed+Custom+Football+Helmet</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>2</td>
+        <td>Jordan Men&#x27;s VI Retro TD Football Cleat</td>
+        <td></td>
+        <td>134.99</td>
+        <td>http://images.acmesports.sports/Jordan+Men%27s+VI+Retro+TD+Football+Cleat</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>2</td>
+        <td>Schutt Youth Recruit Hybrid Custom Football H</td>
+        <td></td>
+        <td>99.99</td>
+        <td>http://images.acmesports.sports/Schutt+Youth+Recruit+Hybrid+Custom+Football+Helmet+2014</td>
+    </tr>
+    <tr>
+        <td>8</td>
+        <td>2</td>
+        <td>Nike Men&#x27;s Vapor Carbon Elite TD Football Cle</td>
+        <td></td>
+        <td>129.99</td>
+        <td>http://images.acmesports.sports/Nike+Men%27s+Vapor+Carbon+Elite+TD+Football+Cleat</td>
+    </tr>
+    <tr>
+        <td>9</td>
+        <td>2</td>
+        <td>Nike Adult Vapor Jet 3.0 Receiver Gloves</td>
+        <td></td>
+        <td>50.0</td>
+        <td>http://images.acmesports.sports/Nike+Adult+Vapor+Jet+3.0+Receiver+Gloves</td>
+    </tr>
+    <tr>
+        <td>10</td>
+        <td>2</td>
+        <td>Under Armour Men&#x27;s Highlight MC Football Clea</td>
+        <td></td>
+        <td>129.99</td>
+        <td>http://images.acmesports.sports/Under+Armour+Men%27s+Highlight+MC+Football+Cleat</td>
+    </tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT count(1) FROM products
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>count</th>
+    </tr>
+    <tr>
+        <td>1345</td>
     </tr>
 </table></div></div>
 </div>

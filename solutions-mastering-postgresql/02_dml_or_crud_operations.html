@@ -1,0 +1,829 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DML or CRUD Operations &#8212; Mastering SQL using Postgresql</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pdf.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Mastering SQL using Postgresql</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mastering-sql-using-postgresql.html">
+   Mastering SQL using Postgresql
+  </a>
+ </li>
+</ul>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mastering_postgresql_exercises.html">
+   Exercises - Mastering Postgresql
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_getting_started/01_getting_started.html">
+   Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_dml_or_crud_operations/01_dml_or_crud_operations.html">
+   DML or CRUD Operations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_writing_basic_sql_queries/01_writing_basic_sql_queries.html">
+   Writing Basic SQL Queries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_creating_tables_and_indexes/01_creating_tables_and_indexes.html">
+   Creating Tables and Indexes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05_partitioning_tables_and_indexes/01_partitioning_tables_and_indexes.html">
+   Partitioning Tables and Indexes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06_predefined_functions/01_predefined_functions.html">
+   Pre-Defined Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07_writing_advanced_sql_queries/01_writing_advanced_sql_queries.html">
+   Writing Advanced SQL Queries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../08_query_performance_tuning/01_query_performance_tuning.html">
+   Query Performance Tuning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mastering_postgresql_exercises.html">
+   Exercises - Mastering Postgresql
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Subscribe <a href="http://notifyme.itversity.com">Newsletter</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/solutions-mastering-postgresql/02_dml_or_crud_operations.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/itversity/mastering-postgresql"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/itversity/mastering-postgresql/issues/new?title=Issue%20on%20page%20%2Fsolutions-mastering-postgresql/02_dml_or_crud_operations.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/itversity/mastering-postgresql/edit/master/solutions-mastering-postgresql/02_dml_or_crud_operations.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/itversity/mastering-postgresql/master?urlpath=tree/solutions-mastering-postgresql/02_dml_or_crud_operations.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-1-create-table">
+   Exercise 1 - Create Table
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#solution-create-table">
+   Solution - Create Table
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-2-inserting-data">
+   Exercise 2 - Inserting Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#solution-inserting-data">
+   Solution - Inserting Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-3-updating-data">
+   Exercise 3 - Updating Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#solution-updating-data">
+   Solution - Updating Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-4-deleting-data">
+   Exercise 4 - Deleting Data
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="dml-or-crud-operations">
+<h1>DML or CRUD Operations<a class="headerlink" href="#dml-or-crud-operations" title="Permalink to this headline">¶</a></h1>
+<p>Let’s create a table and perform database operations using direct SQL.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/pqtKUUI5cCo?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+</div></div>
+</div>
+<div class="section" id="exercise-1-create-table">
+<h2>Exercise 1 - Create Table<a class="headerlink" href="#exercise-1-create-table" title="Permalink to this headline">¶</a></h2>
+<p>Create table - <strong>courses</strong></p>
+<ul class="simple">
+<li><p>course_id - sequence generated integer and primary key</p></li>
+<li><p>course_name - which holds alpha numeric or string values up to 60 characters</p></li>
+<li><p>course_author - which holds the name of the author up to 40 characters</p></li>
+<li><p>course_status - which holds one of these values (published, draft, inactive).</p></li>
+<li><p>course_published_dt - which holds date type value.</p></li>
+</ul>
+<p>Provide the script as answer for this exercise.</p>
+</div>
+<div class="section" id="solution-create-table">
+<h2>Solution - Create Table<a class="headerlink" href="#solution-create-table" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_sms_user:sms_password@localhost:5432/itversity_sms_db
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env: DATABASE_URL=postgresql://itversity_sms_user:sms_password@localhost:5432/itversity_sms_db
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+CREATE TABLE courses (
+    course_id SERIAL PRIMARY KEY,
+    course_name VARCHAR(60) NOT NULL,
+    course_author VARCHAR(40) NOT NULL,
+    course_status VARCHAR(9),
+    course_published_dt DATE
+);
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise-2-inserting-data">
+<h2>Exercise 2 - Inserting Data<a class="headerlink" href="#exercise-2-inserting-data" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Insert data into courses using the data provided. Make sure id is system generated.</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Course Name</p></th>
+<th class="head"><p>Course Author</p></th>
+<th class="head"><p>Course Status</p></th>
+<th class="head"><p>Course Published Date</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Programming using Python</p></td>
+<td><p>Bob Dillon</p></td>
+<td><p>published</p></td>
+<td><p>2020-09-30</p></td>
+</tr>
+<tr class="row-odd"><td><p>Data Engineering using Python</p></td>
+<td><p>Bob Dillon</p></td>
+<td><p>published</p></td>
+<td><p>2020-07-15</p></td>
+</tr>
+<tr class="row-even"><td><p>Data Engineering using Scala</p></td>
+<td><p>Elvis Presley</p></td>
+<td><p>draft</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>Programming using Scala</p></td>
+<td><p>Elvis Presley</p></td>
+<td><p>published</p></td>
+<td><p>2020-05-12</p></td>
+</tr>
+<tr class="row-even"><td><p>Programming using Java</p></td>
+<td><p>Mike Jack</p></td>
+<td><p>inactive</p></td>
+<td><p>2020-08-10</p></td>
+</tr>
+<tr class="row-odd"><td><p>Web Applications - Python Flask</p></td>
+<td><p>Bob Dillon</p></td>
+<td><p>inactive</p></td>
+<td><p>2020-07-20</p></td>
+</tr>
+<tr class="row-even"><td><p>Web Applications - Java Spring</p></td>
+<td><p>Mike Jack</p></td>
+<td><p>draft</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>Pipeline Orchestration - Python</p></td>
+<td><p>Bob Dillon</p></td>
+<td><p>draft</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>Streaming Pipelines - Python</p></td>
+<td><p>Bob Dillon</p></td>
+<td><p>published</p></td>
+<td><p>2020-10-05</p></td>
+</tr>
+<tr class="row-odd"><td><p>Web Applications - Scala Play</p></td>
+<td><p>Elvis Presley</p></td>
+<td><p>inactive</p></td>
+<td><p>2020-09-30</p></td>
+</tr>
+<tr class="row-even"><td><p>Web Applications - Python Django</p></td>
+<td><p>Bob Dillon</p></td>
+<td><p>published</p></td>
+<td><p>2020-06-23</p></td>
+</tr>
+<tr class="row-odd"><td><p>Server Automation - Ansible</p></td>
+<td><p>Uncle Sam</p></td>
+<td><p>published</p></td>
+<td><p>2020-07-05</p></td>
+</tr>
+</tbody>
+</table>
+<p>Provide the insert statement(s) as answer for this exercise.</p>
+</div>
+<div class="section" id="solution-inserting-data">
+<h2>Solution - Inserting Data<a class="headerlink" href="#solution-inserting-data" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The sql extension is already loaded. To reload it, use:
+  %reload_ext sql
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_sms_user:sms_password@localhost:5432/itversity_sms_db
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env: DATABASE_URL=postgresql://itversity_sms_user:sms_password@localhost:5432/itversity_sms_db
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+INSERT INTO courses 
+    (course_name, course_author, course_status, course_published_dt) 
+VALUES 
+    (&#39;Programming using Python&#39;, &#39;Bob Dillon&#39;, &#39;published&#39;, &#39;2020-09-30&#39;),
+    (&#39;Data Engineering using Python&#39;, &#39;Bob Dillon&#39;, &#39;published&#39;, &#39;2020-07-15&#39;),
+    (&#39;Data Engineering using Scala&#39;, &#39;Elvis Presley&#39;, &#39;draft&#39;, NULL),
+    (&#39;Programming using Scala&#39;, &#39;Elvis Presley&#39;, &#39;published&#39;, &#39;2020-05-12&#39;),
+    (&#39;Programming using Java&#39;, &#39;Mike Jack&#39; , &#39;inactive&#39;, &#39;2020-08-10&#39;),
+    (&#39;Web Applications - Python Flask&#39;, &#39;Bob Dillon&#39;, &#39;inactive&#39;, &#39;2020-07-20&#39;),
+    (&#39;Web Applications - Java Spring&#39;, &#39;Mike Jack&#39;, &#39;draft&#39;, NULL),
+    (&#39;Pipeline Orchestration - Python&#39;, &#39;Bob Dillon&#39;, &#39;draft&#39;, NULL),
+    (&#39;Streaming Pipelines - Python&#39;, &#39;Bob Dillon&#39;, &#39;published&#39;, &#39;2020-10-05&#39;),
+    (&#39;Web Applications - Scala Play&#39;, &#39;Elvis Presley&#39;, &#39;inactive&#39;, &#39;2020-09-30&#39;),
+    (&#39;Web Applications - Python Django&#39;, &#39;Bob Dillon&#39;, &#39;published&#39;, &#39;2020-06-23&#39;),
+    (&#39;Server Automation - Ansible&#39;, &#39;Uncle Sam&#39; , &#39;published&#39;, &#39;2020-07-05&#39;);
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+12 rows affected.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT * FROM courses
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+12 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>course_id</th>
+        <th>course_name</th>
+        <th>course_author</th>
+        <th>course_status</th>
+        <th>course_published_dt</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>Programming using Python</td>
+        <td>Bob Dillon</td>
+        <td>published</td>
+        <td>2020-09-30</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Data Engineering using Python</td>
+        <td>Bob Dillon</td>
+        <td>published</td>
+        <td>2020-07-15</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>Data Engineering using Scala</td>
+        <td>Elvis Presley</td>
+        <td>draft</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>Programming using Scala</td>
+        <td>Elvis Presley</td>
+        <td>published</td>
+        <td>2020-05-12</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>Programming using Java</td>
+        <td>Mike Jack</td>
+        <td>inactive</td>
+        <td>2020-08-10</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>Web Applications - Python Flask</td>
+        <td>Bob Dillon</td>
+        <td>inactive</td>
+        <td>2020-07-20</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>Web Applications - Java Spring</td>
+        <td>Mike Jack</td>
+        <td>draft</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>8</td>
+        <td>Pipeline Orchestration - Python</td>
+        <td>Bob Dillon</td>
+        <td>draft</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>9</td>
+        <td>Streaming Pipelines - Python</td>
+        <td>Bob Dillon</td>
+        <td>published</td>
+        <td>2020-10-05</td>
+    </tr>
+    <tr>
+        <td>10</td>
+        <td>Web Applications - Scala Play</td>
+        <td>Elvis Presley</td>
+        <td>inactive</td>
+        <td>2020-09-30</td>
+    </tr>
+    <tr>
+        <td>11</td>
+        <td>Web Applications - Python Django</td>
+        <td>Bob Dillon</td>
+        <td>published</td>
+        <td>2020-06-23</td>
+    </tr>
+    <tr>
+        <td>12</td>
+        <td>Server Automation - Ansible</td>
+        <td>Uncle Sam</td>
+        <td>published</td>
+        <td>2020-07-05</td>
+    </tr>
+</table></div></div>
+</div>
+</div>
+<div class="section" id="exercise-3-updating-data">
+<h2>Exercise 3 - Updating Data<a class="headerlink" href="#exercise-3-updating-data" title="Permalink to this headline">¶</a></h2>
+<p>Update the status of all the <strong>draft courses</strong> related to Python and Scala to <strong>published</strong> along with the <strong>course_published_dt using system date</strong>.</p>
+<p>Provide the update statement as answer for this exercise.</p>
+</div>
+<div class="section" id="solution-updating-data">
+<h2>Solution - Updating Data<a class="headerlink" href="#solution-updating-data" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The sql extension is already loaded. To reload it, use:
+  %reload_ext sql
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_sms_user:sms_password@localhost:5432/itversity_sms_db
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env: DATABASE_URL=postgresql://itversity_sms_user:sms_password@localhost:5432/itversity_sms_db
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+UPDATE courses 
+SET course_status = &#39;published&#39;, 
+    course_published_dt = current_date 
+WHERE course_status=&#39;draft&#39; AND 
+    (course_name LIKE &#39;%Python%&#39; OR course_name LIKE &#39;%Scala%&#39;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+2 rows affected.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise-4-deleting-data">
+<h2>Exercise 4 - Deleting Data<a class="headerlink" href="#exercise-4-deleting-data" title="Permalink to this headline">¶</a></h2>
+<p>Delete all the courses which are neither in draft mode nor published.</p>
+<p>Provide the delete statement as answer for this exercise.</p>
+<p>Validation - Get count of all published courses by author and make sure output is sorted in descending order by count.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">course_author</span><span class="p">,</span> <span class="k">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="k">AS</span> <span class="n">course_count</span>
+<span class="k">FROM</span> <span class="n">courses</span>
+<span class="k">WHERE</span> <span class="n">course_status</span><span class="o">=</span> <span class="s1">&#39;published&#39;</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="n">course_author</span>
+</pre></div>
+</div>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Course Author</p></th>
+<th class="head"><p>Course Count</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Bob Dillon</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-odd"><td><p>Elvis Presley</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-even"><td><p>Uncle Sam</p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The sql extension is already loaded. To reload it, use:
+  %reload_ext sql
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_sms_user:sms_password@localhost:5432/itversity_sms_db
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env: DATABASE_URL=postgresql://itversity_sms_user:sms_password@localhost:5432/itversity_sms_db
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+DELETE FROM courses 
+WHERE course_status !=&#39;draft&#39; AND course_status !=&#39;published&#39;;
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+3 rows affected.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT course_author, count(1) AS course_count
+FROM courses
+WHERE course_status= &#39;published&#39;
+GROUP BY course_author
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_sms_user:***@localhost:5432/itversity_sms_db
+3 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>course_author</th>
+        <th>course_count</th>
+    </tr>
+    <tr>
+        <td>Bob Dillon</td>
+        <td>5</td>
+    </tr>
+    <tr>
+        <td>Elvis Presley</td>
+        <td>2</td>
+    </tr>
+    <tr>
+        <td>Uncle Sam</td>
+        <td>1</td>
+    </tr>
+</table></div></div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./solutions-mastering-postgresql"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Durga Gadiraju<br/>
+        
+            &copy; Copyright ITVersity, Inc.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

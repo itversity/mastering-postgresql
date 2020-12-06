@@ -1,0 +1,1412 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pre-Defined Functions &#8212; Mastering SQL using Postgresql</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pdf.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Mastering SQL using Postgresql</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mastering-sql-using-postgresql.html">
+   Mastering SQL using Postgresql
+  </a>
+ </li>
+</ul>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mastering_postgresql_exercises.html">
+   Exercises - Mastering Postgresql
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_getting_started/01_getting_started.html">
+   Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_dml_or_crud_operations/01_dml_or_crud_operations.html">
+   DML or CRUD Operations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_writing_basic_sql_queries/01_writing_basic_sql_queries.html">
+   Writing Basic SQL Queries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_creating_tables_and_indexes/01_creating_tables_and_indexes.html">
+   Creating Tables and Indexes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05_partitioning_tables_and_indexes/01_partitioning_tables_and_indexes.html">
+   Partitioning Tables and Indexes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06_predefined_functions/01_predefined_functions.html">
+   Pre-Defined Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07_writing_advanced_sql_queries/01_writing_advanced_sql_queries.html">
+   Writing Advanced SQL Queries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../08_query_performance_tuning/01_query_performance_tuning.html">
+   Query Performance Tuning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mastering_postgresql_exercises.html">
+   Exercises - Mastering Postgresql
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Subscribe <a href="http://notifyme.itversity.com">Newsletter</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/solutions-mastering-postgresql/06_pre_defined_functions.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/itversity/mastering-postgresql"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/itversity/mastering-postgresql/issues/new?title=Issue%20on%20page%20%2Fsolutions-mastering-postgresql/06_pre_defined_functions.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/itversity/mastering-postgresql/edit/master/solutions-mastering-postgresql/06_pre_defined_functions.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/itversity/mastering-postgresql/master?urlpath=tree/solutions-mastering-postgresql/06_pre_defined_functions.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-1">
+   Exercise 1
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-2">
+   Exercise 2
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-3">
+   Exercise 3
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-4">
+   Exercise 4
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-5">
+   Exercise 5
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-6">
+   Exercise 6
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-7">
+   Exercise 7
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-8">
+   Exercise 8
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="pre-defined-functions">
+<h1>Pre-Defined Functions<a class="headerlink" href="#pre-defined-functions" title="Permalink to this headline">¶</a></h1>
+<p>Here are the exercises to ensure our understanding related to Pre-Defined Functions.</p>
+<ul class="simple">
+<li><p>We will use <strong>users</strong> table as well as other tables we got as part of retail database.</p></li>
+<li><p>Information will be provided with each exercise.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">env</span> DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env: DATABASE_URL=postgresql://itversity_retail_user:retail_password@localhost:5432/itversity_retail_db
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+DROP TABLE IF EXISTS users
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+CREATE TABLE users(
+    user_id SERIAL PRIMARY KEY,
+    user_first_name VARCHAR(30),
+    user_last_name VARCHAR(30),
+    user_email_id VARCHAR(50),
+    user_gender VARCHAR(1),
+    user_unique_id VARCHAR(15),
+    user_phone_no VARCHAR(20),
+    user_dob DATE,
+    created_ts TIMESTAMP
+)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+insert into users (
+    user_first_name, user_last_name, user_email_id, user_gender, 
+    user_unique_id, user_phone_no, user_dob, created_ts
+) VALUES
+    (&#39;Giuseppe&#39;, &#39;Bode&#39;, &#39;gbode0@imgur.com&#39;, &#39;M&#39;, &#39;88833-8759&#39;, 
+     &#39;+86 (764) 443-1967&#39;, &#39;1973-05-31&#39;, &#39;2018-04-15 12:13:38&#39;),
+    (&#39;Lexy&#39;, &#39;Gisbey&#39;, &#39;lgisbey1@mail.ru&#39;, &#39;F&#39;, &#39;262501-029&#39;, 
+     &#39;+86 (751) 160-3742&#39;, &#39;2003-05-31&#39;, &#39;2020-12-29 06:44:09&#39;),
+    (&#39;Karel&#39;, &#39;Claringbold&#39;, &#39;kclaringbold2@yale.edu&#39;, &#39;F&#39;, &#39;391-33-2823&#39;, 
+     &#39;+62 (445) 471-2682&#39;, &#39;1985-11-28&#39;, &#39;2018-11-19 00:04:08&#39;),
+    (&#39;Marv&#39;, &#39;Tanswill&#39;, &#39;mtanswill3@dedecms.com&#39;, &#39;F&#39;, &#39;1195413-80&#39;, 
+     &#39;+62 (497) 736-6802&#39;, &#39;1998-05-24&#39;, &#39;2018-11-19 16:29:43&#39;),
+    (&#39;Gertie&#39;, &#39;Espinoza&#39;, &#39;gespinoza4@nationalgeographic.com&#39;, &#39;M&#39;, &#39;471-24-6869&#39;, 
+     &#39;+249 (687) 506-2960&#39;, &#39;1997-10-30&#39;, &#39;2020-01-25 21:31:10&#39;),
+    (&#39;Saleem&#39;, &#39;Danneil&#39;, &#39;sdanneil5@guardian.co.uk&#39;, &#39;F&#39;, &#39;192374-933&#39;, 
+     &#39;+63 (810) 321-0331&#39;, &#39;1992-03-08&#39;, &#39;2020-11-07 19:01:14&#39;),
+    (&#39;Rickert&#39;, &#39;O&#39;&#39;Shiels&#39;, &#39;roshiels6@wikispaces.com&#39;, &#39;M&#39;, &#39;749-27-47-52&#39;, 
+     &#39;+86 (184) 759-3933&#39;, &#39;1972-11-01&#39;, &#39;2018-03-20 10:53:24&#39;),
+    (&#39;Cybil&#39;, &#39;Lissimore&#39;, &#39;clissimore7@pinterest.com&#39;, &#39;M&#39;, &#39;461-75-4198&#39;, 
+     &#39;+54 (613) 939-6976&#39;, &#39;1978-03-03&#39;, &#39;2019-12-09 14:08:30&#39;),
+    (&#39;Melita&#39;, &#39;Rimington&#39;, &#39;mrimington8@mozilla.org&#39;, &#39;F&#39;, &#39;892-36-676-2&#39;, 
+     &#39;+48 (322) 829-8638&#39;, &#39;1995-12-15&#39;, &#39;2018-04-03 04:21:33&#39;),
+    (&#39;Benetta&#39;, &#39;Nana&#39;, &#39;bnana9@google.com&#39;, &#39;M&#39;, &#39;197-54-1646&#39;, 
+     &#39;+420 (934) 611-0020&#39;, &#39;1971-12-07&#39;, &#39;2018-10-17 21:02:51&#39;),
+    (&#39;Gregorius&#39;, &#39;Gullane&#39;, &#39;ggullanea@prnewswire.com&#39;, &#39;F&#39;, &#39;232-55-52-58&#39;, 
+     &#39;+62 (780) 859-1578&#39;, &#39;1973-09-18&#39;, &#39;2020-01-14 23:38:53&#39;),
+    (&#39;Una&#39;, &#39;Glayzer&#39;, &#39;uglayzerb@pinterest.com&#39;, &#39;M&#39;, &#39;898-84-336-6&#39;, 
+     &#39;+380 (840) 437-3981&#39;, &#39;1983-05-26&#39;, &#39;2019-09-17 03:24:21&#39;),
+    (&#39;Jamie&#39;, &#39;Vosper&#39;, &#39;jvosperc@umich.edu&#39;, &#39;M&#39;, &#39;247-95-68-44&#39;, 
+     &#39;+81 (205) 723-1942&#39;, &#39;1972-03-18&#39;, &#39;2020-07-23 16:39:33&#39;),
+    (&#39;Calley&#39;, &#39;Tilson&#39;, &#39;ctilsond@issuu.com&#39;, &#39;F&#39;, &#39;415-48-894-3&#39;, 
+     &#39;+229 (698) 777-4904&#39;, &#39;1987-06-12&#39;, &#39;2020-06-05 12:10:50&#39;),
+    (&#39;Peadar&#39;, &#39;Gregorowicz&#39;, &#39;pgregorowicze@omniture.com&#39;, &#39;M&#39;, &#39;403-39-5-869&#39;, 
+     &#39;+7 (267) 853-3262&#39;, &#39;1996-09-21&#39;, &#39;2018-05-29 23:51:31&#39;),
+    (&#39;Jeanie&#39;, &#39;Webling&#39;, &#39;jweblingf@booking.com&#39;, &#39;F&#39;, &#39;399-83-05-03&#39;, 
+     &#39;+351 (684) 413-0550&#39;, &#39;1994-12-27&#39;, &#39;2018-02-09 01:31:11&#39;),
+    (&#39;Yankee&#39;, &#39;Jelf&#39;, &#39;yjelfg@wufoo.com&#39;, &#39;F&#39;, &#39;607-99-0411&#39;, 
+     &#39;+1 (864) 112-7432&#39;, &#39;1988-11-13&#39;, &#39;2019-09-16 16:09:12&#39;),
+    (&#39;Blair&#39;, &#39;Aumerle&#39;, &#39;baumerleh@toplist.cz&#39;, &#39;F&#39;, &#39;430-01-578-5&#39;, 
+     &#39;+7 (393) 232-1860&#39;, &#39;1979-11-09&#39;, &#39;2018-10-28 19:25:35&#39;),
+    (&#39;Pavlov&#39;, &#39;Steljes&#39;, &#39;psteljesi@macromedia.com&#39;, &#39;F&#39;, &#39;571-09-6181&#39;, 
+     &#39;+598 (877) 881-3236&#39;, &#39;1991-06-24&#39;, &#39;2020-09-18 05:34:31&#39;),
+    (&#39;Darn&#39;, &#39;Hadeke&#39;, &#39;dhadekej@last.fm&#39;, &#39;M&#39;, &#39;478-32-02-87&#39;, 
+     &#39;+370 (347) 110-4270&#39;, &#39;1984-09-04&#39;, &#39;2018-02-10 12:56:00&#39;),
+    (&#39;Wendell&#39;, &#39;Spanton&#39;, &#39;wspantonk@de.vu&#39;, &#39;F&#39;, null, 
+     &#39;+84 (301) 762-1316&#39;, &#39;1973-07-24&#39;, &#39;2018-01-30 01:20:11&#39;),
+    (&#39;Carlo&#39;, &#39;Yearby&#39;, &#39;cyearbyl@comcast.net&#39;, &#39;F&#39;, null, 
+     &#39;+55 (288) 623-4067&#39;, &#39;1974-11-11&#39;, &#39;2018-06-24 03:18:40&#39;),
+    (&#39;Sheila&#39;, &#39;Evitts&#39;, &#39;sevittsm@webmd.com&#39;, null, &#39;830-40-5287&#39;,
+     null, &#39;1977-03-01&#39;, &#39;2020-07-20 09:59:41&#39;),
+    (&#39;Sianna&#39;, &#39;Lowdham&#39;, &#39;slowdhamn@stanford.edu&#39;, null, &#39;778-0845&#39;, 
+     null, &#39;1985-12-23&#39;, &#39;2018-06-29 02:42:49&#39;),
+    (&#39;Phylys&#39;, &#39;Aslie&#39;, &#39;paslieo@qq.com&#39;, &#39;M&#39;, &#39;368-44-4478&#39;, 
+     &#39;+86 (765) 152-8654&#39;, &#39;1984-03-22&#39;, &#39;2019-10-01 01:34:28&#39;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+25 rows affected.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise-1">
+<h2>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h2>
+<p>Get all the number of users created per year.</p>
+<ul class="simple">
+<li><p>Use <strong>users</strong> table for this exercise.</p></li>
+<li><p>Output should contain 4 digit year and count.</p></li>
+<li><p>Use date specific functions to get the year using created_ts.</p></li>
+<li><p>Make sure you define aliases to the columns as <strong>created_year</strong> and <strong>user_count</strong> respectively.</p></li>
+<li><p>Data should be sorted in ascending order by <strong>created_year</strong>.</p></li>
+<li><p>When you run the query using Jupyter environment, it might have decimals for integers. Hence you can display results even with decimal points.</p></li>
+<li><p>Here is the sample output.</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>created_year</p></th>
+<th class="head"><p>user_count</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>2018</p></td>
+<td><p>13</p></td>
+</tr>
+<tr class="row-odd"><td><p>2019</p></td>
+<td><p>4</p></td>
+</tr>
+<tr class="row-even"><td><p>2020</p></td>
+<td><p>8</p></td>
+</tr>
+</tbody>
+</table>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT extract(year FROM created_ts) AS created_year,
+    count(user_id) AS user_count
+FROM users 
+GROUP BY extract(year FROM created_ts) 
+ORDER BY created_year
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+3 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>created_year</th>
+        <th>user_count</th>
+    </tr>
+    <tr>
+        <td>2018.0</td>
+        <td>13</td>
+    </tr>
+    <tr>
+        <td>2019.0</td>
+        <td>4</td>
+    </tr>
+    <tr>
+        <td>2020.0</td>
+        <td>8</td>
+    </tr>
+</table></div></div>
+</div>
+</div>
+<div class="section" id="exercise-2">
+<h2>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this headline">¶</a></h2>
+<p>Get the day name of the birth days for all the users born in the month of June.</p>
+<ul class="simple">
+<li><p>Use <strong>users</strong> table for this exercise.</p></li>
+<li><p>Output should contain user_id, user_dob, user_email_id and user_day_of_birth.</p></li>
+<li><p>Use date specific functions to get the month using user_dob.</p></li>
+<li><p><strong>user_day_of_birth</strong> should be full day with first character in upper case such as <strong>Tuesday</strong></p></li>
+<li><p>Data should be sorted by day with in the month of May.</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>user_id</p></th>
+<th class="head"><p>user_dob</p></th>
+<th class="head"><p>user_email_id</p></th>
+<th class="head"><p>user_day_of_birth</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>1998-05-24</p></td>
+<td><p>mtanswill3&#64;dedecms.com</p></td>
+<td><p>Sunday</p></td>
+</tr>
+<tr class="row-odd"><td><p>12</p></td>
+<td><p>1983-05-26</p></td>
+<td><p>uglayzerb&#64;pinterest.com</p></td>
+<td><p>Thursday</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>1973-05-31</p></td>
+<td><p>gbode0&#64;imgur.com</p></td>
+<td><p>Thursday</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>2003-05-31</p></td>
+<td><p>lgisbey1&#64;mail.ru</p></td>
+<td><p>Saturday</p></td>
+</tr>
+</tbody>
+</table>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT user_id, 
+    user_dob, 
+    user_email_id, 
+    to_char(user_dob, &#39;Day&#39;) AS user_day_of_birth 
+FROM users 
+WHERE to_char(user_dob, &#39;mon&#39;) = &#39;may&#39; 
+ORDER BY to_char(user_dob, &#39;dd&#39;);
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+4 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>user_id</th>
+        <th>user_dob</th>
+        <th>user_email_id</th>
+        <th>user_day_of_birth</th>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>1998-05-24</td>
+        <td>mtanswill3@dedecms.com</td>
+        <td>Sunday   </td>
+    </tr>
+    <tr>
+        <td>12</td>
+        <td>1983-05-26</td>
+        <td>uglayzerb@pinterest.com</td>
+        <td>Thursday </td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>1973-05-31</td>
+        <td>gbode0@imgur.com</td>
+        <td>Thursday </td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>2003-05-31</td>
+        <td>lgisbey1@mail.ru</td>
+        <td>Saturday </td>
+    </tr>
+</table></div></div>
+</div>
+</div>
+<div class="section" id="exercise-3">
+<h2>Exercise 3<a class="headerlink" href="#exercise-3" title="Permalink to this headline">¶</a></h2>
+<p>Get the names and email ids of users added in year 2019.</p>
+<ul class="simple">
+<li><p>Use <strong>users</strong> table for this exercise.</p></li>
+<li><p>Output should contain user_id, user_name, user_email_id, created_ts, created_year.</p></li>
+<li><p>Use date specific functions to get the year using created_ts.</p></li>
+<li><p><strong>user_name</strong> is a derived column by concatenating user_first_name and user_last_name with space in between.</p></li>
+<li><p><strong>user_name</strong> should have values in upper case.</p></li>
+<li><p>Data should be sorted in ascending order by user_name</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>user_id</p></th>
+<th class="head"><p>user_name</p></th>
+<th class="head"><p>user_email_id</p></th>
+<th class="head"><p>created_ts</p></th>
+<th class="head"><p>created_year</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>CYBIL LISSIMORE</p></td>
+<td><p>clissimore7&#64;pinterest.com</p></td>
+<td><p>2019-12-09 14:08:30</p></td>
+<td><p>2019.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>25</p></td>
+<td><p>PHYLYS ASLIE</p></td>
+<td><p>paslieo&#64;qq.com</p></td>
+<td><p>2019-10-01 01:34:28</p></td>
+<td><p>2019.0</p></td>
+</tr>
+<tr class="row-even"><td><p>12</p></td>
+<td><p>UNA GLAYZER</p></td>
+<td><p>uglayzerb&#64;pinterest.com</p></td>
+<td><p>2019-09-17 03:24:21</p></td>
+<td><p>2019.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>17</p></td>
+<td><p>YANKEE JELF</p></td>
+<td><p>yjelfg&#64;wufoo.com</p></td>
+<td><p>2019-09-16 16:09:12</p></td>
+<td><p>2019.0</p></td>
+</tr>
+</tbody>
+</table>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT user_id, 
+    upper(concat(user_first_name, user_last_name)) AS user_name, 
+    user_email_id, 
+    created_ts,  
+    extract(year FROM created_ts) AS created_year 
+FROM users
+WHERE extract(year FROM created_ts) = &#39;2019&#39; 
+ORDER BY user_name;
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+4 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>user_id</th>
+        <th>user_name</th>
+        <th>user_email_id</th>
+        <th>created_ts</th>
+        <th>created_year</th>
+    </tr>
+    <tr>
+        <td>8</td>
+        <td>CYBILLISSIMORE</td>
+        <td>clissimore7@pinterest.com</td>
+        <td>2019-12-09 14:08:30</td>
+        <td>2019.0</td>
+    </tr>
+    <tr>
+        <td>25</td>
+        <td>PHYLYSASLIE</td>
+        <td>paslieo@qq.com</td>
+        <td>2019-10-01 01:34:28</td>
+        <td>2019.0</td>
+    </tr>
+    <tr>
+        <td>12</td>
+        <td>UNAGLAYZER</td>
+        <td>uglayzerb@pinterest.com</td>
+        <td>2019-09-17 03:24:21</td>
+        <td>2019.0</td>
+    </tr>
+    <tr>
+        <td>17</td>
+        <td>YANKEEJELF</td>
+        <td>yjelfg@wufoo.com</td>
+        <td>2019-09-16 16:09:12</td>
+        <td>2019.0</td>
+    </tr>
+</table></div></div>
+</div>
+</div>
+<div class="section" id="exercise-4">
+<h2>Exercise 4<a class="headerlink" href="#exercise-4" title="Permalink to this headline">¶</a></h2>
+<p>Get the number of users by gender.</p>
+<ul class="simple">
+<li><p>Use <strong>users</strong> table for this exercise.</p></li>
+<li><p>Output should contain gender and user_count.</p></li>
+<li><p>For males the output should display <strong>Male</strong> and for females the output should display <strong>Female</strong>.</p></li>
+<li><p>If gender is not specified, then it should display <strong>Not Specified</strong>.</p></li>
+<li><p>Data should be sorted in descending order by user_count.</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>user_gender</p></th>
+<th class="head"><p>user_count</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Female</p></td>
+<td><p>13</p></td>
+</tr>
+<tr class="row-odd"><td><p>Male</p></td>
+<td><p>10</p></td>
+</tr>
+<tr class="row-even"><td><p>Not Specified</p></td>
+<td><p>2</p></td>
+</tr>
+</tbody>
+</table>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT 
+    CASE WHEN user_gender = &#39;M&#39; 
+        THEN &#39;Male&#39;  
+    WHEN user_gender=&#39;F&#39; 
+        THEN &#39;Female&#39; 
+    ELSE &#39;Not Specified&#39; 
+    END AS user_gender, 
+    count(user_id) AS user_count 
+FROM users
+GROUP BY user_gender 
+ORDER BY user_count DESC;
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+3 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>user_gender</th>
+        <th>user_count</th>
+    </tr>
+    <tr>
+        <td>Female</td>
+        <td>13</td>
+    </tr>
+    <tr>
+        <td>Male</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>Not Specified</td>
+        <td>2</td>
+    </tr>
+</table></div></div>
+</div>
+</div>
+<div class="section" id="exercise-5">
+<h2>Exercise 5<a class="headerlink" href="#exercise-5" title="Permalink to this headline">¶</a></h2>
+<p>Get last 4 digits of unique ids.</p>
+<ul class="simple">
+<li><p>Use <strong>users</strong> table for this exercise.</p></li>
+<li><p>Output should contain user_id, user_unique_id and user_unique_id_last4</p></li>
+<li><p>Unique ids are either null or not null.</p></li>
+<li><p>Unique ids contain numbers and hyphens and are of different length.</p></li>
+<li><p>We need to get last 4 digits discarding hyphens only when the number of digits are at least 9.</p></li>
+<li><p>If unique id is null, then you should dispaly <strong>Not Specified</strong>.</p></li>
+<li><p>After discarding hyphens, if unique id have less than 9 digits then you should display <strong>Invalid Unique Id</strong>.</p></li>
+<li><p>Data should be sorted by user_id. You might see <strong>None</strong> or <strong>null</strong> for those user ids where there is no unique id for <strong>user_unique_id</strong></p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>user_id</p></th>
+<th class="head"><p>user_unique_id</p></th>
+<th class="head"><p>user_unique_id_last4</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>88833-8759</p></td>
+<td><p>8759</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>262501-029</p></td>
+<td><p>1029</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>391-33-2823</p></td>
+<td><p>2823</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>1195413-80</p></td>
+<td><p>1380</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>471-24-6869</p></td>
+<td><p>6869</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>192374-933</p></td>
+<td><p>4933</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>749-27-47-52</p></td>
+<td><p>4752</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>461-75-4198</p></td>
+<td><p>4198</p></td>
+</tr>
+<tr class="row-even"><td><p>9</p></td>
+<td><p>892-36-676-2</p></td>
+<td><p>6762</p></td>
+</tr>
+<tr class="row-odd"><td><p>10</p></td>
+<td><p>197-54-1646</p></td>
+<td><p>1646</p></td>
+</tr>
+<tr class="row-even"><td><p>11</p></td>
+<td><p>232-55-52-58</p></td>
+<td><p>5258</p></td>
+</tr>
+<tr class="row-odd"><td><p>12</p></td>
+<td><p>898-84-336-6</p></td>
+<td><p>3366</p></td>
+</tr>
+<tr class="row-even"><td><p>13</p></td>
+<td><p>247-95-68-44</p></td>
+<td><p>6844</p></td>
+</tr>
+<tr class="row-odd"><td><p>14</p></td>
+<td><p>415-48-894-3</p></td>
+<td><p>8943</p></td>
+</tr>
+<tr class="row-even"><td><p>15</p></td>
+<td><p>403-39-5-869</p></td>
+<td><p>5869</p></td>
+</tr>
+<tr class="row-odd"><td><p>16</p></td>
+<td><p>399-83-05-03</p></td>
+<td><p>0503</p></td>
+</tr>
+<tr class="row-even"><td><p>17</p></td>
+<td><p>607-99-0411</p></td>
+<td><p>0411</p></td>
+</tr>
+<tr class="row-odd"><td><p>18</p></td>
+<td><p>430-01-578-5</p></td>
+<td><p>5785</p></td>
+</tr>
+<tr class="row-even"><td><p>19</p></td>
+<td><p>571-09-6181</p></td>
+<td><p>6181</p></td>
+</tr>
+<tr class="row-odd"><td><p>20</p></td>
+<td><p>478-32-02-87</p></td>
+<td><p>0287</p></td>
+</tr>
+<tr class="row-even"><td><p>21</p></td>
+<td><p></p></td>
+<td><p>Not Specified</p></td>
+</tr>
+<tr class="row-odd"><td><p>22</p></td>
+<td><p></p></td>
+<td><p>Not Specified</p></td>
+</tr>
+<tr class="row-even"><td><p>23</p></td>
+<td><p>830-40-5287</p></td>
+<td><p>5287</p></td>
+</tr>
+<tr class="row-odd"><td><p>24</p></td>
+<td><p>778-0845</p></td>
+<td><p>Invalid Unique Id</p></td>
+</tr>
+<tr class="row-even"><td><p>25</p></td>
+<td><p>368-44-4478</p></td>
+<td><p>4478</p></td>
+</tr>
+</tbody>
+</table>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT user_id, 
+    user_unique_id, 
+    CASE WHEN user_unique_id IS NULL 
+            THEN &#39;Not Specified&#39; 
+        WHEN length(translate(user_unique_id, &#39;-&#39;, &#39;&#39;)) &lt; 9  
+            THEN &#39;Invalid Unique Id&#39; 
+        ELSE substring(translate(user_unique_id, &#39;-&#39;, &#39;&#39;) FROM &#39;....$&#39;) 
+        END AS user_unique_id_last4 
+FROM users 
+ORDER BY user_id;
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+25 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>user_id</th>
+        <th>user_unique_id</th>
+        <th>user_unique_id_last4</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>88833-8759</td>
+        <td>8759</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>262501-029</td>
+        <td>1029</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>391-33-2823</td>
+        <td>2823</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>1195413-80</td>
+        <td>1380</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>471-24-6869</td>
+        <td>6869</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>192374-933</td>
+        <td>4933</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>749-27-47-52</td>
+        <td>4752</td>
+    </tr>
+    <tr>
+        <td>8</td>
+        <td>461-75-4198</td>
+        <td>4198</td>
+    </tr>
+    <tr>
+        <td>9</td>
+        <td>892-36-676-2</td>
+        <td>6762</td>
+    </tr>
+    <tr>
+        <td>10</td>
+        <td>197-54-1646</td>
+        <td>1646</td>
+    </tr>
+    <tr>
+        <td>11</td>
+        <td>232-55-52-58</td>
+        <td>5258</td>
+    </tr>
+    <tr>
+        <td>12</td>
+        <td>898-84-336-6</td>
+        <td>3366</td>
+    </tr>
+    <tr>
+        <td>13</td>
+        <td>247-95-68-44</td>
+        <td>6844</td>
+    </tr>
+    <tr>
+        <td>14</td>
+        <td>415-48-894-3</td>
+        <td>8943</td>
+    </tr>
+    <tr>
+        <td>15</td>
+        <td>403-39-5-869</td>
+        <td>5869</td>
+    </tr>
+    <tr>
+        <td>16</td>
+        <td>399-83-05-03</td>
+        <td>0503</td>
+    </tr>
+    <tr>
+        <td>17</td>
+        <td>607-99-0411</td>
+        <td>0411</td>
+    </tr>
+    <tr>
+        <td>18</td>
+        <td>430-01-578-5</td>
+        <td>5785</td>
+    </tr>
+    <tr>
+        <td>19</td>
+        <td>571-09-6181</td>
+        <td>6181</td>
+    </tr>
+    <tr>
+        <td>20</td>
+        <td>478-32-02-87</td>
+        <td>0287</td>
+    </tr>
+    <tr>
+        <td>21</td>
+        <td>None</td>
+        <td>Not Specified</td>
+    </tr>
+    <tr>
+        <td>22</td>
+        <td>None</td>
+        <td>Not Specified</td>
+    </tr>
+    <tr>
+        <td>23</td>
+        <td>830-40-5287</td>
+        <td>5287</td>
+    </tr>
+    <tr>
+        <td>24</td>
+        <td>778-0845</td>
+        <td>Invalid Unique Id</td>
+    </tr>
+    <tr>
+        <td>25</td>
+        <td>368-44-4478</td>
+        <td>4478</td>
+    </tr>
+</table></div></div>
+</div>
+</div>
+<div class="section" id="exercise-6">
+<h2>Exercise 6<a class="headerlink" href="#exercise-6" title="Permalink to this headline">¶</a></h2>
+<p>Get the count of users based up on country code.</p>
+<ul class="simple">
+<li><p>Use users table for this exercise.</p></li>
+<li><p>Output should contain country code and count.</p></li>
+<li><p>There should be no <code class="docutils literal notranslate"><span class="pre">+</span></code> in the country code. It should only contain digits.</p></li>
+<li><p>Data should be sorted as numbers by country code.</p></li>
+<li><p>We should discard user_phone_no with null values.</p></li>
+<li><p>Here is the desired output:</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>country_code</p></th>
+<th class="head"><p>user_count</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-even"><td><p>48</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>54</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>55</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>62</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-even"><td><p>63</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>81</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>84</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>86</p></td>
+<td><p>4</p></td>
+</tr>
+<tr class="row-even"><td><p>229</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>249</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>351</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>370</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>380</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>420</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>598</p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT substr(split_part(user_phone_no, &#39; &#39;, 1), 2)::numeric AS country_code,
+    count(1) AS user_count
+FROM users
+WHERE user_phone_no IS NOT NULL
+GROUP BY substr(split_part(user_phone_no, &#39; &#39;, 1), 2)
+ORDER BY 1
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+17 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>country_code</th>
+        <th>user_count</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>2</td>
+    </tr>
+    <tr>
+        <td>48</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>54</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>55</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>62</td>
+        <td>3</td>
+    </tr>
+    <tr>
+        <td>63</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>81</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>84</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>86</td>
+        <td>4</td>
+    </tr>
+    <tr>
+        <td>229</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>249</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>351</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>370</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>380</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>420</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>598</td>
+        <td>1</td>
+    </tr>
+</table></div></div>
+</div>
+</div>
+<div class="section" id="exercise-7">
+<h2>Exercise 7<a class="headerlink" href="#exercise-7" title="Permalink to this headline">¶</a></h2>
+<p>Let us validate if we have invalid <strong>order_item_subtotal</strong> as part of <strong>order_items</strong> table.</p>
+<ul class="simple">
+<li><p><strong>order_items</strong> table have 6 fields.</p>
+<ul>
+<li><p>order_item_id</p></li>
+<li><p>order_item_order_id</p></li>
+<li><p>order_item_product_id</p></li>
+<li><p>order_item_quantity</p></li>
+<li><p>order_item_subtotal</p></li>
+<li><p>order_item_product_price</p></li>
+</ul>
+</li>
+<li><p><strong>order_item_subtotal</strong> is nothing but product of <strong>order_item_quantity</strong> and <strong>order_item_product_price</strong>. It means order_item_subtotal is compute by multiplying order_item_quantity and order_item_product_price for each item.</p></li>
+<li><p>You need to get the count of order_items where <strong>order_item_subtotal</strong> is not equal to the product of <strong>order_item_quantity</strong> and <strong>order_item_product_price</strong>.</p></li>
+<li><p>There can be issues related to rounding off. Make sure it is taken care using appropriate function.</p></li>
+<li><p>Output should be 0 as there are no such records.</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>count</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT count(1)
+FROM order_items
+WHERE round((order_item_quantity * order_item_product_price)::numeric, 2) != order_item_subtotal
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+1 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>count</th>
+    </tr>
+    <tr>
+        <td>0</td>
+    </tr>
+</table></div></div>
+</div>
+</div>
+<div class="section" id="exercise-8">
+<h2>Exercise 8<a class="headerlink" href="#exercise-8" title="Permalink to this headline">¶</a></h2>
+<p>Get number of orders placed on weekdays and weekends in the month of January 2014.</p>
+<ul class="simple">
+<li><p><strong>orders</strong> have 4 fields</p>
+<ul>
+<li><p>order_id</p></li>
+<li><p>order_date</p></li>
+<li><p>order_customer_id</p></li>
+<li><p>order_status</p></li>
+</ul>
+</li>
+<li><p>Use order date to determine the day on which orders are placed.</p></li>
+<li><p>Output should contain 2 columns - day_type and order_count.</p></li>
+<li><p><strong>day_type</strong> should have 2 values <strong>Week days</strong> and <strong>Weekend days</strong>.</p></li>
+<li><p>Here is the desired output.</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>day_type</p></th>
+<th class="head"><p>order_count</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Weekend days</p></td>
+<td><p>1505</p></td>
+</tr>
+<tr class="row-odd"><td><p>Week days</p></td>
+<td><p>4403</p></td>
+</tr>
+</tbody>
+</table>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+SELECT 
+    CASE
+        WHEN trim(to_char(order_date, &#39;Day&#39;)) IN (&#39;Saturday&#39;, &#39;Sunday&#39;)
+            THEN &#39;Weekend days&#39;
+        ELSE &#39;Week days&#39;
+    END AS day_type,
+    count(1) AS order_count
+FROM orders
+WHERE to_char(order_date, &#39;yyyy-MM&#39;) = &#39;2014-01&#39;
+GROUP BY
+    CASE
+        WHEN trim(to_char(order_date, &#39;Day&#39;)) IN (&#39;Saturday&#39;, &#39;Sunday&#39;)
+            THEN &#39;Weekend days&#39;
+        ELSE &#39;Week days&#39;
+    END
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://itversity_retail_user:***@localhost:5432/itversity_retail_db
+2 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <tr>
+        <th>day_type</th>
+        <th>order_count</th>
+    </tr>
+    <tr>
+        <td>Week days</td>
+        <td>4403</td>
+    </tr>
+    <tr>
+        <td>Weekend days</td>
+        <td>1505</td>
+    </tr>
+</table></div></div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./solutions-mastering-postgresql"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Durga Gadiraju<br/>
+        
+            &copy; Copyright ITVersity, Inc.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>
