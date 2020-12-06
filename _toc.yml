@@ -1,4 +1,6 @@
-- file: mastering-postgresql/mastering-postgresql
+- file: mastering-sql-using-postgresql
+
+- file: mastering_postgresql_exercises
 
 - file: 01_getting_started/01_getting_started
   sections:
@@ -109,3 +111,5 @@
     - file: 08_query_performance_tuning/08_writing_queries_partition_pruning
     - file: 08_query_performance_tuning/09_overview_of_query_hints
     - file: 08_query_performance_tuning/10_exercises_tuning_queries
+    
+- file: mastering_postgresql_exercises
