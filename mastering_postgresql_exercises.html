@@ -56,6 +56,8 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Getting Started" href="01_getting_started/01_getting_started.html" />
+    <link rel="prev" title="Mastering SQL using Postgresql" href="mastering-sql-using-postgresql.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -88,12 +90,17 @@
 <nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
   <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="mastering-postgresql/mastering-postgresql.html">
+  <a class="reference internal" href="mastering-sql-using-postgresql.html">
    Mastering SQL using Postgresql
   </a>
  </li>
 </ul>
-<ul class="nav sidenav_l1">
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Exercises - Mastering Postgresql
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="01_getting_started/01_getting_started.html">
    Getting Started
@@ -132,6 +139,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="08_query_performance_tuning/01_query_performance_tuning.html">
    Query Performance Tuning
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Exercises - Mastering Postgresql
   </a>
  </li>
 </ul>
@@ -419,6 +431,11 @@
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#prepare-retail-database">
+     Prepare Retail Database
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id8">
      Exercise 1
     </a>
@@ -673,6 +690,53 @@
 <div class="section" id="basic-sql-queries">
 <h2>Basic SQL Queries<a class="headerlink" href="#basic-sql-queries" title="Permalink to this headline">¶</a></h2>
 <p>Here are some of the exercises for which you can write SQL queries to self evaluate.</p>
+<ul class="simple">
+<li><p>Ensure that we have required database and user for retail data. <strong>We might provide the database as part of our labs.</strong> Here are the instructions to use <code class="docutils literal notranslate"><span class="pre">psql</span></code> for setting up the required database (if required) and tables.</p></li>
+</ul>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>psql -U postgres -h localhost -p <span class="m">5432</span> -W
+</pre></div>
+</div>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">DATABASE</span> <span class="n">itversity_retail_db</span><span class="p">;</span>
+<span class="k">CREATE</span> <span class="k">USER</span> <span class="n">itversity_retail_user</span> <span class="k">WITH</span> <span class="k">ENCRYPTED</span> <span class="n">PASSWORD</span> <span class="s1">&#39;retail_password&#39;</span><span class="p">;</span>
+<span class="k">GRANT</span> <span class="k">ALL</span> <span class="k">ON</span> <span class="k">DATABASE</span> <span class="n">itversity_retail_db</span> <span class="k">TO</span> <span class="n">itversity_retail_user</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Create Tables using the script provided. You can either use <code class="docutils literal notranslate"><span class="pre">psql</span></code> or <strong>SQL Workbench</strong>.</p></li>
+</ul>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>psql -U itversity_retail_user <span class="se">\</span>
+  -h localhost <span class="se">\</span>
+  -p <span class="m">5432</span> <span class="se">\</span>
+  -d itversity_retail_db <span class="se">\</span>
+  -W
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>You can drop the existing tables.</p></li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">order_items</span><span class="p">;</span>
+<span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">orders</span><span class="p">;</span>
+<span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">customers</span><span class="p">;</span>
+<span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">products</span><span class="p">;</span>
+<span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">categories</span><span class="p">;</span>
+<span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">departments</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Once the tables are dropped you can run below script to create the tables for the purpose of exercises.</p></li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span>\i /data/retail_db/create_db_tables_pg.sql
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Data shall be loaded using the script provided.</p></li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span>\i /data/retail_db/load_db_tables_pg.sql
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Run queries to validate we have data in all the 3 tables.</p></li>
+</ul>
 <div class="section" id="exercise-1-customer-order-count">
 <h3>Exercise 1 - Customer order count<a class="headerlink" href="#exercise-1-customer-order-count" title="Permalink to this headline">¶</a></h3>
 <p>Get order count per customer for the month of 2014 January.</p>
@@ -1400,6 +1464,57 @@ insert into users (
 </div>
 <ul class="simple">
 <li><p>Validate to ensure that data is available in the tables by running these queries.</p></li>
+</ul>
+</div>
+<div class="section" id="prepare-retail-database">
+<h3>Prepare Retail Database<a class="headerlink" href="#prepare-retail-database" title="Permalink to this headline">¶</a></h3>
+<p>Make sure to drop and recreate the tables before taking care of the exercises related to retail database.</p>
+<ul class="simple">
+<li><p>Ensure that we have required database and user for retail data. <strong>We might provide the database as part of our labs.</strong> Here are the instructions to use <code class="docutils literal notranslate"><span class="pre">psql</span></code> for setting up the required database (if required) and tables.</p></li>
+</ul>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>psql -U postgres -h localhost -p <span class="m">5432</span> -W
+</pre></div>
+</div>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">DATABASE</span> <span class="n">itversity_retail_db</span><span class="p">;</span>
+<span class="k">CREATE</span> <span class="k">USER</span> <span class="n">itversity_retail_user</span> <span class="k">WITH</span> <span class="k">ENCRYPTED</span> <span class="n">PASSWORD</span> <span class="s1">&#39;retail_password&#39;</span><span class="p">;</span>
+<span class="k">GRANT</span> <span class="k">ALL</span> <span class="k">ON</span> <span class="k">DATABASE</span> <span class="n">itversity_retail_db</span> <span class="k">TO</span> <span class="n">itversity_retail_user</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Create Tables using the script provided. You can either use <code class="docutils literal notranslate"><span class="pre">psql</span></code> or <strong>SQL Workbench</strong>.</p></li>
+</ul>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>psql -U itversity_retail_user <span class="se">\</span>
+  -h localhost <span class="se">\</span>
+  -p <span class="m">5432</span> <span class="se">\</span>
+  -d itversity_retail_db <span class="se">\</span>
+  -W
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>You can drop the existing tables.</p></li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">order_items</span><span class="p">;</span>
+<span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">orders</span><span class="p">;</span>
+<span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">customers</span><span class="p">;</span>
+<span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">products</span><span class="p">;</span>
+<span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">categories</span><span class="p">;</span>
+<span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">departments</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Once the tables are dropped you can run below script to create the tables for the purpose of exercises.</p></li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span>\i /data/retail_db/create_db_tables_pg.sql
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Data shall be loaded using the script provided.</p></li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span>\i /data/retail_db/load_db_tables_pg.sql
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Run queries to validate we have data in all the 3 tables.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2154,6 +2269,7 @@ LIMIT 10
 <ul class="simple">
 <li><p>Use retail database tables such as orders, order_items and products.</p></li>
 <li><p>Highest revenue generating product should come at top.</p></li>
+<li><p>Consider only those orders which are either in <strong>COMPLETE</strong> or <strong>CLOSED</strong> status.</p></li>
 <li><p>Output should contain product_id, product_name, revenue, product_rank. <strong>revenue</strong> and <strong>product_rank</strong> are derived fields.</p></li>
 <li><p>Data should be sorted in descending order by revenue.</p></li>
 </ul>
@@ -2190,6 +2306,7 @@ LIMIT 10
 <ul class="simple">
 <li><p>Use retail database tables such as orders, order_items, products as well as categories.</p></li>
 <li><p>Highest revenue generating product should come at top.</p></li>
+<li><p>Consider only those orders which are either in <strong>COMPLETE</strong> or <strong>CLOSED</strong> status.</p></li>
 <li><p>Output should contain category_id, category_name, product_id, product_name, revenue, product_rank. revenue and product_rank are derived fields.</p></li>
 <li><p>Data should be sorted in ascending order by category_id and descending order by revenue.</p></li>
 </ul>
@@ -2273,6 +2390,8 @@ LIMIT 10
     
     <div class='prev-next-bottom'>
         
+    <a class='left-prev' id="prev-link" href="mastering-sql-using-postgresql.html" title="previous page">Mastering SQL using Postgresql</a>
+    <a class='right-next' id="next-link" href="01_getting_started/01_getting_started.html" title="next page">Getting Started</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
