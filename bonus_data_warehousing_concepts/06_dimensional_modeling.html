@@ -151,7 +151,7 @@
  <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
-  Subscribe <a href="http://notifyme.itversity.com">Newsletter</a>
+  Subscribe to our <a href="http://notifyme.itversity.com">Newsletter</a>
 </div>
 
 </div>
@@ -255,6 +255,36 @@
                 
   <div class="section" id="dimensional-modeling">
 <h1>Dimensional Modeling<a class="headerlink" href="#dimensional-modeling" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><strong>daily_product_revenue_fact</strong></p>
+<ul>
+<li><p><strong>date_id</strong> - <strong>yyyyMMdd</strong></p></li>
+<li><p><strong>product_id</strong></p></li>
+<li><p><strong>product_revenue</strong></p></li>
+<li><p><strong>product_count</strong></p></li>
+</ul>
+</li>
+<li><p><strong>date_dim</strong> (parent table for daily_product_revenue_fact using date_id)</p>
+<ul>
+<li><p><strong>date_id</strong> - unique or primary key</p></li>
+<li><p><strong>day_name</strong></p></li>
+<li><p><strong>holiday_flag</strong></p></li>
+<li><p><strong>week</strong></p></li>
+<li><p><strong>day_of_month</strong></p></li>
+<li><p><strong>month_name</strong></p></li>
+<li><p><strong>quarter</strong></p></li>
+<li><p><strong>year</strong></p></li>
+</ul>
+</li>
+<li><p><strong>product_dim</strong> (parent table for daily_product_revenue_fact using product_id)</p>
+<ul>
+<li><p><strong>product_id</strong> - unique or primary key</p></li>
+<li><p><strong>product_name</strong></p></li>
+<li><p><strong>category_name</strong></p></li>
+<li><p><strong>department_name</strong></p></li>
+</ul>
+</li>
+</ul>
 </div>
 
     <script type="text/x-thebe-config">
@@ -311,7 +341,7 @@
     <!-- Google Analytics -->
     <script>
       window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-      ga('create', 'G-3C0WQ1HMFP', 'auto');
+      ga('create', 'UA-80990145-11', 'auto');
       ga('set', 'anonymizeIp', true);
       ga('send', 'pageview');
     </script>
