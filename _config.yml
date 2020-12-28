@@ -9,7 +9,7 @@ html:
   use_issues_button         : true
   use_edit_page_button      : true
   extra_navbar              : Subscribe to our <a href="http://notifyme.itversity.com">Newsletter</a>
-  google_analytics_id       : UA-80990145-11
+  google_analytics_id       : UA-80990145-12
 
 exclude_patterns            : [_build, README.md, "**.ipynb_checkpoints"]
 
